@@ -1,0 +1,5 @@
+SM\Bundle\AdminBundle\Entity\Company:
+    properties:
+        email:
+            - Email:
+                message: The email "{{ value }}" is not a valid email.

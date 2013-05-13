@@ -1,0 +1,14 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: local.tyhv
+    database_user: root
+    database_password: admin
+    host : http://local.tyhv
+    locale: en
+    secret: d00245c7bda39aa016baa57370bfebc9b11deda3
+    database_path: null
+
+    per_item_page: 10
+    upload : "/uploads/"
