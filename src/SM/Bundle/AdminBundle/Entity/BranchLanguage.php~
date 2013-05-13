@@ -3,12 +3,18 @@
 namespace SM\Bundle\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * BranchLanguage
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="SM\Bundle\AdminBundle\Entity\BranchLanguageRepository")
+ * @ORM\Table(name="mtx_branch_language")
+ * @ORM\Entity(repositoryClass="SM\Bundle\AdminBundle\Repository\BranchLanguageRepository")
+ * @UniqueEntity(fields="name", message="Sorry! This branch exits. Please try another.")
+ * @ORM\HasLifecycleCallbacks
  */
 class BranchLanguage
 {
@@ -22,23 +28,19 @@ class BranchLanguage
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="language", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Language")
      */
     private $language;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="branch", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Branch", cascade={"persist"})
      */
     private $branch;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
@@ -46,7 +48,7 @@ class BranchLanguage
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -56,43 +58,41 @@ class BranchLanguage
     /**
      * Set language
      *
-     * @param string $language
+     * @param \SM\Bundle\AdminBundle\Entity\Language $language
      * @return BranchLanguage
      */
-    public function setLanguage($language)
-    {
+    public function setLanguage(\SM\Bundle\AdminBundle\Entity\Language $language = null) {
         $this->language = $language;
-    
+
         return $this;
     }
 
     /**
      * Get language
      *
-     * @return string 
+     * @return \SM\Bundle\AdminBundle\Entity\Language
      */
-    public function getLanguage()
-    {
+    public function getLanguage() {
         return $this->language;
     }
 
     /**
      * Set branch
      *
-     * @param string $branch
+     * @param \SM\Bundle\AdminBundle\Entity\Branch $branch
      * @return BranchLanguage
      */
     public function setBranch($branch)
     {
         $this->branch = $branch;
-    
+
         return $this;
     }
 
     /**
      * Get branch
      *
-     * @return string 
+     * @return \SM\Bundle\AdminBundle\Entity\Branch
      */
     public function getBranch()
     {
@@ -108,14 +108,14 @@ class BranchLanguage
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {

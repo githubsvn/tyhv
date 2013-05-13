@@ -329,7 +329,7 @@ class Company {
      * Set user
      *
      * @param \SM\Bundle\AdminBundle\Entity\User $user
-     * @return Article
+     * @return Company
      */
     public function setCreated(\SM\Bundle\AdminBundle\Entity\User $created) {
         $this->created = $created;
@@ -350,7 +350,7 @@ class Company {
      * Set user
      *
      * @param \SM\Bundle\AdminBundle\Entity\User $user
-     * @return Article
+     * @return Company
      */
     public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated) {
         $this->updated = $updated;

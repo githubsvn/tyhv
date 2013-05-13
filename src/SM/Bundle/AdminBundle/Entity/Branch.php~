@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Branch
 {
+
     /**
      * @var integer
      *
@@ -56,7 +57,7 @@ class Branch
     /**
      * @var Doctrine\Common\Collections\ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="BranchLanguage", mappedBy="companytype", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="BranchLanguage", mappedBy="branch", cascade={"all"})
      */
     protected $branch_languages;
 
@@ -68,13 +69,13 @@ class Branch
     /**
      * @ORM\PrePersist
      */
-    public function setCreatedAtValue() {
+    public function setCreatedAtValue()
+    {
         if (!$this->getCreatedAt()) {
             $this->created_at = new \DateTime();
             $this->updated_at = new \DateTime();
         }
     }
-
 
     /**
      * Get id
@@ -110,9 +111,9 @@ class Branch
     }
 
     /**
-     * Set created
+     * Set user
      *
-     * @param string $created
+     * @param \SM\Bundle\AdminBundle\Entity\User $user
      * @return Branch
      */
     public function setCreated($created)
@@ -125,7 +126,7 @@ class Branch
     /**
      * Get created
      *
-     * @return string
+     * @return \SM\Bundle\AdminBundle\Entity\User
      */
     public function getCreated()
     {
@@ -133,12 +134,12 @@ class Branch
     }
 
     /**
-     * Set updated
+     * Set user
      *
-     * @param string $updated
+     * @param \SM\Bundle\AdminBundle\Entity\User $user
      * @return Branch
      */
-    public function setUpdated($updated)
+    public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated)
     {
         $this->updated = $updated;
 
@@ -148,7 +149,7 @@ class Branch
     /**
      * Get updated
      *
-     * @return string
+     * @return \SM\Bundle\AdminBundle\Entity\User
      */
     public function getUpdated()
     {
@@ -200,4 +201,109 @@ class Branch
     {
         return $this->updated_at;
     }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->branch_languages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->language = null;
+    }
+
+    /**
+     * Add branch_languages
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages
+     * @return Branch
+     */
+    public function addBranchLanguage(\SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages)
+    {
+        $this->branch_languages[] = $branchLanguages;
+
+        return $this;
+    }
+
+    /**
+     * Remove branch_languages
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages
+     */
+    public function removeBranchLanguage(\SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages)
+    {
+        $this->branch_languages->removeElement($branchLanguages);
+    }
+
+    /**
+     * Get branch_languages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBranchLanguages()
+    {
+        return $this->branch_languages;
+    }
+
+    public function getCurrentLanguage()
+    {
+        $objLanguages = $this->branch_languages->toArray();
+        if (is_array($objLanguages)) {
+            if (null !== $this->language) {
+                foreach ($objLanguages as $oLanguage) {
+                    if ($oLanguage->getLanguage()->getId() == $this->language->getId()) {
+                        return $oLanguage;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public function hasLanguage(Language $language)
+    {
+        $result = false;
+        if (count($this->branch_languages->toArray()) > 0) {
+            foreach ($this->branch_languages as $plTemp) {
+                if ($language->getId() == $plTemp->getLanguage()->getId()) {
+                    $result = true;
+                    break;
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    public function __toString()
+    {
+        $objLanguages = $this->branch_languages->toArray();
+        if (is_array($objLanguages)) {
+            if (isset($objLanguages[0])) {
+                return $objLanguages[0]->getName();
+            }
+        }
+        return '';
+    }
+
+    /**
+     * Set Language
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Language $language
+     */
+    public function setLanguage(Language $language) {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\Language
+     */
+    public function getLanguage() {
+        return $this->language;
+    }
+
 }

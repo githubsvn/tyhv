@@ -46,3 +46,7 @@ sm_admin_company:
 sm_admin_branch:
         resource: "@SMAdminBundle/Resources/config/routing/branch.yml"
         prefix:   /admin/branch
+        
+sm_admin_productgroup:
+        resource: "@SMAdminBundle/Resources/config/routing/productgroup.yml"
+        prefix:   /admin/productgroup 

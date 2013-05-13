@@ -60,8 +60,8 @@ class BranchLanguageRepository extends EntityRepository
                 //Get all company type language by idComtype
                 //If to have 1 item we need to delete company type too
                 //else we need delete company type language
-                $lstComtypeLangs = $this->findByBranchId($idBranch);
-                if (count($lstComtypeLangs) == 1) {
+                $lstLangs = $this->findByBranchId($idBranch);
+                if (count($lstLangs) == 1) {
                     if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
                         $rst[] = $id;
                     }

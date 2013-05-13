@@ -475,6 +475,62 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
+        if (0 === strpos($pathinfo, '/admin/productgroup')) {
+            // admin_productgroup
+            if (preg_match('#^/admin/productgroup(?:/(?P<page>\\d+)(?:/(?P<lang>\\d+))?)?$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::indexAction',  'page' => '1',  'lang' => NULL,)), array('_route' => 'admin_productgroup'));
+            }
+
+            // admin_productgroup_show
+            if (preg_match('#^/admin/productgroup/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::showAction',)), array('_route' => 'admin_productgroup_show'));
+            }
+
+            // admin_productgroup_new
+            if ($pathinfo === '/admin/productgroup/new') {
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::newAction',  '_route' => 'admin_productgroup_new',);
+            }
+
+            // admin_productgroup_create
+            if ($pathinfo === '/admin/productgroup/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_productgroup_create;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::createAction',  '_route' => 'admin_productgroup_create',);
+            }
+            not_admin_productgroup_create:
+
+            // admin_productgroup_edit
+            if (preg_match('#^/admin/productgroup/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::editAction',)), array('_route' => 'admin_productgroup_edit'));
+            }
+
+            // admin_productgroup_update
+            if (preg_match('#^/admin/productgroup/(?P<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_productgroup_update;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::updateAction',)), array('_route' => 'admin_productgroup_update'));
+            }
+            not_admin_productgroup_update:
+
+            // admin_productgroup_delete
+            if (preg_match('#^/admin/productgroup/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('POST', 'GET', 'HEAD'));
+                    goto not_admin_productgroup_delete;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::deleteAction',)), array('_route' => 'admin_productgroup_delete'));
+            }
+            not_admin_productgroup_delete:
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }
