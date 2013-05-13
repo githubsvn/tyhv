@@ -4,7 +4,6 @@ namespace SM\Bundle\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use SM\Bundle\AdminBundle\Entity\Company;
 use SM\Bundle\AdminBundle\Entity\CompanyLanguage;
 use SM\Bundle\AdminBundle\Form\CompanyType;
@@ -15,19 +14,59 @@ use SM\Bundle\AdminBundle\Form\CompanyType;
  */
 class CompanyController extends Controller
 {
+
     /**
      * Lists all Company entities.
      *
      */
-    public function indexAction()
+    public function indexAction($page, $lang)
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SMAdminBundle:Company')->findAll();
+        //get list language
+        $langList = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->findAll();
+
+        if (is_null($lang)) {
+            foreach ($langList as $langData) {
+                $isDefault = $langData->getIsDefault();
+                if ($isDefault == 1) {
+                    $lang = $langData->getId();
+                    break;
+                }
+            }
+        }
+
+        $currentLanguage = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->find($lang);
+
+        $total = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Company")
+                ->getTotal();
+
+        $perPage = $this->container->getParameter('per_item_page');
+        $lastPage = ceil($total / $perPage);
+        $previousPage = $page > 1 ? $page - 1 : 1;
+        $nextPage = $page < $lastPage ? $page + 1 : $lastPage;
+
+        $entities = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Company")
+                ->getList($perPage, ($page - 1) * $perPage);
+        foreach ($entities as $theCompanytype) {
+            $theCompanytype->setLanguage($currentLanguage);
+        }
 
         return $this->render('SMAdminBundle:Company:index.html.twig', array(
-            'entities' => $entities,
-        ));
+                    'entities' => $entities,
+                    'lastPage' => $lastPage,
+                    'previousPage' => $previousPage,
+                    'currentPage' => $page,
+                    'nextPage' => $nextPage,
+                    'total' => $total,
+                    'lang' => intval($lang),
+                    'langList' => $langList,
+                ));
     }
 
     /**
@@ -47,8 +86,8 @@ class CompanyController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('SMAdminBundle:Company:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),));
     }
 
     /**
@@ -88,19 +127,19 @@ class CompanyController extends Controller
 
         if ($this->getRequest()->isMethod('POST')) {
             $form->bind($this->getRequest());
-            
+
             if ($form->isValid()) {
-                
+
                 //Set created and updated user
                 $currUser = $this->get('security.context')->getToken()->getUser();
                 $entity->setCreated($currUser);
                 $entity->setUpdated($currUser);
-                
+
                 $entityManager = $this->getDoctrine()->getEntityManager();
                 $entityManager->persist($entity);
                 foreach ($entity->getCompanyLanguages() as $companyLanguage) {
                     $name = $companyLanguage->getName();
-                    
+
                     if (empty($name)) {
                         $entity->removeCompanyLanguage($companyLanguage);
                         $entityManager->remove($companyLanguage);
@@ -115,7 +154,7 @@ class CompanyController extends Controller
 
                 if (!$referrer) {
                     return $this->redirect(
-                        $this->generateUrl('admin_company')
+                                    $this->generateUrl('admin_company')
                     );
                 } else {
                     return $this->redirect($referrer);
@@ -126,36 +165,11 @@ class CompanyController extends Controller
         }
 
         return $this->render('SMAdminBundle:Company:new.html.twig', array(
-            'entity' => $entity,
-            'form' => $form->createView(),
-            'langList' => $langList,
-            'defaultLanguage' => $defaultLanguage
-        ));
-    }
-    
-
-    /**
-     * Creates a new Company entity.
-     *
-     */
-    public function createAction(Request $request)
-    {
-        $entity  = new Company();
-        $form = $this->createForm(new CompanyType(), $entity);
-        $form->bind($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('admin_company_show', array('id' => $entity->getId())));
-        }
-
-        return $this->render('SMAdminBundle:Company:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+                    'langList' => $langList,
+                    'defaultLanguage' => $defaultLanguage
+                ));
     }
 
     /**
@@ -164,85 +178,113 @@ class CompanyController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('SMAdminBundle:Company')->find($id);
+        $entity = $this->getDoctrine()->getRepository("SMAdminBundle:Company")
+                ->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Company entity.');
+            //go to page index with error
+            $this->getRequest()->getSession()->getFlashBag()
+                    ->add('sm_flash_error', 'Could not find page with id ' . $id);
+
+            return $this->redirect($this->generateUrl('admin_company'));
         }
 
-        $editForm = $this->createForm(new CompanyType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
+        //get list language
+        $repLanguage = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language");
+        //Get list language
+        $langList = $repLanguage->getList();
+
+        if (is_array($langList)) {
+            foreach ($langList as $language) {
+                if (!$entity->hasLanguage($language)) {
+                    $companyLanguage = new CompanyLanguage();
+                    $companyLanguage->setLanguage($language);
+                    $companyLanguage->setCompany($entity);
+
+                    $entity->addCompanyLanguage($companyLanguage);
+                }
+                if ($language->getIsDefault()) {
+                    $defaultLanguage = $language;
+                }
+            }
+        }
+
+        if (!$this->getRequest()->isMethod('POST')) {
+            // set referrer redirect
+            $session = $this->getRequest()->getSession();
+            $session->set('referrer', $this->getRequest()->server->get('HTTP_REFERER'));
+        }
+
+        $form = $this->createForm(new CompanyType(), $entity);
+
+        if ($this->getRequest()->isMethod('POST')) {
+            $form->bind($this->getRequest());
+
+            if ($form->isValid()) {
+
+                //Set created and updated user
+                $currUser = $this->get('security.context')->getToken()->getUser();
+                $entity->setUpdated($currUser);
+
+                $entityManager = $this->getDoctrine()->getEntityManager();
+                $entityManager->persist($entity);
+                foreach ($entity->getCompanyLanguages() as $companyLanguage) {
+                    $name = $companyLanguage->getName();
+
+                    if (empty($name)) {
+                        $entity->removeCompanyLanguage($companyLanguage);
+                        $entityManager->remove($companyLanguage);
+                    }
+                }
+
+                $entityManager->flush();
+
+                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Company insert successfull!');
+                $referrer = $this->getRequest()->getSession()->get('referrer');
+                if (!$referrer) {
+                    return $this->redirect(
+                                    $this->generateUrl('admin_company')
+                    );
+                } else {
+                    return $this->redirect($referrer);
+                }
+            } else {
+                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
+            }
+        }
 
         return $this->render('SMAdminBundle:Company:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+                    'langList' => $langList,
+                    'defaultLanguage' => $defaultLanguage
+                ));
     }
 
     /**
-     * Edits an existing Company entity.
+     * @param \Symfony\Component\HttpFoundation\Request $request request
+     * @param int                                       $id      the id
      *
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('SMAdminBundle:Company')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Company entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new CompanyType(), $entity);
-        $editForm->bind($request);
-
-        if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('admin_company_edit', array('id' => $id)));
-        }
-
-        return $this->render('SMAdminBundle:Company:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-     * Deletes a Company entity.
-     *
+     * @return type
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
-        $form->bind($request);
+        $rep = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:CompanyLanguage");
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('SMAdminBundle:Company')->find($id);
+        $rst = $rep->deleteByIds(array($id));
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Company entity.');
-            }
+        // set referrer redirect
+        $referrer = $this->getRequest()->server->get('HTTP_REFERER');
 
-            $em->remove($entity);
-            $em->flush();
+        if (!$referrer) {
+            return $this->redirect(
+                $this->generateUrl('admin_company')
+            );
+        } else {
+            return $this->redirect($referrer);
         }
-
-        return $this->redirect($this->generateUrl('admin_company'));
     }
 
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm()
-        ;
-    }
 }

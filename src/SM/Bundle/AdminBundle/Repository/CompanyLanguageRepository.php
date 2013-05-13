@@ -3,6 +3,7 @@
 namespace SM\Bundle\AdminBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\UnitOfWork;
 
 /**
  * CompanyRepository
@@ -12,4 +13,72 @@ use Doctrine\ORM\EntityRepository;
  */
 class CompanyLanguageRepository extends EntityRepository
 {
+    /**
+     * @param type $criteria criteria
+     *
+     * @return type
+     */
+    public function getTotal($criteria = array()) {
+        $rst = $this->findBy($criteria);
+
+        return count($rst);
+    }
+
+    /**
+     * @param type $companyId comtypeId
+     *
+     * @return type
+     */
+    public function findByCompanyId($companyId) {
+        $rst = array();
+        if (!empty($companyId)) {
+            $rst = $this->findBy(array('company' => $companyId));
+        }
+
+        return $rst;
+    }
+
+    /**
+     * Delete language by array id
+     *
+     * @param array $ids
+     *
+     * @return array
+     */
+    public function deleteByIds($ids = array()) {
+        $em = $this->getEntityManager();
+        $repComtype = $em->getRepository('SMAdminBundle:Company');
+
+        $rst = array();
+        if (is_array($ids) && count($ids)) {
+            foreach ($ids as $id) {
+                $entity = $this->find($id);
+                $idCom = $entity->getCompany()->getId();
+
+                $em->remove($entity);
+
+                //Get all company type language by idComtype
+                //If to have 1 item we need to delete company type too
+                //else we need delete company type language
+                $lstComtypeLangs = $this->findByCompanyId($idCom);
+                if (count($lstComtypeLangs) == 1) {
+                    if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
+                        $rst[] = $id;
+                    }
+                    //delete article too
+                    $em->flush();
+                    //delete article language
+                    $repComtype->deleteByIds(array($idCom));
+                } else {
+                    if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
+                        $rst[] = $id;
+                    }
+                    //Onlye delete article language
+                    $em->flush();
+                }
+            }
+        }
+
+        return $rst;
+    }
 }

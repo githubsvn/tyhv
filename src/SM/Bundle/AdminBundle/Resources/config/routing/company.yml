@@ -1,6 +1,9 @@
 admin_company:
-    pattern:  /
-    defaults: { _controller: "SMAdminBundle:Company:index" }
+    pattern:  /{page}/{lang}
+    defaults: { _controller: "SMAdminBundle:Company:index", page : 1, lang : null }
+    requirements:
+        page:  \d+
+        lang:  \d+
 
 admin_company_show:
     pattern:  /{id}/show
@@ -27,4 +30,4 @@ admin_company_update:
 admin_company_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SMAdminBundle:Company:delete" }
-    requirements: { _method: post }
+    requirements: { _method: post|get }

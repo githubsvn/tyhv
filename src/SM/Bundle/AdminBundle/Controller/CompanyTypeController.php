@@ -54,17 +54,17 @@ class CompanyTypeController extends Controller {
         foreach ($entities as $theCompanytype) {
             $theCompanytype->setLanguage($currentLanguage);
         }
-        
+
         return $this->render('SMAdminBundle:CompanyType:index.html.twig', array(
-                    'entities' => $entities,
-                    'lastPage' => $lastPage,
-                    'previousPage' => $previousPage,
-                    'currentPage' => $page,
-                    'nextPage' => $nextPage,
-                    'total' => $total,
-                    'lang' => intval($lang),
-                    'langList' => $langList,
-                ));
+            'entities' => $entities,
+            'lastPage' => $lastPage,
+            'previousPage' => $previousPage,
+            'currentPage' => $page,
+            'nextPage' => $nextPage,
+            'total' => $total,
+            'lang' => intval($lang),
+            'langList' => $langList,
+        ));
     }
 
     /**
@@ -123,21 +123,21 @@ class CompanyTypeController extends Controller {
 
         if ($this->getRequest()->isMethod('POST')) {
             $form->bind($this->getRequest());
-            
+
             if ($form->isValid()) {
-                
+
                 //Set created and updated user
                 $currUser = $this->get('security.context')->getToken()->getUser();
                 $entity->setCreated($currUser);
                 $entity->setUpdated($currUser);
-                
+
                 $entityManager = $this->getDoctrine()->getEntityManager();
                 $entityManager->persist($entity);
                 foreach ($entity->getCompanytypeLanguages() as $companytypeLanguage) {
                     $name = $companytypeLanguage->getName();
                     if (empty($name)) {
-                        $entity->removeCompanytypeLanguage($companytypeLanguages);
-                        $entityManager->remove($companytypeLanguages);
+                        $entity->removeCompanytypeLanguage($companytypeLanguage);
+                        $entityManager->remove($companytypeLanguage);
                     }
                 }
 
@@ -223,11 +223,11 @@ class CompanyTypeController extends Controller {
                         $entityManager->remove($ctLanguage);
                     }
                 }
-                
+
                 //Set created
                 $currUser = $this->get('security.context')->getToken()->getUser();
                 $entity->setUpdated($currUser);
-                
+
                 $entityManager->persist($entity);
 
                 $entityManager->flush();
@@ -247,42 +247,11 @@ class CompanyTypeController extends Controller {
         }
 
         return $this->render('SMAdminBundle:CompanyType:edit.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
-                    'langList' => $langList,
-                    'defaultLanguage' => $defaultLanguage,
-                ));
-    }
-
-    /**
-     * Edits an existing CompanyType entity.
-     *
-     */
-    public function updateAction(Request $request, $id) {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('SMAdminBundle:CompanyType')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find CompanyType entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new CompanyTypeType(), $entity);
-        $editForm->bind($request);
-
-        if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('admin_companytype_edit', array('id' => $id)));
-        }
-
-        return $this->render('SMAdminBundle:CompanyType:edit.html.twig', array(
-                    'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
-                ));
+            'entity' => $entity,
+            'form' => $form->createView(),
+            'langList' => $langList,
+            'defaultLanguage' => $defaultLanguage,
+        ));
     }
 
     /**

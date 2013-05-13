@@ -40,28 +40,28 @@ class CompanyLanguage {
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adress", type="string", length=255)
+     * @ORM\Column(name="adress", type="string", length=255, nullable=true)
      */
     private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="representation", type="string", length=255)
+     * @ORM\Column(name="representation", type="string", length=255, nullable=true)
      */
     private $representation;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId() {
         return $this->id;
@@ -124,7 +124,7 @@ class CompanyLanguage {
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName() {
         return $this->name;
@@ -145,7 +145,7 @@ class CompanyLanguage {
     /**
      * Get representation
      *
-     * @return string 
+     * @return string
      */
     public function getRepresentation() {
         return $this->representation;
@@ -161,14 +161,14 @@ class CompanyLanguage {
     public function setAddress($address)
     {
         $this->address = $address;
-    
+
         return $this;
     }
 
     /**
      * Get address
      *
-     * @return string 
+     * @return string
      */
     public function getAddress()
     {

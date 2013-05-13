@@ -17,7 +17,7 @@ class CompanyLanguageType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('name', null, array(
-                    'required' => true
+                    'required' => false
                 ))
                 ->add('address', 'textarea', array(
                     'attr' => array(
