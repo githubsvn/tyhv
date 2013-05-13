@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.10deb1
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 13, 2013 at 05:26 PM
--- Server version: 5.1.54
--- PHP Version: 5.3.5-1ubuntu7.11
+-- Generation Time: May 13, 2013 at 04:34 PM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -31,11 +32,6 @@ CREATE TABLE IF NOT EXISTS `acl_classes` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_69DD750638A36066` (`class_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `acl_classes`
---
-
 
 -- --------------------------------------------------------
 
@@ -63,11 +59,6 @@ CREATE TABLE IF NOT EXISTS `acl_entries` (
   KEY `IDX_46C8B806DF9183C9` (`security_identity_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `acl_entries`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -85,11 +76,6 @@ CREATE TABLE IF NOT EXISTS `acl_object_identities` (
   KEY `IDX_9407E54977FA751A` (`parent_object_identity_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `acl_object_identities`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -103,11 +89,6 @@ CREATE TABLE IF NOT EXISTS `acl_object_identity_ancestors` (
   KEY `IDX_825DE2993D9AB4A6` (`object_identity_id`),
   KEY `IDX_825DE299C671CEA1` (`ancestor_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `acl_object_identity_ancestors`
---
-
 
 -- --------------------------------------------------------
 
@@ -123,10 +104,54 @@ CREATE TABLE IF NOT EXISTS `acl_security_identities` (
   UNIQUE KEY `UNIQ_8835EE78772E836AF85E0677` (`identifier`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `acl_security_identities`
+-- Table structure for table `mtx_branch`
 --
 
+CREATE TABLE IF NOT EXISTS `mtx_branch` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_id` int(11) DEFAULT NULL,
+  `updated_id` int(11) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_CAB0DCA85EE01E44` (`created_id`),
+  KEY `IDX_CAB0DCA8960CC7F3` (`updated_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `mtx_branch`
+--
+
+INSERT INTO `mtx_branch` (`id`, `created_id`, `updated_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, '2013-05-13 15:29:34', '2013-05-13 15:29:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mtx_branch_language`
+--
+
+CREATE TABLE IF NOT EXISTS `mtx_branch_language` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `language_id` int(11) DEFAULT NULL,
+  `branch_id` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_64D3050082F1BAF4` (`language_id`),
+  KEY `IDX_64D30500DCD6CC49` (`branch_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `mtx_branch_language`
+--
+
+INSERT INTO `mtx_branch_language` (`id`, `language_id`, `branch_id`, `name`) VALUES
+(1, 2, 1, 'BRANCH 1'),
+(2, 3, 1, 'BRANCH EN 1');
 
 -- --------------------------------------------------------
 
@@ -151,12 +176,7 @@ CREATE TABLE IF NOT EXISTS `mtx_company` (
   KEY `IDX_1ACB19A7C54C8C93` (`type_id`),
   KEY `IDX_1ACB19A75EE01E44` (`created_id`),
   KEY `IDX_1ACB19A7960CC7F3` (`updated_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `mtx_company`
---
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -174,14 +194,7 @@ CREATE TABLE IF NOT EXISTS `mtx_companytype` (
   PRIMARY KEY (`id`),
   KEY `IDX_9AF919955EE01E44` (`created_id`),
   KEY `IDX_9AF91995960CC7F3` (`updated_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `mtx_companytype`
---
-
-INSERT INTO `mtx_companytype` (`id`, `created_id`, `updated_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, '2013-05-13 16:08:34', '2013-05-13 16:08:34');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -197,15 +210,7 @@ CREATE TABLE IF NOT EXISTS `mtx_companytype_language` (
   PRIMARY KEY (`id`),
   KEY `IDX_54F6538B1E00F65` (`companytype_id`),
   KEY `IDX_54F6538B82F1BAF4` (`language_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `mtx_companytype_language`
---
-
-INSERT INTO `mtx_companytype_language` (`id`, `companytype_id`, `language_id`, `name`) VALUES
-(1, 1, 2, 'TNHH MTV'),
-(2, 1, 3, 'JSC');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -223,12 +228,7 @@ CREATE TABLE IF NOT EXISTS `mtx_company_language` (
   PRIMARY KEY (`id`),
   KEY `IDX_757D1B7C82F1BAF4` (`language_id`),
   KEY `IDX_757D1B7C979B1AD6` (`company_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `mtx_company_language`
---
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -250,9 +250,9 @@ CREATE TABLE IF NOT EXISTS `mtx_group` (
 --
 
 INSERT INTO `mtx_group` (`id`, `name`, `created_at`, `updated_at`, `active`) VALUES
-(1, 'Administrators', '2013-05-13 15:54:02', '2013-05-13 15:54:02', 1),
-(2, 'Manager', '2013-05-13 15:54:02', '2013-05-13 15:54:02', 1),
-(3, 'Users', '2013-05-13 15:54:02', '2013-05-13 15:54:02', 1);
+(1, 'Administrators', '2013-05-13 14:05:53', '2013-05-13 14:05:53', 1),
+(2, 'Manager', '2013-05-13 14:05:53', '2013-05-13 14:05:53', 1),
+(3, 'Users', '2013-05-13 14:05:53', '2013-05-13 14:05:53', 1);
 
 -- --------------------------------------------------------
 
@@ -303,6 +303,42 @@ INSERT INTO `mtx_language` (`id`, `name`, `lang_key`, `is_default`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mtx_productgroup`
+--
+
+CREATE TABLE IF NOT EXISTS `mtx_productgroup` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` tinyint(1) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `branch_id` int(11) DEFAULT NULL,
+  `created_id` int(11) DEFAULT NULL,
+  `updated_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_6184A463DCD6CC49` (`branch_id`),
+  KEY `IDX_6184A4635EE01E44` (`created_id`),
+  KEY `IDX_6184A463960CC7F3` (`updated_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mtx_productgroup_language`
+--
+
+CREATE TABLE IF NOT EXISTS `mtx_productgroup_language` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `language_id` int(11) DEFAULT NULL,
+  `productgroup_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_E0372DC82F1BAF4` (`language_id`),
+  KEY `IDX_E0372DC5BC5238A` (`productgroup_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mtx_role`
 --
 
@@ -345,7 +381,7 @@ CREATE TABLE IF NOT EXISTS `mtx_user` (
 --
 
 INSERT INTO `mtx_user` (`id`, `username`, `fullname`, `salt`, `password`, `email`, `created_at`, `updated_at`, `active`) VALUES
-(1, 'admin', 'Administrator', 'a190027678a852bb64eea123f7d59248', 'd4c13c9f6c92a2d1e7cd52f6758fa1f514392f85', 'admin@sm.com', '2013-05-13 15:54:02', '2013-05-13 15:54:02', 1);
+(1, 'admin', 'Administrator', '8b595b1189fd1241b4654882f74afd87', '5767790c7336d17c9b38020419240d6d0b9e400e', 'admin@sm.com', '2013-05-13 14:05:53', '2013-05-13 14:05:53', 1);
 
 -- --------------------------------------------------------
 
@@ -415,11 +451,25 @@ ALTER TABLE `acl_object_identity_ancestors`
   ADD CONSTRAINT `FK_825DE2993D9AB4A6` FOREIGN KEY (`object_identity_id`) REFERENCES `acl_object_identities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `mtx_branch`
+--
+ALTER TABLE `mtx_branch`
+  ADD CONSTRAINT `FK_CAB0DCA8960CC7F3` FOREIGN KEY (`updated_id`) REFERENCES `mtx_user` (`id`),
+  ADD CONSTRAINT `FK_CAB0DCA85EE01E44` FOREIGN KEY (`created_id`) REFERENCES `mtx_user` (`id`);
+
+--
+-- Constraints for table `mtx_branch_language`
+--
+ALTER TABLE `mtx_branch_language`
+  ADD CONSTRAINT `FK_64D30500DCD6CC49` FOREIGN KEY (`branch_id`) REFERENCES `mtx_branch` (`id`),
+  ADD CONSTRAINT `FK_64D3050082F1BAF4` FOREIGN KEY (`language_id`) REFERENCES `mtx_language` (`id`);
+
+--
 -- Constraints for table `mtx_company`
 --
 ALTER TABLE `mtx_company`
-  ADD CONSTRAINT `FK_1ACB19A75EE01E44` FOREIGN KEY (`created_id`) REFERENCES `mtx_user` (`id`),
   ADD CONSTRAINT `FK_1ACB19A7960CC7F3` FOREIGN KEY (`updated_id`) REFERENCES `mtx_user` (`id`),
+  ADD CONSTRAINT `FK_1ACB19A75EE01E44` FOREIGN KEY (`created_id`) REFERENCES `mtx_user` (`id`),
   ADD CONSTRAINT `FK_1ACB19A7C54C8C93` FOREIGN KEY (`type_id`) REFERENCES `mtx_companytype` (`id`);
 
 --
@@ -433,15 +483,15 @@ ALTER TABLE `mtx_companytype`
 -- Constraints for table `mtx_companytype_language`
 --
 ALTER TABLE `mtx_companytype_language`
-  ADD CONSTRAINT `FK_54F6538B1E00F65` FOREIGN KEY (`companytype_id`) REFERENCES `mtx_companytype` (`id`),
-  ADD CONSTRAINT `FK_54F6538B82F1BAF4` FOREIGN KEY (`language_id`) REFERENCES `mtx_language` (`id`);
+  ADD CONSTRAINT `FK_54F6538B82F1BAF4` FOREIGN KEY (`language_id`) REFERENCES `mtx_language` (`id`),
+  ADD CONSTRAINT `FK_54F6538B1E00F65` FOREIGN KEY (`companytype_id`) REFERENCES `mtx_companytype` (`id`);
 
 --
 -- Constraints for table `mtx_company_language`
 --
 ALTER TABLE `mtx_company_language`
-  ADD CONSTRAINT `FK_757D1B7C82F1BAF4` FOREIGN KEY (`language_id`) REFERENCES `mtx_language` (`id`),
-  ADD CONSTRAINT `FK_757D1B7C979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `mtx_company` (`id`);
+  ADD CONSTRAINT `FK_757D1B7C979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `mtx_company` (`id`),
+  ADD CONSTRAINT `FK_757D1B7C82F1BAF4` FOREIGN KEY (`language_id`) REFERENCES `mtx_language` (`id`);
 
 --
 -- Constraints for table `mtx_group_role`
@@ -449,6 +499,21 @@ ALTER TABLE `mtx_company_language`
 ALTER TABLE `mtx_group_role`
   ADD CONSTRAINT `FK_C468F723D60322AC` FOREIGN KEY (`role_id`) REFERENCES `mtx_role` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_C468F723FE54D947` FOREIGN KEY (`group_id`) REFERENCES `mtx_group` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `mtx_productgroup`
+--
+ALTER TABLE `mtx_productgroup`
+  ADD CONSTRAINT `FK_6184A463960CC7F3` FOREIGN KEY (`updated_id`) REFERENCES `mtx_user` (`id`),
+  ADD CONSTRAINT `FK_6184A4635EE01E44` FOREIGN KEY (`created_id`) REFERENCES `mtx_user` (`id`),
+  ADD CONSTRAINT `FK_6184A463DCD6CC49` FOREIGN KEY (`branch_id`) REFERENCES `mtx_branch` (`id`);
+
+--
+-- Constraints for table `mtx_productgroup_language`
+--
+ALTER TABLE `mtx_productgroup_language`
+  ADD CONSTRAINT `FK_E0372DC5BC5238A` FOREIGN KEY (`productgroup_id`) REFERENCES `mtx_productgroup` (`id`),
+  ADD CONSTRAINT `FK_E0372DC82F1BAF4` FOREIGN KEY (`language_id`) REFERENCES `mtx_language` (`id`);
 
 --
 -- Constraints for table `mtx_user_group`
@@ -463,3 +528,7 @@ ALTER TABLE `mtx_user_group`
 ALTER TABLE `mtx_user_role`
   ADD CONSTRAINT `FK_A6F8FA57D60322AC` FOREIGN KEY (`role_id`) REFERENCES `mtx_role` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_A6F8FA57A76ED395` FOREIGN KEY (`user_id`) REFERENCES `mtx_user` (`id`) ON DELETE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
