@@ -38,8 +38,11 @@ sm_admin_language:
 sm_admin_companytype:
     resource: "@SMAdminBundle/Resources/config/routing/companytype.yml"
     prefix:   /admin/companytype
-    
+
 sm_admin_company:
     resource: "@SMAdminBundle/Resources/config/routing/company.yml"
     prefix:   /admin/company
-    
+
+sm_admin_branch:
+        resource: "@SMAdminBundle/Resources/config/routing/branch.yml"
+        prefix:   /admin/branch

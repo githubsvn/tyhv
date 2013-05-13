@@ -160,11 +160,11 @@ class CompanyTypeController extends Controller {
         }
 
         return $this->render('SMAdminBundle:CompanyType:new.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
-                    'langList' => $langList,
-                    'defaultLanguage' => $defaultLanguage
-                ));
+            'entity' => $entity,
+            'form' => $form->createView(),
+            'langList' => $langList,
+            'defaultLanguage' => $defaultLanguage
+        ));
     }
 
     /**
@@ -236,7 +236,7 @@ class CompanyTypeController extends Controller {
 
                 if (!$referrer) {
                     return $this->redirect(
-                                    $this->generateUrl('admin_companytype')
+                        $this->generateUrl('admin_companytype')
                     );
                 } else {
                     return $this->redirect($referrer);

@@ -40,7 +40,7 @@ class CompanyTypeLanguage
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
@@ -48,7 +48,7 @@ class CompanyTypeLanguage
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -64,14 +64,14 @@ class CompanyTypeLanguage
     public function setCompanytype(\SM\Bundle\AdminBundle\Entity\CompanyType $companytype)
     {
         $this->companytype = $companytype;
-    
+
         return $this;
     }
 
     /**
      * Get companytype
      *
-     * @return \SM\Bundle\AdminBundle\Entity\CompanyType 
+     * @return \SM\Bundle\AdminBundle\Entity\CompanyType
      */
     public function getCompanytype()
     {
@@ -108,14 +108,14 @@ class CompanyTypeLanguage
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {

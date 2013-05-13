@@ -86,3 +86,30 @@
 [Mon May 13 16:33:48 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin/company
 [Mon May 13 16:33:48 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\CompanyController->deleteAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/company
 [Mon May 13 16:33:48 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\CompanyLanguageRepository->deleteByIds() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/CompanyController.php:276, referer: http://local.tyhv/admin/company
+[Mon May 13 18:14:17 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to a member function setLanguage() on a non-object in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/BranchController.php on line 55
+[Mon May 13 18:14:17 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon May 13 18:14:17 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Mon May 13 18:14:17 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:25
+[Mon May 13 18:14:17 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Mon May 13 18:14:17 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Mon May 13 18:14:17 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Mon May 13 18:14:17 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426
+[Mon May 13 18:14:17 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\BranchController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0
+[Mon May 13 18:14:35 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method SM\\Bundle\\AdminBundle\\Entity\\Branch::setLanguage() in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/BranchController.php on line 55
+[Mon May 13 18:14:35 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon May 13 18:14:35 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Mon May 13 18:14:35 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:25
+[Mon May 13 18:14:35 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Mon May 13 18:14:35 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Mon May 13 18:14:35 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Mon May 13 18:14:35 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426
+[Mon May 13 18:14:35 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\BranchController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0
+[Mon May 13 18:15:03 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method SM\\Bundle\\AdminBundle\\Entity\\Branch::setLanguage() in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/BranchController.php on line 55
+[Mon May 13 18:15:03 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon May 13 18:15:03 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Mon May 13 18:15:03 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:25
+[Mon May 13 18:15:03 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Mon May 13 18:15:03 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Mon May 13 18:15:03 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Mon May 13 18:15:03 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426
+[Mon May 13 18:15:03 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\BranchController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0

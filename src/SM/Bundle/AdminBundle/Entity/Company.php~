@@ -35,56 +35,56 @@ class Company {
     /**
      * @var float
      *
-     * @ORM\Column(name="charter_capital", type="float")
+     * @ORM\Column(name="charter_capital", type="float", nullable=true)
      */
     private $charter_capital;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     private $phone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="fax", type="string", length=255)
+     * @ORM\Column(name="fax", type="string", length=255, nullable=true)
      */
     private $fax;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mst", type="string", length=255)
+     * @ORM\Column(name="mst", type="string", length=255, nullable=true)
      */
     private $mst;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     private $status;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $created_at;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updated_at;
 
@@ -97,7 +97,7 @@ class Company {
      * @ORM\ManyToOne(targetEntity="User")
      */
     private $updated;
-    
+
     /**
      * @var Doctrine\Common\Collections\ArrayCollection
      *
@@ -109,7 +109,7 @@ class Company {
      * @var Language
      */
     private $language;
-    
+
     /**
      * @ORM\PrePersist
      */
@@ -130,7 +130,7 @@ class Company {
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId() {
         return $this->id;
@@ -172,7 +172,7 @@ class Company {
     /**
      * Get charter_capital
      *
-     * @return float 
+     * @return float
      */
     public function getCharterCapital() {
         return $this->charter_capital;
@@ -193,7 +193,7 @@ class Company {
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone() {
         return $this->phone;
@@ -214,7 +214,7 @@ class Company {
     /**
      * Get fax
      *
-     * @return string 
+     * @return string
      */
     public function getFax() {
         return $this->fax;
@@ -235,7 +235,7 @@ class Company {
     /**
      * Get mst
      *
-     * @return string 
+     * @return string
      */
     public function getMst() {
         return $this->mst;
@@ -256,7 +256,7 @@ class Company {
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail() {
         return $this->email;
@@ -277,7 +277,7 @@ class Company {
     /**
      * Get status
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getStatus() {
         return $this->status;
@@ -298,7 +298,7 @@ class Company {
     /**
      * Get created_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt() {
         return $this->created_at;
@@ -319,7 +319,7 @@ class Company {
     /**
      * Get updated_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt() {
         return $this->updated_at;
@@ -375,7 +375,7 @@ class Company {
         $this->company_languages = new \Doctrine\Common\Collections\ArrayCollection();
         $this->language = null;
     }
-    
+
     /**
      * Add company_languages
      *
@@ -385,7 +385,7 @@ class Company {
     public function addCompanyLanguage(\SM\Bundle\AdminBundle\Entity\CompanyLanguage $companyLanguages)
     {
         $this->company_languages[] = $companyLanguages;
-        
+
         return $this;
     }
 
@@ -402,13 +402,13 @@ class Company {
     /**
      * Get company_languages
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCompanyLanguages()
     {
         return $this->company_languages;
     }
-    
+
      /**
      * Set Language
      *

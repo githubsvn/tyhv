@@ -419,6 +419,62 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
+        if (0 === strpos($pathinfo, '/admin/branch')) {
+            // admin_branch
+            if (preg_match('#^/admin/branch(?:/(?P<page>\\d+)(?:/(?P<lang>\\d+))?)?$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\BranchController::indexAction',  'page' => '1',  'lang' => NULL,)), array('_route' => 'admin_branch'));
+            }
+
+            // admin_branch_show
+            if (preg_match('#^/admin/branch/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\BranchController::showAction',)), array('_route' => 'admin_branch_show'));
+            }
+
+            // admin_branch_new
+            if ($pathinfo === '/admin/branch/new') {
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\BranchController::newAction',  '_route' => 'admin_branch_new',);
+            }
+
+            // admin_branch_create
+            if ($pathinfo === '/admin/branch/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_branch_create;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\BranchController::createAction',  '_route' => 'admin_branch_create',);
+            }
+            not_admin_branch_create:
+
+            // admin_branch_edit
+            if (preg_match('#^/admin/branch/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\BranchController::editAction',)), array('_route' => 'admin_branch_edit'));
+            }
+
+            // admin_branch_update
+            if (preg_match('#^/admin/branch/(?P<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_branch_update;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\BranchController::updateAction',)), array('_route' => 'admin_branch_update'));
+            }
+            not_admin_branch_update:
+
+            // admin_branch_delete
+            if (preg_match('#^/admin/branch/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('POST', 'GET', 'HEAD'));
+                    goto not_admin_branch_delete;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\BranchController::deleteAction',)), array('_route' => 'admin_branch_delete'));
+            }
+            not_admin_branch_delete:
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

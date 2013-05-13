@@ -78,7 +78,7 @@ class CompanyType {
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId() {
         return $this->id;
@@ -99,7 +99,7 @@ class CompanyType {
     /**
      * Get status
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getStatus() {
         return $this->status;
@@ -120,7 +120,7 @@ class CompanyType {
     /**
      * Get created_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt() {
         return $this->created_at;
@@ -141,7 +141,7 @@ class CompanyType {
     /**
      * Get updated_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt() {
         return $this->updated_at;
@@ -151,7 +151,7 @@ class CompanyType {
      * Set user
      *
      * @param \SM\Bundle\AdminBundle\Entity\User $user
-     * @return Article
+     * @return CompanyType
      */
     public function setCreated(\SM\Bundle\AdminBundle\Entity\User $created) {
         $this->created = $created;
@@ -172,7 +172,7 @@ class CompanyType {
      * Set user
      *
      * @param \SM\Bundle\AdminBundle\Entity\User $user
-     * @return Article
+     * @return CompanyType
      */
     public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated) {
         $this->updated = $updated;
@@ -221,7 +221,7 @@ class CompanyType {
     /**
      * Get companytype_languages
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCompanytypeLanguages() {
         return $this->companytype_languages;
@@ -275,7 +275,7 @@ class CompanyType {
 
         return $result;
     }
-    
+
      public function __toString()
     {
         $pageLanguages = $this->companytype_languages->toArray();
