@@ -4,7 +4,7 @@ parameters:
     database_port: null
     database_name: local.tyhv
     database_user: root
-    database_password: 
+    database_password: admin
     host : http://local.tyhv
     locale: en
     secret: d00245c7bda39aa016baa57370bfebc9b11deda3

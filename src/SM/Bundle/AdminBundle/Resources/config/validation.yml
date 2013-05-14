@@ -1,5 +1,14 @@
 SM\Bundle\AdminBundle\Entity\Company:
     properties:
+        type:
+            - NotNull: ~
         email:
             - Email:
                 message: The email "{{ value }}" is not a valid email.
+        charter_capital:
+            - Min:
+                limit: 0
+                message: You must be input greater than 0.
+            - Regex:
+                pattern: "/\d/"
+                message: Your charter capital is only valid.
