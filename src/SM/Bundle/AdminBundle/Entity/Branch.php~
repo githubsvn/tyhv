@@ -11,8 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="SM\Bundle\AdminBundle\Repository\BranchRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Branch
-{
+class Branch {
 
     /**
      * @var integer
@@ -69,8 +68,7 @@ class Branch
     /**
      * @ORM\PrePersist
      */
-    public function setCreatedAtValue()
-    {
+    public function setCreatedAtValue() {
         if (!$this->getCreatedAt()) {
             $this->created_at = new \DateTime();
             $this->updated_at = new \DateTime();
@@ -82,8 +80,7 @@ class Branch
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -93,8 +90,7 @@ class Branch
      * @param boolean $status
      * @return Branch
      */
-    public function setStatus($status)
-    {
+    public function setStatus($status) {
         $this->status = $status;
 
         return $this;
@@ -105,8 +101,7 @@ class Branch
      *
      * @return boolean
      */
-    public function getStatus()
-    {
+    public function getStatus() {
         return $this->status;
     }
 
@@ -116,8 +111,7 @@ class Branch
      * @param \SM\Bundle\AdminBundle\Entity\User $user
      * @return Branch
      */
-    public function setCreated($created)
-    {
+    public function setCreated($created) {
         $this->created = $created;
 
         return $this;
@@ -128,8 +122,7 @@ class Branch
      *
      * @return \SM\Bundle\AdminBundle\Entity\User
      */
-    public function getCreated()
-    {
+    public function getCreated() {
         return $this->created;
     }
 
@@ -139,8 +132,7 @@ class Branch
      * @param \SM\Bundle\AdminBundle\Entity\User $user
      * @return Branch
      */
-    public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated)
-    {
+    public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated) {
         $this->updated = $updated;
 
         return $this;
@@ -151,8 +143,7 @@ class Branch
      *
      * @return \SM\Bundle\AdminBundle\Entity\User
      */
-    public function getUpdated()
-    {
+    public function getUpdated() {
         return $this->updated;
     }
 
@@ -162,8 +153,7 @@ class Branch
      * @param \DateTime $createdAt
      * @return Branch
      */
-    public function setCreatedAt($createdAt)
-    {
+    public function setCreatedAt($createdAt) {
         $this->created_at = $createdAt;
 
         return $this;
@@ -174,8 +164,7 @@ class Branch
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
-    {
+    public function getCreatedAt() {
         return $this->created_at;
     }
 
@@ -185,8 +174,7 @@ class Branch
      * @param \DateTime $updatedAt
      * @return Branch
      */
-    public function setUpdatedAt($updatedAt)
-    {
+    public function setUpdatedAt($updatedAt) {
         $this->updated_at = $updatedAt;
 
         return $this;
@@ -197,16 +185,14 @@ class Branch
      *
      * @return \DateTime
      */
-    public function getUpdatedAt()
-    {
+    public function getUpdatedAt() {
         return $this->updated_at;
     }
 
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->branch_languages = new \Doctrine\Common\Collections\ArrayCollection();
         $this->language = null;
     }
@@ -217,8 +203,7 @@ class Branch
      * @param \SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages
      * @return Branch
      */
-    public function addBranchLanguage(\SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages)
-    {
+    public function addBranchLanguage(\SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages) {
         $this->branch_languages[] = $branchLanguages;
 
         return $this;
@@ -229,8 +214,7 @@ class Branch
      *
      * @param \SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages
      */
-    public function removeBranchLanguage(\SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages)
-    {
+    public function removeBranchLanguage(\SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages) {
         $this->branch_languages->removeElement($branchLanguages);
     }
 
@@ -239,13 +223,11 @@ class Branch
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBranchLanguages()
-    {
+    public function getBranchLanguages() {
         return $this->branch_languages;
     }
 
-    public function getCurrentLanguage()
-    {
+    public function getCurrentLanguage() {
         $objLanguages = $this->branch_languages->toArray();
         if (is_array($objLanguages)) {
             if (null !== $this->language) {
@@ -260,8 +242,7 @@ class Branch
         return null;
     }
 
-    public function hasLanguage(Language $language)
-    {
+    public function hasLanguage(Language $language) {
         $result = false;
         if (count($this->branch_languages->toArray()) > 0) {
             foreach ($this->branch_languages as $plTemp) {
@@ -275,8 +256,7 @@ class Branch
         return $result;
     }
 
-    public function __toString()
-    {
+    public function __toString() {
         $objLanguages = $this->branch_languages->toArray();
         if (is_array($objLanguages)) {
             if (isset($objLanguages[0])) {

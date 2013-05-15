@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SM\Bundle\AdminBundle\Entity\Company;
 use SM\Bundle\AdminBundle\Entity\CompanyLanguage;
 use SM\Bundle\AdminBundle\Form\CompanyType;
+use SM\Bundle\AdminBundle\Utilities;
 
 /**
  * Company controller.
@@ -146,6 +147,19 @@ class CompanyController extends Controller
                     }
                 }
 
+                //Upload logo for company
+                if (!empty($entity->logo)) {
+                    $newName = Utilities::renameForFile($entity->logo->getClientOriginalName());
+                    //get upload dir
+                    $uploadPath = $this->container->getParameter('upload') . '/logo';
+                    $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
+                    $uploadDir = $webDir . $uploadPath;
+                    //upload file
+                    $entity->logo->move($uploadDir, $newName);
+                    //set new name
+                    $entity->setLogo($newName);
+                }
+
                 $entityManager->flush();
 
                 $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Company insert successfull!');
@@ -216,6 +230,11 @@ class CompanyController extends Controller
             $session->set('referrer', $this->getRequest()->server->get('HTTP_REFERER'));
         }
 
+        //get upload dir
+        $uploadPath = $this->container->getParameter('upload') . '/logo';
+        $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
+
+        $logo = $entity->getLogo();
         $form = $this->createForm(new CompanyType(), $entity);
 
         if ($this->getRequest()->isMethod('POST')) {
@@ -238,13 +257,44 @@ class CompanyController extends Controller
                     }
                 }
 
+                //Upload logo for company
+                if (!empty($entity->logo)) {
+                    $newName = Utilities::renameForFile($entity->logo->getClientOriginalName());
+                    $uploadDir = $webDir . $uploadPath;
+                    //upload file
+                    $entity->logo->move($uploadDir, $newName);
+                    //set new name
+                    $entity->setLogo($newName);
+
+                    //Delete old logo file
+                    $oldFileLogo = $webDir . $uploadPath . '/'. $logo;
+                    if (file_exists($oldFileLogo)) {
+                        @unlink($oldFileLogo);
+                    }
+                } else {
+                    //Check input delImgs if exist we need to delete logo of the company
+                    if (!empty($_POST['delImgs'])) {
+                        foreach ($_POST['delImgs'] as $img) {
+                            $fileLogo = $webDir . $uploadPath . '/'. $img;
+                            if (file_exists($fileLogo)) {
+                                @unlink($fileLogo);
+                                $entity->setLogo('');
+                            }
+                        }
+                    } else {
+                        //we dont'want to remove logo. we need to get old logo
+                        $entity->setLogo($logo);
+                    }
+                }
+
+
                 $entityManager->flush();
 
                 $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Company insert successfull!');
                 $referrer = $this->getRequest()->getSession()->get('referrer');
                 if (!$referrer) {
                     return $this->redirect(
-                                    $this->generateUrl('admin_company')
+                        $this->generateUrl('admin_company')
                     );
                 } else {
                     return $this->redirect($referrer);
@@ -255,11 +305,13 @@ class CompanyController extends Controller
         }
 
         return $this->render('SMAdminBundle:Company:edit.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
-                    'langList' => $langList,
-                    'defaultLanguage' => $defaultLanguage
-                ));
+            'entity' => $entity,
+            'form' => $form->createView(),
+            'langList' => $langList,
+            'defaultLanguage' => $defaultLanguage,
+            'arrImgs' => array($logo),
+            'imgPath' =>  '/web/'.$uploadPath
+        ));
     }
 
     /**

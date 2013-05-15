@@ -237,10 +237,22 @@ class Company extends \SM\Bundle\AdminBundle\Entity\Company implements \Doctrine
         return parent::hasLanguage($language);
     }
 
+    public function setLogo($logo)
+    {
+        $this->__load();
+        return parent::setLogo($logo);
+    }
+
+    public function getLogo()
+    {
+        $this->__load();
+        return parent::getLogo();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'charter_capital', 'phone', 'fax', 'mst', 'email', 'status', 'created_at', 'updated_at', 'type', 'created', 'updated', 'company_languages');
+        return array('__isInitialized__', 'id', 'charter_capital', 'phone', 'fax', 'mst', 'email', 'status', 'created_at', 'updated_at', 'logo', 'type', 'created', 'updated', 'company_languages');
     }
 
     public function __clone()

@@ -60,6 +60,14 @@
             </div>
         </div>
 
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ form_label(form.logo) }}</label>
+            <div class="controls">
+                {{ form_errors(form.logo) }}
+                {{ form_widget(form.logo) }}
+            </div>
+        </div>
+
         <hr />
 
         <div class="tabbable"> <!-- Only required for left/right tabs -->

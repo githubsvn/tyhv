@@ -39,4 +39,83 @@ class ProductGroupLanguage {
      */
     private $name;
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return ProductGroupLanguage
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set language
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Language $language
+     * @return ProductGroupLanguage
+     */
+    public function setLanguage(\SM\Bundle\AdminBundle\Entity\Language $language = null)
+    {
+        $this->language = $language;
+    
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\Language 
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * Set productgroup
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\ProductGroup $productgroup
+     * @return ProductGroupLanguage
+     */
+    public function setProductgroup(\SM\Bundle\AdminBundle\Entity\ProductGroup $productgroup = null)
+    {
+        $this->productgroup = $productgroup;
+    
+        return $this;
+    }
+
+    /**
+     * Get productgroup
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\ProductGroup 
+     */
+    public function getProductgroup()
+    {
+        return $this->productgroup;
+    }
 }

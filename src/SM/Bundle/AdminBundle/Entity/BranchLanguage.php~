@@ -16,8 +16,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @UniqueEntity(fields="name", message="Sorry! This branch exits. Please try another.")
  * @ORM\HasLifecycleCallbacks
  */
-class BranchLanguage
-{
+class BranchLanguage {
+
     /**
      * @var integer
      *
@@ -44,14 +44,12 @@ class BranchLanguage
      */
     private $name;
 
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -82,8 +80,7 @@ class BranchLanguage
      * @param \SM\Bundle\AdminBundle\Entity\Branch $branch
      * @return BranchLanguage
      */
-    public function setBranch($branch)
-    {
+    public function setBranch($branch) {
         $this->branch = $branch;
 
         return $this;
@@ -94,8 +91,7 @@ class BranchLanguage
      *
      * @return \SM\Bundle\AdminBundle\Entity\Branch
      */
-    public function getBranch()
-    {
+    public function getBranch() {
         return $this->branch;
     }
 
@@ -105,8 +101,7 @@ class BranchLanguage
      * @param string $name
      * @return BranchLanguage
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -117,8 +112,8 @@ class BranchLanguage
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
+
 }

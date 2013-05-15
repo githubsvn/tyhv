@@ -35,14 +35,24 @@ class CompanyRepository extends EntityRepository
      */
     public function deleteByIds($ids = array())
     {
+        //Get path upload logo
+        $uploadPath = $this->getContainer()->getParameter('upload') . '/logo';
+        $webDir = $this->getContainer()->get('kernel')->getRootDir() . '/../web';
+        $uploadDir = $webDir . $uploadPath;
+
         $em = $this->getEntityManager();
         $rst = array();
         if (is_array($ids) && count($ids)) {
             foreach ($ids as $id) {
                 $entity = $this->find($id);
+                $fileLogo = $uploadDir . '/' . $entity->getLogo();
                 $em->remove($entity);
                 if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
                     $rst[] = $id;
+                    //delete file logo
+                    if (file_exists($fileLogo)) {
+                        unlink($fileLogo);
+                    }
                 }
             }
             $em->flush();
@@ -62,4 +72,14 @@ class CompanyRepository extends EntityRepository
 
         return count($rst);
     }
+
+    /**
+     * Get container
+     * @return type
+     */
+    private function getContainer()
+    {
+        return \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+    }
+
 }

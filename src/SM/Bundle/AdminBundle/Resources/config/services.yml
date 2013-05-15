@@ -8,8 +8,7 @@ services:
             - "@service_container"
             - ~
             - ~
-
-    sm.twig.media_extension:
-        class: SM\Bundle\AdminBundle\Twig\SMTwigMediaExtension
+    sm.twig.showimg_extension:
+        class: SM\Bundle\AdminBundle\Twig\MTxTwigShowImageExtension
         tags:
             - { name: twig.extension }

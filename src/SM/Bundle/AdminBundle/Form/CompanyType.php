@@ -21,6 +21,10 @@ class CompanyType extends AbstractType
                 'attr' => array('checked' => 'checked')
             ))
             ->add('company_languages', 'collection', array('type' => new CompanyLanguageType()))
+            ->add('logo', 'file', array(
+                'required' => false,
+                'data_class' => null
+            ))
         ;
     }
 

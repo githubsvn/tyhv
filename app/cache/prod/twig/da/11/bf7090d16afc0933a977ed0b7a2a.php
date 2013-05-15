@@ -156,22 +156,39 @@ class __TwigTemplate_da11bf7090d16afc0933a977ed0b7a2a extends Twig_Template
             </div>
         </div>
 
+        <div class=\"control-group\">
+            <label class=\"control-label\" for=\"input01\">";
+        // line 64
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "logo"), 'label');
+        echo "</label>
+            <div class=\"controls\">
+                ";
+        // line 66
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "logo"), 'errors');
+        echo "
+                ";
+        // line 67
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "logo"), 'widget');
+        echo "
+            </div>
+        </div>
+
         <hr />
 
         <div class=\"tabbable\"> <!-- Only required for left/right tabs -->
             <ul class=\"nav nav-tabs\">
                   ";
-        // line 67
+        // line 75
         $context["isActive"] = 1;
-        // line 68
+        // line 76
         echo "                  ";
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "langList"));
         foreach ($context['_seq'] as $context["_key"] => $context["lang"]) {
-            // line 69
+            // line 77
             echo "                      ";
             if (($this->getContext($context, "isActive") == 1)) {
-                // line 70
+                // line 78
                 echo "                          <li class=\"active\"><a href=\"#tab";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\" data-toggle=\"tab\">";
@@ -179,7 +196,7 @@ class __TwigTemplate_da11bf7090d16afc0933a977ed0b7a2a extends Twig_Template
                 echo "</a></li>
                       ";
             } else {
-                // line 72
+                // line 80
                 echo "                          <li><a href=\"#tab";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\" data-toggle=\"tab\">";
@@ -187,183 +204,183 @@ class __TwigTemplate_da11bf7090d16afc0933a977ed0b7a2a extends Twig_Template
                 echo "</a></li>
                       ";
             }
-            // line 74
+            // line 82
             echo "                      ";
             $context["isActive"] = 2;
-            // line 75
+            // line 83
             echo "                  ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['lang'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 76
+        // line 84
         echo "            </ul>
             <div class=\"tab-content\">
                 ";
-        // line 78
+        // line 86
         $context["isActive"] = 1;
-        // line 79
+        // line 87
         echo "                ";
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "langList"));
         foreach ($context['_seq'] as $context["_key"] => $context["lang"]) {
-            // line 80
+            // line 88
             echo "                    ";
             $context["currentAL"] = null;
-            // line 81
+            // line 89
             echo "                    ";
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "form"), "company_languages"));
             foreach ($context['_seq'] as $context["_key"] => $context["companyLanguage"]) {
-                // line 82
+                // line 90
                 echo "                        ";
                 if (($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "companyLanguage"), "vars"), "value"), "language"), "id") == $this->getAttribute($this->getContext($context, "lang"), "id"))) {
-                    // line 83
+                    // line 91
                     echo "                            ";
                     $context["currentAL"] = $this->getContext($context, "companyLanguage");
-                    // line 84
+                    // line 92
                     echo "                        ";
                 }
-                // line 85
+                // line 93
                 echo "                    ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['companyLanguage'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 86
+            // line 94
             echo "                    ";
             if (($this->getContext($context, "isActive") == 1)) {
-                // line 87
+                // line 95
                 echo "                        <div class=\"tab-pane active\" id=\"tab";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\">
                     ";
             } else {
-                // line 89
+                // line 97
                 echo "                        <div class=\"tab-pane\" id=\"tab";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\">
                     ";
             }
-            // line 91
+            // line 99
             echo "                            <fieldset>
                                 ";
-            // line 92
+            // line 100
             if ((!(null === $this->getContext($context, "currentAL")))) {
-                // line 93
+                // line 101
                 echo "                                    <div class=\"control-group\">
                                         <label class=\"control-label\" for=\"input01\">";
-                // line 94
+                // line 102
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'label');
                 echo "</label>
                                         <div class=\"controls\">
                                             ";
-                // line 96
+                // line 104
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'errors');
                 echo "
                                             ";
-                // line 97
+                // line 105
                 if (($this->getAttribute($this->getContext($context, "defaultLanguage"), "name") == $this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "currentAL"), "vars"), "value"), "language"), "name"))) {
-                    // line 98
+                    // line 106
                     echo "                                                ";
                     echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'widget', array("attr" => array("required" => "required")));
                     echo "
                                             ";
                 } else {
-                    // line 100
+                    // line 108
                     echo "                                                ";
                     echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'widget');
                     echo "
                                             ";
                 }
-                // line 102
+                // line 110
                 echo "                                        </div>
                                     </div>
 
                                     <div class=\"control-group\">
                                         <label class=\"control-label\" for=\"input01\">";
-                // line 106
+                // line 114
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "address"), 'label');
                 echo "</label>
                                         <div class=\"controls\">
                                             ";
-                // line 108
+                // line 116
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "address"), 'errors');
                 echo "
                                             ";
-                // line 109
+                // line 117
                 if (($this->getAttribute($this->getContext($context, "defaultLanguage"), "name") == $this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "currentAL"), "vars"), "value"), "language"), "name"))) {
-                    // line 110
+                    // line 118
                     echo "                                                ";
                     echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "address"), 'widget');
                     echo "
                                             ";
                 } else {
-                    // line 112
+                    // line 120
                     echo "                                                ";
                     echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "address"), 'widget');
                     echo "
                                             ";
                 }
-                // line 114
+                // line 122
                 echo "                                        </div>
                                     </div>
 
                                     <div class=\"control-group\">
                                         <label class=\"control-label\" for=\"input01\">";
-                // line 118
+                // line 126
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "representation"), 'label');
                 echo "</label>
                                         <div class=\"controls\">
                                             ";
-                // line 120
+                // line 128
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "representation"), 'errors');
                 echo "
                                             ";
-                // line 121
+                // line 129
                 if (($this->getAttribute($this->getContext($context, "defaultLanguage"), "name") == $this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "currentAL"), "vars"), "value"), "language"), "name"))) {
-                    // line 122
+                    // line 130
                     echo "                                                ";
                     echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "representation"), 'widget');
                     echo "
                                             ";
                 } else {
-                    // line 124
+                    // line 132
                     echo "                                                ";
                     echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "representation"), 'widget');
                     echo "
                                             ";
                 }
-                // line 126
+                // line 134
                 echo "                                        </div>
                                     </div>
 
                                 ";
             }
-            // line 130
+            // line 138
             echo "                            </fieldset>
                         </div>
                     ";
-            // line 132
+            // line 140
             $context["isActive"] = 2;
-            // line 133
+            // line 141
             echo "               ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['lang'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 134
+        // line 142
         echo "            </div>
         </div>
 
         <div class=\"form-actions\">
             ";
-        // line 138
+        // line 146
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "_token"), 'row');
         echo "
             <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>
             <a href=\"";
-        // line 140
+        // line 148
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_company", array("page" => 1)), "html", null, true);
         echo "\" class=\"btn\">Back To List</a>
         </div>
@@ -386,6 +403,6 @@ class __TwigTemplate_da11bf7090d16afc0933a977ed0b7a2a extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  367 => 140,  362 => 138,  356 => 134,  350 => 133,  348 => 132,  344 => 130,  338 => 126,  332 => 124,  326 => 122,  324 => 121,  320 => 120,  315 => 118,  309 => 114,  303 => 112,  297 => 110,  295 => 109,  291 => 108,  286 => 106,  280 => 102,  274 => 100,  268 => 98,  266 => 97,  262 => 96,  257 => 94,  254 => 93,  252 => 92,  249 => 91,  243 => 89,  237 => 87,  234 => 86,  228 => 85,  225 => 84,  222 => 83,  219 => 82,  214 => 81,  211 => 80,  206 => 79,  204 => 78,  200 => 76,  194 => 75,  191 => 74,  183 => 72,  175 => 70,  172 => 69,  167 => 68,  165 => 67,  154 => 59,  150 => 58,  145 => 56,  137 => 51,  133 => 50,  128 => 48,  120 => 43,  116 => 42,  111 => 40,  103 => 35,  99 => 34,  94 => 32,  86 => 27,  82 => 26,  77 => 24,  69 => 19,  65 => 18,  60 => 16,  52 => 11,  48 => 10,  43 => 8,  35 => 5,  31 => 3,  28 => 2,);
+        return array (  384 => 148,  379 => 146,  373 => 142,  367 => 141,  365 => 140,  361 => 138,  355 => 134,  349 => 132,  343 => 130,  341 => 129,  337 => 128,  332 => 126,  326 => 122,  320 => 120,  314 => 118,  312 => 117,  308 => 116,  303 => 114,  297 => 110,  291 => 108,  285 => 106,  283 => 105,  279 => 104,  274 => 102,  271 => 101,  269 => 100,  266 => 99,  260 => 97,  254 => 95,  251 => 94,  245 => 93,  242 => 92,  239 => 91,  236 => 90,  231 => 89,  228 => 88,  223 => 87,  221 => 86,  217 => 84,  211 => 83,  208 => 82,  200 => 80,  192 => 78,  189 => 77,  184 => 76,  182 => 75,  171 => 67,  167 => 66,  162 => 64,  154 => 59,  150 => 58,  145 => 56,  137 => 51,  133 => 50,  128 => 48,  120 => 43,  116 => 42,  111 => 40,  103 => 35,  99 => 34,  94 => 32,  86 => 27,  82 => 26,  77 => 24,  69 => 19,  65 => 18,  60 => 16,  52 => 11,  48 => 10,  43 => 8,  35 => 5,  31 => 3,  28 => 2,);
     }
 }

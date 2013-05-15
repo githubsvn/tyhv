@@ -60,8 +60,22 @@
             </div>
         </div>
 
-        <hr />
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ form_label(form.logo) }}</label>
+            <div class="controls">
+                {{ form_errors(form.logo) }}
+                {{ form_widget(form.logo) }}
+            </div>
+        </div>
 
+        <div class="control-group">
+            <label class="control-label" for="input01"></label>
+            <div class="controls">
+                {{ mtxshowimg(arrImgs, imgPath)|raw}}
+            </div>
+        </div>
+
+        <hr />
         <div class="tabbable"> <!-- Only required for left/right tabs -->
             <ul class="nav nav-tabs">
                   {% set isActive = 1 %}

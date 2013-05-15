@@ -111,6 +111,13 @@ class Company {
     private $language;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="logo", type="string", nullable=true)
+     */
+    public $logo;
+
+    /**
      * @ORM\PrePersist
      */
     public function setCreatedAtValue() {
@@ -457,4 +464,5 @@ class Company {
 
         return $result;
     }
+
 }
