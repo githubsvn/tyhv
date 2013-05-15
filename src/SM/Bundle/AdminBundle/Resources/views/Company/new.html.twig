@@ -51,12 +51,11 @@
                 {{ form_widget(form.email) }}
             </div>
         </div>
-
         <div class="control-group">
-            <label class="control-label" for="input01">{{ form_label(form.status) }}</label>
+            <label class="control-label" for="input01">{{ form_label(form.website) }}</label>
             <div class="controls">
-                {{ form_errors(form.status) }}
-                {{ form_widget(form.status) }}
+                {{ form_errors(form.website) }}
+                {{ form_widget(form.website) }}
             </div>
         </div>
 
@@ -68,6 +67,14 @@
             </div>
         </div>
 
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ form_label(form.status) }}</label>
+            <div class="controls">
+                {{ form_errors(form.status) }}
+                {{ form_widget(form.status) }}
+            </div>
+        </div>
+            
         <hr />
 
         <div class="tabbable"> <!-- Only required for left/right tabs -->

@@ -118,6 +118,13 @@ class Company {
     public $logo;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="website", type="string", nullable=true)
+     */
+    private $website;
+
+    /**
      * @ORM\PrePersist
      */
     public function setCreatedAtValue() {
@@ -475,17 +482,40 @@ class Company {
     public function setLogo($logo)
     {
         $this->logo = $logo;
-    
+
         return $this;
     }
 
     /**
      * Get logo
      *
-     * @return string 
+     * @return string
      */
     public function getLogo()
     {
         return $this->logo;
+    }
+
+    /**
+     * Set website
+     *
+     * @param string $website
+     * @return Company
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+    
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string 
+     */
+    public function getWebsite()
+    {
+        return $this->website;
     }
 }

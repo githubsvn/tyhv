@@ -477,8 +477,8 @@
     <parameter key="jms_di_extra.directories" type="collection"/>
     <parameter key="jms_di_extra.cache_dir">/home/www/local.tyhv/app/cache/dev/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_51932f7fc7c70.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51932f7fc7c70_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_519370b36eb6e.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager519370b36eb6e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -2098,7 +2098,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>51932f7f32bab</argument>
+            <argument>519370b2ad45c</argument>
           </service>
         </argument>
       </argument>
@@ -2451,7 +2451,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>51932f7f32bab</argument>
+            <argument>519370b2ad45c</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2666,7 +2666,7 @@
         </argument>
       </call>
       <call method="addExtension">
-        <argument type="service" id="sm.twig.media_extension"/>
+        <argument type="service" id="sm.twig.showimg_extension"/>
       </call>
       <call method="addExtension">
         <argument type="service" id="twig.extension.stfalcon_tinymce"/>
@@ -2873,8 +2873,8 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager51932f7fc7c70_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_51932f7fc7c70.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager519370b36eb6e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_519370b36eb6e.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>
@@ -3118,7 +3118,7 @@
       <argument>null</argument>
       <argument>null</argument>
     </service>
-    <service id="sm.twig.media_extension" class="SM\Bundle\AdminBundle\Twig\SMTwigMediaExtension">
+    <service id="sm.twig.showimg_extension" class="SM\Bundle\AdminBundle\Twig\MTxTwigShowImageExtension">
       <tag name="twig.extension"/>
     </service>
     <service id="sm.acl_manager" class="SM\Bundle\AclBundle\Domain\AclManager">

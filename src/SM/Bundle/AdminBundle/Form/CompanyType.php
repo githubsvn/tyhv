@@ -17,6 +17,7 @@ class CompanyType extends AbstractType
             ->add('fax', null, array('required' => false))
             ->add('mst', null, array('required' => false))
             ->add('email', null, array('required' => false))
+            ->add('website', null, array('required' => false))
             ->add('status', 'checkbox', array(
                 'attr' => array('checked' => 'checked')
             ))

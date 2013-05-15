@@ -249,10 +249,22 @@ class Company extends \SM\Bundle\AdminBundle\Entity\Company implements \Doctrine
         return parent::getLogo();
     }
 
+    public function setWebsite($website)
+    {
+        $this->__load();
+        return parent::setWebsite($website);
+    }
+
+    public function getWebsite()
+    {
+        $this->__load();
+        return parent::getWebsite();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'charter_capital', 'phone', 'fax', 'mst', 'email', 'status', 'created_at', 'updated_at', 'logo', 'type', 'created', 'updated', 'company_languages');
+        return array('__isInitialized__', 'id', 'charter_capital', 'phone', 'fax', 'mst', 'email', 'status', 'created_at', 'updated_at', 'logo', 'website', 'type', 'created', 'updated', 'company_languages');
     }
 
     public function __clone()
