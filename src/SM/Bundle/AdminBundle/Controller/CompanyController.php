@@ -22,7 +22,6 @@ class CompanyController extends Controller
      */
     public function indexAction($page, $lang)
     {
-
         //get list language
         $langList = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language")
@@ -58,6 +57,12 @@ class CompanyController extends Controller
             $theCompanytype->setLanguage($currentLanguage);
         }
 
+        $repComType = $this->getDoctrine()->getRepository('SMAdminBundle:CompanyType');
+        $optComTypes = $repComType->getList();
+        foreach ($optComTypes as $oComType) {
+            $oComType->setLanguage($currentLanguage);
+        }
+
         return $this->render('SMAdminBundle:Company:index.html.twig', array(
                     'entities' => $entities,
                     'lastPage' => $lastPage,
@@ -67,6 +72,7 @@ class CompanyController extends Controller
                     'total' => $total,
                     'lang' => intval($lang),
                     'langList' => $langList,
+                    'optComTypes' => $optComTypes
                 ));
     }
 

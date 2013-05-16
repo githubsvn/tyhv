@@ -18,8 +18,25 @@
             {% endfor %}
         </ul>
     </div>
+    <div style="clear: both;"></div>
+    <div class="btn-group pull-right">
+        <form class="navbar-form pull-left" method="GET">
+            Name : <input type="text" name="name" >
+            Type : <select name="type">
+                        <option value="">-- Select Company Type -- </option>
+                        {% for comType in optComTypes %}
+                            {% if comType.getCurrentLanguage is not null %}
+                                <option value="{{comType.id}}">
+                                    {{ comType.getCurrentLanguage.name | truncate(50) }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+            <button type="submit" class="btn">Search</button>
+        </form>
+    </div>
 </div>
-
+<div style="clear: both; margin-bottom: 10px;"></div>
 <table class="table table-bordered table-striped">
     <thead>
         <tr>

@@ -1,6 +1,6 @@
 admin_company:
-    pattern:  /{page}/{lang}
-    defaults: { _controller: "SMAdminBundle:Company:index", page : 1, lang : null }
+    pattern:  /{page}/{lang}/{comtype}/{name}
+    defaults: { _controller: "SMAdminBundle:Company:index", page : 1, lang : null, comtype : null, name : null }
     requirements:
         page:  \d+
         lang:  \d+
