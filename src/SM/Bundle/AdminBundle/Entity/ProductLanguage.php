@@ -3,12 +3,17 @@
 namespace SM\Bundle\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ProductLanguage
  *
  * @ORM\Table(name="mtx_product_language")
  * @ORM\Entity(repositoryClass="SM\Bundle\AdminBundle\Repository\ProductLanguageRepository")
+ * @UniqueEntity(fields="name", message="Sorry! This name exits. Please try another.")
  */
 class ProductLanguage
 {
@@ -41,7 +46,7 @@ class ProductLanguage
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 

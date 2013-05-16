@@ -158,3 +158,30 @@
 [Wed May 15 16:16:29 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64, referer: http://local.tyhv/admin/company/5/edit
 [Wed May 15 16:16:29 2013] [error] [client 127.0.0.1] PHP   8. class_exists() /home/www/local.tyhv/app/cache/prod/classes.php:239, referer: http://local.tyhv/admin/company/5/edit
 [Wed May 15 16:16:29 2013] [error] [client 127.0.0.1] PHP   9. Symfony\\Component\\ClassLoader\\DebugClassLoader->loadClass() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/ClassLoader/DebugClassLoader.php:0, referer: http://local.tyhv/admin/company/5/edit
+[Thu May 16 10:57:07 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'SM\\Bundle\\AdminBundle\\Controller\\Utilities' not found in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/ProductsController.php on line 110, referer: http://local.tyhv/admin/products/new
+[Thu May 16 10:57:07 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/products/new
+[Thu May 16 10:57:07 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/products/new
+[Thu May 16 10:57:07 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:25, referer: http://local.tyhv/admin/products/new
+[Thu May 16 10:57:07 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/products/new
+[Thu May 16 10:57:07 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/products/new
+[Thu May 16 10:57:07 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/products/new
+[Thu May 16 10:57:07 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin/products/new
+[Thu May 16 10:57:07 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\ProductsController->newAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/products/new
+[Thu May 16 11:01:40 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method SM\\Bundle\\AdminBundle\\Entity\\Products::setLanguage() in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/ProductsController.php on line 56
+[Thu May 16 11:01:40 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu May 16 11:01:40 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Thu May 16 11:01:40 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:25
+[Thu May 16 11:01:40 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Thu May 16 11:01:40 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Thu May 16 11:01:40 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Thu May 16 11:01:40 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426
+[Thu May 16 11:01:40 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\ProductsController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0
+[Thu May 16 11:02:47 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method SM\\Bundle\\AdminBundle\\Entity\\Products::setLanguage() in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/ProductsController.php on line 56
+[Thu May 16 11:02:47 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu May 16 11:02:47 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Thu May 16 11:02:47 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:25
+[Thu May 16 11:02:47 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Thu May 16 11:02:47 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Thu May 16 11:02:47 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Thu May 16 11:02:47 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426
+[Thu May 16 11:02:47 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\ProductsController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0

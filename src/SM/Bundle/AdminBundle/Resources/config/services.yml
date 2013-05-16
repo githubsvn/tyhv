@@ -12,3 +12,8 @@ services:
         class: SM\Bundle\AdminBundle\Twig\MTxTwigShowImageExtension
         tags:
             - { name: twig.extension }
+
+    sm.twig.media_extension:
+        class: SM\Bundle\AdminBundle\Twig\SMTwigMediaExtension
+        tags:
+            - { name: twig.extension }

@@ -452,8 +452,8 @@
     <parameter key="jms_di_extra.directories" type="collection"/>
     <parameter key="jms_di_extra.cache_dir">/home/www/local.tyhv/app/cache/prod/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51936b19bf1b4.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51936b19bf1b4_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51948b1a499f8.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51948b1a499f8_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -507,23 +507,23 @@
           </parameter>
         </parameter>
         <parameter type="collection">
-          <parameter key="class">SM\Bundle\AdminBundle\Entity\Branch</parameter>
-          <parameter key="group">Group</parameter>
-          <parameter key="label">Branch</parameter>
+          <parameter key="class">SM\Bundle\AdminBundle\Entity\MediaCategory</parameter>
+          <parameter key="group">Media</parameter>
+          <parameter key="label">Media Category</parameter>
           <parameter key="acl">true</parameter>
           <parameter key="action" type="collection">
-            <parameter>admin_branch_new</parameter>
-            <parameter>admin_branch</parameter>
+            <parameter>admin_mediacategory_new</parameter>
+            <parameter>admin_mediacategory</parameter>
           </parameter>
         </parameter>
         <parameter type="collection">
-          <parameter key="class">SM\Bundle\AdminBundle\Entity\Group</parameter>
-          <parameter key="group">Group</parameter>
-          <parameter key="label">Product Group</parameter>
+          <parameter key="class">SM\Bundle\AdminBundle\Entity\Media</parameter>
+          <parameter key="group">Media</parameter>
+          <parameter key="label">Media</parameter>
           <parameter key="acl">true</parameter>
           <parameter key="action" type="collection">
-            <parameter>admin_productgroup_new</parameter>
-            <parameter>admin_productgroup</parameter>
+            <parameter>admin_media_new</parameter>
+            <parameter>admin_media</parameter>
           </parameter>
         </parameter>
         <parameter type="collection">
@@ -546,6 +546,36 @@
             <parameter>admin_company</parameter>
           </parameter>
         </parameter>
+        <parameter type="collection">
+          <parameter key="class">SM\Bundle\AdminBundle\Entity\Branch</parameter>
+          <parameter key="group">Products</parameter>
+          <parameter key="label">Branch</parameter>
+          <parameter key="acl">true</parameter>
+          <parameter key="action" type="collection">
+            <parameter>admin_branch_new</parameter>
+            <parameter>admin_branch</parameter>
+          </parameter>
+        </parameter>
+        <parameter type="collection">
+          <parameter key="class">SM\Bundle\AdminBundle\Entity\Group</parameter>
+          <parameter key="group">Products</parameter>
+          <parameter key="label">Product Group</parameter>
+          <parameter key="acl">true</parameter>
+          <parameter key="action" type="collection">
+            <parameter>admin_productgroup_new</parameter>
+            <parameter>admin_productgroup</parameter>
+          </parameter>
+        </parameter>
+        <parameter type="collection">
+          <parameter key="class">SM\Bundle\AdminBundle\Entity\Products</parameter>
+          <parameter key="group">Products</parameter>
+          <parameter key="label">Products</parameter>
+          <parameter key="acl">true</parameter>
+          <parameter key="action" type="collection">
+            <parameter>admin_products_new</parameter>
+            <parameter>admin_products</parameter>
+          </parameter>
+        </parameter>
       </parameter>
       <parameter key="templates">5</parameter>
     </parameter>
@@ -554,6 +584,7 @@
       <parameter key="include_jquery">true</parameter>
       <parameter key="tinymce_jquery">true</parameter>
       <parameter key="textarea_class">.tinymce</parameter>
+      <parameter key="base_url">http://local.tyhv/web/</parameter>
       <parameter key="language">en</parameter>
       <parameter key="theme" type="collection">
         <parameter key="simple" type="collection">
@@ -1865,7 +1896,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>51936b19101d8</argument>
+            <argument>51948b1a23a45</argument>
           </service>
         </argument>
       </argument>
@@ -2218,7 +2249,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>51936b19101d8</argument>
+            <argument>51948b1a23a45</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2440,6 +2471,9 @@
         <argument type="service" id="sm.twig.showimg_extension"/>
       </call>
       <call method="addExtension">
+        <argument type="service" id="sm.twig.media_extension"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="twig.extension.stfalcon_tinymce"/>
       </call>
       <call method="addGlobal">
@@ -2621,8 +2655,8 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager51936b19bf1b4_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51936b19bf1b4.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager51948b1a499f8_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51948b1a499f8.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>
@@ -2867,6 +2901,9 @@
       <argument>null</argument>
     </service>
     <service id="sm.twig.showimg_extension" class="SM\Bundle\AdminBundle\Twig\MTxTwigShowImageExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="sm.twig.media_extension" class="SM\Bundle\AdminBundle\Twig\SMTwigMediaExtension">
       <tag name="twig.extension"/>
     </service>
     <service id="sm.acl_manager" class="SM\Bundle\AclBundle\Domain\AclManager">

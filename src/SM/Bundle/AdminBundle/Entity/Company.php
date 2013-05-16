@@ -16,7 +16,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @UniqueEntity(fields="email", message="Sorry! This email exits. Please try another.")
  * @ORM\HasLifecycleCallbacks
  */
-class Company {
+class Company
+{
 
     /**
      * @var integer
@@ -127,7 +128,8 @@ class Company {
     /**
      * @ORM\PrePersist
      */
-    public function setCreatedAtValue() {
+    public function setCreatedAtValue()
+    {
         if (!$this->getCreatedAt()) {
             $this->created_at = new \DateTime();
             $this->updated_at = new \DateTime();
@@ -137,7 +139,8 @@ class Company {
     /**
      * @ORM\PreUpdate
      */
-    public function setUpdatedAtValue() {
+    public function setUpdatedAtValue()
+    {
         $this->updated_at = new \DateTime();
     }
 
@@ -146,7 +149,8 @@ class Company {
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -156,7 +160,8 @@ class Company {
      * @param \SM\Bundle\AdminBundle\Entity\CompanyType $type
      * @return CompanyType
      */
-    public function setType(\SM\Bundle\AdminBundle\Entity\CompanyType $type) {
+    public function setType(\SM\Bundle\AdminBundle\Entity\CompanyType $type)
+    {
         $this->type = $type;
 
         return $this;
@@ -167,7 +172,8 @@ class Company {
      *
      * @return \SM\Bundle\AdminBundle\Entity\CompanyType
      */
-    public function getType() {
+    public function getType()
+    {
         return $this->type;
     }
 
@@ -177,7 +183,8 @@ class Company {
      * @param float $charterCapital
      * @return Company
      */
-    public function setCharterCapital($charterCapital) {
+    public function setCharterCapital($charterCapital)
+    {
         $this->charter_capital = $charterCapital;
 
         return $this;
@@ -188,7 +195,8 @@ class Company {
      *
      * @return float
      */
-    public function getCharterCapital() {
+    public function getCharterCapital()
+    {
         return $this->charter_capital;
     }
 
@@ -198,7 +206,8 @@ class Company {
      * @param string $phone
      * @return Company
      */
-    public function setPhone($phone) {
+    public function setPhone($phone)
+    {
         $this->phone = $phone;
 
         return $this;
@@ -209,7 +218,8 @@ class Company {
      *
      * @return string
      */
-    public function getPhone() {
+    public function getPhone()
+    {
         return $this->phone;
     }
 
@@ -219,7 +229,8 @@ class Company {
      * @param string $fax
      * @return Company
      */
-    public function setFax($fax) {
+    public function setFax($fax)
+    {
         $this->fax = $fax;
 
         return $this;
@@ -230,7 +241,8 @@ class Company {
      *
      * @return string
      */
-    public function getFax() {
+    public function getFax()
+    {
         return $this->fax;
     }
 
@@ -240,7 +252,8 @@ class Company {
      * @param string $mst
      * @return Company
      */
-    public function setMst($mst) {
+    public function setMst($mst)
+    {
         $this->mst = $mst;
 
         return $this;
@@ -251,7 +264,8 @@ class Company {
      *
      * @return string
      */
-    public function getMst() {
+    public function getMst()
+    {
         return $this->mst;
     }
 
@@ -261,7 +275,8 @@ class Company {
      * @param string $email
      * @return Company
      */
-    public function setEmail($email) {
+    public function setEmail($email)
+    {
         $this->email = $email;
 
         return $this;
@@ -272,7 +287,8 @@ class Company {
      *
      * @return string
      */
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
@@ -282,7 +298,8 @@ class Company {
      * @param boolean $status
      * @return Company
      */
-    public function setStatus($status) {
+    public function setStatus($status)
+    {
         $this->status = $status;
 
         return $this;
@@ -293,7 +310,8 @@ class Company {
      *
      * @return boolean
      */
-    public function getStatus() {
+    public function getStatus()
+    {
         return $this->status;
     }
 
@@ -303,7 +321,8 @@ class Company {
      * @param \DateTime $createdAt
      * @return Company
      */
-    public function setCreatedAt($createdAt) {
+    public function setCreatedAt($createdAt)
+    {
         $this->created_at = $createdAt;
 
         return $this;
@@ -314,7 +333,8 @@ class Company {
      *
      * @return \DateTime
      */
-    public function getCreatedAt() {
+    public function getCreatedAt()
+    {
         return $this->created_at;
     }
 
@@ -324,7 +344,8 @@ class Company {
      * @param \DateTime $updatedAt
      * @return Company
      */
-    public function setUpdatedAt($updatedAt) {
+    public function setUpdatedAt($updatedAt)
+    {
         $this->updated_at = $updatedAt;
 
         return $this;
@@ -335,7 +356,8 @@ class Company {
      *
      * @return \DateTime
      */
-    public function getUpdatedAt() {
+    public function getUpdatedAt()
+    {
         return $this->updated_at;
     }
 
@@ -345,7 +367,8 @@ class Company {
      * @param \SM\Bundle\AdminBundle\Entity\User $user
      * @return Company
      */
-    public function setCreated(\SM\Bundle\AdminBundle\Entity\User $created) {
+    public function setCreated(\SM\Bundle\AdminBundle\Entity\User $created)
+    {
         $this->created = $created;
 
         return $this;
@@ -356,7 +379,8 @@ class Company {
      *
      * @return \SM\Bundle\AdminBundle\Entity\User
      */
-    public function getCreated() {
+    public function getCreated()
+    {
         return $this->created;
     }
 
@@ -366,7 +390,8 @@ class Company {
      * @param \SM\Bundle\AdminBundle\Entity\User $user
      * @return Company
      */
-    public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated) {
+    public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated)
+    {
         $this->updated = $updated;
 
         return $this;
@@ -377,7 +402,8 @@ class Company {
      *
      * @return \SM\Bundle\AdminBundle\Entity\User
      */
-    public function getUpdated() {
+    public function getUpdated()
+    {
         return $this->updated;
     }
 
@@ -423,12 +449,13 @@ class Company {
         return $this->company_languages;
     }
 
-     /**
+    /**
      * Set Language
      *
      * @param \SM\Bundle\AdminBundle\Entity\Language $language
      */
-    public function setLanguage(Language $language) {
+    public function setLanguage(Language $language)
+    {
         $this->language = $language;
 
         return $this;
@@ -439,11 +466,13 @@ class Company {
      *
      * @return \SM\Bundle\AdminBundle\Entity\Language
      */
-    public function getLanguage() {
+    public function getLanguage()
+    {
         return $this->language;
     }
 
-    public function getCurrentLanguage() {
+    public function getCurrentLanguage()
+    {
         $companyLanguages = $this->company_languages->toArray();
         if (is_array($companyLanguages)) {
             if (null !== $this->language) {
@@ -458,7 +487,8 @@ class Company {
         return null;
     }
 
-    public function hasLanguage(Language $language) {
+    public function hasLanguage(Language $language)
+    {
         $result = false;
         if (count($this->company_languages->toArray()) > 0) {
             foreach ($this->company_languages as $plTemp) {
@@ -471,7 +501,6 @@ class Company {
 
         return $result;
     }
-
 
     /**
      * Set logo
@@ -505,17 +534,18 @@ class Company {
     public function setWebsite($website)
     {
         $this->website = $website;
-    
+
         return $this;
     }
 
     /**
      * Get website
      *
-     * @return string 
+     * @return string
      */
     public function getWebsite()
     {
         return $this->website;
     }
+
 }

@@ -7,13 +7,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Product
  *
  * @ORM\Table(name="mtx_product")
  * @ORM\Entity(repositoryClass="SM\Bundle\AdminBundle\Repository\ProductsRepository")
- * @UniqueEntity(fields="name", message="Sorry! This email exits. Please try another.")
  * @ORM\HasLifecycleCallbacks
  */
 class Products
@@ -116,6 +114,11 @@ class Products
      */
     private $language;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Media", cascade={"persist"})
+     * @ORM\JoinTable(name="sm_product_media")
+     */
+    private $media_id;
 
     /**
      * Constructor
@@ -455,6 +458,28 @@ class Products
         }
     }
 
+    /**
+     * Set Language
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Language $language
+     */
+    public function setLanguage(Language $language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\Language
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
     public function getCurrentLanguage() {
         $oLanguages = $this->product_languages->toArray();
         if (is_array($oLanguages)) {
@@ -482,5 +507,38 @@ class Products
         }
 
         return $result;
+    }
+
+    /**
+     * Add media_id
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Media $mediaId
+     * @return Products
+     */
+    public function addMediaId(\SM\Bundle\AdminBundle\Entity\Media $mediaId)
+    {
+        $this->media_id[] = $mediaId;
+
+        return $this;
+    }
+
+    /**
+     * Remove media_id
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Media $mediaId
+     */
+    public function removeMediaId(\SM\Bundle\AdminBundle\Entity\Media $mediaId)
+    {
+        $this->media_id->removeElement($mediaId);
+    }
+
+    /**
+     * Get media_id
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMediaId()
+    {
+        return $this->media_id;
     }
 }

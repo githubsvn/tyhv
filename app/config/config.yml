@@ -57,6 +57,7 @@ stfalcon_tinymce:
     tinymce_jquery: true
     textarea_class: "tinymce"
     language: %locale%
+    base_url: "http://local.tyhv/web/"
     theme:
         # Simple theme as same as default theme
         simple:

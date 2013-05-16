@@ -22,3 +22,36 @@ SM\Bundle\AdminBundle\Entity\Company:
                 pattern: "/[a-z0-9A-Z]+(\.)[a-z0-9A-Z]+([a-zA-Z])/"
                 message: The url is not valid.
 
+
+SM\Bundle\AdminBundle\Entity\Products:
+    properties:
+        branch:
+            - NotNull:
+                message: Please choose this field.
+        productgroup:
+            - NotNull:
+                message: Please choose this field.
+        price:
+            - Min:
+                limit: 0
+                message: You must be input greater than 0.
+            - Regex:
+                pattern: "/^[1-9]\d*(\.\d+)?$/"
+                message: You must input number for this field.
+        discount:
+            - Min:
+                limit: 0
+                message: You must be input greater than 0.
+            - Regex:
+                pattern: "/^[1-9]\d*(\.\d+)?$/"
+                message: You must input number for this field.
+        amount:
+            - Min:
+                limit: 0
+                message: You must be input greater than 0.
+            - Regex:
+                pattern: "/^[0-9]*$/"
+                message: You must input number for this field.
+
+
+

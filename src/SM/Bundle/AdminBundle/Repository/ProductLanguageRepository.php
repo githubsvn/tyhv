@@ -13,4 +13,72 @@ use Doctrine\ORM\UnitOfWork;
  */
 class ProductLanguageRepository extends EntityRepository
 {
+    /**
+     * @param type $criteria criteria
+     *
+     * @return type
+     */
+    public function getTotal($criteria = array()) {
+        $rst = $this->findBy($criteria);
+
+        return count($rst);
+    }
+
+    /**
+     * @param type $productId productId
+     *
+     * @return type
+     */
+    public function findByProductId($productId) {
+        $rst = array();
+        if (!empty($productId)) {
+            $rst = $this->findBy(array('product' => $productId));
+        }
+
+        return $rst;
+    }
+
+    /**
+     * Delete language by array id
+     *
+     * @param array $ids
+     *
+     * @return array
+     */
+    public function deleteByIds($ids = array()) {
+        $em = $this->getEntityManager();
+        $repProducts = $em->getRepository('SMAdminBundle:Products');
+
+        $rst = array();
+        if (is_array($ids) && count($ids)) {
+            foreach ($ids as $id) {
+                $entity = $this->find($id);
+                $idProduct = $entity->getProduct()->getId();
+
+                $em->remove($entity);
+
+                //Get all product language by idComtype
+                //If to have 1 item we need to delete product too
+                //else we need delete product language
+                $lstProductLangs = $this->findByProductId($idProduct);
+                if (count($lstProductLangs) == 1) {
+                    if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
+                        $rst[] = $id;
+                    }
+                    //delete product too
+                    $em->flush();
+                    //delete product language
+                    $repProducts->deleteByIds(array($idProduct));
+                } else {
+                    if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
+                        $rst[] = $id;
+                    }
+                    //Onlye delete article language
+                    $em->flush();
+                }
+            }
+        }
+
+        return $rst;
+    }
 }
