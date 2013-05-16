@@ -1,4 +1,4 @@
-Deployment for ITCE RSS with Symfony2
+Deployment for TYHV with Symfony2
 
 1) Get Composer with command :
 -----------------------------
@@ -13,7 +13,6 @@ Deployment for ITCE RSS with Symfony2
 3) Configuration for DB
 -----------------------
 	- Edit app/config/parameters.yml to config database and config host
-	- Edit app/config/parameters.yml to config time_cron that to run cron job
 
 4) Generate DB and Entity
 -------------------------
@@ -29,5 +28,5 @@ Deployment for ITCE RSS with Symfony2
     php app/console assets:install web
     php app/console cache:clear
 
-
+6) Modify stfalcon_tinymce base_url in config.yaml and host in parameters.yml
 Have fun !
