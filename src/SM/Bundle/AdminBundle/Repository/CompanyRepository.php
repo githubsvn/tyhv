@@ -81,5 +81,5 @@ class CompanyRepository extends EntityRepository
     {
         return \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
     }
-
+    
 }

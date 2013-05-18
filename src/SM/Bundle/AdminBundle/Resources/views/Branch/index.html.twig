@@ -1,5 +1,21 @@
 {% extends 'SMAdminBundle::admin.html.twig' %}
 {% block body%}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#sortTable').dataTable({
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": false,
+            "bAutoWidth": true,
+            "aaSorting": [ [0,'asc'], [1,'asc'] ],
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [ 3, 4] }
+            ],
+        });
+    } );
+</script>
 <h1>Branch list</h1>
 
 <div class="nav">
@@ -20,7 +36,7 @@
     </div>
 </div>
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" id="sortTable">
     <thead>
         <tr>
             <th>Id</th>

@@ -10,6 +10,8 @@
         <!-- Le styles -->
         {% block stylesheets %}
         <link href="{{ asset('web/static/admin/css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ asset('web/static/admin/js/DataTables/media/css/demo_table.css') }}" rel="stylesheet">
+
         <style type="text/css">
             body {
                 padding-top: 60px;
@@ -35,7 +37,7 @@
         {% endblock %}
 
         <script src="{{ asset('web/static/admin/js/jquery-1.7.2.min.js') }}"></script>
-
+        
         </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -131,6 +133,7 @@
         <script src="{{ asset('web/static/admin/js/prettify.js') }}"></script>
         <script src="{{ asset('web/static/admin/js/common.js') }}"></script>
         <script src="{{ asset('/web/static/admin/js/twig.js') }}"></script>
+<script src="{{ asset('web/static/admin/js/DataTables/media/js/jquery.dataTables.js') }}"></script>
         {% endblock%}
         {{ tinymce_init() }}
     </body>

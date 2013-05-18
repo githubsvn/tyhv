@@ -1,10 +1,15 @@
 admin_company:
-    pattern:  /{page}/{lang}/{comtype}/{name}
-    defaults: { _controller: "SMAdminBundle:Company:index", page : 1, lang : null, comtype : null, name : null }
+    pattern:  /{page}/{lang}
+    defaults: { _controller: "SMAdminBundle:Company:index", page : 1, lang : null }
     requirements:
         page:  \d+
         lang:  \d+
 
+admin_company_search:
+    pattern:  /search
+    defaults: { _controller: "SMAdminBundle:Company:search"}
+    requirements: { _method: post}
+    
 admin_company_show:
     pattern:  /{id}/show
     defaults: { _controller: "SMAdminBundle:Company:show" }
