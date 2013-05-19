@@ -219,7 +219,12 @@ class ProductsController extends Controller
         //get Medias
         $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
                 ->findAll();
-
+        
+        //Get branch and product group
+        $repMediaCat = $this->getDoctrine()->getRepository('SMAdminBundle:MediaCategory');
+        $optMediaCats = $repMediaCat->getList();
+        
+        
         return $this->render('SMAdminBundle:Products:new.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView(),
@@ -228,6 +233,7 @@ class ProductsController extends Controller
                     'optMedias' => $optMedias,
                     'selectedMedias' => array(),
                     'mediaPath' => '/web/' . $this->container->getParameter('upload'),
+                    'optMediaTypes' => $optMediaCats
                 ));
     }
 
