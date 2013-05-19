@@ -39,7 +39,7 @@ class __TwigTemplate_6c5b71a7ac100200655d9d446da4b802 extends Twig_Template
             \"bAutoWidth\": true,
             \"aaSorting\": [ [0,'asc'], [1,'asc'] ],
             \"aoColumnDefs\": [
-                { 'bSortable': false, 'aTargets': [ 2, 3, 4 ] }
+                { 'bSortable': false, 'aTargets': [ 3, 4 ] }
             ],
         });
     } );
