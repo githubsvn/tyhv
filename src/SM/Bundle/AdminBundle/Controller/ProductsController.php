@@ -55,7 +55,19 @@ class ProductsController extends Controller
         foreach ($entities as $ent) {
             $ent->setLanguage($currentLanguage);
         }
-
+        
+        //Get branch and product group
+        $repBranch = $this->getDoctrine()->getRepository('SMAdminBundle:Branch');
+        $optBranchs = $repBranch->getList();
+        foreach ($optBranchs as $oItem) {
+            $oItem->setLanguage($currentLanguage);
+        }
+        $repProductGroup = $this->getDoctrine()->getRepository('SMAdminBundle:ProductGroup');
+        $optProductGroups = $repProductGroup->getList();
+        foreach ($optProductGroups as $oItem) {
+            $oItem->setLanguage($currentLanguage);
+        }
+        
         return $this->render('SMAdminBundle:Products:index.html.twig', array(
                     'entities' => $entities,
                     'lastPage' => $lastPage,
@@ -65,9 +77,38 @@ class ProductsController extends Controller
                     'total' => $total,
                     'lang' => intval($lang),
                     'langList' => $langList,
+                    'optBranchs' => $optBranchs,
+                    'optProductGroups' => $optProductGroups,
                 ));
     }
-
+    
+    /**
+     * Search company and show result
+     */
+    public function searchAction()
+    {
+        $lang = $this->getRequest()->request->get('language', null);
+        $name = $this->getRequest()->request->get('name', '');
+        $branchId = $this->getRequest()->request->get('branch', null);
+        $productgroupId = $this->getRequest()->request->get('productgroup', null);
+        
+        if (is_null($lang)) {
+            foreach ($langList as $langData) {
+                $isDefault = $langData->getIsDefault();
+                if ($isDefault == 1) {
+                    $lang = $langData->getId();
+                    break;
+                }
+            }
+        }
+        $entities = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:ProductLanguage")
+                ->findByLangAndNameAndBranchAndProductGroup($lang, $name, $branchId, $productgroupId);
+        return $this->render('SMAdminBundle:Products:search.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+    
     /**
      * Finds and displays a Products entity.
      *
@@ -347,5 +388,4 @@ class ProductsController extends Controller
             return $this->redirect($referrer);
         }
     }
-
 }

@@ -660,6 +660,17 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductsController::indexAction',  'page' => '1',  'lang' => NULL,)), array('_route' => 'admin_products'));
             }
 
+            // admin_products_search
+            if ($pathinfo === '/admin/products/search') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_products_search;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductsController::searchAction',  '_route' => 'admin_products_search',);
+            }
+            not_admin_products_search:
+
             // admin_products_show
             if (preg_match('#^/admin/products/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductsController::showAction',)), array('_route' => 'admin_products_show'));

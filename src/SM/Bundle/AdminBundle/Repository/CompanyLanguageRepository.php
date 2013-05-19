@@ -85,7 +85,10 @@ class CompanyLanguageRepository extends EntityRepository
     /**
      * find company language by language, name and type
      * 
-     * 
+     * @param type $langId
+     * @param type $name
+     * @param type $typeId
+     * @return array 
      */
     public function findByLangAndNameAndType($langId, $name = '', $typeId = '')
     {
