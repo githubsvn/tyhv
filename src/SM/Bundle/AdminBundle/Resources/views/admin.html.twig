@@ -37,7 +37,7 @@
         {% endblock %}
 
         <script src="{{ asset('web/static/admin/js/jquery-1.7.2.min.js') }}"></script>
-        
+
         </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -49,16 +49,16 @@
                         <span class="icon-bar"></span>
                     </a>
                     {% block logo%}
-                    <a class="brand" href="{{path('sm_admin_home')}}">Welcome</a>
+                    <a class="brand" href="{{path('sm_admin_home')}}">{{ 'Welcome'|trans({}, "SMAdminBundle") }}</a>
                     {% endblock %}
                     {% block profile %}
                     <div class="btn-group pull-right">
                         <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
                             <i class="icon-user icon-white"></i>{% if app.user is defined %} {{ app.user.fullname }} {% endif %}<span class="caret"></span> </a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{url('admin_user_edit', {id: app.user.id})}}">Profile</a></li>
+                            <li><a href="{{url('admin_user_edit', {id: app.user.id})}}">{{ 'Profile'|trans({}, "SMAdminBundle") }}</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{path('sm_admin_logout')}}">Sign Out</a></li>
+                            <li><a href="{{path('sm_admin_logout')}}">{{ 'Sign Out'|trans({}, "SMAdminBundle") }}</a></li>
                         </ul>
                     </div>
                     {% endblock %}

@@ -34,7 +34,7 @@
     <parameter key="database_user">root</parameter>
     <parameter key="database_password">admin</parameter>
     <parameter key="host">http://local.tyhv</parameter>
-    <parameter key="locale">en</parameter>
+    <parameter key="locale">vi</parameter>
     <parameter key="secret">d00245c7bda39aa016baa57370bfebc9b11deda3</parameter>
     <parameter key="database_path">null</parameter>
     <parameter key="per_item_page">10</parameter>
@@ -83,7 +83,7 @@
     <parameter key="kernel.secret">d00245c7bda39aa016baa57370bfebc9b11deda3</parameter>
     <parameter key="kernel.trusted_proxies" type="collection"/>
     <parameter key="kernel.trust_proxy_headers">false</parameter>
-    <parameter key="kernel.default_locale">en</parameter>
+    <parameter key="kernel.default_locale">vi</parameter>
     <parameter key="session.class">Symfony\Component\HttpFoundation\Session\Session</parameter>
     <parameter key="session.flashbag.class">Symfony\Component\HttpFoundation\Session\Flash\FlashBag</parameter>
     <parameter key="session.attribute_bag.class">Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag</parameter>
@@ -452,8 +452,8 @@
     <parameter key="jms_di_extra.directories" type="collection"/>
     <parameter key="jms_di_extra.cache_dir">/home/www/local.tyhv/app/cache/prod/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_5199e7c92d891.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager5199e7c92d891_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_519a0d6c589bf.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager519a0d6c589bf_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -488,8 +488,8 @@
       <parameter key="dashboard" type="collection">
         <parameter type="collection">
           <parameter key="class">SM\Bundle\AdminBundle\Entity\User</parameter>
-          <parameter key="group">System</parameter>
-          <parameter key="label">User</parameter>
+          <parameter key="group">HỆ THỐNG</parameter>
+          <parameter key="label">QL Người Dùng</parameter>
           <parameter key="acl">true</parameter>
           <parameter key="action" type="collection">
             <parameter>admin_user_new</parameter>
@@ -498,8 +498,8 @@
         </parameter>
         <parameter type="collection">
           <parameter key="class">SM\Bundle\AdminBundle\Entity\Language</parameter>
-          <parameter key="group">System</parameter>
-          <parameter key="label">Language</parameter>
+          <parameter key="group">HỆ THỐNG</parameter>
+          <parameter key="label">QL Ngôn Ngữ</parameter>
           <parameter key="acl">true</parameter>
           <parameter key="action" type="collection">
             <parameter>admin_language_new</parameter>
@@ -508,8 +508,8 @@
         </parameter>
         <parameter type="collection">
           <parameter key="class">SM\Bundle\AdminBundle\Entity\MediaCategory</parameter>
-          <parameter key="group">Media</parameter>
-          <parameter key="label">Media Category</parameter>
+          <parameter key="group">MEDIA</parameter>
+          <parameter key="label">QL Thể Loại</parameter>
           <parameter key="acl">true</parameter>
           <parameter key="action" type="collection">
             <parameter>admin_mediacategory_new</parameter>
@@ -518,8 +518,8 @@
         </parameter>
         <parameter type="collection">
           <parameter key="class">SM\Bundle\AdminBundle\Entity\Media</parameter>
-          <parameter key="group">Media</parameter>
-          <parameter key="label">Media</parameter>
+          <parameter key="group">MEDIA</parameter>
+          <parameter key="label">QL Media</parameter>
           <parameter key="acl">true</parameter>
           <parameter key="action" type="collection">
             <parameter>admin_media_new</parameter>
@@ -528,8 +528,8 @@
         </parameter>
         <parameter type="collection">
           <parameter key="class">SM\Bundle\AdminBundle\Entity\CompanyType</parameter>
-          <parameter key="group">Company</parameter>
-          <parameter key="label">Company Type</parameter>
+          <parameter key="group">CÔNG TY</parameter>
+          <parameter key="label">QL Loại Hình CTY</parameter>
           <parameter key="acl">true</parameter>
           <parameter key="action" type="collection">
             <parameter>admin_companytype_new</parameter>
@@ -538,8 +538,8 @@
         </parameter>
         <parameter type="collection">
           <parameter key="class">SM\Bundle\AdminBundle\Entity\Company</parameter>
-          <parameter key="group">Company</parameter>
-          <parameter key="label">Company</parameter>
+          <parameter key="group">CÔNG TY</parameter>
+          <parameter key="label">QL Công Ty</parameter>
           <parameter key="acl">true</parameter>
           <parameter key="action" type="collection">
             <parameter>admin_company_new</parameter>
@@ -548,8 +548,8 @@
         </parameter>
         <parameter type="collection">
           <parameter key="class">SM\Bundle\AdminBundle\Entity\Branch</parameter>
-          <parameter key="group">Products</parameter>
-          <parameter key="label">Branch</parameter>
+          <parameter key="group">SẢN PHẨM</parameter>
+          <parameter key="label">QL Ngành Hàng</parameter>
           <parameter key="acl">true</parameter>
           <parameter key="action" type="collection">
             <parameter>admin_branch_new</parameter>
@@ -558,8 +558,8 @@
         </parameter>
         <parameter type="collection">
           <parameter key="class">SM\Bundle\AdminBundle\Entity\Group</parameter>
-          <parameter key="group">Products</parameter>
-          <parameter key="label">Product Group</parameter>
+          <parameter key="group">SẢN PHẨM</parameter>
+          <parameter key="label">QL Nhóm Hàng</parameter>
           <parameter key="acl">true</parameter>
           <parameter key="action" type="collection">
             <parameter>admin_productgroup_new</parameter>
@@ -568,8 +568,8 @@
         </parameter>
         <parameter type="collection">
           <parameter key="class">SM\Bundle\AdminBundle\Entity\Products</parameter>
-          <parameter key="group">Products</parameter>
-          <parameter key="label">Products</parameter>
+          <parameter key="group">SẢN PHẨM</parameter>
+          <parameter key="label">QL Sản Phảm</parameter>
           <parameter key="acl">true</parameter>
           <parameter key="action" type="collection">
             <parameter>admin_products_new</parameter>
@@ -585,7 +585,7 @@
       <parameter key="tinymce_jquery">true</parameter>
       <parameter key="textarea_class">.tinymce</parameter>
       <parameter key="base_url">http://local.tyhv/web/</parameter>
-      <parameter key="language">en</parameter>
+      <parameter key="language">vi</parameter>
       <parameter key="theme" type="collection">
         <parameter key="simple" type="collection">
           <parameter key="mode">textareas</parameter>
@@ -667,7 +667,7 @@
     </service>
     <service id="locale_listener" class="Symfony\Component\HttpKernel\EventListener\LocaleListener">
       <tag name="kernel.event_subscriber"/>
-      <argument>en</argument>
+      <argument>vi</argument>
       <argument type="service" id="router"/>
     </service>
     <service id="event_dispatcher" class="Symfony\Component\HttpKernel\Debug\ContainerAwareTraceableEventDispatcher">
@@ -870,7 +870,7 @@
         <argument key="debug">true</argument>
       </argument>
       <call method="setFallbackLocale">
-        <argument>en</argument>
+        <argument>vi</argument>
       </call>
       <call method="addResource">
         <argument>xlf</argument>
@@ -1303,6 +1303,12 @@
         <argument>/home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lb.xlf</argument>
         <argument>lb</argument>
         <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/home/www/local.tyhv/src/SM/Bundle/AdminBundle/Resources/translations/SMAdminBundle.vi.yml</argument>
+        <argument>vi</argument>
+        <argument>SMAdminBundle</argument>
       </call>
     </service>
     <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
@@ -1896,7 +1902,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5199e7c8f16a8</argument>
+            <argument>519a0d6c32b81</argument>
           </service>
         </argument>
       </argument>
@@ -2249,7 +2255,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>5199e7c8f16a8</argument>
+            <argument>519a0d6c32b81</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2655,8 +2661,8 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager5199e7c92d891_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_5199e7c92d891.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager519a0d6c589bf_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_519a0d6c589bf.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>

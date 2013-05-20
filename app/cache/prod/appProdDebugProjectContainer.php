@@ -204,11 +204,11 @@ class appProdDebugProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return EntityManager5199e7c92d891_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager5199e7c92d891_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
+     * @return EntityManager519a0d6c589bf_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager519a0d6c589bf_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
      */
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
-        require_once '/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_5199e7c92d891.php';
+        require_once '/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_519a0d6c589bf.php';
 
         $a = new \Doctrine\Common\Cache\ArrayCache();
         $a->setNamespace('sf2orm_default_4feae3150d744211870b5c58a6e629c6');
@@ -238,7 +238,7 @@ class appProdDebugProjectContainer extends Container
         $f = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $e);
         $this->get('doctrine.orm.default_manager_configurator')->configure($f);
 
-        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager5199e7c92d891_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($f, $this);
+        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager519a0d6c589bf_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($f, $this);
     }
 
     /**
@@ -934,7 +934,7 @@ class appProdDebugProjectContainer extends Container
      */
     protected function getLocaleListenerService()
     {
-        return $this->services['locale_listener'] = new \Symfony\Component\HttpKernel\EventListener\LocaleListener('en', $this->get('router'));
+        return $this->services['locale_listener'] = new \Symfony\Component\HttpKernel\EventListener\LocaleListener('vi', $this->get('router'));
     }
 
     /**
@@ -1399,7 +1399,7 @@ class appProdDebugProjectContainer extends Container
         $o = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $k, 'secured_area', $n, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $k, array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false), $a), array('check_path' => '/login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $d);
         $o->setRememberMeServices($l);
 
-        return $this->services['security.firewall.map.context.secured_area'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($j, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'secured_area', $a, $d), 2 => $m, 3 => $o, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $l, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5199e7c8f16a8', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $j, $g, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $k, 'secured_area', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $k, '/login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.secured_area'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($j, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'secured_area', $a, $d), 2 => $m, 3 => $o, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $l, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '519a0d6c32b81', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $j, $g, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $k, 'secured_area', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $k, '/login', false), NULL, NULL, $a));
     }
 
     /**
@@ -2312,7 +2312,7 @@ class appProdDebugProjectContainer extends Container
     {
         $this->services['translator.default'] = $instance = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, new \Symfony\Component\Translation\MessageSelector(), array('translation.loader.php' => array(0 => 'php'), 'translation.loader.yml' => array(0 => 'yml'), 'translation.loader.xliff' => array(0 => 'xlf', 1 => 'xliff'), 'translation.loader.po' => array(0 => 'po'), 'translation.loader.mo' => array(0 => 'mo'), 'translation.loader.qt' => array(0 => 'ts'), 'translation.loader.csv' => array(0 => 'csv'), 'translation.loader.res' => array(0 => 'res'), 'translation.loader.dat' => array(0 => 'dat'), 'translation.loader.ini' => array(0 => 'ini')), array('cache_dir' => '/home/www/local.tyhv/app/cache/prod/translations', 'debug' => true));
 
-        $instance->setFallbackLocale('en');
+        $instance->setFallbackLocale('vi');
         $instance->addResource('xlf', '/home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pl.xlf', 'pl', 'validators');
         $instance->addResource('xlf', '/home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ca.xlf', 'ca', 'validators');
         $instance->addResource('xlf', '/home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fa.xlf', 'fa', 'validators');
@@ -2385,6 +2385,7 @@ class appProdDebugProjectContainer extends Container
         $instance->addResource('xlf', '/home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Latn.xlf', 'sr_Latn', 'validators');
         $instance->addResource('xlf', '/home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.id.xlf', 'id', 'validators');
         $instance->addResource('xlf', '/home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lb.xlf', 'lb', 'validators');
+        $instance->addResource('yml', '/home/www/local.tyhv/src/SM/Bundle/AdminBundle/Resources/translations/SMAdminBundle.vi.yml', 'vi', 'SMAdminBundle');
 
         return $instance;
     }
@@ -2539,7 +2540,7 @@ class appProdDebugProjectContainer extends Container
     /**
      * Gets the doctrine.orm.entity_manager service alias.
      *
-     * @return EntityManager5199e7c92d891_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
+     * @return EntityManager519a0d6c589bf_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
      */
     protected function getDoctrine_Orm_EntityManagerService()
     {
@@ -2715,7 +2716,7 @@ class appProdDebugProjectContainer extends Container
     {
         $a = new \Symfony\Component\Security\Core\User\UserChecker();
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.main'), $a, 'secured_area', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'd00245c7bda39aa016baa57370bfebc9b11deda3', 'secured_area'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5199e7c8f16a8')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.main'), $a, 'secured_area', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'd00245c7bda39aa016baa57370bfebc9b11deda3', 'secured_area'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('519a0d6c32b81')), true);
 
         $instance->setEventDispatcher($this->get('event_dispatcher'));
 
@@ -2876,7 +2877,7 @@ class appProdDebugProjectContainer extends Container
             'database_user' => 'root',
             'database_password' => 'admin',
             'host' => 'http://local.tyhv',
-            'locale' => 'en',
+            'locale' => 'vi',
             'secret' => 'd00245c7bda39aa016baa57370bfebc9b11deda3',
             'database_path' => NULL,
             'per_item_page' => 10,
@@ -2927,7 +2928,7 @@ class appProdDebugProjectContainer extends Container
 
             ),
             'kernel.trust_proxy_headers' => false,
-            'kernel.default_locale' => 'en',
+            'kernel.default_locale' => 'vi',
             'session.class' => 'Symfony\\Component\\HttpFoundation\\Session\\Session',
             'session.flashbag.class' => 'Symfony\\Component\\HttpFoundation\\Session\\Flash\\FlashBag',
             'session.attribute_bag.class' => 'Symfony\\Component\\HttpFoundation\\Session\\Attribute\\AttributeBag',
@@ -3316,8 +3317,8 @@ class appProdDebugProjectContainer extends Container
             ),
             'jms_di_extra.cache_dir' => '/home/www/local.tyhv/app/cache/prod/jms_diextra',
             'jms_di_extra.doctrine_integration' => true,
-            'jms_di_extra.doctrine_integration.entity_manager.file' => '/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_5199e7c92d891.php',
-            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager5199e7c92d891_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
+            'jms_di_extra.doctrine_integration.entity_manager.file' => '/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_519a0d6c589bf.php',
+            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager519a0d6c589bf_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
             'security.secured_services' => array(
 
             ),
@@ -3356,8 +3357,8 @@ class appProdDebugProjectContainer extends Container
                 'dashboard' => array(
                     0 => array(
                         'class' => 'SM\\Bundle\\AdminBundle\\Entity\\User',
-                        'group' => 'System',
-                        'label' => 'User',
+                        'group' => 'HỆ THỐNG',
+                        'label' => 'QL Người Dùng',
                         'acl' => true,
                         'action' => array(
                             0 => 'admin_user_new',
@@ -3366,8 +3367,8 @@ class appProdDebugProjectContainer extends Container
                     ),
                     1 => array(
                         'class' => 'SM\\Bundle\\AdminBundle\\Entity\\Language',
-                        'group' => 'System',
-                        'label' => 'Language',
+                        'group' => 'HỆ THỐNG',
+                        'label' => 'QL Ngôn Ngữ',
                         'acl' => true,
                         'action' => array(
                             0 => 'admin_language_new',
@@ -3376,8 +3377,8 @@ class appProdDebugProjectContainer extends Container
                     ),
                     2 => array(
                         'class' => 'SM\\Bundle\\AdminBundle\\Entity\\MediaCategory',
-                        'group' => 'Media',
-                        'label' => 'Media Category',
+                        'group' => 'MEDIA',
+                        'label' => 'QL Thể Loại',
                         'acl' => true,
                         'action' => array(
                             0 => 'admin_mediacategory_new',
@@ -3386,8 +3387,8 @@ class appProdDebugProjectContainer extends Container
                     ),
                     3 => array(
                         'class' => 'SM\\Bundle\\AdminBundle\\Entity\\Media',
-                        'group' => 'Media',
-                        'label' => 'Media',
+                        'group' => 'MEDIA',
+                        'label' => 'QL Media',
                         'acl' => true,
                         'action' => array(
                             0 => 'admin_media_new',
@@ -3396,8 +3397,8 @@ class appProdDebugProjectContainer extends Container
                     ),
                     4 => array(
                         'class' => 'SM\\Bundle\\AdminBundle\\Entity\\CompanyType',
-                        'group' => 'Company',
-                        'label' => 'Company Type',
+                        'group' => 'CÔNG TY',
+                        'label' => 'QL Loại Hình CTY',
                         'acl' => true,
                         'action' => array(
                             0 => 'admin_companytype_new',
@@ -3406,8 +3407,8 @@ class appProdDebugProjectContainer extends Container
                     ),
                     5 => array(
                         'class' => 'SM\\Bundle\\AdminBundle\\Entity\\Company',
-                        'group' => 'Company',
-                        'label' => 'Company',
+                        'group' => 'CÔNG TY',
+                        'label' => 'QL Công Ty',
                         'acl' => true,
                         'action' => array(
                             0 => 'admin_company_new',
@@ -3416,8 +3417,8 @@ class appProdDebugProjectContainer extends Container
                     ),
                     6 => array(
                         'class' => 'SM\\Bundle\\AdminBundle\\Entity\\Branch',
-                        'group' => 'Products',
-                        'label' => 'Branch',
+                        'group' => 'SẢN PHẨM',
+                        'label' => 'QL Ngành Hàng',
                         'acl' => true,
                         'action' => array(
                             0 => 'admin_branch_new',
@@ -3426,8 +3427,8 @@ class appProdDebugProjectContainer extends Container
                     ),
                     7 => array(
                         'class' => 'SM\\Bundle\\AdminBundle\\Entity\\Group',
-                        'group' => 'Products',
-                        'label' => 'Product Group',
+                        'group' => 'SẢN PHẨM',
+                        'label' => 'QL Nhóm Hàng',
                         'acl' => true,
                         'action' => array(
                             0 => 'admin_productgroup_new',
@@ -3436,8 +3437,8 @@ class appProdDebugProjectContainer extends Container
                     ),
                     8 => array(
                         'class' => 'SM\\Bundle\\AdminBundle\\Entity\\Products',
-                        'group' => 'Products',
-                        'label' => 'Products',
+                        'group' => 'SẢN PHẨM',
+                        'label' => 'QL Sản Phảm',
                         'acl' => true,
                         'action' => array(
                             0 => 'admin_products_new',
@@ -3453,7 +3454,7 @@ class appProdDebugProjectContainer extends Container
                 'tinymce_jquery' => true,
                 'textarea_class' => '.tinymce',
                 'base_url' => 'http://local.tyhv/web/',
-                'language' => 'en',
+                'language' => 'vi',
                 'theme' => array(
                     'simple' => array(
                         'mode' => 'textareas',
