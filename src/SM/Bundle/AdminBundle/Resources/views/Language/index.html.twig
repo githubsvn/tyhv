@@ -46,9 +46,9 @@
                 {% endif%}
             </td>
             <td>
-                <a href="{{ path('admin_language_show', { 'id': entity.id }) }}">Show</a>
+                <a href="{{ path('admin_language_show', { 'id': entity.id }) }}"><i class="icon-search"></i>Show</a>
                 &nbsp; | &nbsp;
-                <a href="{{ path('admin_language_edit', { 'id': entity.id }) }}">Edit</a>
+                <a href="{{ path('admin_language_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i>Edit</a>
                 {% if entity.isdefault != 1 %}
                 &nbsp; | &nbsp;
                 <a class="delete" rel="{{ path('admin_language_delete', { 'id': entity.id }) }}">Delete</a>

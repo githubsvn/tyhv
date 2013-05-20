@@ -105,12 +105,12 @@ class __TwigTemplate_5114e01d25f39f454b69e5672b6cebe5 extends Twig_Template
                 <a href=\"";
             // line 49
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_language_show", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
-            echo "\">Show</a>
+            echo "\"><i class=\"icon-search\"></i>Show</a>
                 &nbsp; | &nbsp;
                 <a href=\"";
             // line 51
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_language_edit", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
-            echo "\">Edit</a>
+            echo "\"><i class=\"icon-pencil\"></i>Edit</a>
                 ";
             // line 52
             if (($this->getAttribute($this->getContext($context, "entity"), "isdefault") != 1)) {
