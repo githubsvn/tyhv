@@ -81,4 +81,39 @@ class ProductLanguageRepository extends EntityRepository
 
         return $rst;
     }
+    
+    public function findByLangAndNameAndBranchAndProductGroup($langId, $name = '', $branchId = '', $productGroupId = '')
+    {
+        $rst = array();
+        if (!empty($langId)) {
+            $qb = $this->createQueryBuilder('pl');
+            
+            $qb->select('pl, p')
+                    ->join('pl.product', 'p')
+                    ->join('p.branch', 'b')
+                    ->join('p.productgroup', 'pg')
+                    ->where('pl.language=:langId');
+            
+            if (!empty($branchId)) {
+                $qb->andWhere('p.branch=:branchId');
+                $qb->setParameter('branchId', $branchId);
+            }
+            
+            if (!empty($productGroupId)) {
+                $qb->andWhere('p.productgroup=:productGroupId');
+                $qb->setParameter('productGroupId', $productGroupId);
+            }
+            
+            if (!empty($name)) {
+                $qb->andWhere('pl.name LIKE ?1');
+                $qb->setParameter(1, "%$name%");
+            }
+            
+            $qb->setParameter('langId', $langId);
+            //echo $qb->getQuery()->getSQL();die;
+            return $qb->getQuery()->getResult();
+        }
+        
+        return $rst;
+    }
 }

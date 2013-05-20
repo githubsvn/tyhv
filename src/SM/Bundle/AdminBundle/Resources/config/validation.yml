@@ -33,17 +33,17 @@ SM\Bundle\AdminBundle\Entity\Products:
                 message: Please choose this field.
         price:
             - Min:
-                limit: 0
+                limit: -1
                 message: You must be input greater than 0.
             - Regex:
-                pattern: "/^[1-9]\d*(\.\d+)?$/"
+                pattern: "/^[0-9]\d*(\.\d+)?$/"
                 message: You must input number for this field.
         discount:
             - Min:
                 limit: 0
                 message: You must be input greater than 0.
             - Regex:
-                pattern: "/^[1-9]\d*(\.\d+)?$/"
+                pattern: "/^[0-9]\d*(\.\d+)?$/"
                 message: You must input number for this field.
         amount:
             - Min:
@@ -52,6 +52,3 @@ SM\Bundle\AdminBundle\Entity\Products:
             - Regex:
                 pattern: "/^[0-9]*$/"
                 message: You must input number for this field.
-
-
-

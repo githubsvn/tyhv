@@ -81,4 +81,40 @@ class CompanyLanguageRepository extends EntityRepository
 
         return $rst;
     }
+    
+    /**
+     * find company language by language, name and type
+     * 
+     * @param type $langId
+     * @param type $name
+     * @param type $typeId
+     * @return array 
+     */
+    public function findByLangAndNameAndType($langId, $name = '', $typeId = '')
+    {
+        $rst = array();
+        if (!empty($langId)) {
+            $qb = $this->createQueryBuilder('cl');
+            
+            $qb->select('cl, c')
+                    ->join('cl.company', 'c')
+                    ->where('cl.language=:langId');
+            
+            if (!empty($typeId)) {
+                $qb->andWhere('c.type=:typeId');
+                $qb->setParameter('typeId', $typeId);
+            }
+            
+            if (!empty($name)) {
+                $qb->andWhere('cl.name LIKE ?1');
+                $qb->setParameter(1, "%$name%");
+            }
+            
+            $qb->setParameter('langId', $langId);
+            //echo $qb->getQuery()->getSQL();die;
+            return $qb->getQuery()->getResult();
+        }
+        
+        return $rst;
+    }
 }

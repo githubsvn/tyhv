@@ -1,6 +1,5 @@
 {% spaceless %}
 <a href="#backgroundModal" role="button" class="btn" data-toggle="modal">Select Images</a>
-
 <!-- Modal -->
 <div id="backgroundModal" class="modal hide fade" style="width: 580px;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
@@ -8,14 +7,22 @@
         <h3 id="backgroundModalLabel">Select Background</h3>
     </div>
     <div class="modal-body">
+        <div style="text-align: center;">
+            Type of images :
+            <select name="typeImg" id="typeImg">
+                {% for opt in optMediaTypes %}
+                    <option value="{{opt.id}}">{{opt.name}}</option>
+                {% endfor%}
+            </select>
+        </div>
         <ul class="thumbnails">
             {% for opt in optMedias %}
-                <li style="text-align: center;">
-                <label class="thumbnail" for="bg_{{ mediaName }}_{{ opt.id }}">
-                    <img src="{{ mediaPath~opt.name }}" width="100px" />
-                </label>
-                        <input id="bg_{{ mediaName }}_{{ opt.id }}" name="bg_{{ mediaName }}" imagepath="{{ mediaPath~opt.name }}" type="{% if options.multiple is defined %}{% if options.multiple %}checkbox{% else %}radio{% endif %}{% else %}radio{% endif %}" value="{{ opt.id }}" style="margin-left: 40px;"/>
-            </li>
+                <li class="thumbImg" style="text-align: center;" data-type="{{opt.category.id}}">
+                    <label class="thumbnail" for="bg_{{ mediaName }}_{{ opt.id }}" style="border: 0px;">
+                        <img src="{{ mediaPath~opt.name }}" width="100px" height="100px;"/>
+                    </label>
+                    <input id="bg_{{ opt.id }}" name="bg_{{ mediaName }}" imagepath="{{ mediaPath~opt.name }}" type="{% if options.multiple is defined %}{% if options.multiple %}checkbox{% else %}radio{% endif %}{% else %}radio{% endif %}" value="{{ opt.id }}" style="margin-left: 40px;"/>
+                </li>
             {% endfor %}
         </ul>
     </div>
@@ -47,9 +54,55 @@
     $(function() {
         initSelect('{{ mediaName }}');
         $('#backgroundModal').on('hidden', function () {
-            alert('ds');
         });
     });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var imgType = 0;
+
+        //get imgType
+        $("li.thumbImg").each(function(){
+            var currentLi = $(this);
+            var input = $(this).find("input");
+            if ($("#"+input.attr('id')).is(':checked')) {
+                imgType = currentLi.attr("data-type");
+            }
+        });
+
+        if (!imgType) {
+            imgType = $("#typeImg").val();
+        } else {
+            $("#typeImg").val(imgType);
+        }
+
+        $("li.thumbImg").each(function(){
+            var currentLi = $(this);
+            var liType;
+            liType = currentLi.attr("data-type");
+
+            if (liType == imgType) {
+                currentLi.css('display', 'inline');
+            } else {
+                currentLi.css('display', 'none');
+            }
+        });
+
+        $("#typeImg").bind("change", function(e) {
+            var imgType = $(this).val();
+            $("li.thumbImg").each(function(){
+                var currentLi = $(this);
+                var liType = currentLi.attr("data-type");
+                if (liType == imgType) {
+                    currentLi.css('display', 'inline');
+                } else {
+                    currentLi.css('display', 'none');
+                }
+            });
+        });
+    } );
 </script>
 
 {% endspaceless %}

@@ -1,12 +1,28 @@
 {% extends 'SMAdminBundle::admin.html.twig' %}
 {% block body%}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#sortTable').dataTable({
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": false,
+            "bAutoWidth": true,
+            "aaSorting": [ [0,'asc'], [1,'asc'], [2,'asc'] ],
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [ 3, 4 ] }
+            ],
+        });
+    } );
+</script>
 <h1>Language list</h1>
 
 <div class="btn-group nav">
     <a href="{{ path('admin_language_new') }}" class="btn btn-primary">Create a new entry</a>
 </div>
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" id="sortTable">
     <thead>
         <tr>
             <th>Id</th>

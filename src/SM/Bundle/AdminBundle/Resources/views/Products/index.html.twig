@@ -1,5 +1,22 @@
 {% extends 'SMAdminBundle::admin.html.twig' %}
 {% block body%}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#sortTable').dataTable({
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": false,
+            "bAutoWidth": true,
+            "aaSorting": [ [0,'asc'], [1,'asc'] ],
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [ 3, 4 ] }
+            ],
+        });
+    } );
+</script>
+
 <h1>Product list</h1>
 
 <div class="nav">
@@ -18,9 +35,37 @@
             {% endfor %}
         </ul>
     </div>
+    <div style="clear: both; margin-top: 10px;"></div>
+    <div class="btn-group pull-center">
+        <form class="well form-search" method="POST" action="{{ path('admin_products_search') }}" style="margin-bottom: 10px;">
+            Name : <input type="text" name="name" >
+            Branch : <select name="branch">
+                        <option value="">-- Select Branch -- </option>
+                        {% for obj in optBranchs %}
+                            {% if obj.getCurrentLanguage is not null %}
+                                <option value="{{obj.id}}">
+                                    {{ obj.getCurrentLanguage.name | truncate(50) }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+            Product Group : <select name="productgroup">
+                        <option value="">-- Select Product Group -- </option>
+                        {% for obj in optProductGroups %}
+                            {% if obj.getCurrentLanguage is not null %}
+                                <option value="{{obj.id}}">
+                                    {{ obj.getCurrentLanguage.name | truncate(50) }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+            <input type="hidden" name="language" value="{{lang}}"/>
+            <button type="submit" class="btn" style="width: 100px;">Search</button>
+        </form>
+    </div>
 </div>
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" id="sortTable">
     <thead>
         <tr>
             <th>Id</th>

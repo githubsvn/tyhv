@@ -56,6 +56,18 @@ class ProductsController extends Controller
             $ent->setLanguage($currentLanguage);
         }
 
+        //Get branch and product group
+        $repBranch = $this->getDoctrine()->getRepository('SMAdminBundle:Branch');
+        $optBranchs = $repBranch->getList();
+        foreach ($optBranchs as $oItem) {
+            $oItem->setLanguage($currentLanguage);
+        }
+        $repProductGroup = $this->getDoctrine()->getRepository('SMAdminBundle:ProductGroup');
+        $optProductGroups = $repProductGroup->getList();
+        foreach ($optProductGroups as $oItem) {
+            $oItem->setLanguage($currentLanguage);
+        }
+
         return $this->render('SMAdminBundle:Products:index.html.twig', array(
                     'entities' => $entities,
                     'lastPage' => $lastPage,
@@ -65,7 +77,36 @@ class ProductsController extends Controller
                     'total' => $total,
                     'lang' => intval($lang),
                     'langList' => $langList,
+                    'optBranchs' => $optBranchs,
+                    'optProductGroups' => $optProductGroups,
                 ));
+    }
+
+    /**
+     * Search company and show result
+     */
+    public function searchAction()
+    {
+        $lang = $this->getRequest()->request->get('language', null);
+        $name = $this->getRequest()->request->get('name', '');
+        $branchId = $this->getRequest()->request->get('branch', null);
+        $productgroupId = $this->getRequest()->request->get('productgroup', null);
+
+        if (is_null($lang)) {
+            foreach ($langList as $langData) {
+                $isDefault = $langData->getIsDefault();
+                if ($isDefault == 1) {
+                    $lang = $langData->getId();
+                    break;
+                }
+            }
+        }
+        $entities = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:ProductLanguage")
+                ->findByLangAndNameAndBranchAndProductGroup($lang, $name, $branchId, $productgroupId);
+        return $this->render('SMAdminBundle:Products:search.html.twig', array(
+            'entities' => $entities,
+        ));
     }
 
     /**
@@ -179,6 +220,11 @@ class ProductsController extends Controller
         $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
                 ->findAll();
 
+        //Get branch and product group
+        $repMediaCat = $this->getDoctrine()->getRepository('SMAdminBundle:MediaCategory');
+        $optMediaCats = $repMediaCat->getList();
+
+
         return $this->render('SMAdminBundle:Products:new.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView(),
@@ -187,6 +233,7 @@ class ProductsController extends Controller
                     'optMedias' => $optMedias,
                     'selectedMedias' => array(),
                     'mediaPath' => '/web/' . $this->container->getParameter('upload'),
+                    'optMediaTypes' => $optMediaCats
                 ));
     }
 
@@ -311,6 +358,10 @@ class ProductsController extends Controller
         $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
             ->findAll();
 
+        //Get branch and product group
+        $repMediaCat = $this->getDoctrine()->getRepository('SMAdminBundle:MediaCategory');
+        $optMediaCats = $repMediaCat->getList();
+
         return $this->render('SMAdminBundle:Products:edit.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
@@ -320,7 +371,9 @@ class ProductsController extends Controller
             'imgPath' => '/web/' . $uploadPath,
             'optMedias' => $optMedias,
             'mediaPath' => '/web/' . $this->container->getParameter('upload'),
+            'optMediaTypes' => $optMediaCats,
         ));
+
     }
 
     /**
@@ -347,5 +400,4 @@ class ProductsController extends Controller
             return $this->redirect($referrer);
         }
     }
-
 }

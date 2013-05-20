@@ -75,7 +75,33 @@ class CompanyController extends Controller
                     'optComTypes' => $optComTypes
                 ));
     }
-
+    
+    /**
+     * Search company and show result
+     */
+    public function searchAction()
+    {
+        $lang = $this->getRequest()->request->get('language', null);
+        $name = $this->getRequest()->request->get('name', '');
+        $type = $this->getRequest()->request->get('type', null);
+        
+        if (is_null($lang)) {
+            foreach ($langList as $langData) {
+                $isDefault = $langData->getIsDefault();
+                if ($isDefault == 1) {
+                    $lang = $langData->getId();
+                    break;
+                }
+            }
+        }
+        $entities = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:CompanyLanguage")
+                ->findByLangAndNameAndType($lang, $name, $type);
+        return $this->render('SMAdminBundle:Company:search.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+    
     /**
      * Finds and displays a Company entity.
      *

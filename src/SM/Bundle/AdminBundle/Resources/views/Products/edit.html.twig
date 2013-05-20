@@ -82,7 +82,7 @@
                     {{ form_errors(form.media_id) }}
                     {{ form_widget(form.media_id, {'attr': {'style': 'display: none'} }) }}
                     {% set selectName = form.media_id.get('full_name') %}
-                    {{ smmedia(optMedias, selectName, mediaPath, {'multiple': true })|raw() }}
+                    {{ smmedia(optMedias, optMediaTypes, selectName, mediaPath, {'multiple': true })|raw() }}
               </label>
             </div>
         </div>

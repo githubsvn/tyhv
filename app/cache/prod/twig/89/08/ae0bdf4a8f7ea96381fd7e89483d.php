@@ -200,7 +200,7 @@ class __TwigTemplate_8908ae0bdf4a8f7ea96381fd7e89483d extends Twig_Template
         $context["selectName"] = $this->getAttribute($this->getAttribute($this->getContext($context, "form"), "media_id"), "get", array(0 => "full_name"), "method");
         // line 85
         echo "                    ";
-        echo $this->env->getExtension('sm.twig.media_extension')->selectMedia($this->getContext($context, "optMedias"), $this->getContext($context, "selectName"), $this->getContext($context, "mediaPath"), array("multiple" => true));
+        echo $this->env->getExtension('sm.twig.media_extension')->selectMedia($this->getContext($context, "optMedias"), $this->getContext($context, "optMediaTypes"), $this->getContext($context, "selectName"), $this->getContext($context, "mediaPath"), array("multiple" => true));
         echo "
               </label>
             </div>

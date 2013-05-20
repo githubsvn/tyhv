@@ -52,7 +52,7 @@ class SMTwigMediaExtension extends \Twig_Extension
      *
      * @return type
      */
-    public function selectMedia($optMedias, $selectName = 'media_id', $mediaPath = '' , $options = array())
+    public function selectMedia($optMedias, $optMediaTypes, $selectName = 'media_id', $mediaPath = '' , $options = array())
     {
         return $this->environment->render(
             'SMAdminBundle:Twig:media.html.twig', array(
@@ -60,6 +60,7 @@ class SMTwigMediaExtension extends \Twig_Extension
             'mediaName' => $selectName,
             'mediaPath' => $mediaPath,
             'options' => $options,
+            'optMediaTypes' => $optMediaTypes
         ));
     }
 
