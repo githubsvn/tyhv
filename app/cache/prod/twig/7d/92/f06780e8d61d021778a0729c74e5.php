@@ -44,19 +44,43 @@ class __TwigTemplate_7d92f06780e8d61d021778a0729c74e5 extends Twig_Template
         });
     } );
 </script>
-<h1>User list</h1>
+<h1>";
+        // line 19
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("User list", array(), "SMAdminBundle"), "html", null, true);
+        echo "</h1>
 
 <table class=\"table table-bordered table-striped\" id=\"sortTable\">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Username</th>
-            <th>Fullname</th>
-            <th>Email</th>
-            <th>Created Time</th>
-            <th>Last Updated</th>
-            <th>Active</th>
-            <th>Actions</th>
+            <th>";
+        // line 25
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Username", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 26
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Fullname", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 27
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Email", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 28
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Created Time", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 29
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Last Updated", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 30
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Active", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 31
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Action", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
         </tr>
     </thead>
     <tbody>
@@ -127,7 +151,10 @@ class __TwigTemplate_7d92f06780e8d61d021778a0729c74e5 extends Twig_Template
         // line 55
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_user_new"), "html", null, true);
         echo "\">
-    Create a new entry
+    ";
+        // line 56
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Create a new entry", array(), "SMAdminBundle"), "html", null, true);
+        echo "
 </a>
 ";
     }
@@ -144,6 +171,6 @@ class __TwigTemplate_7d92f06780e8d61d021778a0729c74e5 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  128 => 55,  123 => 52,  112 => 47,  108 => 46,  102 => 43,  96 => 42,  90 => 41,  86 => 40,  82 => 39,  78 => 38,  72 => 37,  69 => 36,  65 => 35,  31 => 3,  28 => 2,);
+        return array (  156 => 56,  152 => 55,  147 => 52,  136 => 47,  132 => 46,  126 => 43,  120 => 42,  114 => 41,  110 => 40,  106 => 39,  102 => 38,  96 => 37,  93 => 36,  89 => 35,  82 => 31,  78 => 30,  74 => 29,  70 => 28,  66 => 27,  62 => 26,  58 => 25,  49 => 19,  31 => 3,  28 => 2,);
     }
 }

@@ -50,7 +50,7 @@ class __TwigTemplate_f6a4321b74a3daf15a476828464b1956 extends Twig_Template
         // line 39
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("web/static/admin/js/jquery-1.7.2.min.js"), "html", null, true);
         echo "\"></script>
-        
+
         </head>
     <body>
         <div class=\"navbar navbar-fixed-top\">
@@ -269,7 +269,9 @@ class __TwigTemplate_f6a4321b74a3daf15a476828464b1956 extends Twig_Template
         // line 52
         echo "                    <a class=\"brand\" href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sm_admin_home"), "html", null, true);
-        echo "\">Welcome</a>
+        echo "\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Welcome", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a>
                     ";
     }
 
@@ -291,12 +293,16 @@ class __TwigTemplate_f6a4321b74a3daf15a476828464b1956 extends Twig_Template
                             <li><a href=\"";
         // line 59
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getUrl("admin_user_edit", array("id" => $this->getAttribute($this->getAttribute($this->getContext($context, "app"), "user"), "id"))), "html", null, true);
-        echo "\">Profile</a></li>
+        echo "\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Profile", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a></li>
                             <li class=\"divider\"></li>
                             <li><a href=\"";
         // line 61
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sm_admin_logout"), "html", null, true);
-        echo "\">Sign Out</a></li>
+        echo "\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Sign Out", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a></li>
                         </ul>
                     </div>
                     ";
@@ -449,6 +455,6 @@ class __TwigTemplate_f6a4321b74a3daf15a476828464b1956 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  435 => 136,  431 => 135,  427 => 134,  423 => 133,  418 => 132,  415 => 131,  407 => 122,  404 => 121,  399 => 118,  395 => 116,  389 => 115,  386 => 114,  377 => 111,  372 => 110,  367 => 109,  364 => 108,  358 => 106,  353 => 105,  350 => 104,  346 => 84,  340 => 82,  337 => 81,  334 => 80,  328 => 72,  324 => 71,  321 => 70,  318 => 69,  315 => 68,  312 => 67,  298 => 61,  293 => 59,  284 => 57,  280 => 55,  270 => 52,  267 => 51,  261 => 36,  257 => 35,  253 => 34,  249 => 33,  245 => 32,  235 => 25,  217 => 13,  209 => 11,  203 => 5,  194 => 138,  184 => 121,  180 => 119,  178 => 118,  175 => 117,  173 => 104,  170 => 103,  165 => 100,  159 => 98,  156 => 97,  153 => 96,  139 => 95,  125 => 91,  122 => 90,  104 => 89,  101 => 88,  96 => 86,  93 => 85,  91 => 80,  79 => 72,  76 => 67,  74 => 66,  71 => 65,  68 => 54,  66 => 51,  51 => 39,  46 => 11,  37 => 5,  366 => 144,  361 => 107,  355 => 138,  349 => 137,  347 => 136,  343 => 134,  335 => 129,  331 => 128,  326 => 126,  320 => 122,  314 => 120,  308 => 118,  306 => 66,  302 => 116,  297 => 114,  294 => 113,  292 => 112,  289 => 111,  283 => 109,  277 => 54,  274 => 106,  268 => 105,  265 => 104,  262 => 103,  259 => 102,  254 => 101,  251 => 100,  246 => 99,  244 => 98,  240 => 96,  234 => 95,  231 => 24,  223 => 92,  215 => 90,  212 => 12,  207 => 88,  205 => 87,  192 => 131,  190 => 77,  186 => 127,  182 => 75,  171 => 67,  167 => 66,  162 => 64,  154 => 59,  150 => 58,  145 => 56,  137 => 51,  133 => 93,  128 => 48,  120 => 43,  116 => 42,  111 => 40,  103 => 35,  99 => 87,  94 => 32,  86 => 27,  82 => 73,  77 => 24,  69 => 19,  65 => 18,  60 => 16,  52 => 11,  48 => 38,  43 => 8,  35 => 5,  31 => 1,  28 => 2,);
+        return array (  441 => 136,  437 => 135,  433 => 134,  429 => 133,  424 => 132,  421 => 131,  413 => 122,  410 => 121,  405 => 118,  401 => 116,  395 => 115,  392 => 114,  383 => 111,  378 => 110,  373 => 109,  370 => 108,  367 => 107,  364 => 106,  359 => 105,  356 => 104,  352 => 84,  346 => 82,  343 => 81,  340 => 80,  334 => 72,  330 => 71,  327 => 70,  324 => 69,  321 => 68,  318 => 67,  312 => 66,  302 => 61,  295 => 59,  286 => 57,  282 => 55,  279 => 54,  270 => 52,  267 => 51,  261 => 36,  257 => 35,  253 => 34,  249 => 33,  245 => 32,  235 => 25,  231 => 24,  217 => 13,  212 => 12,  209 => 11,  203 => 5,  194 => 138,  192 => 131,  186 => 127,  184 => 121,  180 => 119,  178 => 118,  175 => 117,  173 => 104,  170 => 103,  165 => 100,  159 => 98,  156 => 97,  153 => 96,  139 => 95,  133 => 93,  125 => 91,  122 => 90,  104 => 89,  101 => 88,  99 => 87,  93 => 85,  82 => 73,  79 => 72,  74 => 66,  71 => 65,  68 => 54,  66 => 51,  51 => 39,  48 => 38,  37 => 5,  102 => 33,  96 => 86,  91 => 80,  80 => 24,  76 => 67,  69 => 19,  65 => 18,  60 => 16,  57 => 15,  53 => 14,  46 => 11,  41 => 7,  38 => 6,  34 => 5,  31 => 1,  28 => 3,);
     }
 }
