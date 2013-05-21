@@ -16,20 +16,20 @@
         });
     } );
 </script>
-<h1>Language list</h1>
+<h1>{{ 'Language list'|trans({}, "SMAdminBundle") }}</h1>
 
 <div class="btn-group nav">
-    <a href="{{ path('admin_language_new') }}" class="btn btn-primary">Create a new entry</a>
+    <a href="{{ path('admin_language_new') }}" class="btn btn-primary">{{ 'Create a new entry'|trans({}, "SMAdminBundle") }}</a>
 </div>
 
 <table class="table table-bordered table-striped" id="sortTable">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>Lang key</th>
-            <th>Is default</th>
-            <th>Actions</th>
+            <th>{{ 'Name'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Lang key'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Is default'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Action'|trans({}, "SMAdminBundle") }}</th>
         </tr>
     </thead>
     <tbody>

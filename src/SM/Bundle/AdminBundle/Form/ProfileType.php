@@ -27,7 +27,7 @@ class ProfileType extends AbstractType
                 ->add('password', 'repeated', array(
                     'first_name' => 'password',
                     'second_name' => 'confirm',
-                    'invalid_message' => 'The new password fields must match.',
+                    'invalid_message' => 'Mật khẩu không giống nhau.',
                     'type' => 'password',
                     'required' => false,
                     'first_options' => array('label' => "New Password"),

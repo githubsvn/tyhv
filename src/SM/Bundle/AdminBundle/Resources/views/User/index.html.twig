@@ -18,6 +18,10 @@
 </script>
 <h1>{{ 'User list'|trans({}, "SMAdminBundle") }}</h1>
 
+<div class="btn-group nav">
+    <a class="btn btn-primary" href="{{ path('admin_user_new') }}">{{ 'Create a new entry'|trans({}, "SMAdminBundle") }}</a>
+</div>
+
 <table class="table table-bordered table-striped" id="sortTable">
     <thead>
         <tr>
@@ -52,7 +56,4 @@
     </tbody>
 </table>
 
-<a class="btn btn-primary" href="{{ path('admin_user_new') }}">
-    {{ 'Create a new entry'|trans({}, "SMAdminBundle") }}
-</a>
 {% endblock %}

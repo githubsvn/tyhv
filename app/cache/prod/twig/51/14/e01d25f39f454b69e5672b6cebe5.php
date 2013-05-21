@@ -44,23 +44,40 @@ class __TwigTemplate_5114e01d25f39f454b69e5672b6cebe5 extends Twig_Template
         });
     } );
 </script>
-<h1>Language list</h1>
+<h1>";
+        // line 19
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Language list", array(), "SMAdminBundle"), "html", null, true);
+        echo "</h1>
 
 <div class=\"btn-group nav\">
     <a href=\"";
         // line 22
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_language_new"), "html", null, true);
-        echo "\" class=\"btn btn-primary\">Create a new entry</a>
+        echo "\" class=\"btn btn-primary\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Create a new entry", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a>
 </div>
 
 <table class=\"table table-bordered table-striped\" id=\"sortTable\">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>Lang key</th>
-            <th>Is default</th>
-            <th>Actions</th>
+            <th>";
+        // line 29
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Name", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 30
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Lang key", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 31
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Is default", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 32
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Action", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
         </tr>
     </thead>
     <tbody>
@@ -207,6 +224,6 @@ class __TwigTemplate_5114e01d25f39f454b69e5672b6cebe5 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  194 => 80,  187 => 76,  182 => 75,  176 => 74,  168 => 72,  160 => 70,  157 => 69,  153 => 68,  149 => 67,  145 => 66,  141 => 64,  139 => 63,  134 => 59,  126 => 56,  121 => 54,  118 => 53,  116 => 52,  112 => 51,  107 => 49,  103 => 47,  97 => 45,  93 => 43,  91 => 42,  86 => 40,  82 => 39,  76 => 38,  73 => 37,  69 => 36,  52 => 22,  31 => 3,  28 => 2,);
+        return array (  211 => 80,  204 => 76,  199 => 75,  193 => 74,  185 => 72,  177 => 70,  174 => 69,  170 => 68,  166 => 67,  162 => 66,  158 => 64,  156 => 63,  151 => 59,  143 => 56,  138 => 54,  135 => 53,  133 => 52,  129 => 51,  124 => 49,  120 => 47,  114 => 45,  110 => 43,  108 => 42,  103 => 40,  99 => 39,  93 => 38,  90 => 37,  86 => 36,  79 => 32,  75 => 31,  71 => 30,  67 => 29,  55 => 22,  49 => 19,  31 => 3,  28 => 2,);
     }
 }
