@@ -28,7 +28,9 @@ class __TwigTemplate_1f53fd07e3cd1dc5bbcbc719521fec13 extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "<h1>User</h1>
+        echo "<h2>";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("User detail", array(), "SMAdminBundle"), "html", null, true);
+        echo "</h2>
 
 <table class=\"table table-bordered table-striped\">
     <tbody>
@@ -130,6 +132,6 @@ class __TwigTemplate_1f53fd07e3cd1dc5bbcbc719521fec13 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  114 => 39,  110 => 38,  105 => 36,  101 => 35,  97 => 34,  89 => 29,  85 => 28,  79 => 25,  75 => 24,  69 => 21,  65 => 20,  59 => 17,  55 => 16,  49 => 13,  45 => 12,  39 => 9,  31 => 3,  28 => 2,);
+        return array (  116 => 39,  112 => 38,  107 => 36,  103 => 35,  99 => 34,  91 => 29,  87 => 28,  81 => 25,  77 => 24,  71 => 21,  67 => 20,  61 => 17,  57 => 16,  51 => 13,  47 => 12,  41 => 9,  31 => 3,  28 => 2,);
     }
 }

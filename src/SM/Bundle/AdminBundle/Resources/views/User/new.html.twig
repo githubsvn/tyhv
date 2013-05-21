@@ -1,6 +1,6 @@
 {% extends 'SMAdminBundle::layout.html.twig' %}
 {% block body %}
-<h1>{{ 'User creation'|trans({}, "SMAdminBundle") }}</h1>
+<h2>{{ 'User creation'|trans({}, "SMAdminBundle") }}</h2>
 
 <form action="{{ path('admin_user_create') }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
     <fieldset>

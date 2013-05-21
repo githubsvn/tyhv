@@ -1,11 +1,11 @@
 {% extends 'SMAdminBundle::admin.html.twig' %}
 {% block body %}
-<h1>Product creation</h1>
+<h2>{{ 'Product Edit'|trans({}, "SMAdminBundle") }}</h2>
 
 <form id="frmProduct" action="{{ path('admin_products_edit', {'id' : entity.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
     <fieldset>
         <div class="control-group">
-            <label class="control-label" for="input01">{{ form_label(form.branch) }}</label>
+            <label class="control-label" for="input01">{{ 'Branch'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.branch) }}
                 {{ form_widget(form.branch) }}
@@ -13,7 +13,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="input01">{{ form_label(form.productgroup) }}</label>
+            <label class="control-label" for="input01">{{ 'Product Group'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.productgroup) }}
                 {{ form_widget(form.productgroup) }}
@@ -21,7 +21,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="input01">{{ form_label(form.price) }}</label>
+            <label class="control-label" for="input01">{{ 'Price'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.price) }}
                 {{ form_widget(form.price) }}
@@ -29,7 +29,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="input01">{{ form_label(form.unit) }}</label>
+            <label class="control-label" for="input01">{{ 'Unit'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.unit) }}
                 {{ form_widget(form.unit) }}
@@ -37,7 +37,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="input01">{{ form_label(form.discount) }}</label>
+            <label class="control-label" for="input01">{{ 'Discount'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.discount) }}
                 {{ form_widget(form.discount) }}
@@ -45,7 +45,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="input01">{{ form_label(form.amount) }}</label>
+            <label class="control-label" for="input01">{{ 'Amount'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.amount) }}
                 {{ form_widget(form.amount) }}
@@ -53,7 +53,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="input01">{{ form_label(form.status) }}</label>
+            <label class="control-label" for="input01">{{ 'Status'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.status) }}
                 {{ form_widget(form.status) }}
@@ -61,7 +61,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="input01">{{ form_label(form.thumb) }}</label>
+            <label class="control-label" for="input01">{{ 'Thumbnail'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.thumb) }}
                 {{ form_widget(form.thumb) }}
@@ -76,7 +76,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="optionsCheckbox">Images</label>
+            <label class="control-label" for="optionsCheckbox">{{ 'Image'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
               <label class="checkbox">
                     {{ form_errors(form.media_id) }}
@@ -117,7 +117,7 @@
                             <fieldset>
                                 {% if currentAL is not null %}
                                     <div class="control-group">
-                                        <label class="control-label" for="input01">{{ form_label(currentAL.name) }}</label>
+                                        <label class="control-label" for="input01">{{ 'Name'|trans({}, "SMAdminBundle") }}</label>
                                         <div class="controls">
                                             {{ form_errors(currentAL.name) }}
                                             {% if defaultLanguage.name == currentAL.vars.value.language.name %}
@@ -129,7 +129,7 @@
                                     </div>
 
                                     <div class="control-group">
-                                        <label class="control-label" for="input01">{{ form_label(currentAL.description) }}</label>
+                                        <label class="control-label" for="input01">{{ 'Description'|trans({}, "SMAdminBundle") }}</label>
                                         <div class="controls">
                                             {{ form_errors(currentAL.description) }}
                                             {% if defaultLanguage.name == currentAL.vars.value.language.name %}
@@ -150,8 +150,8 @@
 
         <div class="form-actions">
             {{ form_row(form._token) }}
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            <a href="{{ path('admin_products', {'page' : 1}) }}" class="btn">Back To List</a>
+            <button type="submit" class="btn btn-primary">{{ 'Save'|trans({}, "SMAdminBundle") }}</button>
+            <a href="{{ path('admin_products', {'page' : 1}) }}" class="btn">{{ 'Back to the list'|trans({}, "SMAdminBundle") }}</a>
         </div>
 
     </fieldset>

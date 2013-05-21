@@ -1,14 +1,14 @@
 {% spaceless %}
-<a href="#backgroundModal" role="button" class="btn" data-toggle="modal">Select Images</a>
+<a href="#backgroundModal" role="button" class="btn" data-toggle="modal">{{ 'Select image'|trans({}, "SMAdminBundle") }}</a>
 <!-- Modal -->
 <div id="backgroundModal" class="modal hide fade" style="width: 580px;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="backgroundModalLabel">Select Background</h3>
+        <h3 id="backgroundModalLabel">{{ 'Select image'|trans({}, "SMAdminBundle") }}</h3>
     </div>
     <div class="modal-body">
         <div style="text-align: center;">
-            Type of images :
+            {{ 'Type of media'|trans({}, "SMAdminBundle") }} :
             <select name="typeImg" id="typeImg">
                 {% for opt in optMediaTypes %}
                     <option value="{{opt.id}}">{{opt.name}}</option>
@@ -30,15 +30,15 @@
         <div class="row">
             {% if options.multiple is defined %}
                 {% if options.multiple %}
-                    <div class="span2">
-                        <a class="btn" onclick="checkAll('{{ mediaName }}');" >Select All</a>
-                        <a class="btn" onclick="clearAll('{{ mediaName }}');" >Clear All</a>
+                <div class="span2" style="width: 200px;">
+                        <a class="btn" onclick="checkAll('{{ mediaName }}');" >{{ 'Select All'|trans({}, "SMAdminBundle") }}</a>
+                        <a class="btn" onclick="clearAll('{{ mediaName }}');" >{{ 'Clear All'|trans({}, "SMAdminBundle") }}</a>
                     </div>
                 {% endif %}
             {% endif %}
             <div class="pull-right">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                <button class="btn btn-primary" data-dismiss="modal" onclick="applySelect('{{ mediaName }}')">Select</button>
+                <button class="btn" data-dismiss="modal" aria-hidden="true">{{ 'Close'|trans({}, "SMAdminBundle") }}</button>
+                <button class="btn btn-primary" data-dismiss="modal" onclick="applySelect('{{ mediaName }}')">{{ 'Select'|trans({}, "SMAdminBundle") }}</button>
             </div>
         </div>
     </div>

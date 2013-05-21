@@ -28,9 +28,9 @@ class __TwigTemplate_8766bad03cd9a8b8e62e432f5a355e65 extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "<h1>";
+        echo "<h2>";
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Language edit", array(), "SMAdminBundle"), "html", null, true);
-        echo "</h1>
+        echo "</h2>
 
 <form action=\"";
         // line 5

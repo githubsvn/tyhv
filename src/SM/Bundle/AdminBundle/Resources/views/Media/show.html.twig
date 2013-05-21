@@ -1,19 +1,19 @@
 {% extends 'SMAdminBundle::admin.html.twig' %}
 {% block body %}
-<h1>Media</h1>
+<h2>{{ 'Media Show'|trans({}, "SMAdminBundle") }}</h2>
 
 <table class="record_properties">
     <tbody>
         <tr>
-            <th>Id</th>
+            <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
             <td>{{ entity.id }}</td>
         </tr>
         <tr>
-            <th>Name</th>
-            <td>{{ entity.name }}</td>
+            <th>{{ 'Image'|trans({}, "SMAdminBundle") }}</th>
+            <td><image src="/web/uploads/{{ entity.name}}" width="100px" height="100px"/></td>
         </tr>
         <tr>
-            <th>Media category </th>
+            <th>{{ 'Category'|trans({}, "SMAdminBundle") }}</th>
             <td>
                 {% if entity.category %}
                     {{ entity.category.name }}
@@ -21,23 +21,19 @@
             </td>
         </tr>
         <tr>
-            <th>Width</th>
+            <th>{{ 'Width'|trans({}, "SMAdminBundle") }}</th>
             <td>{{ entity.width }}</td>
         </tr>
         <tr>
-            <th>Height</th>
+            <th>{{ 'Height'|trans({}, "SMAdminBundle") }}</th>
             <td>{{ entity.height }}</td>
         </tr>
         <tr>
-            <th>Created_at</th>
+            <th>{{ 'Created Time'|trans({}, "SMAdminBundle") }}</th>
             <td>{{ entity.createdat|date('Y-m-d H:i:s') }}</td>
         </tr>
         <tr>
-            <th>Updated_at</th>
-            <td>{{ entity.updatedat|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        <tr>
-            <th>Active</th>
+            <th>{{ 'Active'|trans({}, "SMAdminBundle") }}</th>
             <td>
                 {% if entity.active == 1 %}
                     <input type="checkbox" checked="checked" class="defaultCheckBox" disabled="true"/>
@@ -48,9 +44,9 @@
         </tr>
         <tr>
             <td colspan="2" width="100%">
-                <a href="{{ path('admin_media', {'page' : 1}) }}" class="btn">Back To List</a>
+                <a href="{{ path('admin_media', {'page' : 1}) }}" class="btn">{{ 'Back to the list'|trans({}, "SMAdminBundle") }}</a>
                 &nbsp;
-                <a href="{{ path('admin_media_edit', { 'id': entity.id }) }}" class="btn">Edit</a>
+                <a href="{{ path('admin_media_edit', { 'id': entity.id }) }}" class="btn">{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
             </td>
         </tr>
     </tbody>

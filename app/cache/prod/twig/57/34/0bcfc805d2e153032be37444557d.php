@@ -44,10 +44,10 @@ class __TwigTemplate_57340bcfc805d2e153032be37444557d extends Twig_Template
         });
     } );
 </script>
-<h1>";
+<h2>";
         // line 19
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("User list", array(), "SMAdminBundle"), "html", null, true);
-        echo "</h1>
+        echo "</h2>
 
 <div class=\"btn-group nav\">
     <a class=\"btn btn-primary\" href=\"";

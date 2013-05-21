@@ -17,20 +17,20 @@
     } );
 </script>
 
-<h1>Media list</h1>
+<h2>{{ 'Media List'|trans({}, "SMAdminBundle") }}</h2>
 
 <div class="btn-group nav">
-    <a href="{{ path('admin_media_new') }}" class="btn btn-primary">Create a new entry</a>
+    <a href="{{ path('admin_media_new') }}" class="btn btn-primary">{{ 'Create a new entry'|trans({}, "SMAdminBundle") }}</a>
 </div>
 
 <table class="table table-bordered table-striped" id="sortTable">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Image</th>
-            <th>Created at</th>
-            <th>Active</th>
-            <th>Actions</th>
+            <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Image'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Created Time'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Active'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Action'|trans({}, "SMAdminBundle") }}</th>
         </tr>
     </thead>
     <tbody>
@@ -49,11 +49,11 @@
                 {% endif%}
             </td>
             <td>
-                <a href="{{ path('admin_media_show', { 'id': entity.id }) }}">show</a>
+                <a href="{{ path('admin_media_show', { 'id': entity.id }) }}"><i class="icon-search"></i>{{ 'Show'|trans({}, "SMAdminBundle") }}</a>
                 &nbsp; | &nbsp;
-                <a href="{{ path('admin_media_edit', { 'id': entity.id }) }}">edit</a>
+                <a href="{{ path('admin_media_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
                 &nbsp; | &nbsp;
-                <a class="delete" rel="{{ path('admin_media_delete', { 'id': entity.id }) }}">Delete</a>
+                <a class="delete" rel="{{ path('admin_media_delete', { 'id': entity.id }) }}"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>
             </td>
         </tr>
     {% endfor %}
@@ -64,8 +64,8 @@
 {% if lastPage > 1 %}
 <div class="pagination" style="text-align: right;">
     <ul>
-        <li><a href="{{ path('admin_media', { 'page': 1 }) }}">«</a></li>
-        <li><a href="{{ path('admin_media', { 'page': previousPage }) }}">Previous</a></li>
+        <li><a href="{{ path('admin_media', { 'page': 1 }) }}"><i class="icon-fast-backward"></i></a></li>
+        <li><a href="{{ path('admin_media', { 'page': previousPage }) }}"><i class="icon-backward"></i></a></li>
     {% for page in 1..lastPage %}
       {% if page == currentPage %}
         <li class="active"><a href="{{ path('admin_media', {'page': page }) }}">{{ page }}</a></li>
@@ -73,8 +73,8 @@
         <li><a href="{{ path('admin_media', {'page': page }) }}">{{ page }}</a></li>
       {% endif %}
     {% endfor %}
-        <li><a href="{{ path('admin_media', {'page': nextPage }) }}">Next</a></li>
-        <li><a href="{{ path('admin_media', {'page': lastPage }) }}">»</a></li>
+        <li><a href="{{ path('admin_media', {'page': nextPage }) }}"><i class="icon-forward"></i></a></li>
+        <li><a href="{{ path('admin_media', {'page': lastPage }) }}"><i class="icon-fast-forward"></i></a></li>
     </ul>
 </div>
 {% endif %}

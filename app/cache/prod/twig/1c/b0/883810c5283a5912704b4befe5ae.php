@@ -28,26 +28,37 @@ class __TwigTemplate_1cb0883810c5283a5912704b4befe5ae extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "<h1>Media</h1>
+        echo "<h2>";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Media Show", array(), "SMAdminBundle"), "html", null, true);
+        echo "</h2>
 
 <table class=\"record_properties\">
     <tbody>
         <tr>
-            <th>Id</th>
+            <th>";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Id", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
             <td>";
         // line 9
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "id"), "html", null, true);
         echo "</td>
         </tr>
         <tr>
-            <th>Name</th>
-            <td>";
+            <th>";
+        // line 12
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Image", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <td><image src=\"/web/uploads/";
         // line 13
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "name"), "html", null, true);
-        echo "</td>
+        echo "\" width=\"100px\" height=\"100px\"/></td>
         </tr>
         <tr>
-            <th>Media category </th>
+            <th>";
+        // line 16
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Category", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
             <td>
                 ";
         // line 18
@@ -62,61 +73,70 @@ class __TwigTemplate_1cb0883810c5283a5912704b4befe5ae extends Twig_Template
         echo "            </td>
         </tr>
         <tr>
-            <th>Width</th>
+            <th>";
+        // line 24
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Width", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
             <td>";
         // line 25
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "width"), "html", null, true);
         echo "</td>
         </tr>
         <tr>
-            <th>Height</th>
+            <th>";
+        // line 28
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Height", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
             <td>";
         // line 29
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "height"), "html", null, true);
         echo "</td>
         </tr>
         <tr>
-            <th>Created_at</th>
+            <th>";
+        // line 32
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Created Time", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
             <td>";
         // line 33
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "createdat"), "Y-m-d H:i:s"), "html", null, true);
         echo "</td>
         </tr>
         <tr>
-            <th>Updated_at</th>
-            <td>";
-        // line 37
-        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "updatedat"), "Y-m-d H:i:s"), "html", null, true);
-        echo "</td>
-        </tr>
-        <tr>
-            <th>Active</th>
+            <th>";
+        // line 36
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Active", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
             <td>
                 ";
-        // line 42
+        // line 38
         if (($this->getAttribute($this->getContext($context, "entity"), "active") == 1)) {
-            // line 43
+            // line 39
             echo "                    <input type=\"checkbox\" checked=\"checked\" class=\"defaultCheckBox\" disabled=\"true\"/>
                 ";
         } else {
-            // line 45
+            // line 41
             echo "                    <input type=\"checkbox\" class=\"defaultCheckBox\" disabled=\"true\"/>
                 ";
         }
-        // line 47
+        // line 43
         echo "            </td>
         </tr>
         <tr>
             <td colspan=\"2\" width=\"100%\">
                 <a href=\"";
-        // line 51
+        // line 47
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media", array("page" => 1)), "html", null, true);
-        echo "\" class=\"btn\">Back To List</a>
+        echo "\" class=\"btn\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Back to the list", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a>
                 &nbsp;
                 <a href=\"";
-        // line 53
+        // line 49
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media_edit", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
-        echo "\" class=\"btn\">Edit</a>
+        echo "\" class=\"btn\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Edit", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a>
             </td>
         </tr>
     </tbody>
@@ -136,6 +156,6 @@ class __TwigTemplate_1cb0883810c5283a5912704b4befe5ae extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  118 => 53,  113 => 51,  107 => 47,  103 => 45,  99 => 43,  97 => 42,  89 => 37,  82 => 33,  75 => 29,  68 => 25,  62 => 21,  56 => 19,  54 => 18,  46 => 13,  39 => 9,  31 => 3,  28 => 2,);
+        return array (  136 => 49,  129 => 47,  123 => 43,  119 => 41,  115 => 39,  113 => 38,  108 => 36,  102 => 33,  98 => 32,  92 => 29,  88 => 28,  82 => 25,  78 => 24,  73 => 21,  67 => 19,  65 => 18,  60 => 16,  54 => 13,  50 => 12,  44 => 9,  40 => 8,  31 => 3,  28 => 2,);
     }
 }

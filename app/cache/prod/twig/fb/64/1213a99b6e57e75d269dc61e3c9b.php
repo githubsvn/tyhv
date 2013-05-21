@@ -44,13 +44,18 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
         });
     } );
 </script>
-<h1>Branch list</h1>
+<h2>";
+        // line 19
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Branch List", array(), "SMAdminBundle"), "html", null, true);
+        echo "</h2>
 
 <div class=\"nav\">
     <a href=\"";
         // line 22
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_branch_new"), "html", null, true);
-        echo "\" class=\"btn btn-primary\">Create a new entry</a>
+        echo "\" class=\"btn btn-primary\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Create a new entry", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a>
     <div class=\"btn-group pull-right\">
         <a href=\"javascript:void(0)\" data-toggle=\"dropdown\" class=\"btn btn-primary dropdown-toggle\">
             ";
@@ -100,11 +105,26 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
 <table class=\"table table-bordered table-striped\" id=\"sortTable\">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Created at</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>";
+        // line 42
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Id", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 43
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Name", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 44
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Created Time", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 45
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Status", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 46
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Action", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
         </tr>
     </thead>
     <tbody>
@@ -161,7 +181,9 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
                 <a href=\"";
             // line 69
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_branch_edit", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
-            echo "\">edit</a>
+            echo "\"><i class=\"icon-pencil\"></i>";
+            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Edit", array(), "SMAdminBundle"), "html", null, true);
+            echo "</a>
                 ";
             // line 70
             if ((!(null === $this->getAttribute($this->getContext($context, "entity"), "getCurrentLanguage")))) {
@@ -170,7 +192,9 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
                     <a href=\"#\" rel=\"";
                 // line 72
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_branch_delete", array("id" => $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "getCurrentLanguage"), "getId"))), "html", null, true);
-                echo "\" class=\"delete\">Delete</a>
+                echo "\" class=\"delete\"><i class=\"icon-remove\"></i>";
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Delete", array(), "SMAdminBundle"), "html", null, true);
+                echo "</a>
                 ";
             }
             // line 74
@@ -195,11 +219,11 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
         <li><a href=\"";
             // line 85
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_branch", array("page" => 1, "lang" => $this->getContext($context, "lang"))), "html", null, true);
-            echo "\">«</a></li>
+            echo "\"><i class=\"icon-fast-backward\"></i></a></li>
         <li><a href=\"";
             // line 86
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_branch", array("page" => $this->getContext($context, "previousPage"), "lang" => $this->getContext($context, "lang"))), "html", null, true);
-            echo "\">Previous</a></li>
+            echo "\"><i class=\"icon-backward\"></i></a></li>
     ";
             // line 87
             $context['_parent'] = (array) $context;
@@ -233,11 +257,11 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
             // line 94
             echo "        <li><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_branch", array("page" => $this->getContext($context, "nextPage"), "lang" => $this->getContext($context, "lang"))), "html", null, true);
-            echo "\">Next</a></li>
+            echo "\"><i class=\"icon-forward\"></i></a></li>
         <li><a href=\"";
             // line 95
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_branch", array("page" => $this->getContext($context, "lastPage"), "lang" => $this->getContext($context, "lang"))), "html", null, true);
-            echo "\">»</a></li>
+            echo "\"><i class=\"icon-fast-forward\"></i></a></li>
     </ul>
 </div>
 ";
@@ -259,6 +283,6 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  246 => 99,  239 => 95,  234 => 94,  228 => 93,  220 => 91,  212 => 89,  209 => 88,  205 => 87,  201 => 86,  197 => 85,  193 => 83,  191 => 82,  186 => 78,  177 => 74,  172 => 72,  169 => 71,  167 => 70,  163 => 69,  159 => 67,  155 => 65,  151 => 63,  149 => 62,  142 => 60,  139 => 59,  133 => 57,  127 => 55,  125 => 54,  120 => 52,  117 => 51,  113 => 50,  96 => 35,  85 => 33,  81 => 32,  77 => 30,  71 => 29,  65 => 27,  62 => 26,  58 => 25,  52 => 22,  31 => 3,  28 => 2,);
+        return array (  270 => 99,  263 => 95,  258 => 94,  252 => 93,  244 => 91,  236 => 89,  233 => 88,  229 => 87,  225 => 86,  221 => 85,  217 => 83,  215 => 82,  210 => 78,  201 => 74,  194 => 72,  191 => 71,  189 => 70,  183 => 69,  179 => 67,  175 => 65,  171 => 63,  169 => 62,  162 => 60,  159 => 59,  153 => 57,  147 => 55,  145 => 54,  140 => 52,  137 => 51,  133 => 50,  126 => 46,  122 => 45,  118 => 44,  114 => 43,  110 => 42,  101 => 35,  90 => 33,  86 => 32,  82 => 30,  76 => 29,  70 => 27,  67 => 26,  63 => 25,  55 => 22,  49 => 19,  31 => 3,  28 => 2,);
     }
 }

@@ -28,9 +28,9 @@ class __TwigTemplate_880b7cf9c32b87fde96cba12c01a2b44 extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "<h1>";
+        echo "<h2>";
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Language show", array(), "SMAdminBundle"), "html", null, true);
-        echo "</h1>
+        echo "</h2>
 
 <table class=\"record_properties\">
     <tbody>

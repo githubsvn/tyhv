@@ -28,7 +28,9 @@ class __TwigTemplate_0a4219eeb3a5f3ecde795077f3f86aea extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "<h1>Media creation</h1>
+        echo "<h2>";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Media Creation", array(), "SMAdminBundle"), "html", null, true);
+        echo "</h2>
 
 <form action=\"";
         // line 5
@@ -40,7 +42,7 @@ class __TwigTemplate_0a4219eeb3a5f3ecde795077f3f86aea extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 8
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "category"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Category", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -56,7 +58,7 @@ class __TwigTemplate_0a4219eeb3a5f3ecde795077f3f86aea extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 15
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "file"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("File", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -72,7 +74,7 @@ class __TwigTemplate_0a4219eeb3a5f3ecde795077f3f86aea extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 22
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "width"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Width", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -88,7 +90,7 @@ class __TwigTemplate_0a4219eeb3a5f3ecde795077f3f86aea extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 29
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "height"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Height", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -104,7 +106,7 @@ class __TwigTemplate_0a4219eeb3a5f3ecde795077f3f86aea extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"optionsCheckbox\">";
         // line 36
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "active"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Active", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
               <label class=\"checkbox\">
@@ -125,11 +127,16 @@ class __TwigTemplate_0a4219eeb3a5f3ecde795077f3f86aea extends Twig_Template
         // line 46
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "_token"), 'row');
         echo "
-            <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>
+            <button type=\"submit\" class=\"btn btn-primary\">";
+        // line 47
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Save", array(), "SMAdminBundle"), "html", null, true);
+        echo "</button>
             <a href=\"";
         // line 48
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media", array("page" => 1)), "html", null, true);
-        echo "\" class=\"btn\">Back To List</a>
+        echo "\" class=\"btn\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Back to the list", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a>
         </div>
 
     </fieldset>
@@ -150,6 +157,6 @@ class __TwigTemplate_0a4219eeb3a5f3ecde795077f3f86aea extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  131 => 48,  126 => 46,  117 => 40,  113 => 39,  107 => 36,  100 => 32,  96 => 31,  91 => 29,  84 => 25,  80 => 24,  75 => 22,  68 => 18,  64 => 17,  59 => 15,  52 => 11,  48 => 10,  43 => 8,  35 => 5,  31 => 3,  28 => 2,);
+        return array (  136 => 48,  132 => 47,  128 => 46,  119 => 40,  115 => 39,  109 => 36,  102 => 32,  98 => 31,  93 => 29,  86 => 25,  82 => 24,  77 => 22,  70 => 18,  66 => 17,  61 => 15,  54 => 11,  50 => 10,  45 => 8,  37 => 5,  31 => 3,  28 => 2,);
     }
 }

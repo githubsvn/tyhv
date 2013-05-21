@@ -28,9 +28,9 @@ class __TwigTemplate_c09ca549d6ca907ede0b2f2e6927a522 extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "<h1>";
+        echo "<h2>";
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("User creation", array(), "SMAdminBundle"), "html", null, true);
-        echo "</h1>
+        echo "</h2>
 
 <form action=\"";
         // line 5

@@ -18,16 +18,24 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
         // line 1
         ob_start();
         // line 2
-        echo "<a href=\"#backgroundModal\" role=\"button\" class=\"btn\" data-toggle=\"modal\">Select Images</a>
+        echo "<a href=\"#backgroundModal\" role=\"button\" class=\"btn\" data-toggle=\"modal\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Select image", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a>
 <!-- Modal -->
 <div id=\"backgroundModal\" class=\"modal hide fade\" style=\"width: 580px;\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">
     <div class=\"modal-header\">
         <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>
-        <h3 id=\"backgroundModalLabel\">Select Background</h3>
+        <h3 id=\"backgroundModalLabel\">";
+        // line 7
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Select image", array(), "SMAdminBundle"), "html", null, true);
+        echo "</h3>
     </div>
     <div class=\"modal-body\">
         <div style=\"text-align: center;\">
-            Type of images :
+            ";
+        // line 11
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Type of media", array(), "SMAdminBundle"), "html", null, true);
+        echo " :
             <select name=\"typeImg\" id=\"typeImg\">
                 ";
         // line 13
@@ -107,15 +115,19 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
             echo "                ";
             if ($this->getAttribute($this->getContext($context, "options"), "multiple")) {
                 // line 33
-                echo "                    <div class=\"span2\">
+                echo "                <div class=\"span2\" style=\"width: 200px;\">
                         <a class=\"btn\" onclick=\"checkAll('";
                 // line 34
                 echo twig_escape_filter($this->env, $this->getContext($context, "mediaName"), "html", null, true);
-                echo "');\" >Select All</a>
+                echo "');\" >";
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Select All", array(), "SMAdminBundle"), "html", null, true);
+                echo "</a>
                         <a class=\"btn\" onclick=\"clearAll('";
                 // line 35
                 echo twig_escape_filter($this->env, $this->getContext($context, "mediaName"), "html", null, true);
-                echo "');\" >Clear All</a>
+                echo "');\" >";
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Clear All", array(), "SMAdminBundle"), "html", null, true);
+                echo "</a>
                     </div>
                 ";
             }
@@ -124,11 +136,16 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
         }
         // line 39
         echo "            <div class=\"pull-right\">
-                <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>
+                <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">";
+        // line 40
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Close", array(), "SMAdminBundle"), "html", null, true);
+        echo "</button>
                 <button class=\"btn btn-primary\" data-dismiss=\"modal\" onclick=\"applySelect('";
         // line 41
         echo twig_escape_filter($this->env, $this->getContext($context, "mediaName"), "html", null, true);
-        echo "')\">Select</button>
+        echo "')\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Select", array(), "SMAdminBundle"), "html", null, true);
+        echo "</button>
             </div>
         </div>
     </div>
@@ -220,6 +237,6 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  153 => 55,  148 => 53,  140 => 48,  130 => 41,  126 => 39,  123 => 38,  117 => 35,  113 => 34,  110 => 33,  107 => 32,  105 => 31,  99 => 27,  74 => 24,  69 => 22,  63 => 21,  58 => 20,  54 => 19,  49 => 16,  38 => 14,  34 => 13,  21 => 2,  19 => 1,);
+        return array (  170 => 55,  165 => 53,  157 => 48,  145 => 41,  141 => 40,  138 => 39,  135 => 38,  127 => 35,  121 => 34,  118 => 33,  115 => 32,  113 => 31,  107 => 27,  82 => 24,  77 => 22,  71 => 21,  66 => 20,  62 => 19,  57 => 16,  46 => 14,  42 => 13,  37 => 11,  30 => 7,  21 => 2,  19 => 1,);
     }
 }
