@@ -16,10 +16,10 @@
         });
     } );
 </script>
-<h1>Branch list</h1>
+<h2>{{ 'Branch List'|trans({}, "SMAdminBundle") }}</h2>
 
 <div class="nav">
-    <a href="{{ path('admin_branch_new') }}" class="btn btn-primary">Create a new entry</a>
+    <a href="{{ path('admin_branch_new') }}" class="btn btn-primary">{{ 'Create a new entry'|trans({}, "SMAdminBundle") }}</a>
     <div class="btn-group pull-right">
         <a href="javascript:void(0)" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
             {% for opt in langList %}
@@ -39,11 +39,11 @@
 <table class="table table-bordered table-striped" id="sortTable">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Created at</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Name'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Created Time'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Status'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Action'|trans({}, "SMAdminBundle") }}</th>
         </tr>
     </thead>
     <tbody>
@@ -66,10 +66,10 @@
                 {% endif%}
             </td>
             <td>
-                <a href="{{ path('admin_branch_edit', { 'id': entity.id }) }}">edit</a>
+                <a href="{{ path('admin_branch_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
                 {% if entity.getCurrentLanguage is not null %}
                     &nbsp; | &nbsp;
-                    <a href="#" rel="{{ path('admin_branch_delete', { 'id': entity.getCurrentLanguage.getId }) }}" class="delete">Delete</a>
+                    <a href="#" rel="{{ path('admin_branch_delete', { 'id': entity.getCurrentLanguage.getId }) }}" class="delete"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>
                 {% endif %}
 
             </td>
@@ -82,8 +82,8 @@
 {% if lastPage > 1 %}
 <div class="pagination pull-right">
     <ul>
-        <li><a href="{{ path('admin_branch', { 'page': 1, 'lang' : lang }) }}">«</a></li>
-        <li><a href="{{ path('admin_branch', { 'page': previousPage, 'lang' : lang }) }}">Previous</a></li>
+        <li><a href="{{ path('admin_branch', { 'page': 1, 'lang' : lang }) }}"><i class="icon-fast-backward"></i></a></li>
+        <li><a href="{{ path('admin_branch', { 'page': previousPage, 'lang' : lang }) }}"><i class="icon-backward"></i></a></li>
     {% for page in 1..lastPage %}
       {% if page == currentPage %}
         <li class="active"><a href="{{ path('admin_branch', {'page': page, 'lang' : lang }) }}">{{ page }}</a></li>
@@ -91,8 +91,8 @@
         <li><a href="{{ path('admin_branch', {'page': page, 'lang' : lang } )}}">{{ page }}</a></li>
       {% endif %}
     {% endfor %}
-        <li><a href="{{ path('admin_branch', {'page': nextPage, 'lang' : lang }) }}">Next</a></li>
-        <li><a href="{{ path('admin_branch', {'page': lastPage, 'lang' : lang }) }}">»</a></li>
+        <li><a href="{{ path('admin_branch', {'page': nextPage, 'lang' : lang }) }}"><i class="icon-forward"></i></a></li>
+        <li><a href="{{ path('admin_branch', {'page': lastPage, 'lang' : lang }) }}"><i class="icon-fast-forward"></i></a></li>
     </ul>
 </div>
 {% endif %}

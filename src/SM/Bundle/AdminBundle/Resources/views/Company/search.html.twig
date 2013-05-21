@@ -17,20 +17,20 @@
     } );
 </script>
 
-<h1>Results of search Company</h1>
+<h2>{{ 'Results Of Search Company'|trans({}, "SMAdminBundle") }}</h2>
 
 <div class="nav">
-    <a href="{{ path('admin_company') }}" class="btn btn-primary">Back To Company</a>
+    <a href="{{ path('admin_company') }}" class="btn btn-primary">{{ 'Back to the list'|trans({}, "SMAdminBundle") }}</a>
     <div style="clear: both;"></div>
 </div>
 <div style="clear: both; margin-bottom: 10px;"></div>
 <table class="table table-bordered table-striped" id="sortTable">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Name'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Status'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Action'|trans({}, "SMAdminBundle") }}</th>
         </tr>
     </thead>
     <tbody>
@@ -52,10 +52,10 @@
                 {% endif%}
             </td>
             <td>
-                <a href="{{ path('admin_company_edit', { 'id': entity.company.id }) }}">edit</a>
+                <a href="{{ path('admin_company_edit', { 'id': entity.company.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
                 {% if entity.language is not null %}
                     &nbsp; | &nbsp;
-                    <a href="#" rel="{{ path('admin_company_delete', { 'id': entity.id }) }}" class="delete">Delete</a>
+                    <a href="#" rel="{{ path('admin_company_delete', { 'id': entity.id }) }}" class="delete"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>
                 {% endif %}
 
             </td>

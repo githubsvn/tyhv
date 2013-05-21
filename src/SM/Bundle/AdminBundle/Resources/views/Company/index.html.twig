@@ -17,10 +17,10 @@
     } );
 </script>
 
-<h1>Company list</h1>
+<h2>{{ 'Company List'|trans({}, "SMAdminBundle") }}</h2>
 
 <div class="nav" style="margin-bottom: 10px;">
-    <a href="{{ path('admin_company_new') }}" class="btn btn-primary">Create a new entry</a>
+    <a href="{{ path('admin_company_new') }}" class="btn btn-primary">{{ 'Create a new entry'|trans({}, "SMAdminBundle") }}</a>
     <div class="btn-group pull-right">
         <a href="javascript:void(0)" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
             {% for opt in langList %}
@@ -38,9 +38,9 @@
     <div style="clear: both; margin-top: 10px;"></div>
     <div class="btn-group pull-center">
         <form class="well form-search" method="POST" action="{{ path('admin_company_search') }}" style="margin-bottom: 10px;">
-            Name : <input type="text" name="name" >
-            Type : <select name="type">
-                        <option value="">-- Select Company Type -- </option>
+            {{ 'Name'|trans({}, "SMAdminBundle") }} : <input type="text" name="name" >
+            {{ 'Company Type'|trans({}, "SMAdminBundle") }} : <select name="type">
+                        <option value="">-- {{ 'Select'|trans({}, "SMAdminBundle") }} -- </option>
                         {% for comType in optComTypes %}
                             {% if comType.getCurrentLanguage is not null %}
                                 <option value="{{comType.id}}">
@@ -50,7 +50,7 @@
                         {% endfor %}
                     </select>
                     <input type="hidden" name="language" value="{{lang}}"/>
-            <button type="submit" class="btn" style="width: 100px;">Search</button>
+            <button type="submit" class="btn" style="width: 100px;">{{ 'Search'|trans({}, "SMAdminBundle") }}</button>
         </form>
     </div>
 </div>
@@ -58,11 +58,11 @@
 <table class="table table-bordered table-striped" id="sortTable">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Created at</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Name'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Created Time'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Status'|trans({}, "SMAdminBundle") }}</th>
+            <th>{{ 'Action'|trans({}, "SMAdminBundle") }}</th>
         </tr>
     </thead>
     <tbody>
@@ -85,10 +85,10 @@
                 {% endif%}
             </td>
             <td>
-                <a href="{{ path('admin_company_edit', { 'id': entity.id }) }}">edit</a>
+                <a href="{{ path('admin_company_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
                 {% if entity.getCurrentLanguage is not null %}
                     &nbsp; | &nbsp;
-                    <a href="#" rel="{{ path('admin_company_delete', { 'id': entity.getCurrentLanguage.getId }) }}" class="delete">Delete</a>
+                    <a href="#" rel="{{ path('admin_company_delete', { 'id': entity.getCurrentLanguage.getId }) }}" class="delete"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>
                 {% endif %}
 
             </td>
@@ -101,8 +101,8 @@
 {% if lastPage > 1 %}
 <div class="pagination pull-right">
     <ul>
-        <li><a href="{{ path('admin_company', { 'page': 1, 'lang' : lang }) }}">«</a></li>
-        <li><a href="{{ path('admin_company', { 'page': previousPage, 'lang' : lang }) }}">Previous</a></li>
+        <li><a href="{{ path('admin_company', { 'page': 1, 'lang' : lang }) }}"><i class="icon-fast-backward"></i></a></li>
+        <li><a href="{{ path('admin_company', { 'page': previousPage, 'lang' : lang }) }}"><i class="icon-backward"></i></a></li>
     {% for page in 1..lastPage %}
       {% if page == currentPage %}
         <li class="active"><a href="{{ path('admin_company', {'page': page, 'lang' : lang }) }}">{{ page }}</a></li>
@@ -110,8 +110,8 @@
         <li><a href="{{ path('admin_company', {'page': page, 'lang' : lang } )}}">{{ page }}</a></li>
       {% endif %}
     {% endfor %}
-        <li><a href="{{ path('admin_company', {'page': nextPage, 'lang' : lang }) }}">Next</a></li>
-        <li><a href="{{ path('admin_company', {'page': lastPage, 'lang' : lang }) }}">»</a></li>
+        <li><a href="{{ path('admin_company', {'page': nextPage, 'lang' : lang }) }}"><i class="icon-forward"></i></a></li>
+        <li><a href="{{ path('admin_company', {'page': lastPage, 'lang' : lang }) }}"><i class="icon-fast-forward"></i></a></li>
     </ul>
 </div>
 {% endif %}

@@ -28,7 +28,9 @@ class __TwigTemplate_a316ad26c277c7dd8d8564d584d33a9d extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "<h1>Company type creation</h1>
+        echo "<h1>";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Company Type Edit", array(), "SMAdminBundle"), "html", null, true);
+        echo "</h1>
 
 <form action=\"";
         // line 5
@@ -40,7 +42,7 @@ class __TwigTemplate_a316ad26c277c7dd8d8564d584d33a9d extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 8
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "status"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Status", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -152,7 +154,7 @@ class __TwigTemplate_a316ad26c277c7dd8d8564d584d33a9d extends Twig_Template
                 echo "                                <div class=\"control-group\">
                                     <label class=\"control-label\" for=\"input01\">";
                 // line 46
-                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'label');
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Name", array(), "SMAdminBundle"), "html", null, true);
                 echo "</label>
                                     <div class=\"controls\">
                                         ";
@@ -200,11 +202,16 @@ class __TwigTemplate_a316ad26c277c7dd8d8564d584d33a9d extends Twig_Template
         // line 65
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "_token"), 'row');
         echo "
-            <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>
+            <button type=\"submit\" class=\"btn btn-primary\">";
+        // line 66
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Save", array(), "SMAdminBundle"), "html", null, true);
+        echo "</button>
             <a href=\"";
         // line 67
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_companytype", array("page" => 1)), "html", null, true);
-        echo "\" class=\"btn\">Back To List</a>
+        echo "\" class=\"btn\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Back to the list", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a>
         </div>
 
     </fieldset>
@@ -225,6 +232,6 @@ class __TwigTemplate_a316ad26c277c7dd8d8564d584d33a9d extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  206 => 67,  201 => 65,  195 => 61,  189 => 60,  187 => 59,  183 => 57,  178 => 54,  172 => 52,  166 => 50,  164 => 49,  160 => 48,  155 => 46,  152 => 45,  150 => 44,  147 => 43,  141 => 41,  135 => 39,  132 => 38,  126 => 37,  123 => 36,  120 => 35,  117 => 34,  112 => 33,  109 => 32,  104 => 31,  102 => 30,  98 => 28,  92 => 27,  89 => 26,  81 => 24,  73 => 22,  70 => 21,  65 => 20,  63 => 19,  52 => 11,  48 => 10,  43 => 8,  35 => 5,  31 => 3,  28 => 2,);
+        return array (  211 => 67,  207 => 66,  203 => 65,  197 => 61,  191 => 60,  189 => 59,  185 => 57,  180 => 54,  174 => 52,  168 => 50,  166 => 49,  162 => 48,  157 => 46,  154 => 45,  152 => 44,  149 => 43,  143 => 41,  137 => 39,  134 => 38,  128 => 37,  125 => 36,  122 => 35,  119 => 34,  114 => 33,  111 => 32,  106 => 31,  104 => 30,  100 => 28,  94 => 27,  91 => 26,  83 => 24,  75 => 22,  72 => 21,  67 => 20,  65 => 19,  54 => 11,  50 => 10,  45 => 8,  37 => 5,  31 => 3,  28 => 2,);
     }
 }

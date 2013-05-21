@@ -267,7 +267,7 @@ class __TwigTemplate_298b600a0a230cbefedbc3ab022b9922 extends Twig_Template
     public function block_logo($context, array $blocks = array())
     {
         // line 52
-        echo "                    <a class=\"brand\" href=\"";
+        echo "                    <a style=\"padding-top: 12px;\" class=\"brand\" href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sm_admin_home"), "html", null, true);
         echo "\">";
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Welcome", array(), "SMAdminBundle"), "html", null, true);

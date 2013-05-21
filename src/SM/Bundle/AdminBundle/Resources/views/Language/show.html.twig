@@ -1,6 +1,6 @@
 {% extends 'SMAdminBundle::admin.html.twig' %}
 {% block body %}
-<h1>Language</h1>
+<h2>{{ 'Language show'|trans({}, "SMAdminBundle") }}</h2>
 
 <table class="record_properties">
     <tbody>
@@ -9,15 +9,15 @@
             <td>{{ entity.id }}</td>
         </tr>
         <tr>
-            <td>Name</td>
+            <td>{{ 'Name'|trans({}, "SMAdminBundle") }}</td>
             <td>{{ entity.name }}</td>
         </tr>
         <tr>
-            <td>Lang key</td>
+            <td>{{ 'Lang key'|trans({}, "SMAdminBundle") }}</td>
             <td>{{ entity.langkey }}</td>
         </tr>
         <tr>
-            <td>Is Default</td>
+            <td>{{ 'Is default'|trans({}, "SMAdminBundle") }}</td>
             <td>
                 {% if entity.isdefault == 1 %}
                     <input type="checkbox" checked="checked" disabled="true"/>
@@ -28,15 +28,9 @@
         </tr>
         <tr>
             <td colspan="2" width="100%">
-                <a href="{{ path('admin_language', {'page' : 1}) }}" class="btn">Back To List</a>
+                <a href="{{ path('admin_language', {'page' : 1}) }}" class="btn">{{ 'Back to the list'|trans({}, "SMAdminBundle") }}</a>
                 &nbsp;
-                <a href="{{ path('admin_language_edit', { 'id': entity.id }) }}" class="btn">Edit</a>
-                {#
-                <form action="{{ path('admin_language_delete', { 'id': entity.id }) }}" method="post">
-                    {{ form_widget(delete_form) }}
-                        <button type="submit" class="btn">Delete</button>
-                </form>
-                #}
+                <a href="{{ path('admin_language_edit', { 'id': entity.id }) }}" class="btn">{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
             </td>
         </tr>
     </tbody>

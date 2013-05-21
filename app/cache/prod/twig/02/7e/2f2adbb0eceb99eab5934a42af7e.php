@@ -45,23 +45,43 @@ class __TwigTemplate_027e2f2adbb0eceb99eab5934a42af7e extends Twig_Template
     } );
 </script>
 
-<h1>Media list</h1>
+<h2>";
+        // line 20
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Media List", array(), "SMAdminBundle"), "html", null, true);
+        echo "</h2>
 
 <div class=\"btn-group nav\">
     <a href=\"";
         // line 23
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media_new"), "html", null, true);
-        echo "\" class=\"btn btn-primary\">Create a new entry</a>
+        echo "\" class=\"btn btn-primary\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Create a new entry", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a>
 </div>
 
 <table class=\"table table-bordered table-striped\" id=\"sortTable\">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Image</th>
-            <th>Created at</th>
-            <th>Active</th>
-            <th>Actions</th>
+            <th>";
+        // line 29
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Id", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 30
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Image", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 31
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Created Time", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 32
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Active", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 33
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Action", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
         </tr>
     </thead>
     <tbody>
@@ -108,17 +128,23 @@ class __TwigTemplate_027e2f2adbb0eceb99eab5934a42af7e extends Twig_Template
                 <a href=\"";
             // line 52
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media_show", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
-            echo "\">show</a>
+            echo "\"><i class=\"icon-search\"></i>";
+            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Show", array(), "SMAdminBundle"), "html", null, true);
+            echo "</a>
                 &nbsp; | &nbsp;
                 <a href=\"";
             // line 54
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media_edit", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
-            echo "\">edit</a>
+            echo "\"><i class=\"icon-pencil\"></i>";
+            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Edit", array(), "SMAdminBundle"), "html", null, true);
+            echo "</a>
                 &nbsp; | &nbsp;
                 <a class=\"delete\" rel=\"";
             // line 56
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media_delete", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
-            echo "\">Delete</a>
+            echo "\"><i class=\"icon-remove\"></i>";
+            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Delete", array(), "SMAdminBundle"), "html", null, true);
+            echo "</a>
             </td>
         </tr>
     ";
@@ -139,11 +165,11 @@ class __TwigTemplate_027e2f2adbb0eceb99eab5934a42af7e extends Twig_Template
         <li><a href=\"";
             // line 67
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media", array("page" => 1)), "html", null, true);
-            echo "\">«</a></li>
+            echo "\"><i class=\"icon-fast-backward\"></i></a></li>
         <li><a href=\"";
             // line 68
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media", array("page" => $this->getContext($context, "previousPage"))), "html", null, true);
-            echo "\">Previous</a></li>
+            echo "\"><i class=\"icon-backward\"></i></a></li>
     ";
             // line 69
             $context['_parent'] = (array) $context;
@@ -177,11 +203,11 @@ class __TwigTemplate_027e2f2adbb0eceb99eab5934a42af7e extends Twig_Template
             // line 76
             echo "        <li><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media", array("page" => $this->getContext($context, "nextPage"))), "html", null, true);
-            echo "\">Next</a></li>
+            echo "\"><i class=\"icon-forward\"></i></a></li>
         <li><a href=\"";
             // line 77
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media", array("page" => $this->getContext($context, "lastPage"))), "html", null, true);
-            echo "\">»</a></li>
+            echo "\"><i class=\"icon-fast-forward\"></i></a></li>
     </ul>
 </div>
 ";
@@ -203,6 +229,6 @@ class __TwigTemplate_027e2f2adbb0eceb99eab5934a42af7e extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  190 => 81,  183 => 77,  178 => 76,  172 => 75,  164 => 73,  156 => 71,  153 => 70,  149 => 69,  145 => 68,  141 => 67,  137 => 65,  135 => 64,  130 => 60,  120 => 56,  115 => 54,  110 => 52,  106 => 50,  102 => 48,  98 => 46,  96 => 45,  89 => 43,  84 => 41,  77 => 39,  74 => 38,  70 => 37,  53 => 23,  31 => 3,  28 => 2,);
+        return array (  216 => 81,  209 => 77,  204 => 76,  198 => 75,  190 => 73,  182 => 71,  179 => 70,  175 => 69,  171 => 68,  167 => 67,  163 => 65,  161 => 64,  156 => 60,  144 => 56,  137 => 54,  130 => 52,  126 => 50,  122 => 48,  118 => 46,  116 => 45,  109 => 43,  104 => 41,  97 => 39,  94 => 38,  90 => 37,  83 => 33,  79 => 32,  75 => 31,  71 => 30,  67 => 29,  56 => 23,  50 => 20,  31 => 3,  28 => 2,);
     }
 }
