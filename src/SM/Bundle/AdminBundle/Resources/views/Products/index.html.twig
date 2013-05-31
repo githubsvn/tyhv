@@ -15,6 +15,15 @@
             ],
         });
     } );
+
+    $(document).ready(function() {
+        $("#btnReset").click(function() {
+            $("#name").val('');
+            $("#branch").val('');
+            $("#productgroup").val('');
+        });
+    } );
+
 </script>
 
 <h2>{{ 'Product List'|trans({}, "SMAdminBundle") }}</h2>
@@ -37,23 +46,23 @@
     </div>
     <div style="clear: both; margin-top: 10px;"></div>
     <div class="btn-group pull-center">
-        <form class="well form-search" method="POST" action="{{ path('admin_products_search') }}" style="margin-bottom: 10px;">
-            {{ 'Name'|trans({}, "SMAdminBundle") }} : <input type="text" name="name" >
-            {{ 'Branch'|trans({}, "SMAdminBundle") }} : <select name="branch">
+        <form class="well form-search" method="POST" action="{{ path('admin_products') }}" style="margin-bottom: 10px;">
+            {{ 'Name'|trans({}, "SMAdminBundle") }} : <input type="text" name="name" id="name" value="{{name}}">
+            {{ 'Branch'|trans({}, "SMAdminBundle") }} : <select name="branch" id="branch">
                         <option value="">-- {{ 'Select'|trans({}, "SMAdminBundle") }} -- </option>
                         {% for obj in optBranchs %}
                             {% if obj.getCurrentLanguage is not null %}
-                                <option value="{{obj.id}}">
+                                <option value="{{obj.id}}" {% if obj.id == branchId %} selected="selected"{% endif %}>
                                     {{ obj.getCurrentLanguage.name | truncate(50) }}
                                 </option>
                             {% endif %}
                         {% endfor %}
                     </select>
-            {{ 'Product Group'|trans({}, "SMAdminBundle") }} : <select name="productgroup">
+            {{ 'Product Group'|trans({}, "SMAdminBundle") }} : <select name="productgroup" id="productgroup">
                         <option value="">-- {{ 'Select'|trans({}, "SMAdminBundle") }} -- </option>
                         {% for obj in optProductGroups %}
                             {% if obj.getCurrentLanguage is not null %}
-                                <option value="{{obj.id}}">
+                                <option value="{{obj.id}}" {% if obj.id == productgroupId %} selected="selected"{% endif %}>
                                     {{ obj.getCurrentLanguage.name | truncate(50) }}
                                 </option>
                             {% endif %}
@@ -61,6 +70,7 @@
                     </select>
             <input type="hidden" name="language" value="{{lang}}"/>
             <button type="submit" class="btn" style="width: 100px;">{{ 'Search'|trans({}, "SMAdminBundle") }}</button>
+            <button type="submit" class="btn" style="width: 100px;" id="btnReset">{{ 'Reset'|trans({}, "SMAdminBundle") }}</button>
         </form>
     </div>
 </div>
@@ -78,27 +88,27 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td>{{ entity.id }}</td>
+            <td>{{ entity.product.id }}</td>
             <td>
-                {% if entity.getCurrentLanguage is not null %}
-                    {{ entity.getCurrentLanguage.name | truncate(50) }}
+                {% if entity.name is not null %}
+                    {{ entity.name | truncate(50) }}
                 {% else %}
                     <span class="label label-warning">{{ 'Not set value in this language' | trans({}, 'SMAdminBundle') }}</span>
                 {% endif %}
             </td>
-            <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.product.createdAt %}{{ entity.product.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>
-                {% if entity.status == 1 %}
+                {% if entity.product.status == 1 %}
                     <input type="checkbox" checked="checked" class="defaultCheckBox" disabled="true"/>
                 {% else %}
                     <input type="checkbox" class="defaultCheckBox" disabled="true"/>
                 {% endif%}
             </td>
             <td>
-                <a href="{{ path('admin_products_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
-                {% if entity.getCurrentLanguage is not null %}
+                <a href="{{ path('admin_products_edit', { 'id': entity.product.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
+                {% if entity.language is not null %}
                     &nbsp; | &nbsp;
-                    <a href="#" rel="{{ path('admin_products_delete', { 'id': entity.getCurrentLanguage.getId }) }}" class="delete"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>
+                    <a href="#" rel="{{ path('admin_products_delete', { 'id': entity.id }) }}" class="delete"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>
                 {% endif %}
 
             </td>

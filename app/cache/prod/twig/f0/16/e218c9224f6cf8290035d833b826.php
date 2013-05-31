@@ -43,16 +43,25 @@ class __TwigTemplate_f016e218c9224f6cf8290035d833b826 extends Twig_Template
             ],
         });
     } );
+
+    \$(document).ready(function() {
+        \$(\"#btnReset\").click(function() {
+            \$(\"#name\").val('');
+            \$(\"#branch\").val('');
+            \$(\"#productgroup\").val('');
+        });
+    } );
+
 </script>
 
 <h2>";
-        // line 20
+        // line 29
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Product List", array(), "SMAdminBundle"), "html", null, true);
         echo "</h2>
 
 <div class=\"nav\">
     <a href=\"";
-        // line 23
+        // line 32
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products_new"), "html", null, true);
         echo "\" class=\"btn btn-primary\">";
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Create a new entry", array(), "SMAdminBundle"), "html", null, true);
@@ -60,34 +69,34 @@ class __TwigTemplate_f016e218c9224f6cf8290035d833b826 extends Twig_Template
     <div class=\"btn-group pull-right\">
         <a href=\"javascript:void(0)\" data-toggle=\"dropdown\" class=\"btn btn-primary dropdown-toggle\">
             ";
-        // line 26
+        // line 35
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "langList"));
         foreach ($context['_seq'] as $context["_key"] => $context["opt"]) {
-            // line 27
+            // line 36
             echo "                ";
             if (($this->getContext($context, "lang") == $this->getAttribute($this->getContext($context, "opt"), "id"))) {
-                // line 28
+                // line 37
                 echo "                ";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "opt"), "name"), "html", null, true);
                 echo " <span class=\"caret\"></span>
                 ";
             }
-            // line 30
+            // line 39
             echo "            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['opt'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 31
+        // line 40
         echo "        </a>
         <ul class=\"dropdown-menu\">
             ";
-        // line 33
+        // line 42
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "langList"));
         foreach ($context['_seq'] as $context["_key"] => $context["opt"]) {
-            // line 34
+            // line 43
             echo "                <li><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products", array("page" => 1, "lang" => $this->getAttribute($this->getContext($context, "opt"), "id"))), "html", null, true);
             echo "\">";
@@ -98,96 +107,110 @@ class __TwigTemplate_f016e218c9224f6cf8290035d833b826 extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['opt'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 36
+        // line 45
         echo "        </ul>
     </div>
     <div style=\"clear: both; margin-top: 10px;\"></div>
     <div class=\"btn-group pull-center\">
         <form class=\"well form-search\" method=\"POST\" action=\"";
-        // line 40
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products_search"), "html", null, true);
+        // line 49
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products"), "html", null, true);
         echo "\" style=\"margin-bottom: 10px;\">
             ";
-        // line 41
+        // line 50
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Name", array(), "SMAdminBundle"), "html", null, true);
-        echo " : <input type=\"text\" name=\"name\" >
+        echo " : <input type=\"text\" name=\"name\" id=\"name\" value=\"";
+        echo twig_escape_filter($this->env, $this->getContext($context, "name"), "html", null, true);
+        echo "\">
             ";
-        // line 42
+        // line 51
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Branch", array(), "SMAdminBundle"), "html", null, true);
-        echo " : <select name=\"branch\">
+        echo " : <select name=\"branch\" id=\"branch\">
                         <option value=\"\">-- ";
-        // line 43
+        // line 52
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Select", array(), "SMAdminBundle"), "html", null, true);
         echo " -- </option>
                         ";
-        // line 44
+        // line 53
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "optBranchs"));
         foreach ($context['_seq'] as $context["_key"] => $context["obj"]) {
-            // line 45
+            // line 54
             echo "                            ";
             if ((!(null === $this->getAttribute($this->getContext($context, "obj"), "getCurrentLanguage")))) {
-                // line 46
+                // line 55
                 echo "                                <option value=\"";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "obj"), "id"), "html", null, true);
-                echo "\">
+                echo "\" ";
+                if (($this->getAttribute($this->getContext($context, "obj"), "id") == $this->getContext($context, "branchId"))) {
+                    echo " selected=\"selected\"";
+                }
+                echo ">
                                     ";
-                // line 47
+                // line 56
                 echo twig_escape_filter($this->env, twig_truncate_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "obj"), "getCurrentLanguage"), "name"), 50), "html", null, true);
                 echo "
                                 </option>
                             ";
             }
-            // line 50
+            // line 59
             echo "                        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['obj'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 51
+        // line 60
         echo "                    </select>
             ";
-        // line 52
+        // line 61
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Product Group", array(), "SMAdminBundle"), "html", null, true);
-        echo " : <select name=\"productgroup\">
+        echo " : <select name=\"productgroup\" id=\"productgroup\">
                         <option value=\"\">-- ";
-        // line 53
+        // line 62
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Select", array(), "SMAdminBundle"), "html", null, true);
         echo " -- </option>
                         ";
-        // line 54
+        // line 63
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "optProductGroups"));
         foreach ($context['_seq'] as $context["_key"] => $context["obj"]) {
-            // line 55
+            // line 64
             echo "                            ";
             if ((!(null === $this->getAttribute($this->getContext($context, "obj"), "getCurrentLanguage")))) {
-                // line 56
+                // line 65
                 echo "                                <option value=\"";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "obj"), "id"), "html", null, true);
-                echo "\">
+                echo "\" ";
+                if (($this->getAttribute($this->getContext($context, "obj"), "id") == $this->getContext($context, "productgroupId"))) {
+                    echo " selected=\"selected\"";
+                }
+                echo ">
                                     ";
-                // line 57
+                // line 66
                 echo twig_escape_filter($this->env, twig_truncate_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "obj"), "getCurrentLanguage"), "name"), 50), "html", null, true);
                 echo "
                                 </option>
                             ";
             }
-            // line 60
+            // line 69
             echo "                        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['obj'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 61
+        // line 70
         echo "                    </select>
             <input type=\"hidden\" name=\"language\" value=\"";
-        // line 62
+        // line 71
         echo twig_escape_filter($this->env, $this->getContext($context, "lang"), "html", null, true);
         echo "\"/>
             <button type=\"submit\" class=\"btn\" style=\"width: 100px;\">";
-        // line 63
+        // line 72
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Search", array(), "SMAdminBundle"), "html", null, true);
+        echo "</button>
+            <button type=\"submit\" class=\"btn\" style=\"width: 100px;\" id=\"btnReset\">";
+        // line 73
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Reset", array(), "SMAdminBundle"), "html", null, true);
         echo "</button>
         </form>
     </div>
@@ -197,98 +220,98 @@ class __TwigTemplate_f016e218c9224f6cf8290035d833b826 extends Twig_Template
     <thead>
         <tr>
             <th>";
-        // line 71
+        // line 81
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Id", array(), "SMAdminBundle"), "html", null, true);
         echo "</th>
             <th>";
-        // line 72
+        // line 82
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Name", array(), "SMAdminBundle"), "html", null, true);
         echo "</th>
             <th>";
-        // line 73
+        // line 83
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Created Time", array(), "SMAdminBundle"), "html", null, true);
         echo "</th>
             <th>";
-        // line 74
+        // line 84
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Status", array(), "SMAdminBundle"), "html", null, true);
         echo "</th>
             <th>";
-        // line 75
+        // line 85
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Action", array(), "SMAdminBundle"), "html", null, true);
         echo "</th>
         </tr>
     </thead>
     <tbody>
     ";
-        // line 79
+        // line 89
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "entities"));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 80
+            // line 90
             echo "        <tr>
             <td>";
-            // line 81
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "id"), "html", null, true);
+            // line 91
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "product"), "id"), "html", null, true);
             echo "</td>
             <td>
                 ";
-            // line 83
-            if ((!(null === $this->getAttribute($this->getContext($context, "entity"), "getCurrentLanguage")))) {
-                // line 84
+            // line 93
+            if ((!(null === $this->getAttribute($this->getContext($context, "entity"), "name")))) {
+                // line 94
                 echo "                    ";
-                echo twig_escape_filter($this->env, twig_truncate_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "getCurrentLanguage"), "name"), 50), "html", null, true);
+                echo twig_escape_filter($this->env, twig_truncate_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "name"), 50), "html", null, true);
                 echo "
                 ";
             } else {
-                // line 86
+                // line 96
                 echo "                    <span class=\"label label-warning\">";
                 echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Not set value in this language", array(), "SMAdminBundle"), "html", null, true);
                 echo "</span>
                 ";
             }
-            // line 88
+            // line 98
             echo "            </td>
             <td>";
-            // line 89
-            if ($this->getAttribute($this->getContext($context, "entity"), "createdAt")) {
-                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "createdAt"), "Y-m-d H:i:s"), "html", null, true);
+            // line 99
+            if ($this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "product"), "createdAt")) {
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "product"), "createdAt"), "Y-m-d H:i:s"), "html", null, true);
             }
             echo "</td>
             <td>
                 ";
-            // line 91
-            if (($this->getAttribute($this->getContext($context, "entity"), "status") == 1)) {
-                // line 92
+            // line 101
+            if (($this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "product"), "status") == 1)) {
+                // line 102
                 echo "                    <input type=\"checkbox\" checked=\"checked\" class=\"defaultCheckBox\" disabled=\"true\"/>
                 ";
             } else {
-                // line 94
+                // line 104
                 echo "                    <input type=\"checkbox\" class=\"defaultCheckBox\" disabled=\"true\"/>
                 ";
             }
-            // line 96
+            // line 106
             echo "            </td>
             <td>
                 <a href=\"";
-            // line 98
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products_edit", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
+            // line 108
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products_edit", array("id" => $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "product"), "id"))), "html", null, true);
             echo "\"><i class=\"icon-pencil\"></i>";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Edit", array(), "SMAdminBundle"), "html", null, true);
             echo "</a>
                 ";
-            // line 99
-            if ((!(null === $this->getAttribute($this->getContext($context, "entity"), "getCurrentLanguage")))) {
-                // line 100
+            // line 109
+            if ((!(null === $this->getAttribute($this->getContext($context, "entity"), "language")))) {
+                // line 110
                 echo "                    &nbsp; | &nbsp;
                     <a href=\"#\" rel=\"";
-                // line 101
-                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products_delete", array("id" => $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "getCurrentLanguage"), "getId"))), "html", null, true);
+                // line 111
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products_delete", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
                 echo "\" class=\"delete\"><i class=\"icon-remove\"></i>";
                 echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Delete", array(), "SMAdminBundle"), "html", null, true);
                 echo "</a>
                 ";
             }
-            // line 103
+            // line 113
             echo "
             </td>
         </tr>
@@ -297,33 +320,33 @@ class __TwigTemplate_f016e218c9224f6cf8290035d833b826 extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 107
+        // line 117
         echo "    </tbody>
 </table>
 
 ";
-        // line 111
+        // line 121
         if (($this->getContext($context, "lastPage") > 1)) {
-            // line 112
+            // line 122
             echo "<div class=\"pagination pull-right\">
     <ul>
         <li><a href=\"";
-            // line 114
+            // line 124
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products", array("page" => 1, "lang" => $this->getContext($context, "lang"))), "html", null, true);
             echo "\"><i class=\"icon-fast-backward\"></i></a></li>
         <li><a href=\"";
-            // line 115
+            // line 125
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products", array("page" => $this->getContext($context, "previousPage"), "lang" => $this->getContext($context, "lang"))), "html", null, true);
             echo "\"><i class=\"icon-backward\"></i></a></li>
     ";
-            // line 116
+            // line 126
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable(range(1, $this->getContext($context, "lastPage")));
             foreach ($context['_seq'] as $context["_key"] => $context["page"]) {
-                // line 117
+                // line 127
                 echo "      ";
                 if (($this->getContext($context, "page") == $this->getContext($context, "currentPage"))) {
-                    // line 118
+                    // line 128
                     echo "        <li class=\"active\"><a href=\"";
                     echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products", array("page" => $this->getContext($context, "page"), "lang" => $this->getContext($context, "lang"))), "html", null, true);
                     echo "\">";
@@ -331,7 +354,7 @@ class __TwigTemplate_f016e218c9224f6cf8290035d833b826 extends Twig_Template
                     echo "</a></li>
       ";
                 } else {
-                    // line 120
+                    // line 130
                     echo "        <li><a href=\"";
                     echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products", array("page" => $this->getContext($context, "page"), "lang" => $this->getContext($context, "lang"))), "html", null, true);
                     echo "\">";
@@ -339,25 +362,25 @@ class __TwigTemplate_f016e218c9224f6cf8290035d833b826 extends Twig_Template
                     echo "</a></li>
       ";
                 }
-                // line 122
+                // line 132
                 echo "    ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['page'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 123
+            // line 133
             echo "        <li><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products", array("page" => $this->getContext($context, "nextPage"), "lang" => $this->getContext($context, "lang"))), "html", null, true);
             echo "\"><i class=\"icon-forward\"></i></a></li>
         <li><a href=\"";
-            // line 124
+            // line 134
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products", array("page" => $this->getContext($context, "lastPage"), "lang" => $this->getContext($context, "lang"))), "html", null, true);
             echo "\"><i class=\"icon-fast-forward\"></i></a></li>
     </ul>
 </div>
 ";
         }
-        // line 128
+        // line 138
         echo "
 ";
     }
@@ -374,6 +397,6 @@ class __TwigTemplate_f016e218c9224f6cf8290035d833b826 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  361 => 128,  354 => 124,  349 => 123,  343 => 122,  335 => 120,  327 => 118,  324 => 117,  320 => 116,  316 => 115,  312 => 114,  308 => 112,  306 => 111,  301 => 107,  292 => 103,  285 => 101,  282 => 100,  280 => 99,  274 => 98,  270 => 96,  266 => 94,  262 => 92,  260 => 91,  253 => 89,  250 => 88,  244 => 86,  238 => 84,  236 => 83,  231 => 81,  228 => 80,  224 => 79,  217 => 75,  213 => 74,  209 => 73,  205 => 72,  201 => 71,  190 => 63,  186 => 62,  183 => 61,  177 => 60,  171 => 57,  166 => 56,  163 => 55,  159 => 54,  155 => 53,  151 => 52,  148 => 51,  142 => 50,  136 => 47,  131 => 46,  128 => 45,  124 => 44,  120 => 43,  116 => 42,  112 => 41,  108 => 40,  102 => 36,  91 => 34,  87 => 33,  83 => 31,  77 => 30,  71 => 28,  68 => 27,  64 => 26,  56 => 23,  50 => 20,  31 => 3,  28 => 2,);
+        return array (  384 => 138,  377 => 134,  372 => 133,  366 => 132,  358 => 130,  350 => 128,  347 => 127,  343 => 126,  339 => 125,  335 => 124,  331 => 122,  329 => 121,  324 => 117,  315 => 113,  308 => 111,  305 => 110,  303 => 109,  297 => 108,  293 => 106,  289 => 104,  285 => 102,  283 => 101,  276 => 99,  273 => 98,  267 => 96,  261 => 94,  259 => 93,  254 => 91,  251 => 90,  247 => 89,  240 => 85,  236 => 84,  232 => 83,  228 => 82,  224 => 81,  213 => 73,  209 => 72,  205 => 71,  202 => 70,  196 => 69,  190 => 66,  181 => 65,  178 => 64,  174 => 63,  170 => 62,  166 => 61,  163 => 60,  157 => 59,  151 => 56,  142 => 55,  139 => 54,  135 => 53,  131 => 52,  127 => 51,  121 => 50,  117 => 49,  111 => 45,  100 => 43,  96 => 42,  92 => 40,  86 => 39,  80 => 37,  77 => 36,  73 => 35,  65 => 32,  59 => 29,  31 => 3,  28 => 2,);
     }
 }
