@@ -75,7 +75,7 @@ class CompanyController extends Controller
                     'optComTypes' => $optComTypes
                 ));
     }
-    
+
     /**
      * Search company and show result
      */
@@ -84,8 +84,13 @@ class CompanyController extends Controller
         $lang = $this->getRequest()->request->get('language', null);
         $name = $this->getRequest()->request->get('name', '');
         $type = $this->getRequest()->request->get('type', null);
-        
+
         if (is_null($lang)) {
+            //get list language
+            $langList = $this->getDoctrine()
+                    ->getRepository("SMAdminBundle:Language")
+                    ->findAll();
+
             foreach ($langList as $langData) {
                 $isDefault = $langData->getIsDefault();
                 if ($isDefault == 1) {
@@ -98,10 +103,10 @@ class CompanyController extends Controller
                 ->getRepository("SMAdminBundle:CompanyLanguage")
                 ->findByLangAndNameAndType($lang, $name, $type);
         return $this->render('SMAdminBundle:Company:search.html.twig', array(
-            'entities' => $entities,
-        ));
+                    'entities' => $entities,
+                ));
     }
-    
+
     /**
      * Finds and displays a Company entity.
      *
@@ -299,7 +304,7 @@ class CompanyController extends Controller
                     $entity->setLogo($newName);
 
                     //Delete old logo file
-                    $oldFileLogo = $webDir . $uploadPath . '/'. $logo;
+                    $oldFileLogo = $webDir . $uploadPath . '/' . $logo;
                     if (file_exists($oldFileLogo)) {
                         @unlink($oldFileLogo);
                     }
@@ -307,7 +312,7 @@ class CompanyController extends Controller
                     //Check input delImgs if exist we need to delete logo of the company
                     if (!empty($_POST['delImgs'])) {
                         foreach ($_POST['delImgs'] as $img) {
-                            $fileLogo = $webDir . $uploadPath . '/'. $img;
+                            $fileLogo = $webDir . $uploadPath . '/' . $img;
                             if (file_exists($fileLogo)) {
                                 @unlink($fileLogo);
                                 $entity->setLogo('');
@@ -326,7 +331,7 @@ class CompanyController extends Controller
                 $referrer = $this->getRequest()->getSession()->get('referrer');
                 if (!$referrer) {
                     return $this->redirect(
-                        $this->generateUrl('admin_company')
+                                    $this->generateUrl('admin_company')
                     );
                 } else {
                     return $this->redirect($referrer);
@@ -337,13 +342,13 @@ class CompanyController extends Controller
         }
 
         return $this->render('SMAdminBundle:Company:edit.html.twig', array(
-            'entity' => $entity,
-            'form' => $form->createView(),
-            'langList' => $langList,
-            'defaultLanguage' => $defaultLanguage,
-            'arrImgs' => array($logo),
-            'imgPath' =>  '/web/'.$uploadPath
-        ));
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+                    'langList' => $langList,
+                    'defaultLanguage' => $defaultLanguage,
+                    'arrImgs' => array($logo),
+                    'imgPath' => '/web/' . $uploadPath
+                ));
     }
 
     /**
@@ -364,7 +369,7 @@ class CompanyController extends Controller
 
         if (!$referrer) {
             return $this->redirect(
-                $this->generateUrl('admin_company')
+                            $this->generateUrl('admin_company')
             );
         } else {
             return $this->redirect($referrer);

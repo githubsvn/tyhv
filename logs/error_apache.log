@@ -1,0 +1,30 @@
+[Wed May 22 09:42:56 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'SM\\Bundle\\AdminBundle\\Controller\\SimpleXMLElement' not found in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/LanguageController.php on line 19, referer: http://local.tyhv/admin
+[Wed May 22 09:42:56 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin
+[Wed May 22 09:42:56 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin
+[Wed May 22 09:42:56 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:25, referer: http://local.tyhv/admin
+[Wed May 22 09:42:56 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin
+[Wed May 22 09:42:56 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin
+[Wed May 22 09:42:56 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin
+[Wed May 22 09:42:56 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin
+[Wed May 22 09:42:56 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\LanguageController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin
+[Wed May 22 09:42:56 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Controller\\LanguageController->ReadXml() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/LanguageController.php:36, referer: http://local.tyhv/admin
+[Wed May 22 09:43:05 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'SM\\Bundle\\AdminBundle\\Controller\\SimpleXMLElement' not found in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/LanguageController.php on line 19, referer: http://local.tyhv/admin
+[Wed May 22 09:43:05 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin
+[Wed May 22 09:43:05 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin
+[Wed May 22 09:43:05 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:25, referer: http://local.tyhv/admin
+[Wed May 22 09:43:05 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin
+[Wed May 22 09:43:05 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin
+[Wed May 22 09:43:05 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin
+[Wed May 22 09:43:05 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin
+[Wed May 22 09:43:05 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\LanguageController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin
+[Wed May 22 09:43:05 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Controller\\LanguageController->ReadXml() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/LanguageController.php:36, referer: http://local.tyhv/admin
+[Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'SM\\Bundle\\AdminBundle\\Controller\\SimpleXMLElement' not found in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/LanguageController.php on line 19, referer: http://local.tyhv/admin
+[Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin
+[Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin
+[Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:25, referer: http://local.tyhv/admin
+[Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin
+[Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin
+[Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin
+[Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin
+[Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\LanguageController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin
+[Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Controller\\LanguageController->ReadXml() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/LanguageController.php:36, referer: http://local.tyhv/admin

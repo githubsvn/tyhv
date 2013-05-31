@@ -4,10 +4,8 @@ namespace SM\Bundle\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use SM\Bundle\AdminBundle\Entity\Language;
 use SM\Bundle\AdminBundle\Form\LanguageType;
-
 
 /**
  * Language controller.
@@ -25,9 +23,8 @@ class LanguageController extends Controller
      */
     public function indexAction($page)
     {
-
         $rep = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:Language");
+                ->getRepository("SMAdminBundle:Language");
 
         $total = $rep->getTotal();
         $perPage = $this->container->getParameter('per_item_page');
@@ -39,13 +36,13 @@ class LanguageController extends Controller
         $entities = $rep->getList($perPage, ($page - 1) * $perPage);
 
         return $this->render('SMAdminBundle:Language:index.html.twig', array(
-            'entities' => $entities,
-            'lastPage' => $lastPage,
-            'previousPage' => $previousPage,
-            'currentPage' => $page,
-            'nextPage' => $nextPage,
-            'total' => $total
-        ));
+                    'entities' => $entities,
+                    'lastPage' => $lastPage,
+                    'previousPage' => $previousPage,
+                    'currentPage' => $page,
+                    'nextPage' => $nextPage,
+                    'total' => $total
+                ));
     }
 
     /**
@@ -70,8 +67,8 @@ class LanguageController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('SMAdminBundle:Language:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),));
     }
 
     /**
@@ -82,12 +79,12 @@ class LanguageController extends Controller
     public function newAction()
     {
         $entity = new Language();
-        $form   = $this->createForm(new LanguageType(), $entity);
+        $form = $this->createForm(new LanguageType(), $entity);
 
         return $this->render('SMAdminBundle:Language:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+                ));
     }
 
     /**
@@ -100,9 +97,9 @@ class LanguageController extends Controller
     public function createAction(Request $request)
     {
         $rep = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:Language");
+                ->getRepository("SMAdminBundle:Language");
 
-        $entity  = new Language();
+        $entity = new Language();
         $form = $this->createForm(new LanguageType(), $entity);
         $form->bind($request);
 
@@ -118,14 +115,14 @@ class LanguageController extends Controller
             }
 
             return $this->redirect(
-                    $this->generateUrl('admin_language_show', array('id' => $entity->getId())
-            ));
+                            $this->generateUrl('admin_language_show', array('id' => $entity->getId())
+                            ));
         }
 
         return $this->render('SMAdminBundle:Language:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+                ));
     }
 
     /**
@@ -149,10 +146,10 @@ class LanguageController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('SMAdminBundle:Language:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
+                ));
     }
 
     /**
@@ -169,7 +166,7 @@ class LanguageController extends Controller
     public function updateAction(Request $request, $id)
     {
         $rep = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:Language");
+                ->getRepository("SMAdminBundle:Language");
 
         $entity = $rep->find($id);
 
@@ -191,15 +188,15 @@ class LanguageController extends Controller
             }
 
             return $this->redirect(
-                    $this->generateUrl('admin_language_edit', array('id' => $id)
-            ));
+                            $this->generateUrl('admin_language_edit', array('id' => $id)
+                            ));
         }
 
         return $this->render('SMAdminBundle:Language:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
+                ));
     }
 
     /**
@@ -214,12 +211,12 @@ class LanguageController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $rep = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:Language");
+                ->getRepository("SMAdminBundle:Language");
 
         $rst = $rep->deleteByIds(array($id));
 
         return $this->redirect(
-            $this->generateUrl('admin_language')
+                        $this->generateUrl('admin_language')
         );
     }
 
@@ -233,8 +230,8 @@ class LanguageController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm();
+                        ->add('id', 'hidden')
+                        ->getForm();
     }
 
     /**
@@ -249,11 +246,12 @@ class LanguageController extends Controller
     public function setDefaultAction(Request $request, $id)
     {
         $rep = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:Language");
+                ->getRepository("SMAdminBundle:Language");
         $rst = $rep->setDefaultById($id);
 
         return $this->redirect(
-            $this->generateUrl('admin_language')
+                        $this->generateUrl('admin_language')
         );
     }
+
 }
