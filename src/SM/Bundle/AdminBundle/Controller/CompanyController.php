@@ -16,12 +16,17 @@ use SM\Bundle\AdminBundle\Utilities;
 class CompanyController extends Controller
 {
 
-    /**
-     * Lists all Company entities.
-     *
-     */
     public function indexAction($page, $lang)
     {
+        if ($this->getRequest()->isMethod('POST')) {
+            $_SESSION['lang'] = $this->getRequest()->request->get('language', '');
+            $_SESSION['name'] = $this->getRequest()->request->get('name', '');
+            $_SESSION['type'] = $this->getRequest()->request->get('type', '');
+        }
+        $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : $lang;
+        $name = isset($_SESSION['name']) ? $_SESSION['name'] : '';
+        $type = isset($_SESSION['type']) ? $_SESSION['type'] : '';
+
         //get list language
         $langList = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language")
@@ -41,28 +46,29 @@ class CompanyController extends Controller
                 ->getRepository("SMAdminBundle:Language")
                 ->find($lang);
 
+        //Get total of the company language and company
         $total = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:Company")
-                ->getTotal();
+                ->getRepository("SMAdminBundle:CompanyLanguage")
+                ->getTotalByLangAndNameAndType($lang, $name, $type);
 
+        //calculate for limit and offset
         $perPage = $this->container->getParameter('per_item_page');
         $lastPage = ceil($total / $perPage);
         $previousPage = $page > 1 ? $page - 1 : 1;
         $nextPage = $page < $lastPage ? $page + 1 : $lastPage;
 
         $entities = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:Company")
-                ->getList($perPage, ($page - 1) * $perPage);
-        foreach ($entities as $theCompanytype) {
-            $theCompanytype->setLanguage($currentLanguage);
-        }
+                ->getRepository("SMAdminBundle:CompanyLanguage")
+                ->findByLangAndNameAndType($lang, $name, $type, $perPage, ($page - 1) * $perPage);
 
+        //Set data for company type on form search
         $repComType = $this->getDoctrine()->getRepository('SMAdminBundle:CompanyType');
         $optComTypes = $repComType->getList();
         foreach ($optComTypes as $oComType) {
             $oComType->setLanguage($currentLanguage);
         }
 
+        //Assign to view
         return $this->render('SMAdminBundle:Company:index.html.twig', array(
                     'entities' => $entities,
                     'lastPage' => $lastPage,
@@ -71,39 +77,10 @@ class CompanyController extends Controller
                     'nextPage' => $nextPage,
                     'total' => $total,
                     'lang' => intval($lang),
+                    'name' => $name,
+                    'type' => $type,
                     'langList' => $langList,
                     'optComTypes' => $optComTypes
-                ));
-    }
-
-    /**
-     * Search company and show result
-     */
-    public function searchAction()
-    {
-        $lang = $this->getRequest()->request->get('language', null);
-        $name = $this->getRequest()->request->get('name', '');
-        $type = $this->getRequest()->request->get('type', null);
-
-        if (is_null($lang)) {
-            //get list language
-            $langList = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:Language")
-                    ->findAll();
-
-            foreach ($langList as $langData) {
-                $isDefault = $langData->getIsDefault();
-                if ($isDefault == 1) {
-                    $lang = $langData->getId();
-                    break;
-                }
-            }
-        }
-        $entities = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:CompanyLanguage")
-                ->findByLangAndNameAndType($lang, $name, $type);
-        return $this->render('SMAdminBundle:Company:search.html.twig', array(
-                    'entities' => $entities,
                 ));
     }
 

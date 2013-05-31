@@ -28,3 +28,13 @@
 [Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin
 [Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\LanguageController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin
 [Wed May 22 09:43:17 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Controller\\LanguageController->ReadXml() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/LanguageController.php:36, referer: http://local.tyhv/admin
+[Fri May 31 16:06:16 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to a member function count() on a non-object in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/CompanyLanguageRepository.php on line 157
+[Fri May 31 16:06:16 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Fri May 31 16:06:16 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Fri May 31 16:06:16 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:25
+[Fri May 31 16:06:16 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Fri May 31 16:06:16 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Fri May 31 16:06:16 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Fri May 31 16:06:16 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426
+[Fri May 31 16:06:16 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\CompanyController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0
+[Fri May 31 16:06:16 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\CompanyLanguageRepository->getTotalByLangAndNameAndType() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/CompanyController.php:53

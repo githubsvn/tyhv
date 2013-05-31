@@ -366,19 +366,14 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         if (0 === strpos($pathinfo, '/admin/company')) {
             // admin_company
             if (preg_match('#^/admin/company(?:/(?P<page>\\d+)(?:/(?P<lang>\\d+))?)?$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CompanyController::indexAction',  'page' => '1',  'lang' => NULL,)), array('_route' => 'admin_company'));
-            }
-
-            // admin_company_search
-            if ($pathinfo === '/admin/company/search') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_admin_company_search;
+                if (!in_array($this->context->getMethod(), array('POST', 'GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('POST', 'GET', 'HEAD'));
+                    goto not_admin_company;
                 }
 
-                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CompanyController::searchAction',  '_route' => 'admin_company_search',);
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CompanyController::indexAction',  'page' => '1',  'lang' => NULL,)), array('_route' => 'admin_company'));
             }
-            not_admin_company_search:
+            not_admin_company:
 
             // admin_company_show
             if (preg_match('#^/admin/company/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {

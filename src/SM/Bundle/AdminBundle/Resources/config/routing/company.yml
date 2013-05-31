@@ -4,12 +4,8 @@ admin_company:
     requirements:
         page:  \d+
         lang:  \d+
+        _method: post|get
 
-admin_company_search:
-    pattern:  /search
-    defaults: { _controller: "SMAdminBundle:Company:search"}
-    requirements: { _method: post}
-    
 admin_company_show:
     pattern:  /{id}/show
     defaults: { _controller: "SMAdminBundle:Company:show" }
