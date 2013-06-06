@@ -407,7 +407,6 @@ class TinyImageManager {
 
 		fwrite($dbfilehandle, serialize($files));
 		fclose($dbfilehandle);
-
 		return $files;
 	}
 
@@ -657,7 +656,6 @@ class TinyImageManager {
 		}
 		$ret = '';
 		foreach ($dir as $v) {
-
 			$thumb = $this->GetThumb($v['general']['path'],$v['general']['md5'],$v['general']['filename'],2,100,100);
 
 			if($v['general']['width'] > WIDTH_TO_LINK || $v['general']['height'] > HEIGHT_TO_LINK) {
@@ -677,7 +675,6 @@ class TinyImageManager {
 			$img_params = 'width="100" height="100"';
 			$div_params = '';
 			if ($type == 'files') { $img_params = ''; $div_params = 'style="width: 100px; height: 80px; padding-top: 16px;"'; }
-                        
 			$ret .= '
    <table class="imageBlock0" cellpadding="0" cellspacing="0" filename="'.$v['general']['filename'].'" fname="'.$v['general']['name'].'" type="'.$type.'" ext="'.strtoupper($v['general']['ext']).'" path="'.$v['general']['path'].'" linkto="'.$v['general']['link'].'" fsize="'.$v['general']['size'].'" fsizetext="'.$this->bytes_to_str($v['general']['size']).'" date="'.date('d.m.Y H:i',$v['general']['date']).'" fwidth="'.$v['general']['width'].'" fheight="'.$v['general']['height'].'" md5="'.$v['general']['md5'].'" '.$middle_thumb_attr.'><tr><td valign="bottom" align="center">
     <div class="imageBlock1">

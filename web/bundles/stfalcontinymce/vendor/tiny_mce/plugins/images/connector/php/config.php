@@ -1,13 +1,13 @@
 <?php
 
 //Site root dir
-define('DIR_ROOT',		$_SERVER['DOCUMENT_ROOT'] . '');
+define('DIR_ROOT',		$_SERVER['DOCUMENT_ROOT'] . '/web');
 //Images dir (root relative)
-define('DIR_IMAGES',	'/web/uploads/');
+define('DIR_IMAGES',	'/uploads/');
 //Files dir (root relative)
-define('DIR_FILES',		'/uploads/');
+define('DIR_FILES',		'/web/uploads/');
 
-define('IMG_URL',		'/web/uploads/');
+define('IMG_URL',		'/uploads/');
 
 
 //Width and height of resized image

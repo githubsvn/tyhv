@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 /**
  * Image_Toolbox.class.php -- PHP image manipulation class
  *
@@ -185,6 +185,9 @@ class Image_Toolbox {
 			}
 		}
 		if ($gd_info['JPG Support']) {
+			$this->_types[2]['supported'] = 2;
+		}
+                if ($gd_info['JPEG Support']) {
 			$this->_types[2]['supported'] = 2;
 		}
 		if ($gd_info['PNG Support']) {

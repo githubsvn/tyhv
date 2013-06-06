@@ -404,6 +404,7 @@ $(function(){
 	});
 
 	$('.imageBlock0').live('dblclick', function(){
+            
 		var e = $(this);
 
 		if(e.attr('type') == 'files')
