@@ -56,7 +56,7 @@ stfalcon_tinymce:
     include_jquery: true
     tinymce_jquery: true
     textarea_class: "tinymce"
-    language: %locale%
+    language: en
     base_url: "http://local.tyhv/web/"
     theme:
         # Simple theme as same as default theme
@@ -83,6 +83,7 @@ stfalcon_tinymce:
             theme_advanced_toolbar_align: "left"
             theme_advanced_statusbar_location: "bottom"
             theme_advanced_resizing: true
+            plugins: "-filemanager, -imagemanager, fullscreen"
         # Medium number of enabled plugins + spellchecker
         medium:
             mode: "textareas"

@@ -28,7 +28,9 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "<h1>Product creation</h1>
+        echo "<h2>";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Product Creation", array(), "SMAdminBundle"), "html", null, true);
+        echo "</h2>
 
 <form action=\"";
         // line 5
@@ -40,7 +42,7 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 8
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "branch"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Branch", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -57,7 +59,7 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 16
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "productgroup"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Product Group", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -74,7 +76,7 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 24
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "price"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Price", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -91,7 +93,7 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 32
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "unit"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Unit", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -108,7 +110,7 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 40
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "discount"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Discount", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -125,7 +127,7 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 48
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "amount"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Amount", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -142,7 +144,7 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 56
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "thumb"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Thumbnail", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -159,7 +161,7 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\">";
         // line 64
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "status"), 'label');
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Status", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
                 ";
@@ -174,7 +176,10 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
         </div>
 
         <div class=\"control-group\">
-            <label class=\"control-label\" for=\"optionsCheckbox\">Images</label>
+            <label class=\"control-label\" for=\"optionsCheckbox\">";
+        // line 72
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Image", array(), "SMAdminBundle"), "html", null, true);
+        echo "</label>
             <div class=\"controls\">
               <label class=\"checkbox\">
                     ";
@@ -294,7 +299,7 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
                 echo "                                <div class=\"control-group\">
                                     <label class=\"control-label\" for=\"input01\">";
                 // line 114
-                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'label');
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Name", array(), "SMAdminBundle"), "html", null, true);
                 echo "</label>
                                     <div class=\"controls\">
                                         ";
@@ -323,7 +328,7 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
                                 <div class=\"control-group\">
                                     <label class=\"control-label\" for=\"input01\">";
                 // line 126
-                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "description"), 'label');
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Description", array(), "SMAdminBundle"), "html", null, true);
                 echo "</label>
                                     <div class=\"controls\">
                                         ";
@@ -360,11 +365,16 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
         // line 142
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "_token"), 'row');
         echo "
-            <button type=\"submit\" class=\"btn btn-primary\">Save changes</button>
+            <button type=\"submit\" class=\"btn btn-primary\">";
+        // line 143
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Save", array(), "SMAdminBundle"), "html", null, true);
+        echo "</button>
             <a href=\"";
         // line 144
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_products", array("page" => 1)), "html", null, true);
-        echo "\" class=\"btn\">Back To List</a>
+        echo "\" class=\"btn\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Back to the list", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a>
         </div>
 
     </fieldset>
@@ -385,6 +395,6 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  366 => 144,  361 => 142,  355 => 138,  349 => 137,  347 => 136,  343 => 134,  335 => 129,  331 => 128,  326 => 126,  320 => 122,  314 => 120,  308 => 118,  306 => 117,  302 => 116,  297 => 114,  294 => 113,  292 => 112,  289 => 111,  283 => 109,  277 => 107,  274 => 106,  268 => 105,  265 => 104,  262 => 103,  259 => 102,  254 => 101,  251 => 100,  246 => 99,  244 => 98,  240 => 96,  234 => 95,  231 => 94,  223 => 92,  215 => 90,  212 => 89,  207 => 88,  205 => 87,  192 => 78,  190 => 77,  186 => 76,  182 => 75,  171 => 67,  167 => 66,  162 => 64,  154 => 59,  150 => 58,  145 => 56,  137 => 51,  133 => 50,  128 => 48,  120 => 43,  116 => 42,  111 => 40,  103 => 35,  99 => 34,  94 => 32,  86 => 27,  82 => 26,  77 => 24,  69 => 19,  65 => 18,  60 => 16,  52 => 11,  48 => 10,  43 => 8,  35 => 5,  31 => 3,  28 => 2,);
+        return array (  374 => 144,  370 => 143,  366 => 142,  360 => 138,  354 => 137,  352 => 136,  348 => 134,  340 => 129,  336 => 128,  331 => 126,  325 => 122,  319 => 120,  313 => 118,  311 => 117,  307 => 116,  302 => 114,  299 => 113,  297 => 112,  294 => 111,  288 => 109,  282 => 107,  279 => 106,  273 => 105,  270 => 104,  267 => 103,  264 => 102,  259 => 101,  256 => 100,  251 => 99,  249 => 98,  245 => 96,  239 => 95,  236 => 94,  228 => 92,  220 => 90,  217 => 89,  212 => 88,  210 => 87,  197 => 78,  195 => 77,  191 => 76,  187 => 75,  181 => 72,  173 => 67,  169 => 66,  164 => 64,  156 => 59,  152 => 58,  147 => 56,  139 => 51,  135 => 50,  130 => 48,  122 => 43,  118 => 42,  113 => 40,  105 => 35,  101 => 34,  96 => 32,  88 => 27,  84 => 26,  79 => 24,  71 => 19,  67 => 18,  62 => 16,  54 => 11,  50 => 10,  45 => 8,  37 => 5,  31 => 3,  28 => 2,);
     }
 }

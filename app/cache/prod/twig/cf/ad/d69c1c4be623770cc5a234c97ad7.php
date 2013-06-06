@@ -45,23 +45,40 @@ class __TwigTemplate_cfadd69c1c4be623770cc5a234c97ad7 extends Twig_Template
     } );
 </script>
 
-<h1>Results of search Company</h1>
+<h2>";
+        // line 20
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Results Of Search Company", array(), "SMAdminBundle"), "html", null, true);
+        echo "</h2>
 
 <div class=\"nav\">
     <a href=\"";
         // line 23
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_company"), "html", null, true);
-        echo "\" class=\"btn btn-primary\">Back To Company</a>
+        echo "\" class=\"btn btn-primary\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Back to the list", array(), "SMAdminBundle"), "html", null, true);
+        echo "</a>
     <div style=\"clear: both;\"></div>
 </div>
 <div style=\"clear: both; margin-bottom: 10px;\"></div>
 <table class=\"table table-bordered table-striped\" id=\"sortTable\">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>";
+        // line 30
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Id", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 31
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Name", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 32
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Status", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
+            <th>";
+        // line 33
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Action", array(), "SMAdminBundle"), "html", null, true);
+        echo "</th>
         </tr>
     </thead>
     <tbody>
@@ -112,7 +129,9 @@ class __TwigTemplate_cfadd69c1c4be623770cc5a234c97ad7 extends Twig_Template
                 <a href=\"";
             // line 55
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_company_edit", array("id" => $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "company"), "id"))), "html", null, true);
-            echo "\">edit</a>
+            echo "\"><i class=\"icon-pencil\"></i>";
+            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Edit", array(), "SMAdminBundle"), "html", null, true);
+            echo "</a>
                 ";
             // line 56
             if ((!(null === $this->getAttribute($this->getContext($context, "entity"), "language")))) {
@@ -121,7 +140,9 @@ class __TwigTemplate_cfadd69c1c4be623770cc5a234c97ad7 extends Twig_Template
                     <a href=\"#\" rel=\"";
                 // line 58
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_company_delete", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
-                echo "\" class=\"delete\">Delete</a>
+                echo "\" class=\"delete\"><i class=\"icon-remove\"></i>";
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Delete", array(), "SMAdminBundle"), "html", null, true);
+                echo "</a>
                 ";
             }
             // line 60
@@ -151,6 +172,6 @@ class __TwigTemplate_cfadd69c1c4be623770cc5a234c97ad7 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  137 => 64,  128 => 60,  123 => 58,  120 => 57,  118 => 56,  114 => 55,  110 => 53,  106 => 51,  102 => 49,  100 => 48,  96 => 46,  90 => 44,  84 => 42,  82 => 41,  77 => 39,  74 => 38,  70 => 37,  53 => 23,  31 => 3,  28 => 2,);
+        return array (  158 => 64,  149 => 60,  142 => 58,  139 => 57,  137 => 56,  131 => 55,  127 => 53,  123 => 51,  119 => 49,  117 => 48,  113 => 46,  107 => 44,  101 => 42,  99 => 41,  94 => 39,  91 => 38,  87 => 37,  80 => 33,  76 => 32,  72 => 31,  68 => 30,  56 => 23,  50 => 20,  31 => 3,  28 => 2,);
     }
 }
