@@ -347,7 +347,6 @@ class TinyImageManager {
 		} else {
 			$dbfilehandle = fopen($dbfile, "w");
 		}
-
 		if(!empty($dbdata)) {
 			$files = unserialize($dbdata);
 		} else $files = array();
@@ -363,6 +362,7 @@ class TinyImageManager {
 						if(!in_array(strtolower($file_info['extension']),$this->ALLOWED_IMAGES)) {
 							continue;
 						}
+
 						$link = str_replace(array('/\\','//','\\\\','\\'),'/', '/'.str_replace(realpath(DIR_ROOT),'',realpath($dir.'/'.$file)));
 						$path = pathinfo($link);
 						$path = $path['dirname'];
@@ -679,7 +679,7 @@ class TinyImageManager {
    <table class="imageBlock0" cellpadding="0" cellspacing="0" filename="'.$v['general']['filename'].'" fname="'.$v['general']['name'].'" type="'.$type.'" ext="'.strtoupper($v['general']['ext']).'" path="'.$v['general']['path'].'" linkto="'.$v['general']['link'].'" fsize="'.$v['general']['size'].'" fsizetext="'.$this->bytes_to_str($v['general']['size']).'" date="'.date('d.m.Y H:i',$v['general']['date']).'" fwidth="'.$v['general']['width'].'" fheight="'.$v['general']['height'].'" md5="'.$v['general']['md5'].'" '.$middle_thumb_attr.'><tr><td valign="bottom" align="center">
     <div class="imageBlock1">
      <div class="imageImage">
-      <img src="'.$v['general']['link'].'" width="100" height="100" alt="'.$v['general']['name'].'" />
+      <img src="'.IMG_URL. $v['general']['filename'].'" width="100" height="100" alt="'.$v['general']['name'].'" />
      </div>
      <div class="imageName">'.$v['general']['name'].'</div>
     </div>

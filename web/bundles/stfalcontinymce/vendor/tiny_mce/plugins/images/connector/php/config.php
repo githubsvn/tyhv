@@ -1,14 +1,13 @@
 <?php
 
 //Site root dir
-define('DIR_ROOT',		$_SERVER['DOCUMENT_ROOT'] . '/web');
+define('DIR_ROOT',		$_SERVER['DOCUMENT_ROOT'] . '');
 //Images dir (root relative)
-define('DIR_IMAGES',	'/uploads/');
+define('DIR_IMAGES',	'/web/uploads/');   //path to left dir
 //Files dir (root relative)
-define('DIR_FILES',		'/web/uploads/');
+define('DIR_FILES',		'/uploads/');
 
-define('IMG_URL',		'/uploads/');
-
+define('IMG_URL',		'/web/uploads/images/');    //path to show image and return to editor
 
 //Width and height of resized image
 define('WIDTH_TO_LINK', 100);
