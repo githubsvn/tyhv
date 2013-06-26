@@ -1,7 +1,3 @@
-sm_soap:
-    resource: "@SMSoapBundle/Resources/config/routing.yml"
-    prefix:   /
-
 sm_acl:
     resource: "@SMAclBundle/Resources/config/routing.yml"
     prefix:   /

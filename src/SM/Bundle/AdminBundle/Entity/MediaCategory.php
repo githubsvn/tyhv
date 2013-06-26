@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MediaCategory
  *
- * @ORM\Table(name="sm_media_category")
+ * @ORM\Table(name="mtx_media_category")
  * @ORM\Entity(repositoryClass="SM\Bundle\AdminBundle\Repository\MediaCategoryRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -80,7 +80,7 @@ class MediaCategory
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -96,14 +96,14 @@ class MediaCategory
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -119,14 +119,14 @@ class MediaCategory
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get created_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -142,14 +142,14 @@ class MediaCategory
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-    
+
         return $this;
     }
 
     /**
      * Get updated_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -165,14 +165,14 @@ class MediaCategory
     public function setCreated(\SM\Bundle\AdminBundle\Entity\User $created = null)
     {
         $this->created = $created;
-    
+
         return $this;
     }
 
     /**
      * Get created
      *
-     * @return \SM\Bundle\AdminBundle\Entity\User 
+     * @return \SM\Bundle\AdminBundle\Entity\User
      */
     public function getCreated()
     {
@@ -188,14 +188,14 @@ class MediaCategory
     public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated = null)
     {
         $this->updated = $updated;
-    
+
         return $this;
     }
 
     /**
      * Get updated
      *
-     * @return \SM\Bundle\AdminBundle\Entity\User 
+     * @return \SM\Bundle\AdminBundle\Entity\User
      */
     public function getUpdated()
     {

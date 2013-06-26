@@ -1,0 +1,73 @@
+<?php
+
+namespace SM\Bundle\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Category
+ *
+ * @ORM\Table(name="mtx_category")
+ * @ORM\Entity(repositoryClass="SM\Bundle\AdminBundle\Repository\CategoryRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Category
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category")
+     */
+    private $parent;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $created;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $updated;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean")
+     */
+    private $status;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    private $updated_at;
+
+    /**
+     * @var Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="CategoryLanguage", mappedBy="category", cascade={"all"})
+     */
+    protected $category_languages;
+
+    /**
+     * @var Language
+     */
+    private $language;
+
+}

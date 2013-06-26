@@ -116,7 +116,7 @@ class Products
 
     /**
      * @ORM\ManyToMany(targetEntity="Media", cascade={"persist"})
-     * @ORM\JoinTable(name="sm_product_media")
+     * @ORM\JoinTable(name="mtx_product_media")
      */
     private $media_id;
 
