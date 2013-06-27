@@ -47,7 +47,7 @@ class CategoryLanguage
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -63,14 +63,14 @@ class CategoryLanguage
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -86,14 +86,14 @@ class CategoryLanguage
     public function setCategory(\SM\Bundle\AdminBundle\Entity\Category $category = null)
     {
         $this->category = $category;
-    
+
         return $this;
     }
 
     /**
      * Get category
      *
-     * @return \SM\Bundle\AdminBundle\Entity\Category 
+     * @return \SM\Bundle\AdminBundle\Entity\Category
      */
     public function getCategory()
     {
@@ -109,17 +109,34 @@ class CategoryLanguage
     public function setLanguage(\SM\Bundle\AdminBundle\Entity\Language $language = null)
     {
         $this->language = $language;
-    
+
         return $this;
     }
 
     /**
      * Get language
      *
-     * @return \SM\Bundle\AdminBundle\Entity\Language 
+     * @return \SM\Bundle\AdminBundle\Entity\Language
      */
     public function getLanguage()
     {
         return $this->language;
+    }
+
+    /**
+     * Get the name with tree level
+     *
+     * @return string
+     */
+    public function getTreeName()
+    {
+        $level = $this->getCategory()->getLevel();
+        $treeName = str_repeat('    ', $level - 1) . ($level == 1 ? '' : '└') . ' ' . $this->name;
+        return $treeName;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

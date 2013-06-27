@@ -43,4 +43,83 @@ class CategoryLanguage
      */
     private $name;
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return CategoryLanguage
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Category $category
+     * @return CategoryLanguage
+     */
+    public function setCategory(\SM\Bundle\AdminBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+    
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set language
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Language $language
+     * @return CategoryLanguage
+     */
+    public function setLanguage(\SM\Bundle\AdminBundle\Entity\Language $language = null)
+    {
+        $this->language = $language;
+    
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\Language 
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
 }

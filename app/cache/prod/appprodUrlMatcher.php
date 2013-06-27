@@ -701,6 +701,62 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
+        if (0 === strpos($pathinfo, '/admin/category')) {
+            // admin_category
+            if (preg_match('#^/admin/category(?:/(?P<page>\\d+)(?:/(?P<lang>\\d+))?)?$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CategoryController::indexAction',  'page' => '1',  'lang' => NULL,)), array('_route' => 'admin_category'));
+            }
+
+            // admin_category_show
+            if (preg_match('#^/admin/category/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CategoryController::showAction',)), array('_route' => 'admin_category_show'));
+            }
+
+            // admin_category_new
+            if ($pathinfo === '/admin/category/new') {
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CategoryController::newAction',  '_route' => 'admin_category_new',);
+            }
+
+            // admin_category_create
+            if ($pathinfo === '/admin/category/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_category_create;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CategoryController::createAction',  '_route' => 'admin_category_create',);
+            }
+            not_admin_category_create:
+
+            // admin_category_edit
+            if (preg_match('#^/admin/category/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CategoryController::editAction',)), array('_route' => 'admin_category_edit'));
+            }
+
+            // admin_category_update
+            if (preg_match('#^/admin/category/(?P<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_category_update;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CategoryController::updateAction',)), array('_route' => 'admin_category_update'));
+            }
+            not_admin_category_update:
+
+            // admin_category_delete
+            if (preg_match('#^/admin/category/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('POST', 'GET', 'HEAD'));
+                    goto not_admin_category_delete;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CategoryController::deleteAction',)), array('_route' => 'admin_category_delete'));
+            }
+            not_admin_category_delete:
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

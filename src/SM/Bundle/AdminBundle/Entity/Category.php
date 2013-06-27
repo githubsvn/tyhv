@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+
     /**
      * @var integer
      *
@@ -23,9 +24,30 @@ class Category
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $children;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lft", type="integer", nullable=true)
+     */
+    private $lft;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rgt", type="integer", nullable=true)
+     */
+    private $rgt;
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
@@ -73,7 +95,8 @@ class Category
     /**
      * @ORM\PrePersist
      */
-    public function setCreatedAtValue() {
+    public function setCreatedAtValue()
+    {
         if (!$this->getCreatedAt()) {
             $this->created_at = new \DateTime();
             $this->updated_at = new \DateTime();
@@ -86,6 +109,7 @@ class Category
     public function __construct()
     {
         $this->category_languages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -274,7 +298,8 @@ class Category
      *
      * @param \SM\Bundle\AdminBundle\Entity\Language $language
      */
-    public function setLanguage(Language $language) {
+    public function setLanguage(Language $language)
+    {
         $this->language = $language;
 
         return $this;
@@ -285,15 +310,17 @@ class Category
      *
      * @return \SM\Bundle\AdminBundle\Entity\Language
      */
-    public function getLanguage() {
+    public function getLanguage()
+    {
         return $this->language;
     }
 
-    public function getCurrentLanguage() {
-        $companytypeLanguages = $this->category_languages->toArray();
-        if (is_array($companytypeLanguages)) {
+    public function getCurrentLanguage()
+    {
+        $catLanguages = $this->category_languages->toArray();
+        if (is_array($catLanguages)) {
             if (null !== $this->language) {
-                foreach ($companytypeLanguages as $ctLanguage) {
+                foreach ($catLanguages as $ctLanguage) {
                     if ($ctLanguage->getLanguage()->getId() == $this->language->getId()) {
                         return $ctLanguage;
                     }
@@ -304,7 +331,8 @@ class Category
         return null;
     }
 
-    public function hasLanguage(Language $language) {
+    public function hasLanguage(Language $language)
+    {
         $result = false;
         if (count($this->category_languages->toArray()) > 0) {
             foreach ($this->category_languages as $plTemp) {
@@ -318,15 +346,107 @@ class Category
         return $result;
     }
 
-     public function __toString()
+    public function __toString()
     {
-        $pageLanguages = $this->category_languages->toArray();
-        if (is_array($pageLanguages)) {
-            if (isset($pageLanguages[0])) {
-                return $pageLanguages[0]->getName();
+        try {
+            $catLanguages = $this->category_languages->toArray();
+            if (is_array($catLanguages)) {
+                if (isset($catLanguages[0])) {
+                    return $catLanguages[0]->getTreeName();
+                }
             }
+        } catch (Symfony\Component\Config\Definition\Exception\Exception $ex) {
+            var_dump($ex);die;
         }
+
         return '';
     }
 
+    /**
+     * Set lft
+     *
+     * @param integer $lft
+     * @return Category
+     */
+    public function setLft($lft)
+    {
+        $this->lft = $lft;
+
+        return $this;
+    }
+
+    /**
+     * Get lft
+     *
+     * @return integer
+     */
+    public function getLft()
+    {
+        return $this->lft;
+    }
+
+    /**
+     * Set rgt
+     *
+     * @param integer $rgt
+     * @return Category
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+
+        return $this;
+    }
+
+    /**
+     * Get rgt
+     *
+     * @return integer
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * Add children
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Category $children
+     * @return Category
+     */
+    public function addChildren(\SM\Bundle\AdminBundle\Entity\Category $children)
+    {
+        $this->children[] = $children;
+
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Category $children
+     */
+    public function removeChildren(\SM\Bundle\AdminBundle\Entity\Category $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    public function getLevel()
+    {
+        if (null === $this->parent) {
+            return 1;
+        } else {
+            return $this->parent->getLevel() + 1;
+        }
+    }
 }
