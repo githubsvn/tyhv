@@ -1,0 +1,169 @@
+<?php
+
+namespace SM\Bundle\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Page
+ *
+ * @ORM\Table(name="sm_menu")
+ * @ORM\Entity(repositoryClass="SM\Bundle\AdminBundle\Repository\MenuRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Menu
+{
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Menu", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Menu", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $children;
+
+    /**
+     * @var Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="MenuLanguage", mappedBy="menu", cascade={"all"})
+     */
+    protected $page_languages;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lft", type="integer", nullable=true)
+     */
+    private $lft;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rgt", type="integer", nullable=true)
+     */
+    private $rgt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     */
+    private $created_at;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updated_at;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    private $status;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $created;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $updated;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="type", type="integer", nullable=true)
+     */
+    private $type;
+
+    /**
+     *
+     * @var Language
+     */
+    private $language;
+
+    public function __toString()
+    {
+        $pageLanguages = $this->menu_languages->toArray();
+        if (is_array($pageLanguages)) {
+            if (isset($pageLanguages[0])) {
+                return $pageLanguages[0]->getTreeName();
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->menu_languages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->language = null;
+    }
+
+
+    public function getLevel()
+    {
+        if (null === $this->parent) {
+            return 0;
+        } else {
+            return $this->parent->getLevel() + 1;
+        }
+    }
+
+
+    public function getCurrentPageLanguage()
+    {
+        $pageLanguages = $this->page_languages->toArray();
+        if (is_array($pageLanguages)) {
+            if (null !== $this->language) {
+                foreach ($pageLanguages as $pageLanguage) {
+                    if ($pageLanguage->getLanguage()->getId() == $this->language->getId()) {
+                        return $pageLanguage;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public function hasLanguage(Language $language)
+    {
+        $result = false;
+        if (count($this->page_languages->toArray()) > 0) {
+            foreach ($this->page_languages as $plTemp) {
+                if ($language->getId() == $plTemp->getLanguage()->getId()) {
+                    $result = true;
+                    break;
+                }
+            }
+        }
+
+        return $result;
+    }
+    
+    
+}

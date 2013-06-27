@@ -1,7 +1,3 @@
-sm_soap:
-    resource: "@SMSoapBundle/Resources/config/routing.yml"
-    prefix:   /
-
 sm_acl:
     resource: "@SMAclBundle/Resources/config/routing.yml"
     prefix:   /
@@ -62,3 +58,6 @@ sm_admin_media:
 sm_admin_products:
         resource: "@SMAdminBundle/Resources/config/routing/products.yml"
         prefix:   /admin/products
+sm_admin_category:
+        resource: "@SMAdminBundle/Resources/config/routing/category.yml"
+        prefix:   /admin/category

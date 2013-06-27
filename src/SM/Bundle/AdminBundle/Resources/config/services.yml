@@ -8,6 +8,14 @@ services:
             - "@service_container"
             - ~
             - ~
+    sm_admin.tree.listener:
+        class: SM\Bundle\AdminBundle\EventListener\TreeListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: postPersist }
+            - { name: doctrine.event_listener, event: postUpdate }
+            - { name: doctrine.event_listener, event: postRemove }
+            
     sm.twig.showimg_extension:
         class: SM\Bundle\AdminBundle\Twig\MTxTwigShowImageExtension
         tags:
