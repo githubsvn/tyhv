@@ -4,11 +4,8 @@ admin_products:
     requirements:
         page:  \d+
         lang:  \d+
-admin_products_search:
-    pattern:  /search
-    defaults: { _controller: "SMAdminBundle:Products:search"}
-    requirements: { _method: post}
-    
+        _method: post|get
+
 admin_products_show:
     pattern:  /{id}/show
     defaults: { _controller: "SMAdminBundle:Products:show" }

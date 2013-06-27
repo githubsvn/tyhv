@@ -21,6 +21,18 @@ class ProductsController extends Controller
      */
     public function indexAction($page, $lang)
     {
+        if ($this->getRequest()->isMethod('POST')) {
+            $_SESSION['lang'] = $this->getRequest()->request->get('language', '');
+            $_SESSION['name'] = $this->getRequest()->request->get('name', '');
+            $_SESSION['branch'] = $this->getRequest()->request->get('branch', null);
+            $_SESSION['productgroup'] = $this->getRequest()->request->get('productgroup', null);
+        }
+
+        $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : $lang;
+        $name = isset($_SESSION['name']) ? $_SESSION['name'] : '';
+        $branchId = isset($_SESSION['branch']) ? $_SESSION['branch'] : '';
+        $productgroupId = isset($_SESSION['productgroup']) ? $_SESSION['productgroup'] : '';
+
         //get list language
         $langList = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language")
@@ -41,8 +53,8 @@ class ProductsController extends Controller
                 ->find($lang);
 
         $total = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:Products")
-                ->getTotal();
+                ->getRepository("SMAdminBundle:ProductLanguage")
+                ->getTotalByLangAndNameAndType($lang, $name, $branchId, $productgroupId);
 
         $perPage = $this->container->getParameter('per_item_page');
         $lastPage = ceil($total / $perPage);
@@ -50,11 +62,8 @@ class ProductsController extends Controller
         $nextPage = $page < $lastPage ? $page + 1 : $lastPage;
 
         $entities = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:Products")
-                ->getList($perPage, ($page - 1) * $perPage);
-        foreach ($entities as $ent) {
-            $ent->setLanguage($currentLanguage);
-        }
+                ->getRepository("SMAdminBundle:ProductLanguage")
+                ->findByLangAndNameAndBranchAndProductGroup($lang, $name, $branchId, $productgroupId, $perPage, ($page - 1) * $perPage);
 
         //Get branch and product group
         $repBranch = $this->getDoctrine()->getRepository('SMAdminBundle:Branch');
@@ -76,37 +85,13 @@ class ProductsController extends Controller
                     'nextPage' => $nextPage,
                     'total' => $total,
                     'lang' => intval($lang),
+                    'name' => $name,
+                    'branchId' => $branchId,
+                    'productgroupId' => $productgroupId,
                     'langList' => $langList,
                     'optBranchs' => $optBranchs,
                     'optProductGroups' => $optProductGroups,
                 ));
-    }
-
-    /**
-     * Search company and show result
-     */
-    public function searchAction()
-    {
-        $lang = $this->getRequest()->request->get('language', null);
-        $name = $this->getRequest()->request->get('name', '');
-        $branchId = $this->getRequest()->request->get('branch', null);
-        $productgroupId = $this->getRequest()->request->get('productgroup', null);
-
-        if (is_null($lang)) {
-            foreach ($langList as $langData) {
-                $isDefault = $langData->getIsDefault();
-                if ($isDefault == 1) {
-                    $lang = $langData->getId();
-                    break;
-                }
-            }
-        }
-        $entities = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:ProductLanguage")
-                ->findByLangAndNameAndBranchAndProductGroup($lang, $name, $branchId, $productgroupId);
-        return $this->render('SMAdminBundle:Products:search.html.twig', array(
-            'entities' => $entities,
-        ));
     }
 
     /**

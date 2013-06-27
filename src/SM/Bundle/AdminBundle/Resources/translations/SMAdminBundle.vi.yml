@@ -27,6 +27,8 @@ Type of media: Thể loại media
 Select All: Chọn tất cả
 Clear All: Bỏ chọn tất cả
 Close: Đóng
+Total: Tổng số
+Page: Trang
 
 #Language for User
 Username: Tên đăng nhập
@@ -88,7 +90,6 @@ Logo: Logo
 Address: Địa chỉ
 Representation: Người đại diện
 Company Edit: Chỉnh Sửa Công Ty
-Results Of Search Company: Kết quả tìm kiếm
 
 #Branch
 Branch List: Danh Sách Ngành Hàng

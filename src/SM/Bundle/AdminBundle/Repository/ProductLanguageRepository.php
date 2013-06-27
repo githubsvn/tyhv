@@ -81,39 +81,97 @@ class ProductLanguageRepository extends EntityRepository
 
         return $rst;
     }
-    
-    public function findByLangAndNameAndBranchAndProductGroup($langId, $name = '', $branchId = '', $productGroupId = '')
+
+    /**
+     * Find product by condition
+     *
+     * @param type $langId
+     * @param type $name
+     * @param type $branchId
+     * @param type $productGroupId
+     * @return array
+     */
+    public function findByLangAndNameAndBranchAndProductGroup($langId, $name = '', $branchId = '', $productGroupId = '', $limit = null, $offset = null)
     {
         $rst = array();
         if (!empty($langId)) {
             $qb = $this->createQueryBuilder('pl');
-            
+
             $qb->select('pl, p')
                     ->join('pl.product', 'p')
                     ->join('p.branch', 'b')
                     ->join('p.productgroup', 'pg')
                     ->where('pl.language=:langId');
             
+            if (!empty($limit)) {
+                $qb->setMaxResults($limit);
+            }
+
+            if (!empty($offset)) {
+                $qb->setFirstResult($offset);
+            }
+
             if (!empty($branchId)) {
                 $qb->andWhere('p.branch=:branchId');
                 $qb->setParameter('branchId', $branchId);
             }
-            
+
             if (!empty($productGroupId)) {
                 $qb->andWhere('p.productgroup=:productGroupId');
                 $qb->setParameter('productGroupId', $productGroupId);
             }
-            
+
             if (!empty($name)) {
                 $qb->andWhere('pl.name LIKE ?1');
                 $qb->setParameter(1, "%$name%");
             }
-            
+
             $qb->setParameter('langId', $langId);
             //echo $qb->getQuery()->getSQL();die;
             return $qb->getQuery()->getResult();
         }
-        
+
         return $rst;
+    }
+
+    /**
+     * get total
+     *
+     * @param type $langId
+     * @param type $name
+     * @param type $typeId
+     * @return int
+     */
+    public function getTotalByLangAndNameAndType($langId, $name = '', $branchId = '', $productGroupId = '')
+    {
+        if (!empty($langId)) {
+            $qb = $this->createQueryBuilder('pl');
+
+            $qb->select('pl, p')
+                    ->join('pl.product', 'p')
+                    ->join('p.branch', 'b')
+                    ->join('p.productgroup', 'pg')
+                    ->where('pl.language=:langId');
+
+            if (!empty($branchId)) {
+                $qb->andWhere('p.branch=:branchId');
+                $qb->setParameter('branchId', $branchId);
+            }
+
+            if (!empty($productGroupId)) {
+                $qb->andWhere('p.productgroup=:productGroupId');
+                $qb->setParameter('productGroupId', $productGroupId);
+            }
+
+            if (!empty($name)) {
+                $qb->andWhere('pl.name LIKE ?1');
+                $qb->setParameter(1, "%$name%");
+            }
+
+            $qb->setParameter('langId', $langId);
+
+            return count($qb->getQuery()->getResult());
+        }
+        return 0;
     }
 }
