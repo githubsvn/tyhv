@@ -755,6 +755,16 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
             not_admin_category_delete:
 
+            // admin_category_up
+            if (0 === strpos($pathinfo, '/admin/category/up') && preg_match('#^/admin/category/up/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CategoryController::upAction',)), array('_route' => 'admin_category_up'));
+            }
+
+            // admin_category_down
+            if (0 === strpos($pathinfo, '/admin/category/down') && preg_match('#^/admin/category/down/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CategoryController::downAction',)), array('_route' => 'admin_category_down'));
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

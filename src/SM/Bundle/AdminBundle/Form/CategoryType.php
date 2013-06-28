@@ -17,7 +17,8 @@ class CategoryType extends AbstractType
                 'class' => 'SMAdminBundle:Category',
                 'query_builder' => function (CategoryRepository $pRe) {
                     return $pRe->createQueryBuilder('c')
-                        ->orderBy('c.lft', 'ASC');
+                        ->orderBy('c.lft', 'ASC')
+                        ->where('c.status = 1');
                 }
             ))
             ->add('status', 'checkbox', array(

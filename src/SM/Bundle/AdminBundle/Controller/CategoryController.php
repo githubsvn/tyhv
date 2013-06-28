@@ -42,9 +42,16 @@ class CategoryController extends Controller
                 ->getRepository("SMAdminBundle:Language")
                 ->find($lang);
 
+        //get root
+        $root = $this->getDoctrine()->getRepository("SMAdminBundle:Category")->getPageRoot();
+        $rst = array();
+
         $total = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Category")
                 ->getTotal();
+        if (!empty($root)) {
+            $total -= 1;
+        }
 
         $perPage = $this->container->getParameter('per_item_page');
         $lastPage = ceil($total / $perPage);
@@ -53,13 +60,17 @@ class CategoryController extends Controller
 
         $entities = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Category")
-                ->getList($perPage, ($page - 1) * $perPage);
+                ->getList($perPage, ($page - 1) * $perPage, array(), array('lft' => 'ASC'));
+
         foreach ($entities as $theCat) {
             $theCat->setLanguage($currentLanguage);
+            if ($root->getId() != $theCat->getId()) {
+                $rst[] = $theCat;
+            }
         }
 
         return $this->render('SMAdminBundle:Category:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $rst,
             'lastPage' => $lastPage,
             'previousPage' => $previousPage,
             'currentPage' => $page,
@@ -150,7 +161,7 @@ class CategoryController extends Controller
                 $referrer = $this->getRequest()->getSession()->get('referrer');
 
                 if (!$referrer) {
-                    
+
                     return $this->redirect(
                         $this->generateUrl('admin_category')
                     );
@@ -284,5 +295,48 @@ class CategoryController extends Controller
 
             return $this->redirect($referrer);
         }
+    }
+
+    /**
+     * up action
+     *
+     * @param type $id
+     *
+     * @return type
+     */
+    public function upAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository('SMAdminBundle:Category');
+        $oCat = $repo->findOneById($id);
+        if ($oCat->getParent()) {
+            $repo->moveUp($oCat);
+        }
+
+        return $this->redirect(
+            $this->getRequest()->headers->get('referer')
+        );
+
+    }
+
+    /**
+     * down action
+     *
+     * @param type $id
+     *
+     * @return type
+     */
+    public function downAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository('SMAdminBundle:Category');
+        $oCat = $repo->findOneById($id);
+        if ($oCat->getParent()) {
+            $repo->moveDown($oCat);
+        }
+
+        return $this->redirect(
+            $this->getRequest()->headers->get('referer')
+        );
     }
 }

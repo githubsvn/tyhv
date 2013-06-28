@@ -4,6 +4,7 @@ namespace SM\Bundle\AdminBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\UnitOfWork;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * CategoryRepository
@@ -23,6 +24,13 @@ class CategoryRepository extends EntityRepository
      */
     public function getList($limit = null, $offset = null, $criteria = array(), $orderBy = array())
     {
+//        $expr = Criteria::expr();
+//        $cri = Criteria::create();
+//        $cri->where($expr->gt('lft', 1));
+//        $cri->setFirstResult($offset);
+//        $cri->setMaxResults($limit);
+//        $cri->orderBy($orderBy);
+//        return $this->matching($cri);
         return $this->findBy($criteria, $orderBy, $limit, $offset);
     }
 

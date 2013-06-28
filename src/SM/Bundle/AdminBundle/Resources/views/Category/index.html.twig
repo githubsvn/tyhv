@@ -1,21 +1,5 @@
 {% extends 'SMAdminBundle::admin.html.twig' %}
 {% block body%}
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#sortTable').dataTable({
-            "bPaginate": false,
-            "bLengthChange": false,
-            "bFilter": false,
-            "bSort": true,
-            "bInfo": false,
-            "bAutoWidth": true,
-            "aaSorting": [ [0,'asc'], [1,'asc'] ],
-            "aoColumnDefs": [
-                { 'bSortable': false, 'aTargets': [ 3, 4 ] }
-            ],
-        });
-    } );
-</script>
 <h2>{{ 'Category List'|trans({}, "SMAdminBundle") }}</h2>
 
 <div class="nav">
@@ -42,6 +26,7 @@
             <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
             <th>{{ 'Name'|trans({}, "SMAdminBundle") }}</th>
             <th>{{ 'Created Time'|trans({}, "SMAdminBundle") }}</th>
+            <th style="width: 14px;">&nbsp;</th>
             <th>{{ 'Active'|trans({}, "SMAdminBundle") }}</th>
             <th>{{ 'Action'|trans({}, "SMAdminBundle") }}</th>
         </tr>
@@ -52,12 +37,27 @@
             <td>{{ entity.id }}</td>
             <td>
                 {% if entity.getCurrentLanguage is not null %}
-                    {{ entity.getCurrentLanguage.name | truncate(50) }}
+                    {{ entity.getCurrentLanguage.getTreeName | truncate(50) }}
                 {% else %}
                     <span class="label label-warning">{{ 'Not set value in this language' | trans({}, 'SMAdminBundle') }}</span>
                 {% endif %}
+
             </td>
             <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+                {% if entity.parent.children is defined %}
+                {% if entity.parent.children[0].id != entity.id %}
+                    <a href="{{ path('admin_category_up', { 'id': entity.id}) }}">
+                        <i class="icon-arrow-up"></i>
+                    </a>
+                {% endif %}
+                {% if entity.parent.children[entity.parent.children|length-1].id != entity.id %}
+                    <a class="pull-right" href="{{ path('admin_category_down', { 'id': entity.id}) }}">
+                        <i class="icon-arrow-down"></i>
+                    </a>
+                {% endif %}
+                {% endif %}
+            </td>
             <td>
                 {% if entity.status == 1 %}
                     <input type="checkbox" checked="checked" class="defaultCheckBox" disabled="true"/>

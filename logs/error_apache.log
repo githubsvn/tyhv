@@ -3090,3 +3090,77 @@
 [Thu Jun 27 18:07:03 2013] [error] [client 127.0.0.1] PHP  16. Symfony\\Bridge\\Doctrine\\Form\\ChoiceList\\EntityChoiceList->load() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Bridge/Doctrine/Form/ChoiceList/EntityChoiceList.php:171, referer: http://local.tyhv/admin/category
 [Thu Jun 27 18:07:03 2013] [error] [client 127.0.0.1] PHP  17. Symfony\\Component\\Form\\Extension\\Core\\ChoiceList\\ObjectChoiceList->initialize() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Bridge/Doctrine/Form/ChoiceList/EntityChoiceList.php:388, referer: http://local.tyhv/admin/category
 [Thu Jun 27 18:07:03 2013] [error] [client 127.0.0.1] PHP  18. Symfony\\Component\\Form\\Extension\\Core\\ChoiceList\\ObjectChoiceList->extractLabels() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/Extension/Core/ChoiceList/ObjectChoiceList.php:134, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:27:57 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'SM\\Bundle\\AdminBundle\\Repository\\Criteria' not found in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/CategoryRepository.php on line 26, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:27:58 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:27:58 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:27:58 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:27:58 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:27:58 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:27:58 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:27:58 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:27:58 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\CategoryController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:27:58 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\CategoryRepository->getList() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/CategoryController.php:56, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:28:21 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'SM\\Bundle\\AdminBundle\\Repository\\Critera' not found in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/CategoryRepository.php on line 28, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:28:21 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:28:21 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:28:21 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:28:21 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:28:21 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:28:21 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:28:21 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:28:21 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\CategoryController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:28:21 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\CategoryRepository->getList() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/CategoryController.php:56, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:30:31 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'SM\\Bundle\\AdminBundle\\Repository\\Critera' not found in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/CategoryRepository.php on line 28, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:30:31 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:30:31 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:30:31 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:30:31 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:30:31 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:30:31 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:30:31 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:30:31 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\CategoryController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:30:31 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\CategoryRepository->getList() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/CategoryController.php:56, referer: http://local.tyhv/admin/category
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting '(' in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/CategoryRepository.php on line 31
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\CategoryController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP   8. Doctrine\\Common\\Persistence\\AbstractManagerRegistry->getRepository() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/CategoryController.php:46
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP   9. EntityManager51cd62b55d803_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager->getRepository() /home/www/local.tyhv/vendor/doctrine/common/lib/Doctrine/Common/Persistence/AbstractManagerRegistry.php:239
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP  10. Doctrine\\ORM\\EntityManager->getRepository() /home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51cd62b55d803.php:180
+[Fri Jun 28 18:33:39 2013] [error] [client 127.0.0.1] PHP  11. Symfony\\Component\\ClassLoader\\DebugClassLoader->loadClass() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/ClassLoader/DebugClassLoader.php:0
+[Fri Jun 28 18:51:36 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Doctrine\\Common\\Collections\\Criteria::_toString() in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/CategoryRepository.php on line 34
+[Fri Jun 28 18:51:36 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Fri Jun 28 18:51:36 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Fri Jun 28 18:51:36 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Fri Jun 28 18:51:36 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Fri Jun 28 18:51:36 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Fri Jun 28 18:51:36 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Fri Jun 28 18:51:36 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426
+[Fri Jun 28 18:51:36 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\CategoryController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0
+[Fri Jun 28 18:51:36 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\CategoryRepository->getList() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/CategoryController.php:56
+[Fri Jun 28 18:51:39 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Doctrine\\Common\\Collections\\Criteria::toString() in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/CategoryRepository.php on line 34
+[Fri Jun 28 18:51:39 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Fri Jun 28 18:51:39 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Fri Jun 28 18:51:39 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Fri Jun 28 18:51:39 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Fri Jun 28 18:51:39 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Fri Jun 28 18:51:39 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Fri Jun 28 18:51:39 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426
+[Fri Jun 28 18:51:39 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\CategoryController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0
+[Fri Jun 28 18:51:39 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\CategoryRepository->getList() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/CategoryController.php:56
+[Fri Jun 28 19:06:35 2013] [error] [client 127.0.0.1] PHP Fatal error:  Can't use method return value in write context in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/CategoryController.php on line 52
+[Fri Jun 28 19:06:35 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Fri Jun 28 19:06:35 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Fri Jun 28 19:06:35 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Fri Jun 28 19:06:35 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Fri Jun 28 19:06:35 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Fri Jun 28 19:06:35 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Fri Jun 28 19:06:35 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416
+[Fri Jun 28 19:06:35 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64
+[Fri Jun 28 19:06:35 2013] [error] [client 127.0.0.1] PHP   8. class_exists() /home/www/local.tyhv/app/cache/prod/classes.php:239
+[Fri Jun 28 19:06:35 2013] [error] [client 127.0.0.1] PHP   9. Symfony\\Component\\ClassLoader\\DebugClassLoader->loadClass() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/ClassLoader/DebugClassLoader.php:0

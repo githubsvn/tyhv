@@ -31,3 +31,10 @@ admin_category_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SMAdminBundle:Category:delete" }
     requirements: { _method: post|get }
+admin_category_up:
+    pattern:  /up/{id}
+    defaults: { _controller: "SMAdminBundle:Category:up" }
+
+admin_category_down:
+    pattern:  /down/{id}
+    defaults: { _controller: "SMAdminBundle:Category:down" }
