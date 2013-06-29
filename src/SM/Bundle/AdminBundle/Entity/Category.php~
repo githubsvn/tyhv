@@ -20,6 +20,7 @@ class Category
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OrderBy({"lft" = "ASC"})
      */
     private $id;
 
@@ -62,21 +63,21 @@ class Category
     /**
      * @var boolean
      *
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     private $status;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $created_at;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updated_at;
 
@@ -348,15 +349,11 @@ class Category
 
     public function __toString()
     {
-        try {
-            $catLanguages = $this->category_languages->toArray();
-            if (is_array($catLanguages)) {
-                if (isset($catLanguages[0])) {
-                    return $catLanguages[0]->getTreeName();
-                }
+        $catLanguages = $this->category_languages->toArray();
+        if (is_array($catLanguages)) {
+            if (isset($catLanguages[0])) {
+                return $catLanguages[0]->getTreeName();
             }
-        } catch (Symfony\Component\Config\Definition\Exception\Exception $ex) {
-            var_dump($ex);die;
         }
 
         return '';

@@ -12,7 +12,8 @@ class ProductGroupType extends AbstractType
     {
         $builder
             ->add('status', 'checkbox', array(
-                    'attr' => array('checked' => 'checked')
+                'attr' => array('checked' => 'checked'),
+                'required' => false
             ))
             ->add('branch')
             ->add('productgroup_languages', 'collection', array('type' => new ProductGroupLanguageType()))

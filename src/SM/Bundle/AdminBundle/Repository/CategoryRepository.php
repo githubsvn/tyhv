@@ -333,5 +333,37 @@ class CategoryRepository extends EntityRepository
                 ->getResult();
     }
 
-
+    /**
+     * get option that to build param in the menu type
+     * 
+     * @return type 
+     */
+    public function getOptions()
+    {
+        $options = array();
+        
+        //get list language
+        $repLanguage = $this->getEntityManager()->getRepository("SMAdminBundle:Language");
+        //Get list language
+        $langList = $repLanguage->getList();
+        $defaultLanguage = null;
+        if (is_array($langList)) {
+            foreach ($langList as $language) {
+                if ($language->getIsDefault()) {
+                    $defaultLanguage = $language;
+                }
+            }
+        }
+        
+        $entities = $this->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
+        foreach ($entities as $obj) {
+            $obj->setLanguage($defaultLanguage);
+            $std = new \stdClass();
+            $std->name = $obj->getCurrentLanguage()->getTreeName();
+            $std->id = $obj->getId();
+            $options[] = $std;
+        }
+        
+        return $options;
+    }
 }

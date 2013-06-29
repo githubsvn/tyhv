@@ -1,20 +1,20 @@
-sm_acl:
+mtx_acl:
     resource: "@SMAclBundle/Resources/config/routing.yml"
     prefix:   /
 
-sm_admin:
+mtx_admin:
     resource: "@SMAdminBundle/Resources/config/routing.yml"
     prefix:   /
 
-sm_admin_user:
+mtx_admin_user:
     resource: "@SMAdminBundle/Resources/config/routing/user.yml"
     prefix:   /admin/user
 
-sm_admin_role:
+mtx_admin_role:
     resource: "@SMAdminBundle/Resources/config/routing/role.yml"
     prefix:   /admin/role
 
-sm_admin_group:
+mtx_admin_group:
     resource: "@SMAdminBundle/Resources/config/routing/group.yml"
     prefix:   /admin/group
 
@@ -27,37 +27,47 @@ sm_admin_group:
 #    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #    prefix:   /_internal
 
-sm_admin_language:
+mtx_admin_language:
     resource: "@SMAdminBundle/Resources/config/routing/language.yml"
     prefix:   /admin/language
 
-sm_admin_companytype:
+mtx_admin_companytype:
     resource: "@SMAdminBundle/Resources/config/routing/companytype.yml"
     prefix:   /admin/companytype
 
-sm_admin_company:
+mtx_admin_company:
     resource: "@SMAdminBundle/Resources/config/routing/company.yml"
     prefix:   /admin/company
 
-sm_admin_branch:
+mtx_admin_branch:
         resource: "@SMAdminBundle/Resources/config/routing/branch.yml"
         prefix:   /admin/branch
 
-sm_admin_productgroup:
+mtx_admin_productgroup:
         resource: "@SMAdminBundle/Resources/config/routing/productgroup.yml"
         prefix:   /admin/productgroup
 
-sm_admin_mediacategory:
+mtx_admin_mediacategory:
         resource: "@SMAdminBundle/Resources/config/routing/mediacategory.yml"
         prefix:   /admin/mediacategory
 
-sm_admin_media:
+mtx_admin_media:
         resource: "@SMAdminBundle/Resources/config/routing/media.yml"
         prefix:   /admin/media
 
-sm_admin_products:
+mtx_admin_products:
         resource: "@SMAdminBundle/Resources/config/routing/products.yml"
         prefix:   /admin/products
-sm_admin_category:
+        
+mtx_admin_category:
         resource: "@SMAdminBundle/Resources/config/routing/category.yml"
         prefix:   /admin/category
+        
+mtx_admin_menu:
+        resource: "@SMAdminBundle/Resources/config/routing/menu.yml"
+        prefix:   /admin/menu
+
+mtx_admin_news:
+        resource: "@SMAdminBundle/Resources/config/routing/news.yml"
+        prefix:   /admin/news
+        

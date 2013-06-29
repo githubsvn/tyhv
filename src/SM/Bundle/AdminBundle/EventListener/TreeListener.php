@@ -20,7 +20,7 @@ class TreeListener
     public function __construct()
     {
         $this->listTree = array(
-            //"SM\Bundle\AdminBundle\Entity\Menu",
+            "SM\Bundle\AdminBundle\Entity\Menu",
             "SM\Bundle\AdminBundle\Entity\Category",
         );
     }

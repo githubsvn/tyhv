@@ -12,7 +12,8 @@ class CompanyTypeType extends AbstractType
     {
         $builder
             ->add('status', 'checkbox', array(
-                    'attr' => array('checked' => 'checked')
+                'attr' => array('checked' => 'checked'),
+                'required' => false
             ))
             ->add('companytype_languages', 'collection', array('type' => new CompanyTypeLanguageType()))
         ;

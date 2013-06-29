@@ -32,7 +32,8 @@ class ProductsType extends AbstractType
                     'data' => 0
                 ))
                 ->add('status', 'checkbox', array(
-                    'attr' => array('checked' => 'checked')
+                    'attr' => array('checked' => 'checked'),
+                    'required' => false
                 ))
                 ->add('product_languages', 'collection', array('type' => new ProductLanguageType()))
                 ->add('media_id', null, array(

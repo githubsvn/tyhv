@@ -5,7 +5,7 @@ namespace SM\Bundle\AdminBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Page
+ * Menu
  *
  * @ORM\Table(name="mtx_menu")
  * @ORM\Entity(repositoryClass="SM\Bundle\AdminBundle\Repository\MenuRepository")
@@ -37,13 +37,6 @@ class Menu
     private $children;
 
     /**
-     * @var Doctrine\Common\Collections\ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="MenuLanguage", mappedBy="menu", cascade={"all"})
-     */
-    protected $page_languages;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="lft", type="integer", nullable=true)
@@ -56,6 +49,23 @@ class Menu
      * @ORM\Column(name="rgt", type="integer", nullable=true)
      */
     private $rgt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $created;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $updated;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    private $status;
 
     /**
      * @var \DateTime
@@ -72,45 +82,33 @@ class Menu
     private $updated_at;
 
     /**
-     * @var boolean
+     * @var Doctrine\Common\Collections\ArrayCollection
      *
-     * @ORM\Column(name="status", type="boolean", nullable=true)
+     * @ORM\OneToMany(targetEntity="MenuLanguage", mappedBy="menu", cascade={"all"})
      */
-    private $status;
+    protected $menu_languages;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
-     */
-    private $created;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="User")
-     */
-    private $updated;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="type", type="integer", nullable=true)
-     */
-    private $type;
-
-    /**
-     *
      * @var Language
      */
     private $language;
-
-    public function __toString()
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", nullable=true)
+     */
+    private $url;
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
     {
-        $pageLanguages = $this->menu_languages->toArray();
-        if (is_array($pageLanguages)) {
-            if (isset($pageLanguages[0])) {
-                return $pageLanguages[0]->getTreeName();
-            }
+        if (!$this->getCreatedAt()) {
+            $this->created_at = new \DateTime();
+            $this->updated_at = new \DateTime();
         }
-
-        return '';
     }
 
     /**
@@ -118,59 +116,14 @@ class Menu
      */
     public function __construct()
     {
-        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
         $this->menu_languages = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->language = null;
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
-
-    public function getLevel()
-    {
-        if (null === $this->parent) {
-            return 0;
-        } else {
-            return $this->parent->getLevel() + 1;
-        }
-    }
-
-
-    public function getCurrentPageLanguage()
-    {
-        $pageLanguages = $this->page_languages->toArray();
-        if (is_array($pageLanguages)) {
-            if (null !== $this->language) {
-                foreach ($pageLanguages as $pageLanguage) {
-                    if ($pageLanguage->getLanguage()->getId() == $this->language->getId()) {
-                        return $pageLanguage;
-                    }
-                }
-            }
-        }
-
-        return null;
-    }
-
-    public function hasLanguage(Language $language)
-    {
-        $result = false;
-        if (count($this->page_languages->toArray()) > 0) {
-            foreach ($this->page_languages as $plTemp) {
-                if ($language->getId() == $plTemp->getLanguage()->getId()) {
-                    $result = true;
-                    break;
-                }
-            }
-        }
-
-        return $result;
-    }
-    
-    
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -178,49 +131,26 @@ class Menu
     }
 
     /**
-     * Set lft
+     * Set status
      *
-     * @param integer $lft
+     * @param boolean $status
      * @return Menu
      */
-    public function setLft($lft)
+    public function setStatus($status)
     {
-        $this->lft = $lft;
-    
+        $this->status = $status;
+
         return $this;
     }
 
     /**
-     * Get lft
+     * Get status
      *
-     * @return integer 
+     * @return boolean
      */
-    public function getLft()
+    public function getStatus()
     {
-        return $this->lft;
-    }
-
-    /**
-     * Set rgt
-     *
-     * @param integer $rgt
-     * @return Menu
-     */
-    public function setRgt($rgt)
-    {
-        $this->rgt = $rgt;
-    
-        return $this;
-    }
-
-    /**
-     * Get rgt
-     *
-     * @return integer 
-     */
-    public function getRgt()
-    {
-        return $this->rgt;
+        return $this->status;
     }
 
     /**
@@ -232,14 +162,14 @@ class Menu
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get created_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -255,64 +185,18 @@ class Menu
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-    
+
         return $this;
     }
 
     /**
      * Get updated_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
         return $this->updated_at;
-    }
-
-    /**
-     * Set status
-     *
-     * @param boolean $status
-     * @return Menu
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return boolean 
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Set type
-     *
-     * @param integer $type
-     * @return Menu
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return integer 
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**
@@ -324,18 +208,209 @@ class Menu
     public function setParent(\SM\Bundle\AdminBundle\Entity\Menu $parent = null)
     {
         $this->parent = $parent;
-    
+
         return $this;
     }
 
     /**
      * Get parent
      *
-     * @return \SM\Bundle\AdminBundle\Entity\Menu 
+     * @return \SM\Bundle\AdminBundle\Entity\Menu
      */
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\User $created
+     * @return Menu
+     */
+    public function setCreated(\SM\Bundle\AdminBundle\Entity\User $created = null)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\User
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\User $updated
+     * @return Menu
+     */
+    public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated = null)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\User
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Add menu_languages
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\MenuLanguage $menuLanguages
+     * @return Menu
+     */
+    public function addMenuLanguage(\SM\Bundle\AdminBundle\Entity\MenuLanguage $menuLanguages)
+    {
+        $this->menu_languages[] = $menuLanguages;
+
+        return $this;
+    }
+
+    /**
+     * Remove menu_languages
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\MenuLanguage $menuLanguages
+     */
+    public function removeMenuLanguage(\SM\Bundle\AdminBundle\Entity\MenuLanguage $menuLanguages)
+    {
+        $this->menu_languages->removeElement($menuLanguages);
+    }
+
+    /**
+     * Get Menu_languages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMenuLanguages()
+    {
+        return $this->menu_languages;
+    }
+
+    /**
+     * Set Language
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Language $language
+     */
+    public function setLanguage(Language $language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\Language
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    public function getCurrentLanguage()
+    {
+        $objLanguages = $this->menu_languages->toArray();
+        
+        if (is_array($objLanguages)) {
+            if (null !== $this->language) {
+                foreach ($objLanguages as $language) {
+                    if ($language->getLanguage()->getId() == $this->language->getId()) {
+                        return $language;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public function hasLanguage(Language $language)
+    {
+        $result = false;
+        if (count($this->menu_languages->toArray()) > 0) {
+            foreach ($this->menu_languages as $plTemp) {
+                if ($language->getId() == $plTemp->getLanguage()->getId()) {
+                    $result = true;
+                    break;
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    public function __toString()
+    {
+        $objLanguages = $this->menu_languages->toArray();
+        if (is_array($objLanguages)) {
+            if (isset($objLanguages[0])) {
+                return $objLanguages[0]->getTreeName();
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * Set lft
+     *
+     * @param integer $lft
+     * @return Menu
+     */
+    public function setLft($lft)
+    {
+        $this->lft = $lft;
+
+        return $this;
+    }
+
+    /**
+     * Get lft
+     *
+     * @return integer
+     */
+    public function getLft()
+    {
+        return $this->lft;
+    }
+
+    /**
+     * Set rgt
+     *
+     * @param integer $rgt
+     * @return Menu
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+
+        return $this;
+    }
+
+    /**
+     * Get rgt
+     *
+     * @return integer
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
     }
 
     /**
@@ -347,7 +422,7 @@ class Menu
     public function addChildren(\SM\Bundle\AdminBundle\Entity\Menu $children)
     {
         $this->children[] = $children;
-    
+
         return $this;
     }
 
@@ -364,89 +439,42 @@ class Menu
     /**
      * Get children
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getChildren()
     {
         return $this->children;
     }
 
+    public function getLevel()
+    {
+        if (null === $this->parent) {
+            return 1;
+        } else {
+            return $this->parent->getLevel() + 1;
+        }
+    }
+
     /**
-     * Add page_languages
+     * Set url
      *
-     * @param \SM\Bundle\AdminBundle\Entity\MenuLanguage $pageLanguages
+     * @param string $url
      * @return Menu
      */
-    public function addPageLanguage(\SM\Bundle\AdminBundle\Entity\MenuLanguage $pageLanguages)
+    public function setUrl($url)
     {
-        $this->page_languages[] = $pageLanguages;
+        $this->url = $url;
     
         return $this;
     }
 
     /**
-     * Remove page_languages
+     * Get url
      *
-     * @param \SM\Bundle\AdminBundle\Entity\MenuLanguage $pageLanguages
+     * @return string 
      */
-    public function removePageLanguage(\SM\Bundle\AdminBundle\Entity\MenuLanguage $pageLanguages)
+    public function getUrl()
     {
-        $this->page_languages->removeElement($pageLanguages);
-    }
-
-    /**
-     * Get page_languages
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPageLanguages()
-    {
-        return $this->page_languages;
-    }
-
-    /**
-     * Set created
-     *
-     * @param \SM\Bundle\AdminBundle\Entity\User $created
-     * @return Menu
-     */
-    public function setCreated(\SM\Bundle\AdminBundle\Entity\User $created = null)
-    {
-        $this->created = $created;
-    
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return \SM\Bundle\AdminBundle\Entity\User 
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set updated
-     *
-     * @param \SM\Bundle\AdminBundle\Entity\User $updated
-     * @return Menu
-     */
-    public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated = null)
-    {
-        $this->updated = $updated;
-    
-        return $this;
-    }
-
-    /**
-     * Get updated
-     *
-     * @return \SM\Bundle\AdminBundle\Entity\User 
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
+        return $this->url;
     }
 }

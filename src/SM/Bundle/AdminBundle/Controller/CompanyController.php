@@ -352,5 +352,5 @@ class CompanyController extends Controller
             return $this->redirect($referrer);
         }
     }
-
+    
 }

@@ -125,6 +125,11 @@
             </footer>
             {% endblock %}
         </div>
+        <!-- Loading image will be show when ajax called. -->
+        <div class="modal hide" id="ajaxModal" style="text-align: center;">
+            <img alt="Loading, please wait.." src="{{ asset('web/static/admin/img/loading.gif') }}" />
+        </div>        
+        
         <!-- Le javascript
             ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

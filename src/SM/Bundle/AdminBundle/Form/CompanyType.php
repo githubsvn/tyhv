@@ -19,7 +19,8 @@ class CompanyType extends AbstractType
             ->add('email', null, array('required' => false))
             ->add('website', null, array('required' => false))
             ->add('status', 'checkbox', array(
-                'attr' => array('checked' => 'checked')
+                'attr' => array('checked' => 'checked'),
+                'required' => false
             ))
             ->add('company_languages', 'collection', array('type' => new CompanyLanguageType()))
             ->add('logo', 'file', array(

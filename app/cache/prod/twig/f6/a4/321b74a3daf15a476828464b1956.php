@@ -184,13 +184,21 @@ class __TwigTemplate_f6a4321b74a3daf15a476828464b1956 extends Twig_Template
         $this->displayBlock('footer', $context, $blocks);
         // line 127
         echo "        </div>
+        <!-- Loading image will be show when ajax called. -->
+        <div class=\"modal hide\" id=\"ajaxModal\" style=\"text-align: center;\">
+            <img alt=\"Loading, please wait..\" src=\"";
+        // line 130
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("web/static/admin/img/loading.gif"), "html", null, true);
+        echo "\" />
+        </div>        
+        
         <!-- Le javascript
             ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         ";
-        // line 131
+        // line 136
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 138
+        // line 143
         echo "        ";
         echo $this->env->getExtension('stfalcon_tinymce')->tinymce_init();
         echo "
@@ -417,27 +425,27 @@ class __TwigTemplate_f6a4321b74a3daf15a476828464b1956 extends Twig_Template
             ";
     }
 
-    // line 131
+    // line 136
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 132
+        // line 137
         echo "        <script src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("web/static/admin/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 133
+        // line 138
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("web/static/admin/js/prettify.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 134
+        // line 139
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("web/static/admin/js/common.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 135
+        // line 140
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("/web/static/admin/js/twig.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 136
+        // line 141
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("web/static/admin/js/DataTables/media/js/jquery.dataTables.js"), "html", null, true);
         echo "\"></script>
         ";
@@ -455,6 +463,6 @@ class __TwigTemplate_f6a4321b74a3daf15a476828464b1956 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  441 => 136,  437 => 135,  433 => 134,  429 => 133,  424 => 132,  421 => 131,  413 => 122,  410 => 121,  405 => 118,  401 => 116,  395 => 115,  392 => 114,  383 => 111,  378 => 110,  373 => 109,  370 => 108,  367 => 107,  364 => 106,  359 => 105,  356 => 104,  352 => 84,  346 => 82,  343 => 81,  340 => 80,  334 => 72,  330 => 71,  327 => 70,  324 => 69,  321 => 68,  318 => 67,  312 => 66,  302 => 61,  295 => 59,  286 => 57,  282 => 55,  279 => 54,  270 => 52,  267 => 51,  261 => 36,  257 => 35,  253 => 34,  249 => 33,  245 => 32,  235 => 25,  231 => 24,  217 => 13,  212 => 12,  209 => 11,  203 => 5,  194 => 138,  192 => 131,  186 => 127,  184 => 121,  180 => 119,  178 => 118,  175 => 117,  173 => 104,  170 => 103,  165 => 100,  159 => 98,  156 => 97,  153 => 96,  139 => 95,  133 => 93,  125 => 91,  122 => 90,  104 => 89,  101 => 88,  99 => 87,  93 => 85,  82 => 73,  79 => 72,  74 => 66,  71 => 65,  68 => 54,  66 => 51,  51 => 39,  48 => 38,  37 => 5,  102 => 33,  96 => 86,  91 => 80,  80 => 24,  76 => 67,  69 => 19,  65 => 18,  60 => 16,  57 => 15,  53 => 14,  46 => 11,  41 => 7,  38 => 6,  34 => 5,  31 => 1,  28 => 3,);
+        return array (  449 => 141,  445 => 140,  441 => 139,  437 => 138,  432 => 137,  429 => 136,  421 => 122,  418 => 121,  413 => 118,  409 => 116,  403 => 115,  400 => 114,  391 => 111,  386 => 110,  381 => 109,  378 => 108,  375 => 107,  372 => 106,  367 => 105,  364 => 104,  360 => 84,  354 => 82,  351 => 81,  348 => 80,  342 => 72,  338 => 71,  335 => 70,  332 => 69,  329 => 68,  326 => 67,  320 => 66,  310 => 61,  303 => 59,  294 => 57,  290 => 55,  287 => 54,  278 => 52,  275 => 51,  269 => 36,  265 => 35,  261 => 34,  257 => 33,  253 => 32,  243 => 25,  239 => 24,  225 => 13,  220 => 12,  217 => 11,  211 => 5,  202 => 143,  200 => 136,  191 => 130,  186 => 127,  184 => 121,  180 => 119,  178 => 118,  175 => 117,  173 => 104,  170 => 103,  165 => 100,  159 => 98,  156 => 97,  153 => 96,  139 => 95,  133 => 93,  125 => 91,  122 => 90,  104 => 89,  101 => 88,  99 => 87,  96 => 86,  93 => 85,  91 => 80,  82 => 73,  79 => 72,  76 => 67,  74 => 66,  71 => 65,  68 => 54,  66 => 51,  51 => 39,  48 => 38,  46 => 11,  37 => 5,  31 => 1,);
     }
 }

@@ -767,6 +767,133 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
+        if (0 === strpos($pathinfo, '/admin/menu')) {
+            // admin_menu
+            if (preg_match('#^/admin/menu(?:/(?P<page>\\d+)(?:/(?P<lang>\\d+))?)?$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::indexAction',  'page' => '1',  'lang' => NULL,)), array('_route' => 'admin_menu'));
+            }
+
+            // admin_menu_show
+            if (preg_match('#^/admin/menu/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::showAction',)), array('_route' => 'admin_menu_show'));
+            }
+
+            // admin_menu_new
+            if ($pathinfo === '/admin/menu/new') {
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::newAction',  '_route' => 'admin_menu_new',);
+            }
+
+            // admin_menu_create
+            if ($pathinfo === '/admin/menu/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_menu_create;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::createAction',  '_route' => 'admin_menu_create',);
+            }
+            not_admin_menu_create:
+
+            // admin_menu_edit
+            if (preg_match('#^/admin/menu/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::editAction',)), array('_route' => 'admin_menu_edit'));
+            }
+
+            // admin_menu_update
+            if (preg_match('#^/admin/menu/(?P<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_menu_update;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::updateAction',)), array('_route' => 'admin_menu_update'));
+            }
+            not_admin_menu_update:
+
+            // admin_menu_delete
+            if (preg_match('#^/admin/menu/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('POST', 'GET', 'HEAD'));
+                    goto not_admin_menu_delete;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::deleteAction',)), array('_route' => 'admin_menu_delete'));
+            }
+            not_admin_menu_delete:
+
+            // admin_menu_up
+            if (0 === strpos($pathinfo, '/admin/menu/up') && preg_match('#^/admin/menu/up/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::upAction',)), array('_route' => 'admin_menu_up'));
+            }
+
+            // admin_menu_down
+            if (0 === strpos($pathinfo, '/admin/menu/down') && preg_match('#^/admin/menu/down/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::downAction',)), array('_route' => 'admin_menu_down'));
+            }
+
+            // admin_menu_get_param
+            if (0 === strpos($pathinfo, '/admin/menu/getParam') && preg_match('#^/admin/menu/getParam(?:/(?P<type>[^/]+))?$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::getParamAction',  'type' => NULL,)), array('_route' => 'admin_menu_get_param'));
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/admin/news')) {
+            // admin_news
+            if (preg_match('#^/admin/news(?:/(?P<page>\\d+)(?:/(?P<lang>\\d+))?)?$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\NewsController::indexAction',  'page' => '1',  'lang' => NULL,)), array('_route' => 'admin_news'));
+            }
+
+            // admin_news_show
+            if (preg_match('#^/admin/news/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\NewsController::showAction',)), array('_route' => 'admin_news_show'));
+            }
+
+            // admin_news_new
+            if ($pathinfo === '/admin/news/new') {
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\NewsController::newAction',  '_route' => 'admin_news_new',);
+            }
+
+            // admin_news_create
+            if ($pathinfo === '/admin/news/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_news_create;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\NewsController::createAction',  '_route' => 'admin_news_create',);
+            }
+            not_admin_news_create:
+
+            // admin_news_edit
+            if (preg_match('#^/admin/news/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\NewsController::editAction',)), array('_route' => 'admin_news_edit'));
+            }
+
+            // admin_news_update
+            if (preg_match('#^/admin/news/(?P<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_news_update;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\NewsController::updateAction',)), array('_route' => 'admin_news_update'));
+            }
+            not_admin_news_update:
+
+            // admin_news_delete
+            if (preg_match('#^/admin/news/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('POST', 'GET', 'HEAD'));
+                    goto not_admin_news_delete;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\NewsController::deleteAction',)), array('_route' => 'admin_news_delete'));
+            }
+            not_admin_news_delete:
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

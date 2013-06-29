@@ -47,6 +47,13 @@ class CompanyLanguage {
     /**
      * @var string
      *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+    
+    /**
+     * @var string
+     *
      * @ORM\Column(name="adress", type="string", length=255, nullable=true)
      */
     private $address;
@@ -173,5 +180,28 @@ class CompanyLanguage {
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return CompanyLanguage
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

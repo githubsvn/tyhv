@@ -26,6 +26,13 @@ class CompanyLanguageType extends AbstractType {
                     ),
                     'required' => false
                 ))
+                ->add('description', 'textarea', array(
+                    'attr' => array(
+                        'class' => 'tinymce',
+                        'data-theme' => 'medium',
+                    ),
+                    'required' => false
+                ))
                 ->add('representation', null, array('required' => false));
     }
 
