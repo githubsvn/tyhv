@@ -111,6 +111,9 @@ $catalogue = new MessageCatalogue('vi', array (
     'News Creation' => 'Thêm Mới Tin Tức',
     'News Edit' => 'Chỉnh Sửa Tin Tức',
     'News Category' => 'Loại tin',
+    'Page List' => 'Danh Sách Trang Tỉnh',
+    'Page Creation' => 'Thêm Mới Trang Tỉnh',
+    'Page Edit' => 'Chỉnh Sửa Trang Tỉnh',
   ),
 ));
 

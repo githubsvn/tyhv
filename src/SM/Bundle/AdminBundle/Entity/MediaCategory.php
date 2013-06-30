@@ -5,29 +5,67 @@ namespace SM\Bundle\AdminBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MediaCategory
+ * Category
  *
- * @ORM\Table(name="mtx_media_category")
+ * @ORM\Table(name="mtx_mediacategory")
  * @ORM\Entity(repositoryClass="SM\Bundle\AdminBundle\Repository\MediaCategoryRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class MediaCategory
 {
+
     /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OrderBy({"lft" = "ASC"})
      */
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=45)
+     * @ORM\ManyToOne(targetEntity="MediaCategory", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
      */
-    private $name;
+    private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MediaCategory", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $children;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lft", type="integer", nullable=true)
+     */
+    private $lft;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rgt", type="integer", nullable=true)
+     */
+    private $rgt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $created;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $updated;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    private $status;
 
     /**
      * @var \DateTime
@@ -44,14 +82,16 @@ class MediaCategory
     private $updated_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @var Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="MediaCategoryLanguage", mappedBy="mediacategory", cascade={"all"})
      */
-    private $created;
+    protected $mediacategory_languages;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @var Language
      */
-    private $updated;
+    private $language;
 
     /**
      * @ORM\PrePersist
@@ -65,22 +105,70 @@ class MediaCategory
     }
 
     /**
-     * @ORM\PreUpdate
+     * Constructor
      */
-    public function setUpdatedAtValue()
+    public function __construct()
     {
-        $this->updated_at = new \DateTime();
+        $this->mediacategory_languages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getCurrentLanguage()
+    {
+        $catLanguages = $this->mediacategory_languages->toArray();
+        if (is_array($catLanguages)) {
+            if (null !== $this->language) {
+                foreach ($catLanguages as $ctLanguage) {
+                    if ($ctLanguage->getLanguage()->getId() == $this->language->getId()) {
+                        return $ctLanguage;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public function hasLanguage(Language $language)
+    {
+        $result = false;
+        if (count($this->mediacategory_languages->toArray()) > 0) {
+            foreach ($this->mediacategory_languages as $plTemp) {
+                if ($language->getId() == $plTemp->getLanguage()->getId()) {
+                    $result = true;
+                    break;
+                }
+            }
+        }
+
+        return $result;
     }
 
     public function __toString()
     {
-        return $this->name;
+        $catLanguages = $this->mediacategory_languages->toArray();
+        if (is_array($catLanguages)) {
+            if (isset($catLanguages[0])) {
+                return $catLanguages[0]->getTreeName();
+            }
+        }
+
+        return '';
+    }
+
+    public function getLevel()
+    {
+        if (null === $this->parent) {
+            return 1;
+        } else {
+            return $this->parent->getLevel() + 1;
+        }
     }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -88,26 +176,72 @@ class MediaCategory
     }
 
     /**
-     * Set name
+     * Set lft
      *
-     * @param string $name
+     * @param integer $lft
      * @return MediaCategory
      */
-    public function setName($name)
+    public function setLft($lft)
     {
-        $this->name = $name;
-
+        $this->lft = $lft;
+    
         return $this;
     }
 
     /**
-     * Get name
+     * Get lft
      *
-     * @return string
+     * @return integer 
      */
-    public function getName()
+    public function getLft()
     {
-        return $this->name;
+        return $this->lft;
+    }
+
+    /**
+     * Set rgt
+     *
+     * @param integer $rgt
+     * @return MediaCategory
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+    
+        return $this;
+    }
+
+    /**
+     * Get rgt
+     *
+     * @return integer 
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * Set status
+     *
+     * @param boolean $status
+     * @return MediaCategory
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return boolean 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**
@@ -119,14 +253,14 @@ class MediaCategory
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-
+    
         return $this;
     }
 
     /**
      * Get created_at
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getCreatedAt()
     {
@@ -142,18 +276,74 @@ class MediaCategory
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-
+    
         return $this;
     }
 
     /**
      * Get updated_at
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getUpdatedAt()
     {
         return $this->updated_at;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\MediaCategory $parent
+     * @return MediaCategory
+     */
+    public function setParent(\SM\Bundle\AdminBundle\Entity\MediaCategory $parent = null)
+    {
+        $this->parent = $parent;
+    
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\MediaCategory 
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Add children
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\MediaCategory $children
+     * @return MediaCategory
+     */
+    public function addChildren(\SM\Bundle\AdminBundle\Entity\MediaCategory $children)
+    {
+        $this->children[] = $children;
+    
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\MediaCategory $children
+     */
+    public function removeChildren(\SM\Bundle\AdminBundle\Entity\MediaCategory $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
     }
 
     /**
@@ -165,14 +355,14 @@ class MediaCategory
     public function setCreated(\SM\Bundle\AdminBundle\Entity\User $created = null)
     {
         $this->created = $created;
-
+    
         return $this;
     }
 
     /**
      * Get created
      *
-     * @return \SM\Bundle\AdminBundle\Entity\User
+     * @return \SM\Bundle\AdminBundle\Entity\User 
      */
     public function getCreated()
     {
@@ -188,17 +378,72 @@ class MediaCategory
     public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated = null)
     {
         $this->updated = $updated;
-
+    
         return $this;
     }
 
     /**
      * Get updated
      *
-     * @return \SM\Bundle\AdminBundle\Entity\User
+     * @return \SM\Bundle\AdminBundle\Entity\User 
      */
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Add mediacategory_languages
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\MediaCategoryLanguage $mediacategoryLanguages
+     * @return MediaCategory
+     */
+    public function addMediacategoryLanguage(\SM\Bundle\AdminBundle\Entity\MediaCategoryLanguage $mediacategoryLanguages)
+    {
+        $this->mediacategory_languages[] = $mediacategoryLanguages;
+    
+        return $this;
+    }
+
+    /**
+     * Remove mediacategory_languages
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\MediaCategoryLanguage $mediacategoryLanguages
+     */
+    public function removeMediacategoryLanguage(\SM\Bundle\AdminBundle\Entity\MediaCategoryLanguage $mediacategoryLanguages)
+    {
+        $this->mediacategory_languages->removeElement($mediacategoryLanguages);
+    }
+
+    /**
+     * Get mediacategory_languages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMediacategoryLanguages()
+    {
+        return $this->mediacategory_languages;
+    }
+    
+    /**
+     * Set Language
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Language $language
+     */
+    public function setLanguage(Language $language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\Language
+     */
+    public function getLanguage()
+    {
+        return $this->language;
     }
 }

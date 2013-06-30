@@ -389,8 +389,12 @@ class MenuController extends Controller
                 $options = $repo->getOptions();
                 break;
             case $mnuTypeNewsDetail:
+                $repo = $em->getRepository('SMAdminBundle:News');
+                $options = $repo->getOptions();
                 break;
             case $mnuTypePageDetail:
+                $repo = $em->getRepository('SMAdminBundle:Page');
+                $options = $repo->getOptions();
                 break;
             
         }

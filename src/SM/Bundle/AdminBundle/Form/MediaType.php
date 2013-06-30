@@ -5,6 +5,7 @@ namespace SM\Bundle\AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use SM\Bundle\AdminBundle\Repository\MediaCategoryRepository;
 
 /**
  * Media type form
@@ -42,7 +43,15 @@ class MediaType extends AbstractType
             ->add('width')
             ->add('height')
             ->add('active')
-            ->add('category');
+            ->add('category', 'entity', array(
+                'required' => false,
+                'class' => 'SMAdminBundle:MediaCategory',
+                'query_builder' => function (MediaCategoryRepository $pRe) {
+                    return $pRe->createQueryBuilder('c')
+                        ->orderBy('c.lft', 'ASC')
+                        ->where('c.status = 1');
+                }
+            ));
     }
 
     /**

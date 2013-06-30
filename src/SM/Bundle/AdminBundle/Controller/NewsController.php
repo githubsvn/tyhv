@@ -191,12 +191,46 @@ class NewsController extends Controller
                 $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
             }
         }
+        
+        //get Medias
+        $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
+                ->findAll();
 
+        //Get media category name that to display add news
+        $langList = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->findAll();
+        foreach ($langList as $langData) {
+            $isDefault = $langData->getIsDefault();
+            if ($isDefault == 1) {
+                $lang = $langData->getId();
+                break;
+            }
+        }
+        $currentLanguage = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->find($lang);
+        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
+        $listMediaCats = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:MediaCategory")
+                ->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
+        $optMediaCats = array();
+        foreach ($listMediaCats as $theCat) {
+            $theCat->setLanguage($currentLanguage);
+            if ($root->getId() != $theCat->getId()) {
+                $optMediaCats[] = $theCat;
+            }
+        }
+        
         return $this->render('SMAdminBundle:News:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'langList' => $langList,
-            'defaultLanguage' => $defaultLanguage
+            'defaultLanguage' => $defaultLanguage,
+            'optMedias' => $optMedias,
+            'selectedMedias' => array(),
+            'mediaPath' => '/web/' . $this->container->getParameter('upload'),
+            'optMediaTypes' => $optMediaCats
         ));
     }
 
@@ -317,7 +351,36 @@ class NewsController extends Controller
                 $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
             }
         }
+        
+        $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
+            ->findAll();
 
+        //Get media category name that to display add news
+        $langList = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->findAll();
+        foreach ($langList as $langData) {
+            $isDefault = $langData->getIsDefault();
+            if ($isDefault == 1) {
+                $lang = $langData->getId();
+                break;
+            }
+        }
+        $currentLanguage = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->find($lang);
+        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
+        $listMediaCats = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:MediaCategory")
+                ->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
+        $optMediaCats = array();
+        foreach ($listMediaCats as $theCat) {
+            $theCat->setLanguage($currentLanguage);
+            if ($root->getId() != $theCat->getId()) {
+                $optMediaCats[] = $theCat;
+            }
+        }
+        
         return $this->render('SMAdminBundle:News:edit.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
@@ -325,6 +388,9 @@ class NewsController extends Controller
             'defaultLanguage' => $defaultLanguage,
             'arrImgs' => array($image),
             'imgPath' => '/web/' . $uploadPath,
+            'optMedias' => $optMedias,
+            'mediaPath' => '/web/' . $this->container->getParameter('upload'),
+            'optMediaTypes' => $optMediaCats,
         ));
 
     }

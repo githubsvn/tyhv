@@ -16,5 +16,6 @@ sm_admin:
 
         - { class: SM\Bundle\AdminBundle\Entity\Category,   group: TIN TỨC, label: QL Chuyên Mục,   acl: true,  action: [admin_category_new, admin_category] }
         - { class: SM\Bundle\AdminBundle\Entity\News,   group: TIN TỨC, label: QL Tin tức,   acl: true,  action: [admin_news_new, admin_news] }
+        - { class: SM\Bundle\AdminBundle\Entity\Page,   group: TIN TỨC, label: QL Trang tỉnh,   acl: true,  action: [admin_page_new, admin_page] }
 
     templates: 5

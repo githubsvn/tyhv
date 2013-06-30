@@ -78,6 +78,12 @@ class News {
     public $image;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Media", cascade={"persist"})
+     * @ORM\JoinTable(name="mtx_news_media")
+     */
+    private $media_id;
+    
+    /**
      * @ORM\PrePersist
      */
     public function setCreatedAtValue() {
@@ -356,5 +362,38 @@ class News {
     public function getNewsLanguages()
     {
         return $this->news_languages;
+    }
+    
+    /**
+     * Add media_id
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Media $mediaId
+     * @return Products
+     */
+    public function addMediaId(\SM\Bundle\AdminBundle\Entity\Media $mediaId)
+    {
+        $this->media_id[] = $mediaId;
+
+        return $this;
+    }
+
+    /**
+     * Remove media_id
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Media $mediaId
+     */
+    public function removeMediaId(\SM\Bundle\AdminBundle\Entity\Media $mediaId)
+    {
+        $this->media_id->removeElement($mediaId);
+    }
+
+    /**
+     * Get media_id
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMediaId()
+    {
+        return $this->media_id;
     }
 }

@@ -126,9 +126,9 @@ class MediaController extends Controller
             }
 
             return $this->redirect(
-                            $this->generateUrl(
-                                    'admin_media_show', array('id' => $entity->getId()
-                            ))
+                $this->generateUrl(
+                        'admin_media', array('id' => $entity->getId()
+                ))
             );
         }
 
@@ -161,11 +161,11 @@ class MediaController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render(
-                        'SMAdminBundle:Media:edit.html.twig', array(
-                    'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
-                        )
+            'SMAdminBundle:Media:edit.html.twig', array(
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+            )
         );
     }
 
@@ -215,19 +215,18 @@ class MediaController extends Controller
             }
 
             return $this->redirect(
-                            $this->generateUrl(
-                                    'admin_media_edit', array('id' => $id)
-                            )
+                $this->generateUrl(
+                    'admin_media_edit', array('id' => $id)
+                )
             );
         }
 
         return $this->render(
-                        'SMAdminBundle:Media:edit.html.twig', array(
-                    'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
-                        )
-        );
+            'SMAdminBundle:Media:edit.html.twig', array(
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**
@@ -245,7 +244,7 @@ class MediaController extends Controller
                 ->deleteByIds(array($id));
 
         return $this->redirect(
-                        $this->generateUrl('admin_media')
+            $this->generateUrl('admin_media')
         );
     }
 

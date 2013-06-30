@@ -28,7 +28,7 @@ class NewsLanguage {
     private $language;
 
     /**
-     * @ORM\ManyToOne(targetEntity="news")
+     * @ORM\ManyToOne(targetEntity="News")
      */
     private $news;
 

@@ -6,7 +6,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use SM\Bundle\AdminBundle\Entity\MediaCategory;
+use SM\Bundle\AdminBundle\Entity\MediaCategoryLanguage;
 use SM\Bundle\AdminBundle\Form\MediaCategoryType;
+use SM\Bundle\AdminBundle\Form\MediaCategoryLanguageType;
 
 /**
  * MediaCategory controller.
@@ -15,213 +17,326 @@ class MediaCategoryController extends Controller
 {
 
     /**
-     * index action
      *
-     * @param type $page page
-     *
+     * @param type $page
+     * @param type $lang
      * @return type
      */
-    public function indexAction($page)
-    {
-        $rep = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:MediaCategory");
+    public function indexAction($page, $lang) {
+        //get list language
+        $langList = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->findAll();
 
-        $total = $rep->getTotal();
-        $perPage = $this->container->getParameter('per_item_page');;
+        if (is_null($lang)) {
+            foreach ($langList as $langData) {
+                $isDefault = $langData->getIsDefault();
+                if ($isDefault == 1) {
+                    $lang = $langData->getId();
+                    break;
+                }
+            }
+        }
 
+        $currentLanguage = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->find($lang);
+
+        //get root
+        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
+        $rst = array();
+
+        $total = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:MediaCategory")
+                ->getTotal();
+        if (!empty($root)) {
+            $total -= 1;
+        }
+
+        $perPage = $this->container->getParameter('per_item_page');
         $lastPage = ceil($total / $perPage);
         $previousPage = $page > 1 ? $page - 1 : 1;
         $nextPage = $page < $lastPage ? $page + 1 : $lastPage;
-        $entities = $rep->getList($perPage, ($page - 1) * $perPage);
+
+        $entities = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:MediaCategory")
+                ->getList($perPage, ($page - 1) * $perPage, array(), array('lft' => 'ASC'));
+
+        foreach ($entities as $theCat) {
+            $theCat->setLanguage($currentLanguage);
+            if ($root->getId() != $theCat->getId()) {
+                $rst[] = $theCat;
+            }
+        }
 
         return $this->render('SMAdminBundle:MediaCategory:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $rst,
             'lastPage' => $lastPage,
             'previousPage' => $previousPage,
             'currentPage' => $page,
             'nextPage' => $nextPage,
-            'total' => $total
+            'total' => $total,
+            'lang' => intval($lang),
+            'langList' => $langList,
         ));
-
     }
 
     /**
-     * show action
+     * Finds and displays a CompanyType entity.
      *
-     * @param type $id the id
-     *
-     * @return type
-     *
-     * @throws type
      */
-    public function showAction($id)
-    {
-        $entity = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:MediaCategory")
-                    ->find($id);
+    public function showAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('SMAdminBundle:MediaCategory')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find MediaCategory entity.');
+            throw $this->createNotFoundException('Unable to find CompanyType entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('SMAdminBundle:MediaCategory:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),));
     }
 
     /**
-     * new action
+     * Displays a form to create a new CompanyType entity.
      *
-     * @return type
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new MediaCategory();
-        $form   = $this->createForm(new MediaCategoryType(), $entity);
+        //get list language
+        $repLanguage = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language");
+        //Get list language
+        $langList = $repLanguage->getList();
 
-        return $this->render('SMAdminBundle:MediaCategory:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
+        if (is_array($langList)) {
+            foreach ($langList as $language) {
+                $catLanguage = new MediaCategoryLanguage();
+                $catLanguage->setLanguage($language);
+                $catLanguage->setMediacategory($entity);
 
-    /**
-     * creata action
-     *
-     * @param \Symfony\Component\HttpFoundation\Request $request request
-     *
-     * @return type
-     */
-    public function createAction(Request $request)
-    {
-        $rep = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:MediaCategory");
+                $entity->addMediacategoryLanguage($catLanguage);
 
-        $entity  = new MediaCategory();
+                if ($language->getIsDefault()) {
+                    $defaultLanguage = $language;
+                }
+            }
+        }
+
+        if (!$this->getRequest()->isMethod('POST')) {
+            // set referrer redirect
+            $session = $this->getRequest()->getSession();
+            $session->set('referrer', $this->getRequest()->server->get('HTTP_REFERER'));
+        }
+
         $form = $this->createForm(new MediaCategoryType(), $entity);
-        $form->bind($request);
 
-        if ($form->isValid()) {
-            $rep->addByEntity($entity);
+        if ($this->getRequest()->isMethod('POST')) {
+            $form->bind($this->getRequest());
+            if ($form->isValid()) {
 
-            return $this->redirect(
-                $this->generateUrl(
-                    'admin_mediacategory_show',
-                    array('id' => $entity->getId())
-                )
-            );
+                //Set created and updated user
+                $currUser = $this->get('security.context')->getToken()->getUser();
+                $entity->setCreated($currUser);
+                $entity->setUpdated($currUser);
+
+                $entityManager = $this->getDoctrine()->getEntityManager();
+                $entityManager->persist($entity);
+                foreach ($entity->getMediacategoryLanguages() as $catLanguage) {
+                    $name = $catLanguage->getName();
+                    if (empty($name)) {
+                        $entity->removeMeidacategoryLanguage($catLanguage);
+                        $entityManager->remove($catLanguage);
+                    }
+                }
+
+                $entityManager->flush();
+
+                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Media Category insert successfull!');
+
+                $referrer = $this->getRequest()->getSession()->get('referrer');
+
+                if (!$referrer) {
+
+                    return $this->redirect(
+                        $this->generateUrl('admin_mediacategory')
+                    );
+                } else {
+
+                    return $this->redirect($referrer);
+                }
+            } else {
+                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
+            }
         }
 
         return $this->render('SMAdminBundle:MediaCategory:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
+            'langList' => $langList,
+            'defaultLanguage' => $defaultLanguage
         ));
     }
 
     /**
-     * edit action
+     * Displays a form to edit an existing CompanyType entity.
      *
-     * @param type $id the id
-     *
-     * @return type
-     *
-     * @throws type
      */
-    public function editAction($id)
-    {
-        $rep = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:MediaCategory");
-        $entity = $rep->find($id);
+    public function editAction($id) {
+
+        $entity = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")
+                ->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find MediaCategory entity.');
+            //go to page index with error
+            $this->getRequest()->getSession()->getFlashBag()
+                    ->add('sm_flash_error', 'Could not find page with id ' . $id);
+
+            return $this->redirect($this->generateUrl('admin_mediacategory'));
         }
 
-        $editForm = $this->createForm(new MediaCategoryType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
+        //get list language
+        $langList = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->findAll();
+
+        if (is_array($langList)) {
+            foreach ($langList as $language) {
+                if (!$entity->hasLanguage($language)) {
+                    $catLanguage = new MeidaCategoryLanguage();
+                    $catLanguage->setLanguage($language);
+                    $catLanguage->setMediacategory($entity);
+                    $entity->addMeidacategoryLanguage($ctLanguage);
+                }
+                if ($language->getIsDefault()) {
+                    $defaultLanguage = $language;
+                }
+            }
+        }
+
+        if (!$this->getRequest()->isMethod('POST')) {
+            // set referrer redirect
+            $session = $this->getRequest()->getSession();
+            $session->set('referrer', $this->getRequest()->server->get('HTTP_REFERER'));
+        }
+
+        $form = $this->createForm(new MediaCategoryType(), $entity);
+
+        if ($this->getRequest()->isMethod('POST')) {
+            $form->bind($this->getRequest());
+
+            if ($form->isValid()) {
+                $entityManager = $this->getDoctrine()->getEntityManager();
+                foreach ($entity->getMediacategoryLanguages() as $catLanguage) {
+                    $name = $catLanguage->getName();
+                    if (empty($name)) {
+                        $entity->removeMediacategoryLanguage($catLanguage);
+                        $entityManager->remove($catLanguage);
+                    }
+                }
+
+                //Set created
+                $currUser = $this->get('security.context')->getToken()->getUser();
+                $entity->setUpdated($currUser);
+
+                $entityManager->persist($entity);
+
+                $entityManager->flush();
+                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Media Category edit successfull!');
+                $referrer = $this->getRequest()->getSession()->get('referrer');
+
+                if (!$referrer) {
+
+                    return $this->redirect(
+                        $this->generateUrl('admin_mediacategory')
+                    );
+                } else {
+
+                    return $this->redirect($referrer);
+                }
+            } else {
+                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
+            }
+        }
 
         return $this->render('SMAdminBundle:MediaCategory:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'entity' => $entity,
+            'form' => $form->createView(),
+            'langList' => $langList,
+            'defaultLanguage' => $defaultLanguage,
         ));
     }
 
     /**
-     * update action
-     *
      * @param \Symfony\Component\HttpFoundation\Request $request request
-     * @param type                                      $id      the id
+     * @param int                                       $id      the id
      *
      * @return type
-     *
-     * @throws type
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $rep = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:MediaCategory");
+                ->getRepository("SMAdminBundle:MediaCategoryLanguage");
 
-        $entity = $rep->find($id);
+        $rst = $rep->deleteByIds(array($id));
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find MediaCategory entity.');
-        }
+        // set referrer redirect
+        $referrer = $this->getRequest()->server->get('HTTP_REFERER');
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new MediaCategoryType(), $entity);
-        $editForm->bind($request);
-
-        if ($editForm->isValid()) {
-            $rep->addByEntity($entity);
+        if (!$referrer) {
 
             return $this->redirect(
-                $this->generateUrl('admin_mediacategory_edit',
-                    array('id' => $id)
-                )
+                $this->generateUrl('admin_mediacategory')
             );
+        } else {
+
+            return $this->redirect($referrer);
         }
-
-        return $this->render('SMAdminBundle:MediaCategory:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
     }
 
     /**
-     * delete action
-     *
-     * @param \Symfony\Component\HttpFoundation\Request $request request
-     * @param type                                      $id      the id
-     *
-     * @return type
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $rep = $this->getDoctrine()
-                    ->getRepository("SMAdminBundle:MediaCategory");
-
-        $rep->deleteByIds(array($id));
-
-        return $this->redirect(
-            $this->generateUrl('admin_mediacategory')
-        );
-    }
-
-    /**
-     * create form delete
+     * up action
      *
      * @param type $id
      *
      * @return type
      */
-    private function createDeleteForm($id)
+    public function upAction($id)
     {
-        return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm();
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository('SMAdminBundle:MeidaCategory');
+        $oCat = $repo->findOneById($id);
+        if ($oCat->getParent()) {
+            $repo->moveUp($oCat);
+        }
+
+        return $this->redirect(
+            $this->getRequest()->headers->get('referer')
+        );
+
+    }
+
+    /**
+     * down action
+     *
+     * @param type $id
+     *
+     * @return type
+     */
+    public function downAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository('SMAdminBundle:MeidaCategory');
+        $oCat = $repo->findOneById($id);
+        if ($oCat->getParent()) {
+            $repo->moveDown($oCat);
+        }
+
+        return $this->redirect(
+            $this->getRequest()->headers->get('referer')
+        );
     }
 }

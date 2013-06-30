@@ -5,24 +5,29 @@ namespace SM\Bundle\AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use SM\Bundle\AdminBundle\Repository\MediaCategoryRepository;
 
-/**
- * media category type
- */
 class MediaCategoryType extends AbstractType
 {
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder builder
-     * @param array                                        $options options
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name');
+        $builder
+            ->add('parent', 'entity', array(
+                'required' => false,
+                'class' => 'SMAdminBundle:MediaCategory',
+                'query_builder' => function (MediaCategoryRepository $pRe) {
+                    return $pRe->createQueryBuilder('c')
+                        ->orderBy('c.lft', 'ASC')
+                        ->where('c.status = 1');
+                }
+            ))
+            ->add('status', 'checkbox', array(
+                'required' => false
+            ))
+            ->add('mediacategory_languages', 'collection', array('type' => new MediaCategoryLanguageType()))
+        ;
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolverInterface $resolver resolver
-     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -30,9 +35,6 @@ class MediaCategoryType extends AbstractType
         ));
     }
 
-    /**
-     * @return string
-     */
     public function getName()
     {
         return 'sm_bundle_adminbundle_mediacategorytype';

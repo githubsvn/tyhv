@@ -49,8 +49,6 @@
                 {% endif%}
             </td>
             <td>
-                <a href="{{ path('admin_media_show', { 'id': entity.id }) }}"><i class="icon-search"></i>{{ 'Show'|trans({}, "SMAdminBundle") }}</a>
-                &nbsp; | &nbsp;
                 <a href="{{ path('admin_media_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
                 &nbsp; | &nbsp;
                 <a class="delete" rel="{{ path('admin_media_delete', { 'id': entity.id }) }}"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>

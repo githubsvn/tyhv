@@ -70,4 +70,8 @@ mtx_admin_menu:
 mtx_admin_news:
         resource: "@SMAdminBundle/Resources/config/routing/news.yml"
         prefix:   /admin/news
+
+mtx_admin_page:
+        resource: "@SMAdminBundle/Resources/config/routing/page.yml"
+        prefix:   /admin/page        
         

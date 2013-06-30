@@ -22,6 +22,7 @@ class TreeListener
         $this->listTree = array(
             "SM\Bundle\AdminBundle\Entity\Menu",
             "SM\Bundle\AdminBundle\Entity\Category",
+            "SM\Bundle\AdminBundle\Entity\MediaCategory",
         );
     }
 

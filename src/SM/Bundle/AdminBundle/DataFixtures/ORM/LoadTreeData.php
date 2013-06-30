@@ -31,6 +31,12 @@ class LoadTreeData implements FixtureInterface
         $entity->setRgt(0);
         $entity->setStatus(0);
         $manager->persist($entity);
+        
+        $entity = new MediaCategory();
+        $entity->setLft(0);
+        $entity->setRgt(0);
+        $entity->setStatus(0);
+        $manager->persist($entity);
     }
 
 }

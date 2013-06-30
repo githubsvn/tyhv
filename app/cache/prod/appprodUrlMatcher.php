@@ -529,8 +529,8 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         if (0 === strpos($pathinfo, '/admin/mediacategory')) {
             // admin_mediacategory
-            if (preg_match('#^/admin/mediacategory(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MediaCategoryController::indexAction',  'page' => '1',)), array('_route' => 'admin_mediacategory'));
+            if (preg_match('#^/admin/mediacategory(?:/(?P<page>\\d+)(?:/(?P<lang>\\d+))?)?$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MediaCategoryController::indexAction',  'page' => '1',  'lang' => NULL,)), array('_route' => 'admin_mediacategory'));
             }
 
             // admin_mediacategory_show
@@ -580,6 +580,16 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MediaCategoryController::deleteAction',)), array('_route' => 'admin_mediacategory_delete'));
             }
             not_admin_mediacategory_delete:
+
+            // admin_mediacategory_up
+            if (0 === strpos($pathinfo, '/admin/mediacategory/up') && preg_match('#^/admin/mediacategory/up/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MediaCategoryController::upAction',)), array('_route' => 'admin_mediacategory_up'));
+            }
+
+            // admin_mediacategory_down
+            if (0 === strpos($pathinfo, '/admin/mediacategory/down') && preg_match('#^/admin/mediacategory/down/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MediaCategoryController::downAction',)), array('_route' => 'admin_mediacategory_down'));
+            }
 
         }
 
@@ -891,6 +901,62 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\NewsController::deleteAction',)), array('_route' => 'admin_news_delete'));
             }
             not_admin_news_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/admin/page')) {
+            // admin_page
+            if (preg_match('#^/admin/page(?:/(?P<page>\\d+)(?:/(?P<lang>\\d+))?)?$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\PageController::indexAction',  'page' => '1',  'lang' => NULL,)), array('_route' => 'admin_page'));
+            }
+
+            // admin_page_show
+            if (preg_match('#^/admin/page/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\PageController::showAction',)), array('_route' => 'admin_page_show'));
+            }
+
+            // admin_page_new
+            if ($pathinfo === '/admin/page/new') {
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\PageController::newAction',  '_route' => 'admin_page_new',);
+            }
+
+            // admin_page_create
+            if ($pathinfo === '/admin/page/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_page_create;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\PageController::createAction',  '_route' => 'admin_page_create',);
+            }
+            not_admin_page_create:
+
+            // admin_page_edit
+            if (preg_match('#^/admin/page/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\PageController::editAction',)), array('_route' => 'admin_page_edit'));
+            }
+
+            // admin_page_update
+            if (preg_match('#^/admin/page/(?P<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_page_update;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\PageController::updateAction',)), array('_route' => 'admin_page_update'));
+            }
+            not_admin_page_update:
+
+            // admin_page_delete
+            if (preg_match('#^/admin/page/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('POST', 'GET', 'HEAD'));
+                    goto not_admin_page_delete;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\PageController::deleteAction',)), array('_route' => 'admin_page_delete'));
+            }
+            not_admin_page_delete:
 
         }
 

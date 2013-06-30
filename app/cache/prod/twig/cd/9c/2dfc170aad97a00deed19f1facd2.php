@@ -46,7 +46,7 @@ class __TwigTemplate_cd9c2dfc170aad97a00deed19f1facd2 extends Twig_Template
             echo "                    <option value=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "opt"), "id"), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "opt"), "name"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "opt"), "getCurrentLanguage"), "getTreeName"), "html", null, true);
             echo "</option>
                 ";
         }
@@ -237,6 +237,6 @@ class __TwigTemplate_cd9c2dfc170aad97a00deed19f1facd2 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  170 => 55,  165 => 53,  157 => 48,  145 => 41,  141 => 40,  138 => 39,  127 => 35,  121 => 34,  115 => 32,  107 => 27,  82 => 24,  77 => 22,  66 => 20,  57 => 16,  46 => 14,  42 => 13,  30 => 7,  21 => 2,  19 => 1,  374 => 144,  370 => 143,  366 => 142,  360 => 138,  354 => 137,  352 => 136,  348 => 134,  340 => 129,  336 => 128,  331 => 126,  325 => 122,  319 => 120,  313 => 118,  311 => 117,  307 => 116,  302 => 114,  299 => 113,  297 => 112,  294 => 111,  288 => 109,  282 => 107,  279 => 106,  273 => 105,  270 => 104,  267 => 103,  264 => 102,  259 => 101,  256 => 100,  251 => 99,  249 => 98,  245 => 96,  239 => 95,  236 => 94,  228 => 92,  220 => 90,  217 => 89,  212 => 88,  210 => 87,  197 => 78,  195 => 77,  191 => 76,  187 => 75,  181 => 72,  173 => 67,  169 => 66,  164 => 64,  156 => 59,  152 => 58,  147 => 56,  139 => 51,  135 => 38,  130 => 48,  122 => 43,  118 => 33,  113 => 31,  105 => 35,  101 => 34,  96 => 32,  88 => 27,  84 => 26,  79 => 24,  71 => 21,  67 => 18,  62 => 19,  54 => 11,  50 => 10,  45 => 8,  37 => 11,  31 => 3,  28 => 2,);
+        return array (  170 => 55,  165 => 53,  157 => 48,  145 => 41,  141 => 40,  138 => 39,  135 => 38,  127 => 35,  121 => 34,  118 => 33,  115 => 32,  113 => 31,  107 => 27,  82 => 24,  77 => 22,  71 => 21,  66 => 20,  62 => 19,  57 => 16,  46 => 14,  42 => 13,  37 => 11,  30 => 7,  21 => 2,  19 => 1,);
     }
 }

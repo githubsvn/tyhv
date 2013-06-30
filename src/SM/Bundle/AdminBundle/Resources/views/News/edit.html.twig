@@ -35,6 +35,18 @@
                 {{ mtxshowimg(arrImgs, imgPath)|raw}}
             </div>
         </div>
+        
+        <div class="control-group">
+            <label class="control-label" for="optionsCheckbox">{{ 'Image'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+              <label class="checkbox">
+                    {{ form_errors(form.media_id) }}
+                    {{ form_widget(form.media_id, {'attr': {'style': 'display: none'} }) }}
+                    {% set selectName = form.media_id.get('full_name') %}
+                    {{ smmedia(optMedias, optMediaTypes, selectName, mediaPath, {'multiple': true })|raw() }}
+              </label>
+            </div>
+        </div>
 
         <hr />
         <div class="tabbable"> <!-- Only required for left/right tabs -->

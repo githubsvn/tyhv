@@ -4,9 +4,6 @@ namespace SM\Bundle\AdminBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-/**
- * PageControllerTest
- */
 class PageControllerTest extends WebTestCase
 {
     /*

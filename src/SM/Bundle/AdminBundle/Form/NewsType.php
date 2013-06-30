@@ -30,6 +30,9 @@ class NewsType extends AbstractType
                     'data_class' => null
                 ))
             ->add('news_languages', 'collection', array('type' => new NewsLanguageType()))
+            ->add('media_id', null, array(
+                'required' => false,
+            ))
         ;
     }
 
