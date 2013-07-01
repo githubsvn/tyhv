@@ -37,7 +37,7 @@
             <div class="controls">
               <label class="checkbox">
                     {{ form_errors(form.active) }}
-                    {{ form_widget(form.active) }}
+                    {{ form_widget(form.active, {'attr': {'checked': 'checked'}} ) }}
               </label>
             </div>
         </div>

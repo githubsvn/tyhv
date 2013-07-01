@@ -22,7 +22,6 @@ class NewsType extends AbstractType
                 }
             ))
             ->add('status', 'checkbox', array(
-                'attr' => array('checked' => 'checked'),
                 'required' => false
             ))
             ->add('image', 'file', array(

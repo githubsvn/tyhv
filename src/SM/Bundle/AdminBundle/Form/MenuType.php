@@ -14,7 +14,7 @@ class MenuType extends AbstractType
         $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
         $repMenu = $container->get("doctrine")->getRepository('SMAdminBundle:Menu');
         $options = $repMenu->buildMenuType();
-        
+
         $builder
             ->add('parent', 'entity', array(
                 'required' => false,
@@ -37,7 +37,6 @@ class MenuType extends AbstractType
                 'choices' => array()
             ))
             ->add('status', 'checkbox', array(
-                    'attr' => array('checked' => 'checked')
             ))
             ->add('menu_languages', 'collection', array('type' => new MenuLanguageType()))
         ;

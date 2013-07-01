@@ -12,10 +12,10 @@
                 //set new option for select
                 var jsonData = JSON.parse(data);
                 $.each(jsonData, function(index, item) {
-                    $("#sm_bundle_adminbundle_menutype_param").append("<option value=" + item.id + ">" + item.name + "</option>"); 
+                    $("#sm_bundle_adminbundle_menutype_param").append("<option value=" + item.id + ">" + item.name + "</option>");
                 });
             }});
-            
+
             //Call ajax
             $('#ajaxModal').modal();
             $('#ajaxModal').ajaxStart(function() {
@@ -56,7 +56,7 @@
             <label class="control-label" for="input01">{{ 'Status'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.status) }}
-                {{ form_widget(form.status) }}
+                {{ form_widget(form.status, {'attr': {'checked': 'checked'}} ) }}
             </div>
         </div>
 

@@ -9,13 +9,13 @@
             <label class="control-label" for="input01">{{ 'Status'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.status) }}
-                {{ form_widget(form.status) }}
+                {{ form_widget(form.status, {'attr': {'checked': 'checked'}} ) }}
             </div>
         </div>
 
         <hr />
 
-        <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <div class="tabbable">
             <ul class="nav nav-tabs">
                   {% set isActive = 1 %}
                   {% for lang in langList %}

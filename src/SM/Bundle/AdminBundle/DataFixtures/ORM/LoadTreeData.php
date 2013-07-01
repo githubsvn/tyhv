@@ -6,6 +6,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use SM\Bundle\AdminBundle\Entity\Category;
 use SM\Bundle\AdminBundle\Entity\Menu;
+use SM\Bundle\AdminBundle\Entity\MediaCategory;
 
 /**
  * Load tree page data
@@ -25,13 +26,13 @@ class LoadTreeData implements FixtureInterface
         $entity->setRgt(0);
         $entity->setStatus(0);
         $manager->persist($entity);
-        
+
         $entity = new Menu();
         $entity->setLft(0);
         $entity->setRgt(0);
         $entity->setStatus(0);
         $manager->persist($entity);
-        
+
         $entity = new MediaCategory();
         $entity->setLft(0);
         $entity->setRgt(0);

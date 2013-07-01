@@ -12,7 +12,6 @@ class ProductGroupType extends AbstractType
     {
         $builder
             ->add('status', 'checkbox', array(
-                'attr' => array('checked' => 'checked'),
                 'required' => false
             ))
             ->add('branch')

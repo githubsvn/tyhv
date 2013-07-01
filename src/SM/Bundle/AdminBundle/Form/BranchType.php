@@ -12,7 +12,6 @@ class BranchType extends AbstractType
     {
         $builder
             ->add('status', 'checkbox', array(
-                'attr' => array('checked' => 'checked'),
                 'required' => false
             ))
             ->add('branch_languages', 'collection', array('type' => new BranchLanguageType()))

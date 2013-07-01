@@ -205,10 +205,31 @@ class ProductsController extends Controller
         $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
                 ->findAll();
 
-        //Get branch and product group
-        $repMediaCat = $this->getDoctrine()->getRepository('SMAdminBundle:MediaCategory');
-        $optMediaCats = $repMediaCat->getList();
-
+        //Get media category name that to display add news
+        $langList = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->findAll();
+        foreach ($langList as $langData) {
+            $isDefault = $langData->getIsDefault();
+            if ($isDefault == 1) {
+                $lang = $langData->getId();
+                break;
+            }
+        }
+        $currentLanguage = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->find($lang);
+        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
+        $listMediaCats = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:MediaCategory")
+                ->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
+        $optMediaCats = array();
+        foreach ($listMediaCats as $theCat) {
+            $theCat->setLanguage($currentLanguage);
+            if ($root->getId() != $theCat->getId()) {
+                $optMediaCats[] = $theCat;
+            }
+        }
 
         return $this->render('SMAdminBundle:Products:new.html.twig', array(
                     'entity' => $entity,
@@ -340,12 +361,35 @@ class ProductsController extends Controller
             }
         }
 
+        //get Medias
         $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
-            ->findAll();
+                ->findAll();
 
-        //Get branch and product group
-        $repMediaCat = $this->getDoctrine()->getRepository('SMAdminBundle:MediaCategory');
-        $optMediaCats = $repMediaCat->getList();
+        //Get media category name that to display add news
+        $langList = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->findAll();
+        foreach ($langList as $langData) {
+            $isDefault = $langData->getIsDefault();
+            if ($isDefault == 1) {
+                $lang = $langData->getId();
+                break;
+            }
+        }
+        $currentLanguage = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language")
+                ->find($lang);
+        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
+        $listMediaCats = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:MediaCategory")
+                ->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
+        $optMediaCats = array();
+        foreach ($listMediaCats as $theCat) {
+            $theCat->setLanguage($currentLanguage);
+            if ($root->getId() != $theCat->getId()) {
+                $optMediaCats[] = $theCat;
+            }
+        }
 
         return $this->render('SMAdminBundle:Products:edit.html.twig', array(
             'entity' => $entity,

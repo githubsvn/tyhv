@@ -22,7 +22,6 @@ class CategoryType extends AbstractType
                 }
             ))
             ->add('status', 'checkbox', array(
-                'attr' => array('checked' => 'checked'),
                 'required' => false
             ))
             ->add('category_languages', 'collection', array('type' => new CategoryLanguageType()))
