@@ -4,7 +4,14 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $("#sm_bundle_adminbundle_menutype_type").bind("change", function(){
+            var mnuTypeText = {{mnuTypeText}};
             var typeMenu = $(this).attr('value');
+
+            if (typeMenu == mnuTypeText) {
+                $('#sm_bundle_adminbundle_menutype_param').removeAttr("required");
+            } else {
+                $("#sm_bundle_adminbundle_menutype_param").attr("required", "true");
+            }
             var urlMenu = "{{path('admin_menu_get_param')}}" + '/' + typeMenu;
             $.ajax({url:urlMenu, success:function(data){
                 //remove all option of the select

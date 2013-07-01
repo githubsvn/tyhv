@@ -335,4 +335,37 @@ class Page {
     {
         return $this->media_id;
     }
+
+    /**
+     * Add page_languages
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\PageLanguage $pageLanguages
+     * @return Page
+     */
+    public function addPageLanguage(\SM\Bundle\AdminBundle\Entity\PageLanguage $pageLanguages)
+    {
+        $this->page_languages[] = $pageLanguages;
+    
+        return $this;
+    }
+
+    /**
+     * Remove page_languages
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\PageLanguage $pageLanguages
+     */
+    public function removePageLanguage(\SM\Bundle\AdminBundle\Entity\PageLanguage $pageLanguages)
+    {
+        $this->page_languages->removeElement($pageLanguages);
+    }
+
+    /**
+     * Get page_languages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPageLanguages()
+    {
+        return $this->page_languages;
+    }
 }

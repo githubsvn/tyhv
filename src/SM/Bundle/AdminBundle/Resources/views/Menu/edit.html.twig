@@ -1,6 +1,39 @@
 {% extends 'SMAdminBundle::admin.html.twig' %}
 {% block body %}
-<h1>{{ 'Menu Edit'|trans({}, "SMAdminBundle") }}</h1>
+<h2>{{ 'Menu Edit'|trans({}, "SMAdminBundle") }}</h2>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#sm_bundle_adminbundle_menutype_type").bind("change", function(){
+            var mnuTypeText = {{mnuTypeText}};
+            var typeMenu = $(this).attr('value');
+
+            if (typeMenu == mnuTypeText) {
+                $('#sm_bundle_adminbundle_menutype_param').removeAttr("required");
+            } else {
+                $("#sm_bundle_adminbundle_menutype_param").attr("required", "true");
+            }
+            var urlMenu = "{{path('admin_menu_get_param')}}" + '/' + typeMenu;
+            $.ajax({url:urlMenu, success:function(data){
+                //remove all option of the select
+                $('#sm_bundle_adminbundle_menutype_param').children().remove();
+                //set new option for select
+                var jsonData = JSON.parse(data);
+                $.each(jsonData, function(index, item) {
+                    $("#sm_bundle_adminbundle_menutype_param").append("<option value=" + item.id + ">" + item.name + "</option>");
+                });
+            }});
+
+            //Call ajax
+            $('#ajaxModal').modal();
+            $('#ajaxModal').ajaxStart(function() {
+                $(this).show();
+            })
+            .ajaxStop(function() {
+                $('#ajaxModal').modal('hide')
+            });
+        });
+    });
+</script>
 
 <form action="{{ path('admin_menu_edit', {'id' : entity.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
     <fieldset>
@@ -11,6 +44,21 @@
                 {{ form_widget(form.parent) }}
             </div>
         </div>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Menu Type'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.type) }}
+                {{ form_widget(form.type) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Menu Param'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.param) }}
+                {{ form_widget(form.param) }}
+            </div>
+        </div>
+
         <div class="control-group">
             <label class="control-label" for="input01">{{ 'Status'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">

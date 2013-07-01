@@ -52,4 +52,129 @@ class PageLanguage {
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return PageLanguage
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set intro
+     *
+     * @param string $intro
+     * @return PageLanguage
+     */
+    public function setIntro($intro)
+    {
+        $this->intro = $intro;
+    
+        return $this;
+    }
+
+    /**
+     * Get intro
+     *
+     * @return string 
+     */
+    public function getIntro()
+    {
+        return $this->intro;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return PageLanguage
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set language
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Language $language
+     * @return PageLanguage
+     */
+    public function setLanguage(\SM\Bundle\AdminBundle\Entity\Language $language = null)
+    {
+        $this->language = $language;
+    
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\Language 
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * Set page
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Page $page
+     * @return PageLanguage
+     */
+    public function setPage(\SM\Bundle\AdminBundle\Entity\Page $page = null)
+    {
+        $this->page = $page;
+    
+        return $this;
+    }
+
+    /**
+     * Get page
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\Page 
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
 }

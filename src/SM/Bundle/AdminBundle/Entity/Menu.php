@@ -92,14 +92,29 @@ class Menu
      * @var Language
      */
     private $language;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="url", type="string", nullable=true)
      */
     private $url;
-    
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="type", type="integer", nullable=true)
+     */
+    private $type;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="param", type="integer", nullable=true)
+     */
+    private $param;
+
+
     /**
      * @ORM\PrePersist
      */
@@ -326,7 +341,7 @@ class Menu
     public function getCurrentLanguage()
     {
         $objLanguages = $this->menu_languages->toArray();
-        
+
         if (is_array($objLanguages)) {
             if (null !== $this->language) {
                 foreach ($objLanguages as $language) {
@@ -464,17 +479,63 @@ class Menu
     public function setUrl($url)
     {
         $this->url = $url;
-    
+
         return $this;
     }
 
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     * @return Menu
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set param
+     *
+     * @param integer $param
+     * @return Menu
+     */
+    public function setParam($param)
+    {
+        $this->param = $param;
+    
+        return $this;
+    }
+
+    /**
+     * Get param
+     *
+     * @return integer 
+     */
+    public function getParam()
+    {
+        return $this->param;
     }
 }

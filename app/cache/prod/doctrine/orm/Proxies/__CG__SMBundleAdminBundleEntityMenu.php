@@ -225,10 +225,22 @@ class Menu extends \SM\Bundle\AdminBundle\Entity\Menu implements \Doctrine\ORM\P
         return parent::getLevel();
     }
 
+    public function setUrl($url)
+    {
+        $this->__load();
+        return parent::setUrl($url);
+    }
+
+    public function getUrl()
+    {
+        $this->__load();
+        return parent::getUrl();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'lft', 'rgt', 'status', 'created_at', 'updated_at', 'parent', 'children', 'created', 'updated', 'menu_languages');
+        return array('__isInitialized__', 'id', 'lft', 'rgt', 'status', 'created_at', 'updated_at', 'url', 'parent', 'children', 'created', 'updated', 'menu_languages');
     }
 
     public function __clone()

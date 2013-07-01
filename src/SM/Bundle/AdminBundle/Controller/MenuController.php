@@ -62,7 +62,6 @@ class MenuController extends Controller
         $entities = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Menu")
                 ->getList($perPage, ($page - 1) * $perPage, array(), array('lft' => 'ASC'));
-
         foreach ($entities as $theCat) {
             $theCat->setLanguage($currentLanguage);
             if ($root->getId() != $theCat->getId()) {
@@ -137,7 +136,13 @@ class MenuController extends Controller
 
         if ($this->getRequest()->isMethod('POST')) {
             $form->bind($this->getRequest());
+
             if ($form->isValid()) {
+                //Set Url for menu
+                $param = $entity->getParam();
+                $type = $entity->getType();
+                $url = $this->buildUrlForMenu($type, $param);
+                $entity->setUrl($url);
 
                 //Set created and updated user
                 $currUser = $this->get('security.context')->getToken()->getUser();
@@ -174,11 +179,15 @@ class MenuController extends Controller
             }
         }
 
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $mnuTypeText = $container->getParameter('menu_type_text');
+
         return $this->render('SMAdminBundle:Menu:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'langList' => $langList,
-            'defaultLanguage' => $defaultLanguage
+            'defaultLanguage' => $defaultLanguage,
+            'mnuTypeText' => $mnuTypeText
         ));
     }
 
@@ -210,7 +219,7 @@ class MenuController extends Controller
                     $catLanguage = new MenuLanguage();
                     $catLanguage->setLanguage($language);
                     $catLanguage->setMenu($entity);
-                    $entity->addMenuLanguage($ctLanguage);
+                    $entity->addMenuLanguage($catLanguage);
                 }
                 if ($language->getIsDefault()) {
                     $defaultLanguage = $language;
@@ -230,6 +239,12 @@ class MenuController extends Controller
             $form->bind($this->getRequest());
 
             if ($form->isValid()) {
+                //Set Url for menu
+                $param = !empty($_POST['param']) ? $_POST['param'] : '';
+                $type = !empty($_POST['sm_bundle_adminbundle_menutype']['type']) ? $_POST['sm_bundle_adminbundle_menutype']['type'] : '';
+                $url = $this->buildUrlForMenu($type, $param);
+                $entity->setUrl($url);
+
                 $entityManager = $this->getDoctrine()->getEntityManager();
                 foreach ($entity->getMenuLanguages() as $catLanguage) {
                     $name = $catLanguage->getName();
@@ -263,11 +278,15 @@ class MenuController extends Controller
             }
         }
 
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $mnuTypeText = $container->getParameter('menu_type_text');
+
         return $this->render('SMAdminBundle:Menu:edit.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'langList' => $langList,
             'defaultLanguage' => $defaultLanguage,
+            'mnuTypeText' => $mnuTypeText
         ));
     }
 
@@ -341,18 +360,36 @@ class MenuController extends Controller
             $this->getRequest()->headers->get('referer')
         );
     }
-    
+
     /**
      * get param of the menu type by caled ajax with param is type
-     * 
+     *
      * @param type $type
-     * @return Response 
+     * @return Response
      */
     public function getParamAction($type)
     {
         $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
         $em = $this->getDoctrine()->getEntityManager();
-        
+        $repo = $em->getRepository('SMAdminBundle:Menu');
+        $options = $repo->getOptionParam($type);
+        return new Response(json_encode($options));
+    }
+
+    /**
+     * Build url for menu
+     *
+     * @param type $type
+     * @param type $param
+     *
+     * @return string
+     */
+    private function buildUrlForMenu($type, $param = '')
+    {
+        $url = '';
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $em = $this->getDoctrine()->getEntityManager();
+
         $mnuTypeCompanyCat = $container->getParameter('menu_type_company_category');
         $mnuTypeCompanyDetail = $container->getParameter('menu_type_company_detail');
         $mnuTypeProductBranch = $container->getParameter('menu_type_product_branch');
@@ -361,44 +398,117 @@ class MenuController extends Controller
         $mnuTypeNewsCat = $container->getParameter('menu_type_news_category');
         $mnuTypeNewsDetail = $container->getParameter('menu_type_news_detail');
         $mnuTypePageDetail = $container->getParameter('menu_type_page_detail');
-        
-        $options = array();
+        $mnuTypeText = $container->getParameter('menu_type_text');
+
         switch ($type) {
             case $mnuTypeCompanyCat:
                 $repo = $em->getRepository('SMAdminBundle:CompanyType');
-                $options = $repo->getOptions();
+                $url = "/company/view-cat/";
+                $url = $this->getAliasForMenu($repo, $param, $url);
                 break;
             case $mnuTypeCompanyDetail:
                 $repo = $em->getRepository('SMAdminBundle:Company');
-                $options = $repo->getOptions();
+                $url = "/company/view-detail/";
+                $url = $this->getAliasForMenu($repo, $param, $url);
                 break;
             case $mnuTypeProductBranch:
                 $repo = $em->getRepository('SMAdminBundle:Branch');
-                $options = $repo->getOptions();
+                $url = "/product/view-branch/";
+                $url = $this->getAliasForMenu($repo, $param, $url);
                 break;
             case $mnuTypeProductGroup:
                 $repo = $em->getRepository('SMAdminBundle:ProductGroup');
-                $options = $repo->getOptions();
+                $url = "/product/view-group/";
+                $url = $this->getAliasForMenu($repo, $param, $url);
                 break;
             case $mnuTypeProductDetail:
                 $repo = $em->getRepository('SMAdminBundle:Products');
-                $options = $repo->getOptions();
+                $url = "/product/detail/";
+                $url = $this->getAliasForMenu($repo, $param, $url);
                 break;
             case $mnuTypeNewsCat:
                 $repo = $em->getRepository('SMAdminBundle:Category');
-                $options = $repo->getOptions();
+                $url = "/news/view-cat/";
+                $url = $this->getAliasForMenu($repo, $param, $url);
                 break;
             case $mnuTypeNewsDetail:
                 $repo = $em->getRepository('SMAdminBundle:News');
-                $options = $repo->getOptions();
+                $url = "/news/detail/";
+                $url = $this->getAliasForMenu($repo, $param, $url);
                 break;
             case $mnuTypePageDetail:
                 $repo = $em->getRepository('SMAdminBundle:Page');
-                $options = $repo->getOptions();
+                $url = "/page/detail/";
+                $url = $this->getAliasForMenu($repo, $param, $url);
                 break;
-            
+            case $mnuTypeText:
+                $url = "#";
+                break;
         }
-        
-        return new Response(json_encode($options)); 
-    }  
+
+        return $url;
+    }
+
+
+    /**
+     *
+     * @param type $repo
+     * @param type $id
+     * @param type $url
+     *
+     * @return string
+     */
+    private function getAliasForMenu($repo, $id, $url)
+    {
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $ext = $container->getParameter('ext_nice_url');
+
+        //get list language
+        $repLanguage = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Language");
+        $langList = $repLanguage->getList();
+        $defaultLanguage = null;
+        if (is_array($langList)) {
+            foreach ($langList as $language) {
+                if ($language->getIsDefault()) {
+                    $defaultLanguage = $language;
+                }
+            }
+        }
+        $entity = $repo->find($id);
+
+        $entity->setLanguage($defaultLanguage);
+        $name = $entity->getCurrentLanguage()->getName();
+        $name = \SM\Bundle\AdminBundle\Utilities\Helper::cleanString($name, '_');
+        $alias =  $url. $name . "_$id.$ext";
+
+        //check menu is exist in table menu
+        $repMenu = $this->getDoctrine()->getRepository("SMAdminBundle:Menu");
+        $isExist = $repMenu->findBy(array('url' => $alias));
+        if ($isExist) {
+            $lastestMenu = $repMenu->getLastestItem();
+            $lastestId = $lastestMenu->getId() + 1;
+            $alias =  $url. $name . "_$lastestId"."_$id.".$ext;
+        }
+
+        return $alias;
+    }
+
+    /**
+     * check url is exist in table menu
+     *
+     * @param type $url
+     * @return boolean
+     */
+    private function checkUrlIsExist($url)
+    {
+        $isExist = false;
+        if ($url) {
+            $rep = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:Menu");
+            $rst = $rep->findBy(array('url' => $url));
+            var_dump($rst);die;
+        }
+        return $isExist;
+    }
 }

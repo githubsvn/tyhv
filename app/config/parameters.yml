@@ -21,3 +21,5 @@ parameters:
     menu_type_news_category: 6
     menu_type_news_detail: 7
     menu_type_page_detail: 8
+    menu_type_text: 9
+    ext_nice_url: html

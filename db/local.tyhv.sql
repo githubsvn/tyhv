@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump
+r-- phpMyAdmin SQL Dump
 -- version 3.3.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 01, 2013 at 01:11 PM
+-- Generation Time: Jul 01, 2013 at 06:11 PM
 -- Server version: 5.1.54
 -- PHP Version: 5.3.5-1ubuntu7.11
 
@@ -541,18 +541,21 @@ CREATE TABLE IF NOT EXISTS `mtx_menu` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `param` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_3798AC02727ACA70` (`parent_id`),
   KEY `IDX_3798AC025EE01E44` (`created_id`),
   KEY `IDX_3798AC02960CC7F3` (`updated_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `mtx_menu`
 --
 
-INSERT INTO `mtx_menu` (`id`, `parent_id`, `created_id`, `updated_id`, `lft`, `rgt`, `status`, `created_at`, `updated_at`, `url`) VALUES
-(2, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL);
+INSERT INTO `mtx_menu` (`id`, `parent_id`, `created_id`, `updated_id`, `lft`, `rgt`, `status`, `created_at`, `updated_at`, `url`, `type`, `param`) VALUES
+(2, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(33, NULL, 2, 2, 3, 4, 1, '2013-07-01 17:18:15', '2013-07-01 17:18:15', '/company/view-detail/def_2.html', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -569,12 +572,14 @@ CREATE TABLE IF NOT EXISTS `mtx_menu_language` (
   PRIMARY KEY (`id`),
   KEY `IDX_EC57E1DECCD7E912` (`menu_id`),
   KEY `IDX_EC57E1DE82F1BAF4` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `mtx_menu_language`
 --
 
+INSERT INTO `mtx_menu_language` (`id`, `menu_id`, `language_id`, `name`, `alias`) VALUES
+(31, 33, 2, 'aaa', NULL);
 
 -- --------------------------------------------------------
 
@@ -1060,9 +1065,9 @@ ALTER TABLE `mtx_mediacategory_language`
 -- Constraints for table `mtx_menu`
 --
 ALTER TABLE `mtx_menu`
-  ADD CONSTRAINT `FK_3798AC02960CC7F3` FOREIGN KEY (`updated_id`) REFERENCES `mtx_user` (`id`),
   ADD CONSTRAINT `FK_3798AC025EE01E44` FOREIGN KEY (`created_id`) REFERENCES `mtx_user` (`id`),
-  ADD CONSTRAINT `FK_3798AC02727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `mtx_menu` (`id`) ON DELETE SET NULL;
+  ADD CONSTRAINT `FK_3798AC02727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `mtx_menu` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `FK_3798AC02960CC7F3` FOREIGN KEY (`updated_id`) REFERENCES `mtx_user` (`id`);
 
 --
 -- Constraints for table `mtx_menu_language`

@@ -332,16 +332,16 @@ class MenuRepository extends EntityRepository
                 ->getQuery()
                 ->getResult();
     }
-    
+
     /**
      * build option for menu type
-     * 
-     * @return string 
+     *
+     * @return string
      */
     public function buildMenuType()
     {
         $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
-        
+
         $mnuTypeCompanyCat = $container->getParameter('menu_type_company_category');
         $mnuTypeCompanyDetail = $container->getParameter('menu_type_company_detail');
         $mnuTypeProductBranch = $container->getParameter('menu_type_product_branch');
@@ -350,7 +350,8 @@ class MenuRepository extends EntityRepository
         $mnuTypeNewsCat = $container->getParameter('menu_type_news_category');
         $mnuTypeNewsDetail = $container->getParameter('menu_type_news_detail');
         $mnuTypePageDetail = $container->getParameter('menu_type_page_detail');
-        
+        $mnuTypeTest = $container->getParameter('menu_type_text');
+
         $options = array();
         $options[0] = '-- Lựa chọn --';
         $options[$mnuTypeCompanyCat] = 'Loại công ty';
@@ -361,7 +362,86 @@ class MenuRepository extends EntityRepository
         $options[$mnuTypeNewsCat] = 'Loại tin';
         $options[$mnuTypeNewsDetail] = 'Tin tức';
         $options[$mnuTypePageDetail] = 'Trang tỉnh';
-        
+        $options[$mnuTypeTest] = 'Tiêu đề';
+
+        return $options;
+    }
+
+    /**
+     * get lastest item
+     *
+     * @return null
+     */
+    public function getLastestItem()
+    {
+        $rst = $this->getList(1, 0, array(), array('id' => ' DESC '));
+        if (!empty($rst[0])) {
+
+            return $rst[0];
+        }
+
+        return null;
+    }
+
+    /**
+     *
+     * @param type $type
+     * @return type
+     */
+    public function getOptionParam($type)
+    {
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $em = $container->get("doctrine");
+
+        $mnuTypeCompanyCat = $container->getParameter('menu_type_company_category');
+        $mnuTypeCompanyDetail = $container->getParameter('menu_type_company_detail');
+        $mnuTypeProductBranch = $container->getParameter('menu_type_product_branch');
+        $mnuTypeProductGroup = $container->getParameter('menu_type_product_group');
+        $mnuTypeProductDetail = $container->getParameter('menu_type_product_detail');
+        $mnuTypeNewsCat = $container->getParameter('menu_type_news_category');
+        $mnuTypeNewsDetail = $container->getParameter('menu_type_news_detail');
+        $mnuTypePageDetail = $container->getParameter('menu_type_page_detail');
+        $mnuTypeText = $container->getParameter('menu_type_text');
+
+        $options = array();
+        switch ($type) {
+            case $mnuTypeCompanyCat:
+                $repo = $em->getRepository('SMAdminBundle:CompanyType');
+                $options = $repo->getOptions();
+                break;
+            case $mnuTypeCompanyDetail:
+                $repo = $em->getRepository('SMAdminBundle:Company');
+                $options = $repo->getOptions();
+                break;
+            case $mnuTypeProductBranch:
+                $repo = $em->getRepository('SMAdminBundle:Branch');
+                $options = $repo->getOptions();
+                break;
+            case $mnuTypeProductGroup:
+                $repo = $em->getRepository('SMAdminBundle:ProductGroup');
+                $options = $repo->getOptions();
+                break;
+            case $mnuTypeProductDetail:
+                $repo = $em->getRepository('SMAdminBundle:Products');
+                $options = $repo->getOptions();
+                break;
+            case $mnuTypeNewsCat:
+                $repo = $em->getRepository('SMAdminBundle:Category');
+                $options = $repo->getOptions();
+                break;
+            case $mnuTypeNewsDetail:
+                $repo = $em->getRepository('SMAdminBundle:News');
+                $options = $repo->getOptions();
+                break;
+            case $mnuTypePageDetail:
+                $repo = $em->getRepository('SMAdminBundle:Page');
+                $options = $repo->getOptions();
+                break;
+            case $mnuTypeText:
+                break;
+
+        }
+
         return $options;
     }
 }
