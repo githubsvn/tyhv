@@ -3587,3 +3587,43 @@
 [Mon Jul 01 18:07:08 2013] [error] [client 127.0.0.1] PHP  11. Symfony\\Component\\EventDispatcher\\EventDispatcher->doDispatch() /home/www/local.tyhv/app/cache/prod/classes.php:2687, referer: http://local.tyhv/admin/menu/new
 [Mon Jul 01 18:07:08 2013] [error] [client 127.0.0.1] PHP  12. call_user_func() /home/www/local.tyhv/app/cache/prod/classes.php:2773, referer: http://local.tyhv/admin/menu/new
 [Mon Jul 01 18:07:08 2013] [error] [client 127.0.0.1] PHP  13. SM\\Bundle\\AdminBundle\\Form\\{closure}() /home/www/local.tyhv/app/cache/prod/classes.php:0, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to a member function getForm() on a non-object in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Form/MenuType.php on line 47
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\MenuController->newAction() /home/www/local.tyhv/app/bootstrap.php.cache:0
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller->createForm() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/MenuController.php:135
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP   9. Symfony\\Component\\Form\\FormFactory->create() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php:156
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\Form\\FormBuilder->getForm() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/FormFactory.php:39
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP  11. Symfony\\Component\\Form\\Form->add() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/FormBuilder.php:230
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\Form\\Form->getViewData() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/Form.php:856
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP  13. Symfony\\Component\\Form\\Form->setData() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/Form.php:457
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\EventDispatcher\\ImmutableEventDispatcher->dispatch() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/Form.php:362
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP  15. Symfony\\Component\\EventDispatcher\\EventDispatcher->dispatch() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/ImmutableEventDispatcher.php:42
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP  16. Symfony\\Component\\EventDispatcher\\EventDispatcher->doDispatch() /home/www/local.tyhv/app/cache/prod/classes.php:2687
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP  17. call_user_func() /home/www/local.tyhv/app/cache/prod/classes.php:2773
+[Mon Jul 01 18:29:23 2013] [error] [client 127.0.0.1] PHP  18. SM\\Bundle\\AdminBundle\\Form\\{closure}() /home/www/local.tyhv/app/cache/prod/classes.php:0
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to a member function createNamed() on a non-object in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Form/MenuType.php on line 61, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\MenuController->newAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller->createForm() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/MenuController.php:135, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP   9. Symfony\\Component\\Form\\FormFactory->create() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php:156, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\Form\\FormBuilder->getForm() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/FormFactory.php:39, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP  11. Symfony\\Component\\Form\\Form->add() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/FormBuilder.php:230, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\Form\\Form->getViewData() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/Form.php:856, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP  13. Symfony\\Component\\Form\\Form->setData() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/Form.php:457, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\EventDispatcher\\ImmutableEventDispatcher->dispatch() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/Form/Form.php:362, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP  15. Symfony\\Component\\EventDispatcher\\EventDispatcher->dispatch() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/ImmutableEventDispatcher.php:42, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP  16. Symfony\\Component\\EventDispatcher\\EventDispatcher->doDispatch() /home/www/local.tyhv/app/cache/prod/classes.php:2687, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP  17. call_user_func() /home/www/local.tyhv/app/cache/prod/classes.php:2773, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 01 18:31:34 2013] [error] [client 127.0.0.1] PHP  18. SM\\Bundle\\AdminBundle\\Form\\{closure}() /home/www/local.tyhv/app/cache/prod/classes.php:0, referer: http://local.tyhv/admin/menu/new

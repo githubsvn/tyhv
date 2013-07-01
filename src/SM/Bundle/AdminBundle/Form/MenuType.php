@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use SM\Bundle\AdminBundle\Repository\MenuRepository;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
+use SM\Bundle\AdminBundle\Entity\Menu;
 
 class MenuType extends AbstractType
 {
@@ -42,24 +43,23 @@ class MenuType extends AbstractType
                 ->add('menu_languages', 'collection', array('type' => new MenuLanguageType()))
         ;
 
-
 //        $ff = $builder->getFormFactory();
 //        $func = function (FormEvent $e) use ($ff) {
-//            $data = $e->getData();
+//            $entity = $e->getData();
 //            $form = $e->getForm();
 //            if ($form->has('parma')) {
 //                $form->remove('param');
 //            }
 //            $options = array();
-//            var_dump($data);die;
-//            $type = $data->getType() ? $data->getType() : null;
-//
-//            if ($type != null) {
-//                $rst = $repMenu->getOptionParam($type);
-//                var_dump($rst);die;
+//            if ($entity instanceof Menu) {
+//                $type = $entity->getType();
+//                if ($type != null) {
+//                    var_dump($entity);die;
+//                    $rst = $repMenu->getOptionParam($type);
+//                    var_dump($rst);die;
+//                }
+//                $form->add($ff->createNamed('param', 'choice', null, array('choices' => $options)));
 //            }
-//
-//            $form->add($ff->createNamed('param', 'choice', null, array('choices' => $options)));
 //        };
 //
 //        // Register the function above as EventListener on PreSet and PreBind
