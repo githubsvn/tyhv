@@ -43,16 +43,12 @@ class MenuController extends Controller
                 ->getRepository("SMAdminBundle:Language")
                 ->find($lang);
 
-        //get root
-        $root = $this->getDoctrine()->getRepository("SMAdminBundle:Menu")->getPageRoot();
-        $rst = array();
+        $criteria = array();
+        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
 
         $total = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Menu")
-                ->getTotal();
-        if (!empty($root)) {
-            $total -= 1;
-        }
+                ->getTotal($criteria);
 
         $perPage = $this->container->getParameter('per_item_page');
         $lastPage = ceil($total / $perPage);
@@ -61,15 +57,13 @@ class MenuController extends Controller
 
         $entities = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Menu")
-                ->getList($perPage, ($page - 1) * $perPage, array(), array('lft' => 'ASC'));
+                ->getList($perPage, ($page - 1) * $perPage, $criteria, array('lft' => 'ASC'));
         foreach ($entities as $theCat) {
             $theCat->setLanguage($currentLanguage);
-            if ($root->getId() != $theCat->getId()) {
-                $rst[] = $theCat;
-            }
         }
+
         return $this->render('SMAdminBundle:Menu:index.html.twig', array(
-            'entities' => $rst,
+            'entities' => $entities,
             'lastPage' => $lastPage,
             'previousPage' => $previousPage,
             'currentPage' => $page,
@@ -240,7 +234,7 @@ class MenuController extends Controller
         $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
         $mnuTypeText = $container->getParameter('menu_type_text');
         $mnuTypeLink = $container->getParameter('menu_type_link');
-        
+
         $form = $this->createForm(new MenuType(), $entity);
 
         if ($this->getRequest()->isMethod('POST')) {
@@ -252,7 +246,7 @@ class MenuController extends Controller
                 $param = $entity->getParam();
                 $type = $entity->getType();
                 if ($type != $mnuTypeLink) {
-                    $url = $this->buildUrlForMenu($type, $param);
+                    $url = $this->buildUrlForMenu($type, $param, $entity->getId());
                     $entity->setUrl($url);
                 }
 
@@ -393,7 +387,7 @@ class MenuController extends Controller
      *
      * @return string
      */
-    private function buildUrlForMenu($type, $param = '')
+    private function buildUrlForMenu($type, $param = '', $idMenu = '')
     {
         $url = '';
         $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
@@ -413,42 +407,42 @@ class MenuController extends Controller
             case $mnuTypeCompanyCat:
                 $repo = $em->getRepository('SMAdminBundle:CompanyType');
                 $url = "/company/view-cat/";
-                $url = $this->getAliasForMenu($repo, $param, $url);
+                $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypeCompanyDetail:
                 $repo = $em->getRepository('SMAdminBundle:Company');
                 $url = "/company/view-detail/";
-                $url = $this->getAliasForMenu($repo, $param, $url);
+                $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypeProductBranch:
                 $repo = $em->getRepository('SMAdminBundle:Branch');
                 $url = "/product/view-branch/";
-                $url = $this->getAliasForMenu($repo, $param, $url);
+                $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypeProductGroup:
                 $repo = $em->getRepository('SMAdminBundle:ProductGroup');
                 $url = "/product/view-group/";
-                $url = $this->getAliasForMenu($repo, $param, $url);
+                $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypeProductDetail:
                 $repo = $em->getRepository('SMAdminBundle:Products');
                 $url = "/product/detail/";
-                $url = $this->getAliasForMenu($repo, $param, $url);
+                $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypeNewsCat:
                 $repo = $em->getRepository('SMAdminBundle:Category');
                 $url = "/news/view-cat/";
-                $url = $this->getAliasForMenu($repo, $param, $url);
+                $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypeNewsDetail:
                 $repo = $em->getRepository('SMAdminBundle:News');
                 $url = "/news/detail/";
-                $url = $this->getAliasForMenu($repo, $param, $url);
+                $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypePageDetail:
                 $repo = $em->getRepository('SMAdminBundle:Page');
                 $url = "/page/detail/";
-                $url = $this->getAliasForMenu($repo, $param, $url);
+                $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypeText:
                 $url = "#";
@@ -467,7 +461,7 @@ class MenuController extends Controller
      *
      * @return string
      */
-    private function getAliasForMenu($repo, $id, $url)
+    private function getAliasForMenu($repo, $id, $url, $idMenu = '')
     {
         $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
         $ext = $container->getParameter('ext_nice_url');
@@ -499,6 +493,13 @@ class MenuController extends Controller
             $lastestId = $lastestMenu->getId() + 1;
             $alias =  $url. $name . "_$lastestId"."_$id.".$ext;
         }
+
+        $isExist = $repMenu->findBy(array('url' => $alias));
+        if ($isExist) {
+            $lastestId = $lastestId + 1;
+            $alias =  $url. $name . "_$lastestId"."_$id.".$ext;
+        }
+
 
         return $alias;
     }

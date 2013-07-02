@@ -5,6 +5,8 @@ namespace SM\Bundle\AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use SM\Bundle\AdminBundle\Repository\BranchRepository;
+use SM\Bundle\AdminBundle\Repository\ProductGroupRepository;
 
 class ProductsType extends AbstractType
 {
@@ -12,8 +14,22 @@ class ProductsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('branch')
-                ->add('productgroup')
+                ->add('branch', 'entity', array(
+                    'required' => true,
+                    'class' => 'SMAdminBundle:Branch',
+                    'query_builder' => function (BranchRepository $pRe) {
+                        return $pRe->createQueryBuilder('c')
+                            ->where('c.status = 1');
+                    }
+                ))
+                ->add('productgroup', 'entity', array(
+                    'required' => true,
+                    'class' => 'SMAdminBundle:ProductGroup',
+                    'query_builder' => function (ProductGroupRepository $pRe) {
+                        return $pRe->createQueryBuilder('c')
+                            ->where('c.status = 1');
+                    }
+                ))
                 ->add('price', null, array(
                     'required' => false,
                     'data' => 0

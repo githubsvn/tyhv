@@ -5,6 +5,7 @@ namespace SM\Bundle\AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use SM\Bundle\AdminBundle\Repository\BranchRepository;
 
 class ProductGroupType extends AbstractType
 {
@@ -14,7 +15,14 @@ class ProductGroupType extends AbstractType
             ->add('status', 'checkbox', array(
                 'required' => false
             ))
-            ->add('branch')
+            ->add('branch', 'entity', array(
+                'required' => true,
+                'class' => 'SMAdminBundle:Branch',
+                'query_builder' => function (BranchRepository $pRe) {
+                    return $pRe->createQueryBuilder('c')
+                        ->where('c.status = 1');
+                }
+            ))
             ->add('productgroup_languages', 'collection', array('type' => new ProductGroupLanguageType()))
         ;
     }

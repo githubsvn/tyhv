@@ -38,25 +38,25 @@ class PageLanguage {
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="intro", type="text")
      */
     private $intro;
-    
+
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -72,14 +72,14 @@ class PageLanguage {
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -95,14 +95,14 @@ class PageLanguage {
     public function setIntro($intro)
     {
         $this->intro = $intro;
-    
+
         return $this;
     }
 
     /**
      * Get intro
      *
-     * @return string 
+     * @return string
      */
     public function getIntro()
     {
@@ -118,14 +118,14 @@ class PageLanguage {
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -141,14 +141,14 @@ class PageLanguage {
     public function setLanguage(\SM\Bundle\AdminBundle\Entity\Language $language = null)
     {
         $this->language = $language;
-    
+
         return $this;
     }
 
     /**
      * Get language
      *
-     * @return \SM\Bundle\AdminBundle\Entity\Language 
+     * @return \SM\Bundle\AdminBundle\Entity\Language
      */
     public function getLanguage()
     {
@@ -164,14 +164,14 @@ class PageLanguage {
     public function setPage(\SM\Bundle\AdminBundle\Entity\Page $page = null)
     {
         $this->page = $page;
-    
+
         return $this;
     }
 
     /**
      * Get page
      *
-     * @return \SM\Bundle\AdminBundle\Entity\Page 
+     * @return \SM\Bundle\AdminBundle\Entity\Page
      */
     public function getPage()
     {

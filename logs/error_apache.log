@@ -3759,3 +3759,24 @@
 [Tue Jul 02 12:02:49 2013] [error] [client 127.0.0.1] PHP  16. Symfony\\Component\\EventDispatcher\\EventDispatcher->doDispatch() /home/www/local.tyhv/app/cache/prod/classes.php:2687, referer: http://local.tyhv/admin/menu
 [Tue Jul 02 12:02:49 2013] [error] [client 127.0.0.1] PHP  17. call_user_func() /home/www/local.tyhv/app/cache/prod/classes.php:2773, referer: http://local.tyhv/admin/menu
 [Tue Jul 02 12:02:49 2013] [error] [client 127.0.0.1] PHP  18. SM\\Bundle\\AdminBundle\\Form\\{closure}() /home/www/local.tyhv/app/cache/prod/classes.php:0, referer: http://local.tyhv/admin/menu
+[Tue Jul 02 15:39:09 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined function SM\\Bundle\\AdminBundle\\Repository\\is_arraay() in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/MenuRepository.php on line 80, referer: http://local.tyhv/admin/mediacategory
+[Tue Jul 02 15:39:09 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/mediacategory
+[Tue Jul 02 15:39:09 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/mediacategory
+[Tue Jul 02 15:39:09 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/mediacategory
+[Tue Jul 02 15:39:09 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/mediacategory
+[Tue Jul 02 15:39:09 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/mediacategory
+[Tue Jul 02 15:39:09 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/mediacategory
+[Tue Jul 02 15:39:09 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin/mediacategory
+[Tue Jul 02 15:39:09 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\MenuController->indexAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/mediacategory
+[Tue Jul 02 15:39:09 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\MenuRepository->getTotal() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/MenuController.php:55, referer: http://local.tyhv/admin/mediacategory
+[Tue Jul 02 15:39:09 2013] [error] [client 127.0.0.1] PHP   9. SM\\Bundle\\AdminBundle\\Repository\\MenuRepository->getList() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/MenuRepository.php:100, referer: http://local.tyhv/admin/mediacategory
+[Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP Fatal error:  Cannot declare class SM\\Bundle\\AdminBundle\\Form\\CompanyType because the name is already in use in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Form/CompanyType.php on line 11, referer: http://local.tyhv/admin/company
+[Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/company
+[Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/company
+[Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/company
+[Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/company
+[Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/company
+[Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/company
+[Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin/company
+[Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\CompanyController->newAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/company
+[Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\ClassLoader\\DebugClassLoader->loadClass() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/ClassLoader/DebugClassLoader.php:0, referer: http://local.tyhv/admin/company

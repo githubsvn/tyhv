@@ -180,7 +180,7 @@ class PageController extends Controller
                 $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
             }
         }
-        
+
         //get Medias
         $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
                 ->findAll();
@@ -199,18 +199,16 @@ class PageController extends Controller
         $currentLanguage = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language")
                 ->find($lang);
-        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
+        $criteria = array();
+        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
+        $criteria[] = array('op' => '=', 'fieldName' => 'status', 'fieldValue' => '1');
         $listMediaCats = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:MediaCategory")
-                ->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
-        $optMediaCats = array();
+                ->getList(null, null, $criteria, array('lft' => 'ASC'));
         foreach ($listMediaCats as $theCat) {
             $theCat->setLanguage($currentLanguage);
-            if ($root->getId() != $theCat->getId()) {
-                $optMediaCats[] = $theCat;
-            }
         }
-        
+
         return $this->render('SMAdminBundle:Page:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
@@ -219,7 +217,7 @@ class PageController extends Controller
             'optMedias' => $optMedias,
             'selectedMedias' => array(),
             'mediaPath' => '/web/' . $this->container->getParameter('upload'),
-            'optMediaTypes' => $optMediaCats
+            'optMediaTypes' => $listMediaCats
         ));
     }
 
@@ -340,7 +338,7 @@ class PageController extends Controller
                 $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
             }
         }
-        
+
         $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
             ->findAll();
 
@@ -358,18 +356,16 @@ class PageController extends Controller
         $currentLanguage = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language")
                 ->find($lang);
-        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
+        $criteria = array();
+        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
+        $criteria[] = array('op' => '=', 'fieldName' => 'status', 'fieldValue' => '1');
         $listMediaCats = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:MediaCategory")
-                ->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
-        $optMediaCats = array();
+                ->getList(null, null, $criteria, array('lft' => 'ASC'));
         foreach ($listMediaCats as $theCat) {
             $theCat->setLanguage($currentLanguage);
-            if ($root->getId() != $theCat->getId()) {
-                $optMediaCats[] = $theCat;
-            }
         }
-        
+
         return $this->render('SMAdminBundle:Page:edit.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
@@ -379,7 +375,7 @@ class PageController extends Controller
             'imgPath' => '/web/' . $uploadPath,
             'optMedias' => $optMedias,
             'mediaPath' => '/web/' . $this->container->getParameter('upload'),
-            'optMediaTypes' => $optMediaCats,
+            'optMediaTypes' => $listMediaCats,
         ));
 
     }

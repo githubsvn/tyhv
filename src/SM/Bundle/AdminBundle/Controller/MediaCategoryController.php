@@ -42,16 +42,12 @@ class MediaCategoryController extends Controller
                 ->getRepository("SMAdminBundle:Language")
                 ->find($lang);
 
-        //get root
-        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
-        $rst = array();
+        $criteria = array();
+        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
 
         $total = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:MediaCategory")
-                ->getTotal();
-        if (!empty($root)) {
-            $total -= 1;
-        }
+                ->getTotal($criteria);
 
         $perPage = $this->container->getParameter('per_item_page');
         $lastPage = ceil($total / $perPage);
@@ -60,17 +56,14 @@ class MediaCategoryController extends Controller
 
         $entities = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:MediaCategory")
-                ->getList($perPage, ($page - 1) * $perPage, array(), array('lft' => 'ASC'));
+                ->getList($perPage, ($page - 1) * $perPage, $criteria, array('lft' => 'ASC'));
 
         foreach ($entities as $theCat) {
             $theCat->setLanguage($currentLanguage);
-            if ($root->getId() != $theCat->getId()) {
-                $rst[] = $theCat;
-            }
         }
 
         return $this->render('SMAdminBundle:MediaCategory:index.html.twig', array(
-            'entities' => $rst,
+            'entities' => $entities,
             'lastPage' => $lastPage,
             'previousPage' => $previousPage,
             'currentPage' => $page,

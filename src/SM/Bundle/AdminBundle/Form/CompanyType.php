@@ -5,13 +5,21 @@ namespace SM\Bundle\AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use SM\Bundle\AdminBundle\Repository\CompanyTypeRepository;
 
 class CompanyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type')
+            ->add('type', 'entity', array(
+                'required' => true,
+                'class' => 'SMAdminBundle:CompanyType',
+                'query_builder' => function (CompanyTypeRepository $pRe) {
+                    return $pRe->createQueryBuilder('c')
+                        ->where('c.status = 1');
+                }
+            ))
             ->add('charter_capital', null, array('required' => false))
             ->add('phone', null, array('required' => false))
             ->add('fax', null, array('required' => false))

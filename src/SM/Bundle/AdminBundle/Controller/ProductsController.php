@@ -219,16 +219,16 @@ class ProductsController extends Controller
         $currentLanguage = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language")
                 ->find($lang);
-        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
+
+        $criteria = array();
+        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
+        $criteria[] = array('op' => '=', 'fieldName' => 'status', 'fieldValue' => '1');
+
         $listMediaCats = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:MediaCategory")
-                ->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
-        $optMediaCats = array();
+                ->getList(null, null, $criteria, array('lft' => 'ASC'));
         foreach ($listMediaCats as $theCat) {
             $theCat->setLanguage($currentLanguage);
-            if ($root->getId() != $theCat->getId()) {
-                $optMediaCats[] = $theCat;
-            }
         }
 
         return $this->render('SMAdminBundle:Products:new.html.twig', array(
@@ -239,7 +239,7 @@ class ProductsController extends Controller
                     'optMedias' => $optMedias,
                     'selectedMedias' => array(),
                     'mediaPath' => '/web/' . $this->container->getParameter('upload'),
-                    'optMediaTypes' => $optMediaCats
+                    'optMediaTypes' => $listMediaCats
                 ));
     }
 
@@ -379,16 +379,15 @@ class ProductsController extends Controller
         $currentLanguage = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language")
                 ->find($lang);
-        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
+        $criteria = array();
+        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
+        $criteria[] = array('op' => '=', 'fieldName' => 'status', 'fieldValue' => '1');
+
         $listMediaCats = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:MediaCategory")
-                ->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
-        $optMediaCats = array();
+                ->getList(null, null, $criteria, array('lft' => 'ASC'));
         foreach ($listMediaCats as $theCat) {
             $theCat->setLanguage($currentLanguage);
-            if ($root->getId() != $theCat->getId()) {
-                $optMediaCats[] = $theCat;
-            }
         }
 
         return $this->render('SMAdminBundle:Products:edit.html.twig', array(
@@ -400,7 +399,7 @@ class ProductsController extends Controller
             'imgPath' => '/web/' . $uploadPath,
             'optMedias' => $optMedias,
             'mediaPath' => '/web/' . $this->container->getParameter('upload'),
-            'optMediaTypes' => $optMediaCats,
+            'optMediaTypes' => $listMediaCats,
         ));
 
     }

@@ -64,8 +64,11 @@ class NewsController extends Controller
                 ->findByLangAndNameAndCategory($lang, $name, $catId, $perPage, ($page - 1) * $perPage);
 
         //Get branch and product group
+        $criteria = array();
+        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
+        $criteria[] = array('op' => '=', 'fieldName' => 'status', 'fieldValue' => '1');
         $repCat = $this->getDoctrine()->getRepository('SMAdminBundle:Category');
-        $optCats = $repCat->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
+        $optCats = $repCat->getList(null, null, $criteria, array('lft' => 'ASC'));
         foreach ($optCats as $oItem) {
             $oItem->setLanguage($currentLanguage);
         }
@@ -191,7 +194,7 @@ class NewsController extends Controller
                 $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
             }
         }
-        
+
         //get Medias
         $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
                 ->findAll();
@@ -210,18 +213,16 @@ class NewsController extends Controller
         $currentLanguage = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language")
                 ->find($lang);
-        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
+        $criteria = array();
+        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
+        $criteria[] = array('op' => '=', 'fieldName' => 'status', 'fieldValue' => '1');
         $listMediaCats = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:MediaCategory")
-                ->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
-        $optMediaCats = array();
+                ->getList(null, null, $criteria, array('lft' => 'ASC'));
         foreach ($listMediaCats as $theCat) {
             $theCat->setLanguage($currentLanguage);
-            if ($root->getId() != $theCat->getId()) {
-                $optMediaCats[] = $theCat;
-            }
         }
-        
+
         return $this->render('SMAdminBundle:News:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
@@ -230,7 +231,7 @@ class NewsController extends Controller
             'optMedias' => $optMedias,
             'selectedMedias' => array(),
             'mediaPath' => '/web/' . $this->container->getParameter('upload'),
-            'optMediaTypes' => $optMediaCats
+            'optMediaTypes' => $listMediaCats
         ));
     }
 
@@ -351,7 +352,7 @@ class NewsController extends Controller
                 $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
             }
         }
-        
+
         $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
             ->findAll();
 
@@ -369,18 +370,16 @@ class NewsController extends Controller
         $currentLanguage = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language")
                 ->find($lang);
-        $root = $this->getDoctrine()->getRepository("SMAdminBundle:MediaCategory")->getPageRoot();
+        $criteria = array();
+        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
+        $criteria[] = array('op' => '=', 'fieldName' => 'status', 'fieldValue' => '1');
         $listMediaCats = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:MediaCategory")
-                ->getList(null, null, array('status' => 1), array('lft' => 'ASC'));
-        $optMediaCats = array();
+                ->getList(null, null, $criteria, array('lft' => 'ASC'));
         foreach ($listMediaCats as $theCat) {
             $theCat->setLanguage($currentLanguage);
-            if ($root->getId() != $theCat->getId()) {
-                $optMediaCats[] = $theCat;
-            }
         }
-        
+
         return $this->render('SMAdminBundle:News:edit.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
@@ -390,7 +389,7 @@ class NewsController extends Controller
             'imgPath' => '/web/' . $uploadPath,
             'optMedias' => $optMedias,
             'mediaPath' => '/web/' . $this->container->getParameter('upload'),
-            'optMediaTypes' => $optMediaCats,
+            'optMediaTypes' => $listMediaCats,
         ));
 
     }

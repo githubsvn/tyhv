@@ -26,7 +26,8 @@ class MenuType extends AbstractType
                     'query_builder' => function (MenuRepository $pRe) {
                         return $pRe->createQueryBuilder('c')
                                 ->orderBy('c.lft', 'ASC')
-                                ->where('c.status = 1');
+                                ->where('c.status = 1')
+                                ->andWhere('c.lft > 1');
                     }
                 ))
                 ->add('type', 'choice', array(
@@ -37,7 +38,9 @@ class MenuType extends AbstractType
 //                ->add('param', 'choice', array(
 //                    'required' => false
 //                ))
-                ->add('status', 'checkbox', array())
+                ->add('status', 'checkbox', array(
+                    'required' => false
+                ))
                 ->add('url', 'url', array(
                     'required' => false
                 ))
@@ -58,6 +61,7 @@ class MenuType extends AbstractType
             } else if ($data instanceof Menu) {
                 $type = $data->getType();
             }
+
             if (!empty($type)) {
                 $paramOptions = $repMenu->getOptionParam($type);
                 if (is_array($paramOptions) && count($paramOptions) > 0) {

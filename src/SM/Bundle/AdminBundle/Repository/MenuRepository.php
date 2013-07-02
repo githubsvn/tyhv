@@ -4,7 +4,6 @@ namespace SM\Bundle\AdminBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\UnitOfWork;
-use Doctrine\Common\Collections\Criteria;
 
 /**
  * MenuRepository
@@ -15,23 +14,90 @@ use Doctrine\Common\Collections\Criteria;
 class MenuRepository extends EntityRepository
 {
     /**
-     * @param type $limit    limit
-     * @param type $offset   offset
-     * @param type $criteria criteria
-     * @param type $orderBy  orderBy
      *
+     * @param type $limit
+     * @param type $offset
+     * @param type $criteria ==> array(
+     *                              0 => array (
+     *                                  'op' => 'LIKE'
+     *                                  'fieldName' => 'name'
+     *                                  'fieldValue' => 'ABC'
+     *                              )
+     *                              1 => array (
+     *                                  'op' => '>'
+     *                                  'fieldName' => 'id'
+     *                                  'fieldValue' => '2'
+     *                              )
+     *                          )
+     * @param type $orderBy ==> array(
+     *                              0 => array()
+     *                          )
      * @return type
      */
-    public function getList($limit = null, $offset = null, $criteria = array(), $orderBy = array())
+    public function getList($limit = null, $offset = null, $criteria = array(), $orderBy = array('lft' => 'ASC'))
     {
-//        $expr = Criteria::expr();
-//        $cri = Criteria::create();
-//        $cri->where($expr->gt('lft', 1));
-//        $cri->setFirstResult($offset);
-//        $cri->setMaxResults($limit);
-//        $cri->orderBy($orderBy);
-//        return $this->matching($cri);
-        return $this->findBy($criteria, $orderBy, $limit, $offset);
+        $qb = $this->createQueryBuilder('t');
+        $qb->select('t');
+
+        if (!empty($limit)) {
+            $qb->setMaxResults($limit);
+        }
+
+        if (!empty($offset)) {
+            $qb->setFirstResult($offset);
+        }
+
+        if (is_array($criteria) && count($criteria) > 0) {
+            foreach ($criteria as $key => $cri) {
+                $qb->andWhere("t." . $cri['fieldName']. " ". $cri['op']." ". " ?$key");
+
+                if ($cri['op'] == 'LIKE') {
+                    $qb->setParameter($key, "%".$cri['fieldName']."%");
+                } else {
+                    $qb->setParameter($key, $cri['fieldValue']);
+                }
+            }
+        }
+
+        if (is_array($orderBy) && count($orderBy) > 0) {
+            foreach ($orderBy as $fieldName => $sort) {
+                $qb->orderBy("t.$fieldName", $sort);
+            }
+        }
+        //echo $qb->getQuery()->getSQL();die;
+        return $qb->getQuery()->getResult();
+
+    }
+
+    /**
+     * get total item
+     *
+     * @param type $criteria
+     * @return total
+     */
+    public function getTotal($criteria = array())
+    {
+        $qb = $this->createQueryBuilder('t');
+        $qb->select('COUNT(t.id) as total');
+        if (is_array($criteria) && count($criteria) > 0) {
+            foreach ($criteria as $key => $cri) {
+                $qb->andWhere("t." . $cri['fieldName']. " ". $cri['op']." ". " ?$key");
+
+                if ($cri['op'] == 'LIKE') {
+                    $qb->setParameter($key, "%".$cri['fieldName']."%");
+                } else {
+                    $qb->setParameter($key, $cri['fieldValue']);
+                }
+            }
+        }
+        //echo $qb->getQuery()->getSQL();
+        $rst = $qb->getQuery()->getScalarResult();
+        if (!empty($rst[0]['total'])) {
+
+            return $rst[0]['total'];
+        }
+
+        return 0;
     }
 
     /**
@@ -58,19 +124,6 @@ class MenuRepository extends EntityRepository
 
         return $rst;
     }
-
-    /**
-     * get total language
-     *
-     * @return type
-     */
-    public function getTotal()
-    {
-        $rst = $this->findAll();
-
-        return count($rst);
-    }
-
 
     /**
      * get page root
@@ -441,7 +494,6 @@ class MenuRepository extends EntityRepository
                 break;
             case $mnuTypeText:
                 break;
-
         }
 
         return $options;

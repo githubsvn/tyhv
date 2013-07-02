@@ -100,7 +100,7 @@ class __TwigTemplate_099400d7dd804ca9985ef67f6c988d8a extends Twig_Template
         echo "
             </div>
         </div>
-        
+
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"optionsCheckbox\">";
         // line 40
@@ -266,7 +266,7 @@ class __TwigTemplate_099400d7dd804ca9985ef67f6c988d8a extends Twig_Template
                 echo "
                                     </div>
                                 </div>
-                                
+
                                 <div class=\"control-group\">
                                     <label class=\"control-label\" for=\"input01\">";
                 // line 101
@@ -283,7 +283,7 @@ class __TwigTemplate_099400d7dd804ca9985ef67f6c988d8a extends Twig_Template
                 echo "
                                     </div>
                                 </div>
-                                
+
                                 ";
             }
             // line 109
