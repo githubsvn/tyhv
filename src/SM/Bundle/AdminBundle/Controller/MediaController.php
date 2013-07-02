@@ -261,5 +261,11 @@ class MediaController extends Controller
                         ->add('id', 'hidden')
                         ->getForm();
     }
+    
+    public function getMediaByCatAction($catId)
+    {
+        $options = array();
+        return new Response(json_encode($options));
+    }
 
 }

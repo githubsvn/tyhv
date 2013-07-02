@@ -170,7 +170,7 @@ class __TwigTemplate_c4606ce41e723e2897d66321195d360c extends Twig_Template
         echo "
                 ";
         // line 67
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "status"), 'widget');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "status"), 'widget', array("attr" => array("checked" => "checked")));
         echo "
             </div>
         </div>

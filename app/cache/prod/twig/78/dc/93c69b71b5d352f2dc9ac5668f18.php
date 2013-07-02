@@ -68,11 +68,11 @@ class __TwigTemplate_78dc93c69b71b5d352f2dc9ac5668f18 extends Twig_Template
         echo "
                 ";
         // line 19
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "status"), 'widget');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "status"), 'widget', array("attr" => array("checked" => "checked")));
         echo "
             </div>
         </div>
-        
+
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"optionsCheckbox\">";
         // line 24
@@ -98,7 +98,7 @@ class __TwigTemplate_78dc93c69b71b5d352f2dc9ac5668f18 extends Twig_Template
               </label>
             </div>
         </div>
-        
+
         <hr />
 
         <div class=\"tabbable\"> <!-- Only required for left/right tabs -->
@@ -222,7 +222,7 @@ class __TwigTemplate_78dc93c69b71b5d352f2dc9ac5668f18 extends Twig_Template
                 // line 74
                 echo "                                    </div>
                                 </div>
-                                
+
                                 <div class=\"control-group\">
                                     <label class=\"control-label\" for=\"input01\">";
                 // line 78
@@ -239,7 +239,7 @@ class __TwigTemplate_78dc93c69b71b5d352f2dc9ac5668f18 extends Twig_Template
                 echo "
                                     </div>
                                 </div>
-                                
+
                                 <div class=\"control-group\">
                                     <label class=\"control-label\" for=\"input01\">";
                 // line 86
@@ -256,7 +256,7 @@ class __TwigTemplate_78dc93c69b71b5d352f2dc9ac5668f18 extends Twig_Template
                 echo "
                                     </div>
                                 </div>
-                                
+
                                 ";
             }
             // line 94
