@@ -32,39 +32,51 @@ class MenuType extends AbstractType
                 ->add('type', 'choice', array(
                     'required' => true,
                     //'mapped' => false,      //This option will be created field on the form but no need to define property in entity
-                    'data' => 0,
                     'choices' => $options
                 ))
-                ->add('param', 'choice', array(
+//                ->add('param', 'choice', array(
+//                    'required' => false
+//                ))
+                ->add('status', 'checkbox', array())
+                ->add('url', 'url', array(
                     'required' => false
-                ))
-                ->add('status', 'checkbox', array(
                 ))
                 ->add('menu_languages', 'collection', array('type' => new MenuLanguageType()))
         ;
 
-//        $ff = $builder->getFormFactory();
-//        $func = function (FormEvent $e) use ($ff) {
-//            $entity = $e->getData();
-//            $form = $e->getForm();
-//            if ($form->has('parma')) {
-//                $form->remove('param');
-//            }
-//            $options = array();
-//            if ($entity instanceof Menu) {
-//                $type = $entity->getType();
-//                if ($type != null) {
-//                    var_dump($entity);die;
-//                    $rst = $repMenu->getOptionParam($type);
-//                    var_dump($rst);die;
-//                }
-//                $form->add($ff->createNamed('param', 'choice', null, array('choices' => $options)));
-//            }
-//        };
-//
-//        // Register the function above as EventListener on PreSet and PreBind
-//        $builder->addEventListener(FormEvents::PRE_SET_DATA, $func);
-//        $builder->addEventListener(FormEvents::PRE_BIND, $func);
+        $ff = $builder->getFormFactory();
+        $func = function (FormEvent $e) use ($ff, $repMenu) {
+            $data = $e->getData();
+            $form = $e->getForm();
+            if ($form->has('param')) {
+                $form->remove('param');
+            }
+            $paramOptions = array();
+            $type = '';
+            if (is_array($data)) {
+                $type = $data['type'];
+            } else if ($data instanceof Menu) {
+                $type = $data->getType();
+            }
+            if (!empty($type)) {
+                $paramOptions = $repMenu->getOptionParam($type);
+                if (is_array($paramOptions) && count($paramOptions) > 0) {
+                    $rst = array();
+                    foreach ($paramOptions as $opt) {
+                        $rst[$opt->id] = $opt->name;
+                    }
+                    $paramOptions = $rst;
+                }
+            }
+            $form->add($ff->createNamed('param', 'choice', null, array(
+                'required' => false,
+                'choices' => $paramOptions)
+            ));
+        };
+
+        $builder->addEventListener(FormEvents::PRE_BIND, $func);
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, $func);
+
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

@@ -3,15 +3,38 @@
 <h2>{{ 'Menu Edit'|trans({}, "SMAdminBundle") }}</h2>
 <script type="text/javascript">
     $(document).ready(function() {
+        var type = $('#sm_bundle_adminbundle_menutype_type').attr('value');
+        var link = {{mnuTypeLink}};
+
+        if (type != link) {
+            $("#url").hide();
+            $("#param").show();
+        } else {
+            $("#url").show();
+            $("#param").hide();
+        }
+
+
+
         $("#sm_bundle_adminbundle_menutype_type").bind("change", function(){
             var mnuTypeText = {{mnuTypeText}};
+            var mnuTypeLink = {{mnuTypeLink}};
             var typeMenu = $(this).attr('value');
 
-            if (typeMenu == mnuTypeText) {
+            if (typeMenu == mnuTypeText || typeMenu == mnuTypeLink) {
                 $('#sm_bundle_adminbundle_menutype_param').removeAttr("required");
             } else {
                 $("#sm_bundle_adminbundle_menutype_param").attr("required", "true");
             }
+
+            if (typeMenu == mnuTypeLink) {
+                $("#url").show();
+                $("#param").hide();
+            } else {
+                $("#url").hide();
+                $("#param").show();
+            }
+
             var urlMenu = "{{path('admin_menu_get_param')}}" + '/' + typeMenu;
             $.ajax({url:urlMenu, success:function(data){
                 //remove all option of the select
@@ -51,7 +74,14 @@
                 {{ form_widget(form.type) }}
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group" id="url">
+            <label class="control-label" for="input01">{{ 'Menu Param'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.url) }}
+                {{ form_widget(form.url) }}
+            </div>
+        </div>
+        <div class="control-group" id="param">
             <label class="control-label" for="input01">{{ 'Menu Param'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.param) }}

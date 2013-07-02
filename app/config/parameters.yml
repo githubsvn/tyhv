@@ -22,4 +22,6 @@ parameters:
     menu_type_news_detail: 7
     menu_type_page_detail: 8
     menu_type_text: 9
+    menu_type_link: 10
+
     ext_nice_url: html

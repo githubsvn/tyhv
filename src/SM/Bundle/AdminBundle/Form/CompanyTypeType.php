@@ -19,18 +19,6 @@ class CompanyTypeType extends AbstractType
                 'required' => false
             ))
             ->add('companytype_languages', 'collection', array('type' => new CompanyTypeLanguageType()));
-
-//        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($builder) {
-//            $entity = $event->getData();
-//
-//            if ($entity instanceof CompanyType) {
-//                $status = $entity->getStatus();
-//                if ($status === false) {
-//                }
-//
-//            }
-//            $event->setData($entity);
-//        });
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

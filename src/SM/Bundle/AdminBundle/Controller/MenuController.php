@@ -132,6 +132,10 @@ class MenuController extends Controller
             $session->set('referrer', $this->getRequest()->server->get('HTTP_REFERER'));
         }
 
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $mnuTypeText = $container->getParameter('menu_type_text');
+        $mnuTypeLink = $container->getParameter('menu_type_link');
+
         $form = $this->createForm(new MenuType(), $entity);
 
         if ($this->getRequest()->isMethod('POST')) {
@@ -141,8 +145,10 @@ class MenuController extends Controller
                 //Set Url for menu
                 $param = $entity->getParam();
                 $type = $entity->getType();
-                $url = $this->buildUrlForMenu($type, $param);
-                $entity->setUrl($url);
+                if ($type != $mnuTypeLink) {
+                    $url = $this->buildUrlForMenu($type, $param);
+                    $entity->setUrl($url);
+                }
 
                 //Set created and updated user
                 $currUser = $this->get('security.context')->getToken()->getUser();
@@ -179,15 +185,13 @@ class MenuController extends Controller
             }
         }
 
-        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
-        $mnuTypeText = $container->getParameter('menu_type_text');
-
         return $this->render('SMAdminBundle:Menu:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'langList' => $langList,
             'defaultLanguage' => $defaultLanguage,
-            'mnuTypeText' => $mnuTypeText
+            'mnuTypeText' => $mnuTypeText,
+            'mnuTypeLink' => $mnuTypeLink
         ));
     }
 
@@ -233,6 +237,10 @@ class MenuController extends Controller
             $session->set('referrer', $this->getRequest()->server->get('HTTP_REFERER'));
         }
 
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $mnuTypeText = $container->getParameter('menu_type_text');
+        $mnuTypeLink = $container->getParameter('menu_type_link');
+        
         $form = $this->createForm(new MenuType(), $entity);
 
         if ($this->getRequest()->isMethod('POST')) {
@@ -240,10 +248,13 @@ class MenuController extends Controller
 
             if ($form->isValid()) {
                 //Set Url for menu
-                $param = !empty($_POST['param']) ? $_POST['param'] : '';
-                $type = !empty($_POST['sm_bundle_adminbundle_menutype']['type']) ? $_POST['sm_bundle_adminbundle_menutype']['type'] : '';
-                $url = $this->buildUrlForMenu($type, $param);
-                $entity->setUrl($url);
+                //Set Url for menu
+                $param = $entity->getParam();
+                $type = $entity->getType();
+                if ($type != $mnuTypeLink) {
+                    $url = $this->buildUrlForMenu($type, $param);
+                    $entity->setUrl($url);
+                }
 
                 $entityManager = $this->getDoctrine()->getEntityManager();
                 foreach ($entity->getMenuLanguages() as $catLanguage) {
@@ -278,15 +289,13 @@ class MenuController extends Controller
             }
         }
 
-        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
-        $mnuTypeText = $container->getParameter('menu_type_text');
-
         return $this->render('SMAdminBundle:Menu:edit.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'langList' => $langList,
             'defaultLanguage' => $defaultLanguage,
-            'mnuTypeText' => $mnuTypeText
+            'mnuTypeText' => $mnuTypeText,
+            'mnuTypeLink' => $mnuTypeLink
         ));
     }
 

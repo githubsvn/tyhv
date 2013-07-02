@@ -237,10 +237,34 @@ class Menu extends \SM\Bundle\AdminBundle\Entity\Menu implements \Doctrine\ORM\P
         return parent::getUrl();
     }
 
+    public function setType($type)
+    {
+        $this->__load();
+        return parent::setType($type);
+    }
+
+    public function getType()
+    {
+        $this->__load();
+        return parent::getType();
+    }
+
+    public function setParam($param)
+    {
+        $this->__load();
+        return parent::setParam($param);
+    }
+
+    public function getParam()
+    {
+        $this->__load();
+        return parent::getParam();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'lft', 'rgt', 'status', 'created_at', 'updated_at', 'url', 'parent', 'children', 'created', 'updated', 'menu_languages');
+        return array('__isInitialized__', 'id', 'lft', 'rgt', 'status', 'created_at', 'updated_at', 'url', 'type', 'param', 'parent', 'children', 'created', 'updated', 'menu_languages');
     }
 
     public function __clone()

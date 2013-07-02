@@ -350,7 +350,8 @@ class MenuRepository extends EntityRepository
         $mnuTypeNewsCat = $container->getParameter('menu_type_news_category');
         $mnuTypeNewsDetail = $container->getParameter('menu_type_news_detail');
         $mnuTypePageDetail = $container->getParameter('menu_type_page_detail');
-        $mnuTypeTest = $container->getParameter('menu_type_text');
+        $mnuTypeText = $container->getParameter('menu_type_text');
+        $mnuTypeLink = $container->getParameter('menu_type_link');
 
         $options = array();
         $options[0] = '-- Lựa chọn --';
@@ -362,7 +363,8 @@ class MenuRepository extends EntityRepository
         $options[$mnuTypeNewsCat] = 'Loại tin';
         $options[$mnuTypeNewsDetail] = 'Tin tức';
         $options[$mnuTypePageDetail] = 'Trang tỉnh';
-        $options[$mnuTypeTest] = 'Tiêu đề';
+        $options[$mnuTypeText] = 'Tiêu đề';
+        $options[$mnuTypeLink] = 'Link';
 
         return $options;
     }
