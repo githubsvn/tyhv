@@ -3780,3 +3780,14 @@
 [Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin/company
 [Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\CompanyController->newAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/company
 [Tue Jul 02 17:33:20 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\ClassLoader\\DebugClassLoader->loadClass() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/ClassLoader/DebugClassLoader.php:0, referer: http://local.tyhv/admin/company
+[Wed Jul 03 12:34:53 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'SM\\Bundle\\AdminBundle\\Controller\\Response' not found in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/MediaController.php on line 272, referer: http://local.tyhv/admin/news/new
+[Wed Jul 03 12:34:53 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/news/new
+[Wed Jul 03 12:34:53 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/news/new
+[Wed Jul 03 12:34:53 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/news/new
+[Wed Jul 03 12:34:53 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/news/new
+[Wed Jul 03 12:34:53 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/news/new
+[Wed Jul 03 12:34:53 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/news/new
+[Wed Jul 03 12:34:53 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426, referer: http://local.tyhv/admin/news/new
+[Wed Jul 03 12:34:53 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\MediaController->getMediaByCatAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/news/new
+[Wed Jul 03 14:09:12 2013] [error] [client 127.0.0.1] File does not exist: /home/www/local.tyhv/web/uploads/51d109f7df202.jpeg/51d10a0d8defe.jpg, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 14:09:21 2013] [error] [client 127.0.0.1] File does not exist: /home/www/local.tyhv/web/uploads/51d109f7df202.jpeg/51d10a0d8defe.jpg

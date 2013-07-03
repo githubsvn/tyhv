@@ -1,4 +1,33 @@
 {% spaceless %}
+<script type="text/javascript">
+    $(document).ready(function() {
+            $("#typeImg").bind("change", function(){
+            var type = $(this).attr('value');
+            var url = "{{path('admin_media_get_media')}}" + '/' + type;
+            $.ajax({url:url, success:function(data){
+                $('.thumbnail, .popup').children().remove();
+                //set new option for select
+                var jsonData = JSON.parse(data);
+                $.each(jsonData, function(index, item) {
+                    var str = '<img src="{{ mediaPath}}' + item.name +'" width="100px" height="100px;"/>';
+                    var id = '#label_' + item.id;
+                    $(id).append(str);
+                });
+            }});
+
+            //Call ajax
+            $('#ajaxModal').modal();
+            $('#ajaxModal').ajaxStart(function() {
+                $(this).show();
+            })
+            .ajaxStop(function() {
+                $('#ajaxModal').modal('hide')
+            });
+        });
+
+    });
+</script>
+
 <a href="#backgroundModal" role="button" class="btn" data-toggle="modal">{{ 'Select image'|trans({}, "SMAdminBundle") }}</a>
 <!-- Modal -->
 <div id="backgroundModal" class="modal hide fade" style="width: 580px;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -18,8 +47,7 @@
         <ul class="thumbnails">
             {% for opt in optMedias %}
                 <li class="thumbImg" style="text-align: center;" data-type="{{opt.category.id}}">
-                    <label class="thumbnail" for="bg_{{ mediaName }}_{{ opt.id }}" style="border: 0px;">
-                        <img src="{{ mediaPath~opt.name }}" width="100px" height="100px;"/>
+                    <label id="label_{{ opt.id }}" class="thumbnail popup" for="bg_{{ mediaName }}_{{ opt.id }}" style="border: 0px;">
                     </label>
                     <input id="bg_{{ opt.id }}" name="bg_{{ mediaName }}" imagepath="{{ mediaPath~opt.name }}" type="{% if options.multiple is defined %}{% if options.multiple %}checkbox{% else %}radio{% endif %}{% else %}radio{% endif %}" value="{{ opt.id }}" style="margin-left: 40px;"/>
                 </li>

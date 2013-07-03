@@ -648,13 +648,13 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             not_admin_media_delete:
 
             // admin_media_get_media
-            if (preg_match('#^/admin/media/(?P<catId>[^/]+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/media/get-media-by-catid') && preg_match('#^/admin/media/get\\-media\\-by\\-catid(?:/(?P<catId>[^/]+))?$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_admin_media_get_media;
                 }
 
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MediaController::getMediaByCatAction',)), array('_route' => 'admin_media_get_media'));
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MediaController::getMediaByCatAction',  'catId' => NULL,)), array('_route' => 'admin_media_get_media'));
             }
             not_admin_media_get_media:
 

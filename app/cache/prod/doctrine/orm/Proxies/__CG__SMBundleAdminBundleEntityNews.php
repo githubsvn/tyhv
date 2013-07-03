@@ -189,10 +189,28 @@ class News extends \SM\Bundle\AdminBundle\Entity\News implements \Doctrine\ORM\P
         return parent::getNewsLanguages();
     }
 
+    public function addMediaId(\SM\Bundle\AdminBundle\Entity\Media $mediaId)
+    {
+        $this->__load();
+        return parent::addMediaId($mediaId);
+    }
+
+    public function removeMediaId(\SM\Bundle\AdminBundle\Entity\Media $mediaId)
+    {
+        $this->__load();
+        return parent::removeMediaId($mediaId);
+    }
+
+    public function getMediaId()
+    {
+        $this->__load();
+        return parent::getMediaId();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'status', 'created_at', 'updated_at', 'image', 'category', 'created', 'updated', 'news_languages');
+        return array('__isInitialized__', 'id', 'status', 'created_at', 'updated_at', 'image', 'category', 'created', 'updated', 'news_languages', 'media_id');
     }
 
     public function __clone()

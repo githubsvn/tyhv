@@ -30,8 +30,8 @@ admin_media_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SMAdminBundle:Media:delete" }
     requirements: { _method: post|get }
-    
+
 admin_media_get_media:
-    pattern:  /{catId}
-    defaults: { _controller: "SMAdminBundle:Media:getMediaByCat" }
+    pattern:  /get-media-by-catid/{catId}
+    defaults: { _controller: "SMAdminBundle:Media:getMediaByCat", catId: null }
     requirements: { _method: get }

@@ -3,6 +3,8 @@
 namespace SM\Bundle\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SM\Bundle\AdminBundle\Entity\Media;
 use SM\Bundle\AdminBundle\Form\MediaType;
@@ -261,10 +263,14 @@ class MediaController extends Controller
                         ->add('id', 'hidden')
                         ->getForm();
     }
-    
+
     public function getMediaByCatAction($catId)
     {
+        $rep = $this->getDoctrine()->getRepository("SMAdminBundle:Media");
         $options = array();
+        if (!empty($catId)) {
+            $options = $rep->getObjectOptionByCatId($catId);
+        }
         return new Response(json_encode($options));
     }
 

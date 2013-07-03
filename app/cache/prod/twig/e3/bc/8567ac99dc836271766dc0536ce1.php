@@ -18,7 +18,43 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
         // line 1
         ob_start();
         // line 2
-        echo "<a href=\"#backgroundModal\" role=\"button\" class=\"btn\" data-toggle=\"modal\">";
+        echo "<script type=\"text/javascript\">
+    \$(document).ready(function() {
+            \$(\"#typeImg\").bind(\"change\", function(){
+            var type = \$(this).attr('value');
+            var url = \"";
+        // line 6
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_media_get_media"), "html", null, true);
+        echo "\" + '/' + type;
+            \$.ajax({url:url, success:function(data){
+                \$('.thumbnail, .popup').children().remove();
+                //set new option for select
+                var jsonData = JSON.parse(data);
+                \$.each(jsonData, function(index, item) {
+                    var str = '<img src=\"";
+        // line 12
+        echo twig_escape_filter($this->env, $this->getContext($context, "mediaPath"), "html", null, true);
+        echo "' + item.name +'\" width=\"100px\" height=\"100px;\"/>';
+                    var id = '#label_' + item.id;
+                    \$(id).append(str);
+                });
+            }});
+
+            //Call ajax
+            \$('#ajaxModal').modal();
+            \$('#ajaxModal').ajaxStart(function() {
+                \$(this).show();
+            })
+            .ajaxStop(function() {
+                \$('#ajaxModal').modal('hide')
+            });
+        });
+
+    });
+</script>
+
+<a href=\"#backgroundModal\" role=\"button\" class=\"btn\" data-toggle=\"modal\">";
+        // line 31
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Select image", array(), "SMAdminBundle"), "html", null, true);
         echo "</a>
 <!-- Modal -->
@@ -26,23 +62,23 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
     <div class=\"modal-header\">
         <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>
         <h3 id=\"backgroundModalLabel\">";
-        // line 7
+        // line 36
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Select image", array(), "SMAdminBundle"), "html", null, true);
         echo "</h3>
     </div>
     <div class=\"modal-body\">
         <div style=\"text-align: center;\">
             ";
-        // line 11
+        // line 40
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Type of media", array(), "SMAdminBundle"), "html", null, true);
         echo " :
             <select name=\"typeImg\" id=\"typeImg\">
                 ";
-        // line 13
+        // line 42
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "optMediaTypes"));
         foreach ($context['_seq'] as $context["_key"] => $context["opt"]) {
-            // line 14
+            // line 43
             echo "                    <option value=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "opt"), "id"), "html", null, true);
             echo "\">";
@@ -53,32 +89,30 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['opt'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 16
+        // line 45
         echo "            </select>
         </div>
         <ul class=\"thumbnails\">
             ";
-        // line 19
+        // line 48
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "optMedias"));
         foreach ($context['_seq'] as $context["_key"] => $context["opt"]) {
-            // line 20
+            // line 49
             echo "                <li class=\"thumbImg\" style=\"text-align: center;\" data-type=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "opt"), "category"), "id"), "html", null, true);
             echo "\">
-                    <label class=\"thumbnail\" for=\"bg_";
-            // line 21
+                    <label id=\"label_";
+            // line 50
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "opt"), "id"), "html", null, true);
+            echo "\" class=\"thumbnail popup\" for=\"bg_";
             echo twig_escape_filter($this->env, $this->getContext($context, "mediaName"), "html", null, true);
             echo "_";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "opt"), "id"), "html", null, true);
             echo "\" style=\"border: 0px;\">
-                        <img src=\"";
-            // line 22
-            echo twig_escape_filter($this->env, ($this->getContext($context, "mediaPath") . $this->getAttribute($this->getContext($context, "opt"), "name")), "html", null, true);
-            echo "\" width=\"100px\" height=\"100px;\"/>
                     </label>
                     <input id=\"bg_";
-            // line 24
+            // line 52
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "opt"), "id"), "html", null, true);
             echo "\" name=\"bg_";
             echo twig_escape_filter($this->env, $this->getContext($context, "mediaName"), "html", null, true);
@@ -103,27 +137,27 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['opt'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 27
+        // line 55
         echo "        </ul>
     </div>
     <div class=\"modal-footer\">
         <div class=\"row\">
             ";
-        // line 31
+        // line 59
         if ($this->getAttribute($this->getContext($context, "options", true), "multiple", array(), "any", true, true)) {
-            // line 32
+            // line 60
             echo "                ";
             if ($this->getAttribute($this->getContext($context, "options"), "multiple")) {
-                // line 33
+                // line 61
                 echo "                <div class=\"span2\" style=\"width: 200px;\">
                         <a class=\"btn\" onclick=\"checkAll('";
-                // line 34
+                // line 62
                 echo twig_escape_filter($this->env, $this->getContext($context, "mediaName"), "html", null, true);
                 echo "');\" >";
                 echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Select All", array(), "SMAdminBundle"), "html", null, true);
                 echo "</a>
                         <a class=\"btn\" onclick=\"clearAll('";
-                // line 35
+                // line 63
                 echo twig_escape_filter($this->env, $this->getContext($context, "mediaName"), "html", null, true);
                 echo "');\" >";
                 echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Clear All", array(), "SMAdminBundle"), "html", null, true);
@@ -131,17 +165,17 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
                     </div>
                 ";
             }
-            // line 38
+            // line 66
             echo "            ";
         }
-        // line 39
+        // line 67
         echo "            <div class=\"pull-right\">
                 <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">";
-        // line 40
+        // line 68
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Close", array(), "SMAdminBundle"), "html", null, true);
         echo "</button>
                 <button class=\"btn btn-primary\" data-dismiss=\"modal\" onclick=\"applySelect('";
-        // line 41
+        // line 69
         echo twig_escape_filter($this->env, $this->getContext($context, "mediaName"), "html", null, true);
         echo "')\">";
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Select", array(), "SMAdminBundle"), "html", null, true);
@@ -153,7 +187,7 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
 
 <div>
     <ul class=\"thumbnails\" id=\"preview_";
-        // line 48
+        // line 76
         echo twig_escape_filter($this->env, $this->getContext($context, "mediaName"), "html", null, true);
         echo "\">
     </ul>
@@ -161,12 +195,12 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
 
 <script type=\"text/javascript\" >
     var mediaPath = \"";
-        // line 53
+        // line 81
         echo twig_escape_filter($this->env, $this->getContext($context, "mediaPath"), "html", null, true);
         echo "\";
     \$(function() {
         initSelect('";
-        // line 55
+        // line 83
         echo twig_escape_filter($this->env, $this->getContext($context, "mediaName"), "html", null, true);
         echo "');
         \$('#backgroundModal').on('hidden', function () {
@@ -237,6 +271,6 @@ class __TwigTemplate_e3bc8567ac99dc836271766dc0536ce1 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  170 => 55,  165 => 53,  157 => 48,  145 => 41,  141 => 40,  138 => 39,  127 => 35,  121 => 34,  115 => 32,  107 => 27,  82 => 24,  77 => 22,  66 => 20,  57 => 16,  46 => 14,  42 => 13,  30 => 7,  21 => 2,  19 => 1,  374 => 144,  370 => 143,  366 => 142,  360 => 138,  354 => 137,  352 => 136,  348 => 134,  340 => 129,  336 => 128,  331 => 126,  325 => 122,  319 => 120,  313 => 118,  311 => 117,  307 => 116,  302 => 114,  299 => 113,  297 => 112,  294 => 111,  288 => 109,  282 => 107,  279 => 106,  273 => 105,  270 => 104,  267 => 103,  264 => 102,  259 => 101,  256 => 100,  251 => 99,  249 => 98,  245 => 96,  239 => 95,  236 => 94,  228 => 92,  220 => 90,  217 => 89,  212 => 88,  210 => 87,  197 => 78,  195 => 77,  191 => 76,  187 => 75,  181 => 72,  173 => 67,  169 => 66,  164 => 64,  156 => 59,  152 => 58,  147 => 56,  139 => 51,  135 => 38,  130 => 48,  122 => 43,  118 => 33,  113 => 31,  105 => 35,  101 => 34,  96 => 32,  88 => 27,  84 => 26,  79 => 24,  71 => 21,  67 => 18,  62 => 19,  54 => 11,  50 => 10,  45 => 8,  37 => 11,  31 => 3,  28 => 2,);
+        return array (  204 => 83,  199 => 81,  191 => 76,  179 => 69,  175 => 68,  172 => 67,  169 => 66,  161 => 63,  155 => 62,  152 => 61,  149 => 60,  147 => 59,  141 => 55,  116 => 52,  107 => 50,  102 => 49,  98 => 48,  93 => 45,  82 => 43,  78 => 42,  73 => 40,  66 => 36,  58 => 31,  36 => 12,  27 => 6,  21 => 2,  19 => 1,);
     }
 }

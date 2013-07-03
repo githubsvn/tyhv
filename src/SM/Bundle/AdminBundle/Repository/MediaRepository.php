@@ -60,7 +60,7 @@ class MediaRepository extends EntityRepository
     public function getTotal()
     {
         $rst = $this->findAll();
-        
+
         return count($rst);
     }
 
@@ -78,6 +78,25 @@ class MediaRepository extends EntityRepository
             }
         }
 
+        return $options;
+    }
+
+    public function getObjectOptionByCatId($catId)
+    {
+        $options = array();
+        if (!empty($catId)) {
+            $rst = $this->getList(null, null, array('active' => '1', 'category' => $catId));
+            if (is_array($rst) && count($rst) > 0) {
+                foreach ($rst as $obj) {
+                    $std = new \stdClass();
+                    $std->id = $obj->getId();
+                    $std->name = $obj->getName();
+                    $std->catId = $obj->getCategory()->getId();
+                    $options[] = $std;
+                }
+            }
+
+        }
         return $options;
     }
 }
