@@ -379,13 +379,14 @@ class NewsController extends Controller
         foreach ($listMediaCats as $theCat) {
             $theCat->setLanguage($currentLanguage);
         }
-
+        
         return $this->render('SMAdminBundle:News:edit.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'langList' => $langList,
             'defaultLanguage' => $defaultLanguage,
             'arrImgs' => array($image),
+            'image' => $image,
             'imgPath' => '/web/' . $uploadPath,
             'optMedias' => $optMedias,
             'mediaPath' => '/web/' . $this->container->getParameter('upload'),

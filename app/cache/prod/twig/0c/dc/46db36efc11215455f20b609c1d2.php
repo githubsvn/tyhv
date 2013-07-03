@@ -78,7 +78,7 @@ class __TwigTemplate_0cdc46db36efc11215455f20b609c1d2 extends Twig_Template
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['opt'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 31
         echo "        </a>
         <ul class=\"dropdown-menu\">
@@ -97,7 +97,7 @@ class __TwigTemplate_0cdc46db36efc11215455f20b609c1d2 extends Twig_Template
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['opt'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 36
         echo "        </ul>
     </div>
@@ -206,7 +206,7 @@ class __TwigTemplate_0cdc46db36efc11215455f20b609c1d2 extends Twig_Template
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 79
         echo "    </tbody>
 </table>
@@ -254,7 +254,7 @@ class __TwigTemplate_0cdc46db36efc11215455f20b609c1d2 extends Twig_Template
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['page'], $context['_parent'], $context['loop']);
-            $context = array_merge($_parent, array_intersect_key($context, $_parent));
+            $context = array_intersect_key($context, $_parent) + $_parent;
             // line 95
             echo "        <li><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_productgroup", array("page" => $this->getContext($context, "nextPage"), "lang" => $this->getContext($context, "lang"))), "html", null, true);

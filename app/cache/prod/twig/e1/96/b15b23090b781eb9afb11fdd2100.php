@@ -90,7 +90,7 @@ class __TwigTemplate_e196b15b23090b781eb9afb11fdd2100 extends Twig_Template
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['i'], $context['previous'], $context['_parent'], $context['loop']);
-            $context = array_merge($_parent, array_intersect_key($context, $_parent));
+            $context = array_intersect_key($context, $_parent) + $_parent;
             // line 31
             echo "                        </ul>
                     </div>
@@ -122,7 +122,7 @@ class __TwigTemplate_e196b15b23090b781eb9afb11fdd2100 extends Twig_Template
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['position'], $context['e'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 46
         echo "
     ";
@@ -271,6 +271,6 @@ class __TwigTemplate_e196b15b23090b781eb9afb11fdd2100 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  225 => 96,  216 => 90,  201 => 83,  196 => 80,  191 => 78,  189 => 77,  186 => 76,  178 => 71,  172 => 67,  163 => 63,  159 => 61,  157 => 60,  154 => 59,  147 => 55,  143 => 54,  136 => 50,  132 => 48,  130 => 47,  127 => 46,  121 => 45,  118 => 44,  114 => 43,  100 => 34,  95 => 31,  78 => 28,  75 => 27,  71 => 26,  63 => 24,  60 => 23,  58 => 22,  34 => 11,  94 => 39,  88 => 6,  81 => 40,  79 => 39,  59 => 22,  48 => 19,  39 => 8,  35 => 7,  31 => 6,  26 => 6,  46 => 8,  43 => 7,  32 => 4,  29 => 3,  237 => 88,  232 => 86,  224 => 81,  212 => 88,  208 => 73,  205 => 84,  202 => 71,  194 => 79,  188 => 67,  185 => 66,  182 => 65,  180 => 72,  174 => 60,  149 => 57,  144 => 55,  138 => 51,  133 => 53,  129 => 52,  124 => 49,  113 => 47,  109 => 46,  104 => 36,  97 => 40,  89 => 35,  52 => 17,  47 => 15,  41 => 15,  37 => 13,  27 => 6,  21 => 1,  19 => 1,);
+        return array (  225 => 96,  216 => 90,  212 => 88,  205 => 84,  201 => 83,  196 => 80,  194 => 79,  191 => 78,  189 => 77,  186 => 76,  180 => 72,  178 => 71,  172 => 67,  163 => 63,  159 => 61,  157 => 60,  154 => 59,  147 => 55,  143 => 54,  138 => 51,  136 => 50,  132 => 48,  130 => 47,  127 => 46,  121 => 45,  118 => 44,  114 => 43,  104 => 36,  100 => 34,  95 => 31,  78 => 28,  75 => 27,  71 => 26,  63 => 24,  60 => 23,  58 => 22,  41 => 15,  34 => 11,  19 => 1,  94 => 39,  88 => 6,  81 => 40,  79 => 39,  59 => 22,  48 => 19,  39 => 8,  35 => 7,  31 => 6,  26 => 6,  21 => 1,  46 => 8,  43 => 7,  32 => 4,  29 => 3,);
     }
 }

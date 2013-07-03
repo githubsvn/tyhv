@@ -47,6 +47,7 @@ class Twig_Tests_Loader_FilesystemTest extends PHPUnit_Framework_TestCase
             array('filters\\..\\..\\AutoloaderTest.php'),
             array('filters\\\\..\\\\..\\\\AutoloaderTest.php'),
             array('filters\\//../\\/\\..\\AutoloaderTest.php'),
+            array('/../AutoloaderTest.php'),
         );
     }
 
@@ -77,6 +78,12 @@ class Twig_Tests_Loader_FilesystemTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("path (final)\n", $loader->getSource('index.html'));
         $this->assertEquals("path (final)\n", $loader->getSource('@__main__/index.html'));
         $this->assertEquals("named path (final)\n", $loader->getSource('@named/index.html'));
+    }
+
+    public function testEmptyConstructor()
+    {
+        $loader = new Twig_Loader_Filesystem();
+        $this->assertEquals(array(), $loader->getPaths());
     }
 
     public function testGetNamespaces()

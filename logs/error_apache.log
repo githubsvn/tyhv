@@ -3791,3 +3791,292 @@
 [Wed Jul 03 12:34:53 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\MediaController->getMediaByCatAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/news/new
 [Wed Jul 03 14:09:12 2013] [error] [client 127.0.0.1] File does not exist: /home/www/local.tyhv/web/uploads/51d109f7df202.jpeg/51d10a0d8defe.jpg, referer: http://local.tyhv/admin/news/9/edit
 [Wed Jul 03 14:09:21 2013] [error] [client 127.0.0.1] File does not exist: /home/www/local.tyhv/web/uploads/51d109f7df202.jpeg/51d10a0d8defe.jpg
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:41 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026
+[Wed Jul 03 16:01:51 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026
+[Wed Jul 03 16:01:52 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:53 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026
+[Wed Jul 03 16:01:54 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026
+[Wed Jul 03 16:03:16 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:07:59 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026
+[Wed Jul 03 16:08:03 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1426
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\NewsController->editAction() /home/www/local.tyhv/app/bootstrap.php.cache:0
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/NewsController.php:385
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026
+[Wed Jul 03 16:16:24 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:43 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026
+[Wed Jul 03 16:25:47 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:35 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026
+[Wed Jul 03 16:26:40 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:00 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:01 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211, referer: http://local.tyhv/admin/news/9/edit
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Imagine\\Gd\\Imagine' not found in /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php on line 938
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:617
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1566
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1390
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP   6. Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->getController() /home/www/local.tyhv/app/bootstrap.php.cache:1416
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerResolver->createController() /home/www/local.tyhv/app/cache/prod/classes.php:64
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP   8. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/classes.php:230
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP   9. appProdDebugProjectContainer->getLiipImagine_ControllerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP  10. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1013
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP  11. appProdDebugProjectContainer->getLiipImagine_Data_ManagerService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP  12. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1041
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026
+[Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211

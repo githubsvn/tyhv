@@ -86,7 +86,7 @@ class __TwigTemplate_5faf1a370cd2c3a7dce4a2a487f20353 extends Twig_Template
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['opt'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 39
         echo "        </a>
         <ul class=\"dropdown-menu\">
@@ -105,7 +105,7 @@ class __TwigTemplate_5faf1a370cd2c3a7dce4a2a487f20353 extends Twig_Template
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['opt'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 44
         echo "        </ul>
     </div>
@@ -157,7 +157,7 @@ class __TwigTemplate_5faf1a370cd2c3a7dce4a2a487f20353 extends Twig_Template
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['comType'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 59
         echo "                    </select>
                     <input type=\"hidden\" name=\"language\" value=\"";
@@ -294,7 +294,7 @@ class __TwigTemplate_5faf1a370cd2c3a7dce4a2a487f20353 extends Twig_Template
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 110
         echo "    </tbody>
 </table>
@@ -342,7 +342,7 @@ class __TwigTemplate_5faf1a370cd2c3a7dce4a2a487f20353 extends Twig_Template
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['page'], $context['_parent'], $context['loop']);
-            $context = array_merge($_parent, array_intersect_key($context, $_parent));
+            $context = array_intersect_key($context, $_parent) + $_parent;
             // line 126
             echo "        <li><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_company", array("page" => $this->getContext($context, "nextPage"), "lang" => $this->getContext($context, "lang"))), "html", null, true);

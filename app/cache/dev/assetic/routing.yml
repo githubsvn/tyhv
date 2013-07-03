@@ -1,5 +1,5 @@
 _assetic:
-  resource: .
-  type: assetic
+    resource: .
+    type: assetic
 _app:
-  resource: 'D:/www/tyhv/app/config/routing_dev.yml'
+    resource: /home/www/local.tyhv/app/config/routing_dev.yml

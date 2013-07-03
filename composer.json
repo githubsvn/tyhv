@@ -21,7 +21,11 @@
         "kriswallsmith/assetic": "1.1.*@dev",
         "stfalcon/tinymce-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "doctrine/data-fixtures": "dev-master"
+        "doctrine/data-fixtures": "dev-master",
+
+        "imagine/Imagine": "*",
+        "liip/imagine-bundle": "*@dev"
+
     },
     "scripts": {
         "post-install-cmd": [
