@@ -22,9 +22,8 @@
         "stfalcon/tinymce-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/data-fixtures": "dev-master",
-
         "imagine/Imagine": "*",
-        "liip/imagine-bundle": "*@dev"
+        "liip/imagine-bundle": "dev-master"
 
     },
     "scripts": {

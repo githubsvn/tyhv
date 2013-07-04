@@ -42,6 +42,10 @@ class CompilerJarFilter extends BaseCompilerFilter
             $this->jarPath,
         ));
 
+        if (null !== $this->timeout) {
+            $pb->setTimeout($this->timeout);
+        }
+
         if (null !== $this->compilationLevel) {
             $pb->add('--compilation_level')->add($this->compilationLevel);
         }
@@ -85,7 +89,7 @@ class CompilerJarFilter extends BaseCompilerFilter
         $code = $proc->run();
         array_map('unlink', $cleanup);
 
-        if (0 < $code) {
+        if (0 !== $code) {
             throw FilterException::fromProcess($proc)->setInput($asset->getContent());
         }
 

@@ -58,6 +58,7 @@ stfalcon_tinymce:
     textarea_class: "tinymce"
     language: en
     base_url: "http://local.tyhv/web/"
+    include_jquery: false
     theme:
         external_plugins:
           images:

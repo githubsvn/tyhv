@@ -4080,3 +4080,73 @@
 [Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP  13. appProdDebugProjectContainer->getLiipImagine_Data_Loader_FilesystemService() /home/www/local.tyhv/app/bootstrap.php.cache:211
 [Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP  14. Symfony\\Component\\DependencyInjection\\Container->get() /home/www/local.tyhv/app/cache/prod/appProdDebugProjectContainer.php:1026
 [Wed Jul 03 16:27:04 2013] [error] [client 127.0.0.1] PHP  15. appProdDebugProjectContainer->getLiipImagineService() /home/www/local.tyhv/app/bootstrap.php.cache:211
+[Wed Jul 03 18:19:43 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Symfony\\Component\\ClassLoader\\DebugClassLoader' not found in /home/www/local.tyhv/app/bootstrap.php.cache on line 542
+[Wed Jul 03 18:19:43 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 18:19:43 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 18:19:43 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->__construct() /home/www/local.tyhv/web/app.php:20
+[Wed Jul 03 18:19:43 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Component\\HttpKernel\\Kernel->init() /home/www/local.tyhv/app/bootstrap.php.cache:533
+[Wed Jul 03 18:35:33 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Liip\\ImagineBundle\\LiipImagineBundle' not found in /home/www/local.tyhv/app/AppKernel.php on line 26
+[Wed Jul 03 18:35:33 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 18:35:33 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 18:35:33 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 18:35:33 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Component\\HttpKernel\\Kernel->boot() /home/www/local.tyhv/app/bootstrap.php.cache:614
+[Wed Jul 03 18:35:33 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\Kernel->initializeBundles() /home/www/local.tyhv/app/bootstrap.php.cache:569
+[Wed Jul 03 18:35:33 2013] [error] [client 127.0.0.1] PHP   5. AppKernel->registerBundles() /home/www/local.tyhv/app/bootstrap.php.cache:797
+[Wed Jul 03 18:35:38 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Liip\\ImagineBundle\\LiipImagineBundle' not found in /home/www/local.tyhv/app/AppKernel.php on line 26
+[Wed Jul 03 18:35:38 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 18:35:38 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 18:35:38 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 18:35:38 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Component\\HttpKernel\\Kernel->boot() /home/www/local.tyhv/app/bootstrap.php.cache:614
+[Wed Jul 03 18:35:38 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\Kernel->initializeBundles() /home/www/local.tyhv/app/bootstrap.php.cache:569
+[Wed Jul 03 18:35:38 2013] [error] [client 127.0.0.1] PHP   5. AppKernel->registerBundles() /home/www/local.tyhv/app/bootstrap.php.cache:797
+[Wed Jul 03 18:37:40 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Liip\\ImagineBundle\\LiipImagineBundle' not found in /home/www/local.tyhv/app/AppKernel.php on line 26
+[Wed Jul 03 18:37:40 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 18:37:40 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 18:37:40 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 18:37:40 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Component\\HttpKernel\\Kernel->boot() /home/www/local.tyhv/app/bootstrap.php.cache:614
+[Wed Jul 03 18:37:40 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\Kernel->initializeBundles() /home/www/local.tyhv/app/bootstrap.php.cache:569
+[Wed Jul 03 18:37:40 2013] [error] [client 127.0.0.1] PHP   5. AppKernel->registerBundles() /home/www/local.tyhv/app/bootstrap.php.cache:797
+[Wed Jul 03 18:38:11 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Liip\\ImagineBundle\\LiipImagineBundle' not found in /home/www/local.tyhv/app/AppKernel.php on line 26
+[Wed Jul 03 18:38:11 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 18:38:11 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 18:38:11 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 18:38:11 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Component\\HttpKernel\\Kernel->boot() /home/www/local.tyhv/app/bootstrap.php.cache:614
+[Wed Jul 03 18:38:11 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\Kernel->initializeBundles() /home/www/local.tyhv/app/bootstrap.php.cache:569
+[Wed Jul 03 18:38:11 2013] [error] [client 127.0.0.1] PHP   5. AppKernel->registerBundles() /home/www/local.tyhv/app/bootstrap.php.cache:797
+[Wed Jul 03 18:39:22 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Liip\\ImagineBundle\\LiipImagineBundle' not found in /home/www/local.tyhv/app/AppKernel.php on line 26
+[Wed Jul 03 18:39:22 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 18:39:22 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 18:39:22 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24
+[Wed Jul 03 18:39:22 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Component\\HttpKernel\\Kernel->boot() /home/www/local.tyhv/app/bootstrap.php.cache:614
+[Wed Jul 03 18:39:22 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\Kernel->initializeBundles() /home/www/local.tyhv/app/bootstrap.php.cache:569
+[Wed Jul 03 18:39:22 2013] [error] [client 127.0.0.1] PHP   5. AppKernel->registerBundles() /home/www/local.tyhv/app/bootstrap.php.cache:797
+[Wed Jul 03 19:00:44 2013] [error] [client 127.0.0.1] PHP Warning:  require_once(/home/www/local.tyhv/web/../app/bootstrap.php.cache) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/www/local.tyhv/web/app.php on line 8
+[Wed Jul 03 19:00:44 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 19:00:44 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 19:00:44 2013] [error] [client 127.0.0.1] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/home/www/local.tyhv/web/../app/bootstrap.php.cache' (include_path='.:/usr/share/php:/usr/share/pear') in /home/www/local.tyhv/web/app.php on line 8
+[Wed Jul 03 19:00:44 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 19:00:44 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 19:01:26 2013] [error] [client 127.0.0.1] PHP Warning:  require_once(/home/www/local.tyhv/web/../app/bootstrap.php.cache) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/www/local.tyhv/web/app.php on line 8
+[Wed Jul 03 19:01:26 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 19:01:26 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Wed Jul 03 19:01:26 2013] [error] [client 127.0.0.1] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/home/www/local.tyhv/web/../app/bootstrap.php.cache' (include_path='.:/usr/share/php:/usr/share/pear') in /home/www/local.tyhv/web/app.php on line 8
+[Wed Jul 03 19:01:26 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Jul 03 19:01:26 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Warning:  require_once(/home/www/local.tyhv/web/../app/bootstrap.php.cache) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/www/local.tyhv/web/app.php on line 8
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/home/www/local.tyhv/web/../app/bootstrap.php.cache' (include_path='.:/usr/share/php:/usr/share/pear') in /home/www/local.tyhv/web/app.php on line 8
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Warning:  require_once(/home/www/local.tyhv/web/../app/bootstrap.php.cache) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/www/local.tyhv/web/app.php on line 8
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/home/www/local.tyhv/web/../app/bootstrap.php.cache' (include_path='.:/usr/share/php:/usr/share/pear') in /home/www/local.tyhv/web/app.php on line 8
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Warning:  require_once(/home/www/local.tyhv/web/../app/bootstrap.php.cache) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/www/local.tyhv/web/app.php on line 8
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/home/www/local.tyhv/web/../app/bootstrap.php.cache' (include_path='.:/usr/share/php:/usr/share/pear') in /home/www/local.tyhv/web/app.php on line 8
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Thu Jul 04 09:08:43 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0

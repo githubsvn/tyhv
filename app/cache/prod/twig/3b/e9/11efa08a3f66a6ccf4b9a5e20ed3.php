@@ -112,7 +112,7 @@ class __TwigTemplate_3be911efa08a3f66a6ccf4b9a5e20ed3 extends Twig_Template
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['lang'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 36
         echo "            </ul>
             <div class=\"tab-content\">
@@ -146,7 +146,7 @@ class __TwigTemplate_3be911efa08a3f66a6ccf4b9a5e20ed3 extends Twig_Template
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['categoryLanguage'], $context['_parent'], $context['loop']);
-            $context = array_merge($_parent, array_intersect_key($context, $_parent));
+            $context = array_intersect_key($context, $_parent) + $_parent;
             // line 46
             echo "                    ";
             if (($this->getContext($context, "isActive") == 1)) {
@@ -210,7 +210,7 @@ class __TwigTemplate_3be911efa08a3f66a6ccf4b9a5e20ed3 extends Twig_Template
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['lang'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 70
         echo "            </div>
         </div>
