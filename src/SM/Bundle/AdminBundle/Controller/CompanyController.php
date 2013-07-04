@@ -165,7 +165,7 @@ class CompanyController extends Controller
                 if (!empty($entity->logo)) {
                     $newName = Utilities::renameForFile($entity->logo->getClientOriginalName());
                     //get upload dir
-                    $uploadPath = $this->container->getParameter('upload') . '/logo';
+                    $uploadPath = $this->container->getParameter('upload');
                     $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
                     $uploadDir = $webDir . $uploadPath;
                     //upload file
@@ -352,5 +352,5 @@ class CompanyController extends Controller
             return $this->redirect($referrer);
         }
     }
-    
+
 }

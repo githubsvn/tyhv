@@ -31,3 +31,8 @@ admin_news_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SMAdminBundle:News:delete" }
     requirements: { _method: post|get }
+
+admin_news_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:News:deleteAll" }
+    requirements: { _method: post }

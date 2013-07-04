@@ -128,8 +128,17 @@
         <!-- Loading image will be show when ajax called. -->
         <div class="modal hide" id="ajaxModal" style="text-align: center;">
             <img alt="Loading, please wait.." src="{{ asset('web/static/admin/img/loading.gif') }}" />
-        </div>        
-        
+        </div>
+
+
+        <!-- This block is contain language for JS-->
+        <script type="text/javascript">
+            var js_lang_do_you_want_to_delete = '{{ "Do you want to delete"|trans({}, 'SMAdminBundle') }}';
+            var js_lang_please_choose_at_least_one_item = '{{ "Please choose at least one item"|trans({}, 'SMAdminBundle') }}';
+        </script>
+
+        <!-- -->
+
         <!-- Le javascript
             ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

@@ -5,6 +5,10 @@ System: Hệ Thống
 Add new: Thêm Mới
 List: Danh Sách
 Edit: Chỉnh Sửa
+Delete all: Xóa tất cả
+#lang fo JS
+Do you want to delete: Bạn muốn xóa mẩu tin?
+Please choose at least one item: Xin vui lòng chọn ít nhất một mẩu tin!
 
 #Langauge common
 Created Time: Ngày tạo
@@ -29,6 +33,9 @@ Clear All: Bỏ chọn tất cả
 Close: Đóng
 Total: Tổng số
 Page: Trang
+The operation is success: Thao tác thành công
+The operation is fail: Thao tác thất bại
+The data input is invalid: Dữ liệu nhập bị sai.
 
 #Language for User
 Username: Tên đăng nhập

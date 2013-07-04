@@ -916,6 +916,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
             not_admin_news_delete:
 
+            // admin_news_delete_all
+            if ($pathinfo === '/admin/news/deleteall') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_news_delete_all;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\NewsController::deleteAllAction',  '_route' => 'admin_news_delete_all',);
+            }
+            not_admin_news_delete_all:
+
         }
 
         if (0 === strpos($pathinfo, '/admin/page')) {

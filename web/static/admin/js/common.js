@@ -1,3 +1,55 @@
+function checkAllCheckbox(){
+    var inptCheckbox = $('input[type="checkbox"]').eq(0);
+    var hCheck = true;
+    inptCheckbox.click(function(){
+        if(hCheck){
+            $('input[type="checkbox"]').attr('checked', true);
+            hCheck = false;
+        }else{
+            $('input[type="checkbox"]').attr('checked', false);
+            hCheck = true;
+        }
+    });
+}
+
+function checkDelete(){
+    var btnDel = $('#btn-del');
+    var inptCheckboxs = $('input[type="checkbox"]');
+    var hCheck = false;
+    var frmRss = $('#frmListNews');
+    btnDel.click(function(){
+        if (confirm(js_lang_do_you_want_to_delete)){
+            $('.chkNews:checked').each(function(){
+                hCheck = true;
+                return false;
+            });
+
+            if(!hCheck){
+                alert(js_lang_please_choose_at_least_one_item);
+                return false;
+            }
+            frmRss.attr('action', btnDel.attr('rel')).submit();
+        }
+    });
+}
+
+function compareCheckBox()
+{
+    var total = 0;
+    var totalChecked = 0;
+    $('.chkNews').each(function(){
+        total ++;
+    });
+    $('.chkNews:checked').each(function(){
+        totalChecked ++;
+    });
+
+    if (totalChecked == total) {
+        return true;
+    }
+    return false;
+}
+
 $( document ).ready( function() {
     $(".defaultCheckBox").click(function() {
         window.location.href = this.src;
@@ -29,5 +81,18 @@ $( document ).ready( function() {
             $("#article_preview_background").append("<img src='"+media_image_path+$(this).text()+"' width=400 />");
         });
     });
-    
+
+    checkAllCheckbox();
+    checkDelete();
+
+    $('.chkNews').click(function(){
+        var isEqual = false;
+        isEqual = compareCheckBox();
+        if (isEqual) {
+            $("#checkAll").attr('checked', true);
+        } else {
+            $("#checkAll").attr('checked', false);
+        }
+    });
 });
+

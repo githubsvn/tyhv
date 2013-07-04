@@ -190,15 +190,30 @@ class __TwigTemplate_298b600a0a230cbefedbc3ab022b9922 extends Twig_Template
         // line 130
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("web/static/admin/img/loading.gif"), "html", null, true);
         echo "\" />
-        </div>        
-        
+        </div>
+
+
+        <!-- This block is contain language for JS-->
+        <script type=\"text/javascript\">
+            var js_lang_do_you_want_to_delete = '";
+        // line 136
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Do you want to delete", array(), "SMAdminBundle"), "html", null, true);
+        echo "';
+            var js_lang_please_choose_at_least_one_item = '";
+        // line 137
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Please choose at least one item", array(), "SMAdminBundle"), "html", null, true);
+        echo "';
+        </script>
+
+        <!-- -->
+
         <!-- Le javascript
             ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         ";
-        // line 136
+        // line 145
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 143
+        // line 152
         echo "        ";
         echo $this->env->getExtension('stfalcon_tinymce')->tinymce_init();
         echo "
@@ -425,27 +440,27 @@ class __TwigTemplate_298b600a0a230cbefedbc3ab022b9922 extends Twig_Template
             ";
     }
 
-    // line 136
+    // line 145
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 137
+        // line 146
         echo "        <script src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("web/static/admin/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 138
+        // line 147
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("web/static/admin/js/prettify.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 139
+        // line 148
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("web/static/admin/js/common.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 140
+        // line 149
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("/web/static/admin/js/twig.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 141
+        // line 150
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("web/static/admin/js/DataTables/media/js/jquery.dataTables.js"), "html", null, true);
         echo "\"></script>
         ";
@@ -463,6 +478,6 @@ class __TwigTemplate_298b600a0a230cbefedbc3ab022b9922 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  449 => 141,  445 => 140,  441 => 139,  437 => 138,  432 => 137,  429 => 136,  421 => 122,  418 => 121,  413 => 118,  409 => 116,  403 => 115,  400 => 114,  391 => 111,  386 => 110,  381 => 109,  378 => 108,  375 => 107,  372 => 106,  367 => 105,  364 => 104,  360 => 84,  354 => 82,  351 => 81,  348 => 80,  342 => 72,  338 => 71,  335 => 70,  332 => 69,  329 => 68,  326 => 67,  320 => 66,  310 => 61,  303 => 59,  287 => 54,  275 => 51,  269 => 36,  257 => 33,  253 => 32,  243 => 25,  239 => 24,  225 => 13,  220 => 12,  217 => 11,  211 => 5,  202 => 143,  200 => 136,  191 => 130,  186 => 127,  180 => 119,  178 => 118,  175 => 117,  173 => 104,  165 => 100,  159 => 98,  156 => 97,  139 => 95,  133 => 93,  125 => 91,  122 => 90,  104 => 89,  101 => 88,  96 => 86,  93 => 85,  91 => 80,  82 => 73,  79 => 72,  76 => 67,  74 => 66,  71 => 65,  66 => 51,  51 => 39,  48 => 38,  46 => 11,  316 => 119,  312 => 118,  308 => 117,  302 => 113,  296 => 112,  294 => 57,  290 => 55,  282 => 104,  278 => 52,  273 => 101,  265 => 35,  261 => 34,  256 => 93,  250 => 89,  244 => 87,  238 => 85,  236 => 84,  232 => 83,  227 => 81,  224 => 80,  222 => 79,  219 => 78,  213 => 76,  207 => 74,  204 => 73,  198 => 72,  195 => 71,  192 => 70,  189 => 69,  184 => 121,  181 => 67,  176 => 66,  174 => 65,  170 => 103,  164 => 62,  161 => 61,  153 => 96,  145 => 57,  142 => 56,  137 => 55,  135 => 54,  123 => 46,  121 => 45,  117 => 44,  113 => 43,  107 => 40,  99 => 87,  89 => 28,  85 => 27,  80 => 25,  72 => 20,  68 => 54,  63 => 17,  54 => 11,  50 => 10,  45 => 8,  37 => 5,  31 => 1,  28 => 2,);
+        return array (  464 => 150,  460 => 149,  456 => 148,  452 => 147,  447 => 146,  444 => 145,  436 => 122,  433 => 121,  428 => 118,  424 => 116,  418 => 115,  415 => 114,  406 => 111,  401 => 110,  396 => 109,  393 => 108,  390 => 107,  387 => 106,  382 => 105,  379 => 104,  375 => 84,  369 => 82,  366 => 81,  363 => 80,  357 => 72,  353 => 71,  350 => 70,  347 => 69,  344 => 68,  341 => 67,  335 => 66,  325 => 61,  318 => 59,  309 => 57,  305 => 55,  302 => 54,  293 => 52,  290 => 51,  284 => 36,  280 => 35,  276 => 34,  272 => 33,  268 => 32,  258 => 25,  254 => 24,  240 => 13,  235 => 12,  232 => 11,  226 => 5,  217 => 152,  215 => 145,  204 => 137,  200 => 136,  191 => 130,  186 => 127,  184 => 121,  180 => 119,  178 => 118,  175 => 117,  173 => 104,  170 => 103,  165 => 100,  159 => 98,  156 => 97,  153 => 96,  139 => 95,  133 => 93,  125 => 91,  122 => 90,  104 => 89,  101 => 88,  99 => 87,  96 => 86,  93 => 85,  91 => 80,  82 => 73,  79 => 72,  76 => 67,  74 => 66,  71 => 65,  68 => 54,  66 => 51,  51 => 39,  48 => 38,  46 => 11,  37 => 5,  31 => 1,);
     }
 }
