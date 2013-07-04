@@ -29,5 +29,5 @@ $( document ).ready( function() {
             $("#article_preview_background").append("<img src='"+media_image_path+$(this).text()+"' width=400 />");
         });
     });
-
+    
 });

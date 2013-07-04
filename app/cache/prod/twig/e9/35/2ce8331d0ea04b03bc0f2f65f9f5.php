@@ -32,9 +32,11 @@ class __TwigTemplate_e9352ce8331d0ea04b03bc0f2f65f9f5 extends Twig_Template
 
 <form action=\"";
         // line 5
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_user_update", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
+        if (isset($context["entity"])) { $_entity_ = $context["entity"]; } else { $_entity_ = null; }
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_user_update", array("id" => $this->getAttribute($_entity_, "id"))), "html", null, true);
         echo "\" method=\"post\" ";
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "edit_form"), 'enctype');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($_edit_form_, 'enctype');
         echo " class=\"form-horizontal\">
     <fieldset>
         <div class=\"control-group\">
@@ -45,11 +47,13 @@ class __TwigTemplate_e9352ce8331d0ea04b03bc0f2f65f9f5 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 10
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "username"), 'errors');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "username"), 'errors');
         echo "
                 ";
         // line 11
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "username"), 'widget');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "username"), 'widget');
         echo "
             </div>
         </div>
@@ -61,11 +65,13 @@ class __TwigTemplate_e9352ce8331d0ea04b03bc0f2f65f9f5 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 17
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "fullname"), 'errors');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "fullname"), 'errors');
         echo "
                 ";
         // line 18
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "fullname"), 'widget');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "fullname"), 'widget');
         echo "
             </div>
         </div>
@@ -77,11 +83,13 @@ class __TwigTemplate_e9352ce8331d0ea04b03bc0f2f65f9f5 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 24
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "currentPassword"), 'errors');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "currentPassword"), 'errors');
         echo "
                 ";
         // line 25
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "currentPassword"), 'widget');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "currentPassword"), 'widget');
         echo "
             </div>
         </div>
@@ -93,11 +101,13 @@ class __TwigTemplate_e9352ce8331d0ea04b03bc0f2f65f9f5 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 31
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getContext($context, "edit_form"), "password"), "password"), 'errors');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($_edit_form_, "password"), "password"), 'errors');
         echo "
                 ";
         // line 32
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getContext($context, "edit_form"), "password"), "password"), 'widget');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($_edit_form_, "password"), "password"), 'widget');
         echo "
             </div>
         </div>
@@ -109,11 +119,13 @@ class __TwigTemplate_e9352ce8331d0ea04b03bc0f2f65f9f5 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 38
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getContext($context, "edit_form"), "password"), "confirm"), 'errors');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($_edit_form_, "password"), "confirm"), 'errors');
         echo "
                 ";
         // line 39
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getContext($context, "edit_form"), "password"), "confirm"), 'widget');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($_edit_form_, "password"), "confirm"), 'widget');
         echo "
             </div>
         </div>
@@ -125,11 +137,13 @@ class __TwigTemplate_e9352ce8331d0ea04b03bc0f2f65f9f5 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 45
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "email"), 'errors');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "email"), 'errors');
         echo "
                 ";
         // line 46
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "email"), 'widget');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "email"), 'widget');
         echo "
             </div>
         </div>
@@ -141,11 +155,13 @@ class __TwigTemplate_e9352ce8331d0ea04b03bc0f2f65f9f5 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 52
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "role_collection"), 'errors');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "role_collection"), 'errors');
         echo "
                 ";
         // line 53
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "role_collection"), 'widget');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "role_collection"), 'widget');
         echo "
             </div>
         </div>
@@ -157,18 +173,21 @@ class __TwigTemplate_e9352ce8331d0ea04b03bc0f2f65f9f5 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 59
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "group"), 'errors');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "group"), 'errors');
         echo "
                 ";
         // line 60
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "group"), 'widget');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "group"), 'widget');
         echo "
             </div>
         </div>
         <div class=\"form-actions\">
             ";
         // line 64
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "edit_form"), "_token"), 'row');
+        if (isset($context["edit_form"])) { $_edit_form_ = $context["edit_form"]; } else { $_edit_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_edit_form_, "_token"), 'row');
         echo "
             <button type=\"submit\" class=\"btn btn-primary\">";
         // line 65
@@ -202,6 +221,6 @@ class __TwigTemplate_e9352ce8331d0ea04b03bc0f2f65f9f5 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  179 => 66,  175 => 65,  171 => 64,  164 => 60,  160 => 59,  155 => 57,  148 => 53,  144 => 52,  139 => 50,  132 => 46,  128 => 45,  123 => 43,  116 => 39,  112 => 38,  107 => 36,  100 => 32,  96 => 31,  91 => 29,  84 => 25,  80 => 24,  75 => 22,  68 => 18,  64 => 17,  59 => 15,  52 => 11,  48 => 10,  43 => 8,  35 => 5,  31 => 3,  28 => 2,);
+        return array (  198 => 66,  181 => 60,  135 => 43,  127 => 39,  122 => 38,  86 => 24,  73 => 18,  55 => 11,  227 => 83,  221 => 81,  107 => 49,  67 => 36,  470 => 141,  466 => 140,  462 => 139,  458 => 138,  453 => 137,  450 => 136,  442 => 122,  439 => 121,  434 => 118,  430 => 116,  424 => 115,  421 => 114,  411 => 111,  405 => 110,  399 => 109,  395 => 108,  390 => 107,  386 => 106,  381 => 105,  378 => 104,  374 => 84,  367 => 82,  364 => 81,  361 => 80,  355 => 72,  351 => 71,  348 => 70,  345 => 69,  341 => 68,  338 => 67,  332 => 66,  322 => 61,  314 => 59,  287 => 52,  284 => 51,  278 => 36,  274 => 35,  270 => 34,  266 => 33,  262 => 32,  252 => 25,  211 => 143,  195 => 68,  193 => 121,  187 => 118,  184 => 117,  182 => 104,  164 => 97,  161 => 96,  140 => 45,  126 => 90,  106 => 89,  103 => 88,  100 => 87,  93 => 85,  74 => 40,  68 => 17,  51 => 39,  333 => 100,  327 => 96,  324 => 95,  320 => 94,  317 => 93,  312 => 90,  306 => 86,  303 => 57,  299 => 55,  296 => 54,  291 => 80,  277 => 79,  273 => 77,  258 => 75,  248 => 24,  245 => 72,  239 => 70,  234 => 13,  226 => 11,  216 => 62,  202 => 61,  199 => 69,  192 => 67,  165 => 52,  156 => 50,  134 => 47,  131 => 46,  120 => 41,  115 => 35,  82 => 73,  76 => 67,  61 => 12,  54 => 14,  171 => 57,  163 => 53,  159 => 53,  152 => 50,  138 => 49,  123 => 42,  117 => 36,  111 => 34,  101 => 34,  98 => 33,  83 => 24,  75 => 20,  71 => 65,  64 => 16,  43 => 7,  36 => 12,  104 => 31,  80 => 23,  63 => 15,  58 => 12,  40 => 6,  24 => 2,  94 => 27,  88 => 24,  48 => 38,  39 => 7,  35 => 5,  31 => 3,  21 => 2,  46 => 11,  29 => 3,  32 => 4,  250 => 96,  240 => 90,  236 => 88,  229 => 12,  225 => 83,  220 => 5,  218 => 79,  215 => 78,  212 => 76,  209 => 136,  200 => 130,  194 => 65,  179 => 103,  176 => 59,  173 => 62,  166 => 60,  162 => 51,  157 => 55,  155 => 51,  151 => 48,  148 => 47,  145 => 46,  139 => 45,  128 => 43,  114 => 20,  109 => 32,  87 => 28,  84 => 43,  79 => 42,  65 => 14,  34 => 5,  26 => 6,  125 => 52,  118 => 36,  110 => 20,  97 => 45,  92 => 17,  89 => 28,  85 => 23,  69 => 17,  28 => 2,  57 => 10,  50 => 10,  47 => 7,  38 => 6,  27 => 6,  22 => 2,  25 => 3,  19 => 1,  203 => 72,  197 => 66,  189 => 64,  183 => 63,  180 => 63,  174 => 100,  170 => 61,  167 => 98,  158 => 52,  153 => 50,  150 => 44,  147 => 95,  144 => 42,  136 => 37,  133 => 44,  130 => 91,  124 => 32,  121 => 31,  113 => 50,  108 => 33,  105 => 19,  102 => 48,  99 => 29,  95 => 24,  91 => 25,  81 => 22,  70 => 15,  66 => 51,  62 => 22,  59 => 31,  56 => 12,  52 => 10,  49 => 9,  45 => 8,  41 => 9,  37 => 5,  33 => 4,  30 => 3,);
     }
 }

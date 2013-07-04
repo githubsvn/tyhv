@@ -175,6 +175,8 @@ class NewsController extends Controller
                     $entity->image->move($uploadDir, $newName);
                     //set new name
                     $entity->setImage($newName);
+                    //Create thumbnail for image
+                    Utilities\Helper::createThumb($newName);
                 }
 
                 $entityManager->flush();
@@ -281,6 +283,7 @@ class NewsController extends Controller
 
         //get upload dir
         $uploadPath = $this->container->getParameter('upload') ;
+        $thumbUploadPath = $this->container->getParameter('thumbUpload') ;
         $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
 
         $image = $entity->getImage();
@@ -315,19 +318,30 @@ class NewsController extends Controller
                     //set new name
                     $entity->setImage($newName);
 
+                    //Create thumbnail for image
+                    Utilities\Helper::createThumb($newName);
+
                     //Delete old logo file
                     $oldFileImage = $webDir . $uploadPath . '/' . $image;
+                    $oldThumbFileImage = $webDir . $uploadPath . $thumbUploadPath . $image;
                     if (file_exists($oldFileImage)) {
                         @unlink($oldFileImage);
+                    }
+                    if (file_exists($oldThumbFileImage)) {
+                        @unlink($oldThumbFileImage);
                     }
                 } else {
                     //Check input delImgs if exist we need to delete logo of the company
                     if (!empty($_POST['delImgs'])) {
                         foreach ($_POST['delImgs'] as $img) {
                             $fileImage = $webDir . $uploadPath . '/' . $img;
+                            $oldThumbFileImage = $webDir . $uploadPath . $thumbUploadPath . $img;
                             if (file_exists($fileImage)) {
                                 @unlink($fileImage);
                                 $entity->setImage('');
+                            }
+                            if (file_exists($oldThumbFileImage)) {
+                                @unlink($oldThumbFileImage);
                             }
                         }
                     } else {
@@ -379,15 +393,18 @@ class NewsController extends Controller
         foreach ($listMediaCats as $theCat) {
             $theCat->setLanguage($currentLanguage);
         }
-        
+
+
+        //Create thumbnail for image
+        Utilities\Helper::createThumb($image);
+
         return $this->render('SMAdminBundle:News:edit.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'langList' => $langList,
             'defaultLanguage' => $defaultLanguage,
             'arrImgs' => array($image),
-            'image' => $image,
-            'imgPath' => '/web/' . $uploadPath,
+            'imgPath' => '/web/'.$uploadPath.'media/cache/thumbs/',
             'optMedias' => $optMedias,
             'mediaPath' => '/web/' . $this->container->getParameter('upload'),
             'optMediaTypes' => $listMediaCats,

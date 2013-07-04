@@ -205,11 +205,11 @@ class appProdDebugProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return EntityManager51d4e332f3013_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager51d4e332f3013_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
+     * @return EntityManager51d50ea032cec_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager51d50ea032cec_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
      */
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
-        require_once '/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51d4e332f3013.php';
+        require_once '/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51d50ea032cec.php';
 
         $a = new \Doctrine\Common\Cache\ArrayCache();
         $a->setNamespace('sf2orm_default_4feae3150d744211870b5c58a6e629c6');
@@ -239,7 +239,7 @@ class appProdDebugProjectContainer extends Container
         $f = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $e);
         $this->get('doctrine.orm.default_manager_configurator')->configure($f);
 
-        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager51d4e332f3013_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($f, $this);
+        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager51d50ea032cec_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($f, $this);
     }
 
     /**
@@ -961,7 +961,7 @@ class appProdDebugProjectContainer extends Container
      */
     protected function getLiipImagine_Cache_ManagerService()
     {
-        $this->services['liip_imagine.cache.manager'] = $instance = new \Liip\ImagineBundle\Imagine\Cache\CacheManager($this->get('liip_imagine.filter.configuration'), $this->get('router'), '/home/www/local.tyhv/app/../web', 'web_path');
+        $this->services['liip_imagine.cache.manager'] = $instance = new \Liip\ImagineBundle\Imagine\Cache\CacheManager($this->get('liip_imagine.filter.configuration'), $this->get('router'), '/home/www/local.tyhv/app/../web/uploads/', 'web_path');
 
         $instance->addResolver('web_path', $this->get('liip_imagine.cache.resolver.web_path'));
         $instance->addResolver('no_cache', $this->get('liip_imagine.cache.resolver.no_cache'));
@@ -1023,7 +1023,7 @@ class appProdDebugProjectContainer extends Container
      */
     protected function getLiipImagine_Data_Loader_FilesystemService()
     {
-        return $this->services['liip_imagine.data.loader.filesystem'] = new \Liip\ImagineBundle\Imagine\Data\Loader\FileSystemLoader($this->get('liip_imagine'), array(), '/home/www/local.tyhv/app/../web');
+        return $this->services['liip_imagine.data.loader.filesystem'] = new \Liip\ImagineBundle\Imagine\Data\Loader\FileSystemLoader($this->get('liip_imagine'), array(), '/home/www/local.tyhv/app/../web/uploads/');
     }
 
     /**
@@ -1053,7 +1053,7 @@ class appProdDebugProjectContainer extends Container
      */
     protected function getLiipImagine_Filter_ConfigurationService()
     {
-        return $this->services['liip_imagine.filter.configuration'] = new \Liip\ImagineBundle\Imagine\Filter\FilterConfiguration(array('my_thumb' => array('quality' => 75, 'filters' => array('thumbnail' => array('size' => array(0 => 120, 1 => 90), 'mode' => 'outbound')), 'format' => NULL, 'cache' => NULL, 'data_loader' => NULL, 'controller_action' => NULL, 'route' => array())));
+        return $this->services['liip_imagine.filter.configuration'] = new \Liip\ImagineBundle\Imagine\Filter\FilterConfiguration(array('thumbs' => array('quality' => 75, 'filters' => array('thumbnail' => array('size' => array(0 => 100, 1 => 100), 'mode' => 'outbound')), 'format' => NULL, 'cache' => NULL, 'data_loader' => NULL, 'controller_action' => NULL, 'route' => array())));
     }
 
     /**
@@ -1193,7 +1193,7 @@ class appProdDebugProjectContainer extends Container
      */
     protected function getLiipImagine_Routing_LoaderService()
     {
-        return $this->services['liip_imagine.routing.loader'] = new \Liip\ImagineBundle\Routing\ImagineLoader('liip_imagine.controller:filterAction', '/media/cache', array('my_thumb' => array('quality' => 75, 'filters' => array('thumbnail' => array('size' => array(0 => 120, 1 => 90), 'mode' => 'outbound')), 'format' => NULL, 'cache' => NULL, 'data_loader' => NULL, 'controller_action' => NULL, 'route' => array())));
+        return $this->services['liip_imagine.routing.loader'] = new \Liip\ImagineBundle\Routing\ImagineLoader('liip_imagine.controller:filterAction', '/media/cache', array('thumbs' => array('quality' => 75, 'filters' => array('thumbnail' => array('size' => array(0 => 100, 1 => 100), 'mode' => 'outbound')), 'format' => NULL, 'cache' => NULL, 'data_loader' => NULL, 'controller_action' => NULL, 'route' => array())));
     }
 
     /**
@@ -1685,7 +1685,7 @@ class appProdDebugProjectContainer extends Container
         $o = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $k, 'secured_area', $n, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $k, array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false), $a), array('check_path' => '/login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $d);
         $o->setRememberMeServices($l);
 
-        return $this->services['security.firewall.map.context.secured_area'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($j, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'secured_area', $a, $d), 2 => $m, 3 => $o, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $l, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '51d4e332a9ab3', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $j, $g, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $k, 'secured_area', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $k, '/login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.secured_area'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($j, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'secured_area', $a, $d), 2 => $m, 3 => $o, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $l, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '51d50e9f84b37', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $j, $g, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $k, 'secured_area', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $k, '/login', false), NULL, NULL, $a));
     }
 
     /**
@@ -2840,7 +2840,7 @@ class appProdDebugProjectContainer extends Container
     /**
      * Gets the doctrine.orm.entity_manager service alias.
      *
-     * @return EntityManager51d4e332f3013_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
+     * @return EntityManager51d50ea032cec_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
      */
     protected function getDoctrine_Orm_EntityManagerService()
     {
@@ -3016,7 +3016,7 @@ class appProdDebugProjectContainer extends Container
     {
         $a = new \Symfony\Component\Security\Core\User\UserChecker();
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.main'), $a, 'secured_area', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'd00245c7bda39aa016baa57370bfebc9b11deda3', 'secured_area'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('51d4e332a9ab3')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.main'), $a, 'secured_area', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'd00245c7bda39aa016baa57370bfebc9b11deda3', 'secured_area'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('51d50e9f84b37')), true);
 
         $instance->setEventDispatcher($this->get('event_dispatcher'));
 
@@ -3182,6 +3182,7 @@ class appProdDebugProjectContainer extends Container
             'database_path' => NULL,
             'per_item_page' => 10,
             'upload' => '/uploads/',
+            'thumbupload' => '/media/cache/thumbs/',
             'menu_type_company_category' => 1,
             'menu_type_company_detail' => 2,
             'menu_type_product_branch' => 3,
@@ -3630,8 +3631,8 @@ class appProdDebugProjectContainer extends Container
             ),
             'jms_di_extra.cache_dir' => '/home/www/local.tyhv/app/cache/prod/jms_diextra',
             'jms_di_extra.doctrine_integration' => true,
-            'jms_di_extra.doctrine_integration.entity_manager.file' => '/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51d4e332f3013.php',
-            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager51d4e332f3013_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
+            'jms_di_extra.doctrine_integration.entity_manager.file' => '/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51d50ea032cec.php',
+            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager51d50ea032cec_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
             'security.secured_services' => array(
 
             ),
@@ -3913,21 +3914,21 @@ class appProdDebugProjectContainer extends Container
             'liip_imagine.form.type.image.class' => 'Liip\\ImagineBundle\\Form\\Type\\ImageType',
             'liip_imagine.cache.clearer.class' => 'Liip\\ImagineBundle\\Imagine\\Cache\\CacheClearer',
             'liip_imagine.cache_prefix' => '/media/cache',
-            'liip_imagine.web_root' => '/home/www/local.tyhv/app/../web',
-            'liip_imagine.data_root' => '/home/www/local.tyhv/app/../web',
+            'liip_imagine.web_root' => '/home/www/local.tyhv/app/../web/uploads/',
+            'liip_imagine.data_root' => '/home/www/local.tyhv/app/../web/uploads/',
             'liip_imagine.cache_mkdir_mode' => 511,
             'liip_imagine.formats' => array(
 
             ),
             'liip_imagine.cache.resolver.default' => 'web_path',
             'liip_imagine.filter_sets' => array(
-                'my_thumb' => array(
+                'thumbs' => array(
                     'quality' => 75,
                     'filters' => array(
                         'thumbnail' => array(
                             'size' => array(
-                                0 => 120,
-                                1 => 90,
+                                0 => 100,
+                                1 => 100,
                             ),
                             'mode' => 'outbound',
                         ),

@@ -18,10 +18,6 @@ mtx_admin_group:
     resource: "@SMAdminBundle/Resources/config/routing/group.yml"
     prefix:   /admin/group
 
-_imagine:
-    resource: .
-    type: imagine
-
 # Internal routing configuration to handle ESI
 # ****** WARNING ******
 # This route should be enabled with caution as it can open a security vulnerability
@@ -79,3 +75,6 @@ mtx_admin_page:
         resource: "@SMAdminBundle/Resources/config/routing/page.yml"
         prefix:   /admin/page
 
+_imagine:
+    resource: .
+    type: imagine

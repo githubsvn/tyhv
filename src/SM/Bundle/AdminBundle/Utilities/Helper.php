@@ -85,4 +85,22 @@ class Helper
             return trim($trimmed).' ..';
         return trim($trimmed).' ...';
     }
+
+    /**
+     * Create thumbnail for image
+     * @param type $imgName
+     * @return type
+     */
+    public static function createThumb($imgName = '')
+    {
+        if (!empty($imgName)) {
+            $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+            return $container->get('liip_imagine.controller')
+                ->filterAction(
+                new \Symfony\Component\HttpFoundation\Request(),
+                    $imgName,
+                    'thumbs'
+                );
+        }
+    }
 }

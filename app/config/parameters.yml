@@ -12,6 +12,7 @@ parameters:
 
     per_item_page: 10
     upload : "/uploads/"
+    thumbUpload : "/media/cache/thumbs/"
 
     menu_type_company_category: 1
     menu_type_company_detail: 2

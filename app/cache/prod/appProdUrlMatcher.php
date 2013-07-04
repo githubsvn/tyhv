@@ -233,17 +233,6 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
-        // _imagine_my_thumb
-        if (0 === strpos($pathinfo, '/media/cache/my_thumb') && preg_match('#^/media/cache/my_thumb/(?P<path>.+)$#s', $pathinfo, $matches)) {
-            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                $allow = array_merge($allow, array('GET', 'HEAD'));
-                goto not__imagine_my_thumb;
-            }
-
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'liip_imagine.controller:filterAction',  'filter' => 'my_thumb',)), array('_route' => '_imagine_my_thumb'));
-        }
-        not__imagine_my_thumb:
-
         if (0 === strpos($pathinfo, '/admin/language')) {
             // admin_language
             if (preg_match('#^/admin/language(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
@@ -984,6 +973,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             not_admin_page_delete:
 
         }
+
+        // _imagine_thumbs
+        if (0 === strpos($pathinfo, '/media/cache/thumbs') && preg_match('#^/media/cache/thumbs/(?P<path>.+)$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not__imagine_thumbs;
+            }
+
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'liip_imagine.controller:filterAction',  'filter' => 'thumbs',)), array('_route' => '_imagine_thumbs'));
+        }
+        not__imagine_thumbs:
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }

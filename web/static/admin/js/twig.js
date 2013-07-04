@@ -3,15 +3,15 @@ function applySelect(selectName) {
         $(this).attr('selected', false);
     });
     //clear preview image
-    $("ul[id='preview_"+selectName+"']").html('');
-
+    $("ul[id='preview_"+selectName+"']").html(''); 
+    
     $("input[name='bg_"+selectName+"']").each(function(e) {
         if ($(this).attr('checked')) {
 
             $("select[name='"+selectName+"']").children('option[value="'+$(this).val()+'"]').attr('selected', 'selected');
-
+            
             //append the image to preview
-            $("ul[id='preview_"+selectName+"']").append("<li class='span1 thumbnail'><img width='100px' height='100px;' src='"+$(this).attr('imagepath')+"' /></li>");
+            $("ul[id='preview_"+selectName+"']").append("<li class='span1 thumbnail'><img src='"+$(this).attr('imagepath')+"' /></li>");
         }
     });
 }
@@ -19,7 +19,7 @@ function applySelect(selectName) {
 function initSelect(selectName) {
     //clear preview image
     $("ul[id='preview_"+selectName+"']").html('');
-
+    
     $("select[name='"+selectName+"']").children('option').each(function() {
         if ($(this).attr('selected')) {
 
@@ -28,7 +28,7 @@ function initSelect(selectName) {
             //append the image to preview
             imagePath = $("input[name='bg_"+selectName+"'][value="+$(this).val()+"]").attr('imagepath');
             if (typeof imagePath !== 'undefined') {
-                $("ul[id='preview_"+selectName+"']").append("<li class='span1 thumbnail'><img width='100px' height='100px;' src='"+imagePath+"' /></li>");
+                $("ul[id='preview_"+selectName+"']").append("<li class='span1 thumbnail'><img src='"+imagePath+"' /></li>");                
             }
 
         } else {

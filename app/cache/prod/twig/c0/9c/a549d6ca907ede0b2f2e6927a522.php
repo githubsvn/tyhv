@@ -36,7 +36,8 @@ class __TwigTemplate_c09ca549d6ca907ede0b2f2e6927a522 extends Twig_Template
         // line 5
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_user_create"), "html", null, true);
         echo "\" method=\"post\" ";
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'enctype');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($_form_, 'enctype');
         echo " class=\"form-horizontal\">
     <fieldset>
         <div class=\"control-group\">
@@ -47,11 +48,13 @@ class __TwigTemplate_c09ca549d6ca907ede0b2f2e6927a522 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 10
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "username"), 'errors');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "username"), 'errors');
         echo "
                 ";
         // line 11
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "username"), 'widget');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "username"), 'widget');
         echo "
             </div>
         </div>
@@ -63,11 +66,13 @@ class __TwigTemplate_c09ca549d6ca907ede0b2f2e6927a522 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 17
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "fullname"), 'errors');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "fullname"), 'errors');
         echo "
                 ";
         // line 18
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "fullname"), 'widget');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "fullname"), 'widget');
         echo "
             </div>
         </div>
@@ -79,11 +84,13 @@ class __TwigTemplate_c09ca549d6ca907ede0b2f2e6927a522 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 24
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "password"), 'errors');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "password"), 'errors');
         echo "
                 ";
         // line 25
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "password"), 'widget');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "password"), 'widget');
         echo "
             </div>
         </div>
@@ -95,11 +102,13 @@ class __TwigTemplate_c09ca549d6ca907ede0b2f2e6927a522 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 31
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "email"), 'errors');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "email"), 'errors');
         echo "
                 ";
         // line 32
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "email"), 'widget');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "email"), 'widget');
         echo "
             </div>
         </div>
@@ -111,11 +120,13 @@ class __TwigTemplate_c09ca549d6ca907ede0b2f2e6927a522 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 38
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "role_collection"), 'errors');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "role_collection"), 'errors');
         echo "
                 ";
         // line 39
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "role_collection"), 'widget');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "role_collection"), 'widget');
         echo "
             </div>
         </div>
@@ -127,18 +138,21 @@ class __TwigTemplate_c09ca549d6ca907ede0b2f2e6927a522 extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 45
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "group"), 'errors');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "group"), 'errors');
         echo "
                 ";
         // line 46
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "group"), 'widget');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "group"), 'widget');
         echo "
             </div>
         </div>
         <div class=\"form-actions\">
             ";
         // line 50
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "_token"), 'row');
+        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "_token"), 'row');
         echo "
             <button type=\"submit\" class=\"btn btn-primary\">";
         // line 51
@@ -169,6 +183,6 @@ class __TwigTemplate_c09ca549d6ca907ede0b2f2e6927a522 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  149 => 52,  145 => 51,  141 => 50,  134 => 46,  130 => 45,  125 => 43,  118 => 39,  114 => 38,  109 => 36,  102 => 32,  98 => 31,  93 => 29,  86 => 25,  82 => 24,  77 => 22,  70 => 18,  66 => 17,  61 => 15,  54 => 11,  50 => 10,  45 => 8,  37 => 5,  31 => 3,  28 => 2,);
+        return array (  154 => 50,  146 => 46,  141 => 45,  198 => 66,  181 => 60,  135 => 43,  127 => 39,  122 => 38,  86 => 24,  73 => 18,  55 => 11,  227 => 83,  221 => 81,  107 => 49,  67 => 36,  470 => 141,  466 => 140,  462 => 139,  458 => 138,  453 => 137,  450 => 136,  442 => 122,  439 => 121,  434 => 118,  430 => 116,  424 => 115,  421 => 114,  411 => 111,  405 => 110,  399 => 109,  395 => 108,  390 => 107,  386 => 106,  381 => 105,  378 => 104,  374 => 84,  367 => 82,  364 => 81,  361 => 80,  355 => 72,  351 => 71,  348 => 70,  345 => 69,  341 => 68,  338 => 67,  332 => 66,  322 => 61,  314 => 59,  287 => 52,  284 => 51,  278 => 36,  274 => 35,  270 => 34,  266 => 33,  262 => 32,  252 => 25,  211 => 143,  195 => 68,  193 => 121,  187 => 118,  184 => 117,  182 => 104,  164 => 97,  161 => 96,  140 => 45,  126 => 90,  106 => 89,  103 => 88,  100 => 29,  93 => 85,  74 => 18,  68 => 17,  51 => 10,  333 => 100,  327 => 96,  324 => 95,  320 => 94,  317 => 93,  312 => 90,  306 => 86,  303 => 57,  299 => 55,  296 => 54,  291 => 80,  277 => 79,  273 => 77,  258 => 75,  248 => 24,  245 => 72,  239 => 70,  234 => 13,  226 => 11,  216 => 62,  202 => 61,  199 => 69,  192 => 67,  165 => 52,  156 => 50,  134 => 47,  131 => 46,  120 => 41,  115 => 35,  82 => 22,  76 => 67,  61 => 12,  54 => 14,  171 => 57,  163 => 52,  159 => 51,  152 => 50,  138 => 49,  123 => 38,  117 => 36,  111 => 34,  101 => 34,  98 => 33,  83 => 24,  75 => 20,  71 => 65,  64 => 15,  43 => 7,  36 => 12,  104 => 31,  80 => 23,  63 => 15,  58 => 12,  40 => 6,  24 => 2,  94 => 27,  88 => 24,  48 => 38,  39 => 7,  35 => 5,  31 => 3,  21 => 2,  46 => 8,  29 => 3,  32 => 4,  250 => 96,  240 => 90,  236 => 88,  229 => 12,  225 => 83,  220 => 5,  218 => 79,  215 => 78,  212 => 76,  209 => 136,  200 => 130,  194 => 65,  179 => 103,  176 => 59,  173 => 62,  166 => 60,  162 => 51,  157 => 55,  155 => 51,  151 => 48,  148 => 47,  145 => 46,  139 => 45,  128 => 39,  114 => 20,  109 => 32,  87 => 24,  84 => 43,  79 => 42,  65 => 14,  34 => 5,  26 => 6,  125 => 52,  118 => 36,  110 => 32,  97 => 45,  92 => 25,  89 => 28,  85 => 23,  69 => 17,  28 => 2,  57 => 10,  50 => 10,  47 => 7,  38 => 6,  27 => 6,  22 => 2,  25 => 3,  19 => 1,  203 => 72,  197 => 66,  189 => 64,  183 => 63,  180 => 63,  174 => 100,  170 => 61,  167 => 98,  158 => 52,  153 => 50,  150 => 44,  147 => 95,  144 => 42,  136 => 43,  133 => 44,  130 => 91,  124 => 32,  121 => 31,  113 => 50,  108 => 33,  105 => 31,  102 => 48,  99 => 29,  95 => 24,  91 => 25,  81 => 22,  70 => 15,  66 => 51,  62 => 22,  59 => 31,  56 => 11,  52 => 10,  49 => 9,  45 => 8,  41 => 9,  37 => 5,  33 => 4,  30 => 3,);
     }
 }
