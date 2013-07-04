@@ -31,7 +31,7 @@ admin_menu_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SMAdminBundle:Menu:delete" }
     requirements: { _method: post|get }
-    
+
 admin_menu_up:
     pattern:  /up/{id}
     defaults: { _controller: "SMAdminBundle:Menu:up" }
@@ -42,4 +42,9 @@ admin_menu_down:
 
 admin_menu_get_param:
     pattern:  /getParam/{type}
-    defaults: { _controller: "SMAdminBundle:Menu:getParam", type : null }    
+    defaults: { _controller: "SMAdminBundle:Menu:getParam", type : null }
+
+admin_menu_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:Menu:deleteAll" }
+    requirements: { _method: post }

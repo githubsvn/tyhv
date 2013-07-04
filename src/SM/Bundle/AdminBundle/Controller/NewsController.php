@@ -453,8 +453,10 @@ class NewsController extends Controller
     }
 
     /**
-     * Deletes a RssFeed entity.
+     * Delete all item
      *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return type
      */
     public function deleteAllAction(Request $request)
     {
@@ -476,7 +478,7 @@ class NewsController extends Controller
             $this->getRequest()
                      ->getSession()
                      ->getFlashBag()
-                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is fail'));
+                     ->add('sm_flash_error', $this->get('translator')->trans('The operation is fail'));
         }
 
         if (!$referrer) {

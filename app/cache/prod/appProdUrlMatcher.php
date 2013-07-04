@@ -111,6 +111,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
             not_admin_user_delete:
 
+            // admin_user_delete_all
+            if ($pathinfo === '/admin/user/deleteall') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_user_delete_all;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\UserController::deleteAllAction',  '_route' => 'admin_user_delete_all',);
+            }
+            not_admin_user_delete_all:
+
         }
 
         if (0 === strpos($pathinfo, '/admin/role')) {
@@ -859,6 +870,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             if (0 === strpos($pathinfo, '/admin/menu/getParam') && preg_match('#^/admin/menu/getParam(?:/(?P<type>[^/]+))?$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::getParamAction',  'type' => NULL,)), array('_route' => 'admin_menu_get_param'));
             }
+
+            // admin_menu_delete_all
+            if ($pathinfo === '/admin/menu/deleteall') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_menu_delete_all;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::deleteAllAction',  '_route' => 'admin_menu_delete_all',);
+            }
+            not_admin_menu_delete_all:
 
         }
 

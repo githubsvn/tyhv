@@ -50,31 +50,33 @@ class NewsLanguageRepository extends EntityRepository {
         $rep = $em->getRepository('SMAdminBundle:News');
 
         $rst = array();
+
         if (is_array($ids) && count($ids)) {
             foreach ($ids as $id) {
                 $entity = $this->find($id);
-                $id = $entity->getNews()->getId();
-
-                $em->remove($entity);
-
-                //Get all product language by idComtype
-                //If to have 1 item we need to delete product too
-                //else we need delete product language
-                $lstNewsLangs = $this->findByNewsId($id);
-                if (count($lstNewsLangs) == 1) {
-                    if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
-                        $rst[] = $id;
+                if ($entity instanceof \SM\Bundle\AdminBundle\Entity\NewsLanguage) {
+                    $catId = $entity->getNews()->getId();
+                    $em->remove($entity);
+                    //Get all product language by idComtype
+                    //If to have 1 item we need to delete product too
+                    //else we need delete product language
+                    $lstNewsLangs = $this->findByNewsId($catId);
+                    if (count($lstNewsLangs) == 1) {
+                        if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
+                            $rst[] = $id;
+                        }
+                        $em->persist($entity);
+                        //delete product too
+                        $em->flush();
+                        //delete product language
+                        $rep->deleteByIds(array($catId));
+                    } else {
+                        if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
+                            $rst[] = $id;
+                        }
+                        //Onlye delete article language
+                        $em->flush();
                     }
-                    //delete product too
-                    $em->flush();
-                    //delete product language
-                    $rep->deleteByIds(array($id));
-                } else {
-                    if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
-                        $rst[] = $id;
-                    }
-                    //Onlye delete article language
-                    $em->flush();
                 }
             }
         }
@@ -101,7 +103,7 @@ class NewsLanguageRepository extends EntityRepository {
                     ->join('nl.news', 'n')
                     ->join('n.category', 'c')
                     ->where('nl.language=:langId');
-            
+
             if (!empty($limit)) {
                 $qb->setMaxResults($limit);
             }
@@ -149,7 +151,7 @@ class NewsLanguageRepository extends EntityRepository {
                     ->join('nl.news', 'n')
                     ->join('n.category', 'c')
                     ->where('nl.language=:langId');
-            
+
             if (!empty($limit)) {
                 $qb->setMaxResults($limit);
             }

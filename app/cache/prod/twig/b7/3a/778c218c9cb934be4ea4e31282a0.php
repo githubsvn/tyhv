@@ -183,11 +183,11 @@ class __TwigTemplate_b73a778c218c9cb934be4ea4e31282a0 extends Twig_Template
     </div>
 </div>
 
-<form method=\"post\" name=\"frmListNews\" id=\"frmListNews\" action=\"#\">
+<form method=\"post\" name=\"frmList\" id=\"frmList\" action=\"#\">
     <table class=\"table table-bordered table-striped\" id=\"sortTable\">
         <thead>
             <tr>
-                <th><input type=\"checkbox\" name=\"checkAll\" id=\"checkAll\"/></th>
+                <th style=\"text-align: center;\"><input type=\"checkbox\" name=\"checkAll\" id=\"checkAll\"/></th>
                 <th>";
         // line 74
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Id", array(), "SMAdminBundle"), "html", null, true);
@@ -218,10 +218,10 @@ class __TwigTemplate_b73a778c218c9cb934be4ea4e31282a0 extends Twig_Template
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
             // line 83
             echo "            <tr>
-                <td><input type=\"checkbox\" value=\"";
+                <td style=\"text-align: center;\"><input type=\"checkbox\" value=\"";
             // line 84
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "id"), "html", null, true);
-            echo "\" name=\"checklist[]\" class=\"chkNews\"/> </td>
+            echo "\" name=\"checklist[]\" class=\"chkItem\"/> </td>
                 <td>";
             // line 85
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "news"), "id"), "html", null, true);

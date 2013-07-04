@@ -66,11 +66,11 @@
     </div>
 </div>
 
-<form method="post" name="frmListNews" id="frmListNews" action="#">
+<form method="post" name="frmList" id="frmList" action="#">
     <table class="table table-bordered table-striped" id="sortTable">
         <thead>
             <tr>
-                <th><input type="checkbox" name="checkAll" id="checkAll"/></th>
+                <th style="text-align: center;"><input type="checkbox" name="checkAll" id="checkAll"/></th>
                 <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
                 <th>{{ 'Name'|trans({}, "SMAdminBundle") }}</th>
                 <th>{{ 'Created Time'|trans({}, "SMAdminBundle") }}</th>
@@ -81,7 +81,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><input type="checkbox" value="{{entity.id}}" name="checklist[]" class="chkNews"/> </td>
+                <td style="text-align: center;"><input type="checkbox" value="{{entity.id}}" name="checklist[]" class="chkItem"/> </td>
                 <td>{{ entity.news.id }}</td>
                 <td>
                     {% if entity.name is not null %}

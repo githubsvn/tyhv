@@ -16,10 +16,10 @@ function checkDelete(){
     var btnDel = $('#btn-del');
     var inptCheckboxs = $('input[type="checkbox"]');
     var hCheck = false;
-    var frmRss = $('#frmListNews');
+    var frmRss = $('#frmList');
     btnDel.click(function(){
         if (confirm(js_lang_do_you_want_to_delete)){
-            $('.chkNews:checked').each(function(){
+            $('.chkItem:checked').each(function(){
                 hCheck = true;
                 return false;
             });
@@ -37,10 +37,10 @@ function compareCheckBox()
 {
     var total = 0;
     var totalChecked = 0;
-    $('.chkNews').each(function(){
+    $('.chkItem').each(function(){
         total ++;
     });
-    $('.chkNews:checked').each(function(){
+    $('.chkItem:checked').each(function(){
         totalChecked ++;
     });
 
@@ -56,7 +56,7 @@ $( document ).ready( function() {
     });
 
     $(".delete").click(function() {
-        if (confirm("You want to delete?")) {
+        if (confirm(js_lang_do_you_want_to_delete)){
             window.location.href = this.rel;
         }
     });
@@ -85,7 +85,7 @@ $( document ).ready( function() {
     checkAllCheckbox();
     checkDelete();
 
-    $('.chkNews').click(function(){
+    $('.chkItem').click(function(){
         var isEqual = false;
         isEqual = compareCheckBox();
         if (isEqual) {

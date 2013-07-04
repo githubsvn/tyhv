@@ -28,3 +28,8 @@ admin_user_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SMAdminBundle:User:delete" }
     requirements: { _method: post }
+
+admin_user_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:User:deleteAll" }
+    requirements: { _method: post }

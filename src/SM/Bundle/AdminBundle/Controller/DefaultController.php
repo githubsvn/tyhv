@@ -20,7 +20,6 @@ class DefaultController extends Controller
         $configs = $this->container->getParameter('sm_admin');
         $dashboardItems = $configs['dashboard'];
         $groups = $this->assignGroups($dashboardItems);
-        $this->render('SMAdminBundle:Default:lang.html.twig');
         return $this->render('SMAdminBundle:Default:index.html.twig', array('groups' => $groups));
     }
 
