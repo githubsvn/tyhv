@@ -38,7 +38,8 @@
     <parameter key="secret">d00245c7bda39aa016baa57370bfebc9b11deda3</parameter>
     <parameter key="database_path">null</parameter>
     <parameter key="per_item_page">10</parameter>
-    <parameter key="upload">/uploads/</parameter>
+    <parameter key="imgroot">/web/</parameter>
+    <parameter key="upload">/uploads/images/</parameter>
     <parameter key="thumbupload">/media/cache/thumbs/</parameter>
     <parameter key="menu_type_company_category">1</parameter>
     <parameter key="menu_type_company_detail">2</parameter>
@@ -466,8 +467,8 @@
     <parameter key="jms_di_extra.directories" type="collection"/>
     <parameter key="jms_di_extra.cache_dir">/home/www/local.tyhv/app/cache/prod/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51d50ea032cec.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51d50ea032cec_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51d5240da9a14.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51d5240da9a14_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -690,7 +691,7 @@
           <parameter key="theme_advanced_statusbar_location"></parameter>
           <parameter key="paste_auto_cleanup_on_paste">true</parameter>
           <parameter key="plugins">images,table,advhr,advlink,paste,xhtmlxtras,spellchecker</parameter>
-          <parameter key="theme_advanced_buttons2">images,cut,copy,paste,pastetext,pasteword,|,bullist,numlist,|,undo,redo,|,link,unlink,anchor,cleanup,code,|,tablecontrols</parameter>
+          <parameter key="theme_advanced_buttons2">images, cut,copy,paste,pastetext,pasteword,|,bullist,numlist,|,undo,redo,|,link,unlink,anchor,cleanup,code,|,tablecontrols</parameter>
           <parameter key="theme_advanced_buttons3"></parameter>
           <parameter key="spellchecker_languages">+English=en,Dutch=nl</parameter>
         </parameter>
@@ -741,8 +742,8 @@
     <parameter key="liip_imagine.form.type.image.class">Liip\ImagineBundle\Form\Type\ImageType</parameter>
     <parameter key="liip_imagine.cache.clearer.class">Liip\ImagineBundle\Imagine\Cache\CacheClearer</parameter>
     <parameter key="liip_imagine.cache_prefix">/media/cache</parameter>
-    <parameter key="liip_imagine.web_root">/home/www/local.tyhv/app/../web/uploads/</parameter>
-    <parameter key="liip_imagine.data_root">/home/www/local.tyhv/app/../web/uploads/</parameter>
+    <parameter key="liip_imagine.web_root">/home/www/local.tyhv/app/../web/uploads/images/</parameter>
+    <parameter key="liip_imagine.data_root">/home/www/local.tyhv/app/../web/uploads/images/</parameter>
     <parameter key="liip_imagine.cache_mkdir_mode">511</parameter>
     <parameter key="liip_imagine.formats" type="collection"/>
     <parameter key="liip_imagine.cache.resolver.default">web_path</parameter>
@@ -2028,7 +2029,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>51d50e9f84b37</argument>
+            <argument>51d5240d888cd</argument>
           </service>
         </argument>
       </argument>
@@ -2381,7 +2382,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>51d50e9f84b37</argument>
+            <argument>51d5240d888cd</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2805,8 +2806,8 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager51d50ea032cec_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51d50ea032cec.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager51d5240da9a14_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51d5240da9a14.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>
@@ -3113,7 +3114,7 @@
     <service id="liip_imagine.cache.manager" class="Liip\ImagineBundle\Imagine\Cache\CacheManager">
       <argument type="service" id="liip_imagine.filter.configuration"/>
       <argument type="service" id="router"/>
-      <argument>/home/www/local.tyhv/app/../web/uploads/</argument>
+      <argument>/home/www/local.tyhv/app/../web/uploads/images/</argument>
       <argument>web_path</argument>
       <call method="addResolver">
         <argument>web_path</argument>
@@ -3206,7 +3207,7 @@
       <tag name="liip_imagine.data.loader" loader="filesystem"/>
       <argument type="service" id="liip_imagine"/>
       <argument type="collection"/>
-      <argument>/home/www/local.tyhv/app/../web/uploads/</argument>
+      <argument>/home/www/local.tyhv/app/../web/uploads/images/</argument>
     </service>
     <service id="liip_imagine.cache.resolver.web_path" class="Liip\ImagineBundle\Imagine\Cache\Resolver\WebPathResolver">
       <tag name="liip_imagine.cache.resolver" resolver="web_path"/>

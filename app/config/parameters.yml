@@ -11,7 +11,8 @@ parameters:
     database_path: null
 
     per_item_page: 10
-    upload : "/uploads/"
+    imgRoot : "/web/"
+    upload : "/uploads/images/"
     thumbUpload : "/media/cache/thumbs/"
 
     menu_type_company_category: 1

@@ -29,4 +29,14 @@ Deployment for TYHV with Symfony2
     php app/console cache:clear
 
 6) Modify stfalcon_tinymce base_url in config.yaml and host in parameters.yml
+
+7) How to use LiipImagineBUndle
+    - In the config.yml file
+        liip_imagine:
+            web_root: %kernel.root_dir%/../web/uploads/                     ==> path to your image directory
+            filter_sets:
+              thumbs:
+                quality: 75
+                filters:
+                  thumbnail: { size: [100, 100], mode: outbound }
 Have fun !

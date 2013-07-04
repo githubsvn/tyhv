@@ -36,8 +36,7 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
         // line 5
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_page_new"), "html", null, true);
         echo "\" method=\"post\" ";
-        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($_form_, 'enctype');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'enctype');
         echo " class=\"form-horizontal\">
     <fieldset>
 
@@ -49,13 +48,11 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 11
-        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "image"), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "image"), 'errors');
         echo "
                 ";
         // line 12
-        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "image"), 'widget');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "image"), 'widget');
         echo "
             </div>
         </div>
@@ -67,13 +64,11 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
             <div class=\"controls\">
                 ";
         // line 18
-        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "status"), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "status"), 'errors');
         echo "
                 ";
         // line 19
-        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "status"), 'widget', array("attr" => array("checked" => "checked")));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "status"), 'widget', array("attr" => array("checked" => "checked")));
         echo "
             </div>
         </div>
@@ -87,25 +82,18 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
               <label class=\"checkbox\">
                     ";
         // line 27
-        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "media_id"), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "media_id"), 'errors');
         echo "
                     ";
         // line 28
-        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "media_id"), 'widget', array("attr" => array("style" => "display: none")));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "media_id"), 'widget', array("attr" => array("style" => "display: none")));
         echo "
                     ";
         // line 29
-        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
-        $context["selectName"] = $this->getAttribute($this->getAttribute($_form_, "media_id"), "get", array(0 => "full_name"), "method");
+        $context["selectName"] = $this->getAttribute($this->getAttribute($this->getContext($context, "form"), "media_id"), "get", array(0 => "full_name"), "method");
         // line 30
         echo "                    ";
-        if (isset($context["optMedias"])) { $_optMedias_ = $context["optMedias"]; } else { $_optMedias_ = null; }
-        if (isset($context["optMediaTypes"])) { $_optMediaTypes_ = $context["optMediaTypes"]; } else { $_optMediaTypes_ = null; }
-        if (isset($context["selectName"])) { $_selectName_ = $context["selectName"]; } else { $_selectName_ = null; }
-        if (isset($context["mediaPath"])) { $_mediaPath_ = $context["mediaPath"]; } else { $_mediaPath_ = null; }
-        echo $this->env->getExtension('sm.twig.media_extension')->selectMedia($_optMedias_, $_optMediaTypes_, $_selectName_, $_mediaPath_, array("multiple" => true));
+        echo $this->env->getExtension('sm.twig.media_extension')->selectMedia($this->getContext($context, "optMedias"), $this->getContext($context, "optMediaTypes"), $this->getContext($context, "selectName"), $this->getContext($context, "mediaPath"), array("multiple" => true));
         echo "
               </label>
             </div>
@@ -120,31 +108,25 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
         $context["isActive"] = 1;
         // line 40
         echo "                  ";
-        if (isset($context["langList"])) { $_langList_ = $context["langList"]; } else { $_langList_ = null; }
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($_langList_);
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "langList"));
         foreach ($context['_seq'] as $context["_key"] => $context["lang"]) {
             // line 41
             echo "                      ";
-            if (isset($context["isActive"])) { $_isActive_ = $context["isActive"]; } else { $_isActive_ = null; }
-            if (($_isActive_ == 1)) {
+            if (($this->getContext($context, "isActive") == 1)) {
                 // line 42
                 echo "                          <li class=\"active\"><a href=\"#tab";
-                if (isset($context["lang"])) { $_lang_ = $context["lang"]; } else { $_lang_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_lang_, "id"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\" data-toggle=\"tab\">";
-                if (isset($context["lang"])) { $_lang_ = $context["lang"]; } else { $_lang_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_lang_, "name"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "name"), "html", null, true);
                 echo "</a></li>
                       ";
             } else {
                 // line 44
                 echo "                          <li><a href=\"#tab";
-                if (isset($context["lang"])) { $_lang_ = $context["lang"]; } else { $_lang_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_lang_, "id"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\" data-toggle=\"tab\">";
-                if (isset($context["lang"])) { $_lang_ = $context["lang"]; } else { $_lang_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_lang_, "name"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "name"), "html", null, true);
                 echo "</a></li>
                       ";
             }
@@ -165,28 +147,23 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
         $context["isActive"] = 1;
         // line 51
         echo "                ";
-        if (isset($context["langList"])) { $_langList_ = $context["langList"]; } else { $_langList_ = null; }
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($_langList_);
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "langList"));
         foreach ($context['_seq'] as $context["_key"] => $context["lang"]) {
             // line 52
             echo "                    ";
             $context["currentAL"] = null;
             // line 53
             echo "                    ";
-            if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute($_form_, "page_languages"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "form"), "page_languages"));
             foreach ($context['_seq'] as $context["_key"] => $context["pageLanguage"]) {
                 // line 54
                 echo "                        ";
-                if (isset($context["pageLanguage"])) { $_pageLanguage_ = $context["pageLanguage"]; } else { $_pageLanguage_ = null; }
-                if (isset($context["lang"])) { $_lang_ = $context["lang"]; } else { $_lang_ = null; }
-                if (($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($_pageLanguage_, "vars"), "value"), "language"), "id") == $this->getAttribute($_lang_, "id"))) {
+                if (($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "pageLanguage"), "vars"), "value"), "language"), "id") == $this->getAttribute($this->getContext($context, "lang"), "id"))) {
                     // line 55
                     echo "                            ";
-                    if (isset($context["pageLanguage"])) { $_pageLanguage_ = $context["pageLanguage"]; } else { $_pageLanguage_ = null; }
-                    $context["currentAL"] = $_pageLanguage_;
+                    $context["currentAL"] = $this->getContext($context, "pageLanguage");
                     // line 56
                     echo "                        ";
                 }
@@ -198,19 +175,16 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
             $context = array_intersect_key($context, $_parent) + $_parent;
             // line 58
             echo "                    ";
-            if (isset($context["isActive"])) { $_isActive_ = $context["isActive"]; } else { $_isActive_ = null; }
-            if (($_isActive_ == 1)) {
+            if (($this->getContext($context, "isActive") == 1)) {
                 // line 59
                 echo "                        <div class=\"tab-pane active\" id=\"tab";
-                if (isset($context["lang"])) { $_lang_ = $context["lang"]; } else { $_lang_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_lang_, "id"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\">
                     ";
             } else {
                 // line 61
                 echo "                        <div class=\"tab-pane\" id=\"tab";
-                if (isset($context["lang"])) { $_lang_ = $context["lang"]; } else { $_lang_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_lang_, "id"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\">
                     ";
             }
@@ -218,8 +192,7 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
             echo "                            <fieldset>
                                 ";
             // line 64
-            if (isset($context["currentAL"])) { $_currentAL_ = $context["currentAL"]; } else { $_currentAL_ = null; }
-            if ((!(null === $_currentAL_))) {
+            if ((!(null === $this->getContext($context, "currentAL")))) {
                 // line 65
                 echo "                                <div class=\"control-group\">
                                     <label class=\"control-label\" for=\"input01\">";
@@ -229,25 +202,20 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
                                     <div class=\"controls\">
                                         ";
                 // line 68
-                if (isset($context["currentAL"])) { $_currentAL_ = $context["currentAL"]; } else { $_currentAL_ = null; }
-                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_currentAL_, "name"), 'errors');
+                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'errors');
                 echo "
                                         ";
                 // line 69
-                if (isset($context["defaultLanguage"])) { $_defaultLanguage_ = $context["defaultLanguage"]; } else { $_defaultLanguage_ = null; }
-                if (isset($context["currentAL"])) { $_currentAL_ = $context["currentAL"]; } else { $_currentAL_ = null; }
-                if (($this->getAttribute($_defaultLanguage_, "name") == $this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($_currentAL_, "vars"), "value"), "language"), "name"))) {
+                if (($this->getAttribute($this->getContext($context, "defaultLanguage"), "name") == $this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "currentAL"), "vars"), "value"), "language"), "name"))) {
                     // line 70
                     echo "                                            ";
-                    if (isset($context["currentAL"])) { $_currentAL_ = $context["currentAL"]; } else { $_currentAL_ = null; }
-                    echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_currentAL_, "name"), 'widget', array("attr" => array("required" => "required")));
+                    echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'widget', array("attr" => array("required" => "required")));
                     echo "
                                         ";
                 } else {
                     // line 72
                     echo "                                            ";
-                    if (isset($context["currentAL"])) { $_currentAL_ = $context["currentAL"]; } else { $_currentAL_ = null; }
-                    echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_currentAL_, "name"), 'widget');
+                    echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'widget');
                     echo "
                                         ";
                 }
@@ -263,13 +231,11 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
                                     <div class=\"controls\">
                                         ";
                 // line 80
-                if (isset($context["currentAL"])) { $_currentAL_ = $context["currentAL"]; } else { $_currentAL_ = null; }
-                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_currentAL_, "intro"), 'errors');
+                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "intro"), 'errors');
                 echo "
                                         ";
                 // line 81
-                if (isset($context["currentAL"])) { $_currentAL_ = $context["currentAL"]; } else { $_currentAL_ = null; }
-                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_currentAL_, "intro"), 'widget');
+                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "intro"), 'widget');
                 echo "
                                     </div>
                                 </div>
@@ -282,13 +248,11 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
                                     <div class=\"controls\">
                                         ";
                 // line 88
-                if (isset($context["currentAL"])) { $_currentAL_ = $context["currentAL"]; } else { $_currentAL_ = null; }
-                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_currentAL_, "description"), 'errors');
+                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "description"), 'errors');
                 echo "
                                         ";
                 // line 89
-                if (isset($context["currentAL"])) { $_currentAL_ = $context["currentAL"]; } else { $_currentAL_ = null; }
-                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_currentAL_, "description"), 'widget');
+                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "description"), 'widget');
                 echo "
                                     </div>
                                 </div>
@@ -314,8 +278,7 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
         <div class=\"form-actions\">
             ";
         // line 102
-        if (isset($context["form"])) { $_form_ = $context["form"]; } else { $_form_ = null; }
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($_form_, "_token"), 'row');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "_token"), 'row');
         echo "
             <button type=\"submit\" class=\"btn btn-primary\">";
         // line 103
@@ -347,6 +310,6 @@ class __TwigTemplate_c4088471cfada7003e378f47d268fdcc extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  326 => 104,  305 => 97,  290 => 89,  285 => 88,  280 => 86,  261 => 78,  241 => 70,  237 => 69,  224 => 65,  142 => 44,  90 => 27,  334 => 109,  329 => 108,  323 => 104,  315 => 102,  311 => 98,  302 => 95,  297 => 94,  283 => 87,  267 => 80,  249 => 75,  244 => 74,  230 => 69,  223 => 67,  177 => 56,  116 => 37,  53 => 55,  44 => 8,  325 => 99,  316 => 95,  309 => 94,  292 => 92,  281 => 89,  276 => 88,  271 => 81,  265 => 86,  260 => 78,  256 => 83,  253 => 76,  214 => 67,  210 => 65,  206 => 63,  196 => 59,  78 => 23,  255 => 74,  251 => 75,  246 => 74,  232 => 68,  228 => 71,  254 => 74,  233 => 70,  231 => 72,  222 => 62,  208 => 58,  204 => 59,  191 => 56,  188 => 59,  185 => 58,  178 => 49,  149 => 42,  143 => 41,  132 => 42,  96 => 24,  169 => 56,  137 => 46,  129 => 36,  119 => 32,  154 => 50,  146 => 46,  141 => 40,  198 => 66,  181 => 60,  135 => 43,  127 => 39,  122 => 40,  86 => 24,  73 => 13,  55 => 22,  227 => 66,  221 => 64,  107 => 49,  67 => 29,  470 => 141,  466 => 140,  462 => 139,  458 => 138,  453 => 137,  450 => 136,  442 => 122,  439 => 121,  434 => 118,  430 => 116,  424 => 115,  421 => 114,  411 => 111,  405 => 110,  399 => 109,  395 => 108,  390 => 107,  386 => 106,  381 => 105,  378 => 104,  374 => 84,  367 => 82,  364 => 81,  361 => 80,  355 => 72,  351 => 71,  348 => 70,  345 => 69,  341 => 68,  338 => 110,  332 => 66,  322 => 103,  314 => 59,  287 => 52,  284 => 51,  278 => 86,  274 => 35,  270 => 34,  266 => 80,  262 => 32,  252 => 25,  211 => 61,  195 => 68,  193 => 121,  187 => 55,  184 => 117,  182 => 54,  164 => 52,  161 => 48,  140 => 47,  126 => 90,  106 => 29,  103 => 30,  100 => 29,  93 => 85,  74 => 21,  68 => 12,  51 => 11,  333 => 100,  327 => 96,  324 => 95,  320 => 94,  317 => 102,  312 => 90,  306 => 86,  303 => 96,  299 => 94,  296 => 54,  291 => 80,  277 => 79,  273 => 84,  258 => 75,  248 => 72,  245 => 72,  239 => 72,  234 => 69,  226 => 11,  216 => 65,  202 => 61,  199 => 61,  192 => 67,  165 => 50,  156 => 50,  134 => 46,  131 => 46,  120 => 39,  115 => 35,  82 => 22,  76 => 19,  61 => 12,  54 => 14,  171 => 47,  163 => 52,  159 => 51,  152 => 46,  138 => 39,  123 => 38,  117 => 31,  111 => 30,  101 => 34,  98 => 39,  83 => 33,  75 => 19,  71 => 18,  64 => 15,  43 => 7,  36 => 12,  104 => 27,  80 => 23,  63 => 17,  58 => 12,  40 => 6,  24 => 1,  94 => 27,  88 => 22,  48 => 12,  39 => 11,  35 => 5,  31 => 3,  21 => 2,  46 => 9,  29 => 3,  32 => 4,  250 => 73,  240 => 70,  236 => 71,  229 => 12,  225 => 70,  220 => 5,  218 => 63,  215 => 60,  212 => 64,  209 => 136,  200 => 58,  194 => 57,  179 => 57,  176 => 53,  173 => 52,  166 => 60,  162 => 51,  157 => 51,  155 => 47,  151 => 48,  148 => 42,  145 => 47,  139 => 45,  128 => 41,  114 => 31,  109 => 32,  87 => 26,  84 => 24,  79 => 32,  65 => 16,  34 => 5,  26 => 6,  125 => 34,  118 => 36,  110 => 35,  97 => 31,  92 => 23,  89 => 28,  85 => 25,  69 => 14,  28 => 2,  57 => 12,  50 => 34,  47 => 9,  38 => 6,  27 => 6,  22 => 2,  25 => 3,  19 => 1,  203 => 62,  197 => 66,  189 => 64,  183 => 54,  180 => 63,  174 => 50,  170 => 49,  167 => 51,  158 => 46,  153 => 50,  150 => 44,  147 => 95,  144 => 48,  136 => 43,  133 => 44,  130 => 91,  124 => 35,  121 => 31,  113 => 36,  108 => 35,  105 => 34,  102 => 48,  99 => 30,  95 => 28,  91 => 19,  81 => 24,  70 => 18,  66 => 16,  62 => 22,  59 => 5,  56 => 11,  52 => 11,  49 => 19,  45 => 29,  41 => 27,  37 => 5,  33 => 4,  30 => 5,);
+        return array (  289 => 104,  285 => 103,  281 => 102,  275 => 98,  269 => 97,  267 => 96,  263 => 94,  255 => 89,  251 => 88,  246 => 86,  238 => 81,  234 => 80,  229 => 78,  223 => 74,  217 => 72,  211 => 70,  209 => 69,  205 => 68,  200 => 66,  197 => 65,  195 => 64,  192 => 63,  186 => 61,  180 => 59,  177 => 58,  171 => 57,  168 => 56,  165 => 55,  162 => 54,  157 => 53,  154 => 52,  149 => 51,  147 => 50,  143 => 48,  137 => 47,  134 => 46,  126 => 44,  118 => 42,  115 => 41,  110 => 40,  108 => 39,  95 => 30,  93 => 29,  89 => 28,  85 => 27,  79 => 24,  71 => 19,  67 => 18,  62 => 16,  55 => 12,  51 => 11,  46 => 9,  37 => 5,  31 => 3,  28 => 2,);
     }
 }

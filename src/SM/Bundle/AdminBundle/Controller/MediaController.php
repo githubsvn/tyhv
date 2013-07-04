@@ -39,7 +39,10 @@ class MediaController extends Controller
         $entities = $rep->getList($perPage, ($page - 1) * $perPage);
 
         //get upload dir
-        $uploadPath = $this->container->getParameter('upload');
+        $thumbUploadPath = $this->container->getParameter('imgRoot')
+                . $this->container->getParameter('upload')
+                . $this->container->getParameter('thumbUpload') ;
+
         return $this->render('SMAdminBundle:Media:index.html.twig', array(
             'entities' => $entities,
             'lastPage' => $lastPage,
@@ -47,7 +50,7 @@ class MediaController extends Controller
             'currentPage' => $page,
             'nextPage' => $nextPage,
             'total' => $total,
-            'imgPath' => '/web/' . $uploadPath
+            'imgPath' => $thumbUploadPath
         ));
     }
 
@@ -121,6 +124,8 @@ class MediaController extends Controller
                     $entity->file->move($uploadDir, $newName);
                     //set new name
                     $entity->setName($newName);
+                    //Create thumbnail for image
+                    Utilities\Helper::createThumb($newName);
                 }
                 //saving data
                 $em->persist($entity);
@@ -161,12 +166,14 @@ class MediaController extends Controller
         $editForm = $this->createForm(new MediaType(array('requiredFile' => 1)), $entity);
 
         $deleteForm = $this->createDeleteForm($id);
+        $thumbUploadPath = '/web/uploads/' .$this->container->getParameter('thumbUpload') ;
 
         return $this->render(
             'SMAdminBundle:Media:edit.html.twig', array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'thumbUploadPath' => $thumbUploadPath
             )
         );
     }
@@ -210,6 +217,8 @@ class MediaController extends Controller
                     $entity->file->move($uploadDir, $newName);
                     //set new name
                     $entity->setName($newName);
+                    //Create thumbnail for image
+                    Utilities\Helper::createThumb($newName);
                 }
                 //saving data
                 $em->persist($entity);

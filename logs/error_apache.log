@@ -35,3 +35,22 @@
 [Thu Jul 04 11:52:58 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1428
 [Thu Jul 04 11:52:58 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\NewsController->editAction() /home/www/local.tyhv/app/bootstrap.php.cache:0
 [Thu Jul 04 11:52:58 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Utilities\\Helper::createThumb() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/NewsController.php:385
+[Thu Jul 04 13:41:11 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method SM\\Bundle\\AdminBundle\\Entity\\Media::getImage() in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/MediaRepository.php on line 44, referer: http://local.tyhv/admin/media?id=5
+[Thu Jul 04 13:41:11 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/media?id=5
+[Thu Jul 04 13:41:11 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/media?id=5
+[Thu Jul 04 13:41:11 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/media?id=5
+[Thu Jul 04 13:41:11 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:619, referer: http://local.tyhv/admin/media?id=5
+[Thu Jul 04 13:41:11 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1568, referer: http://local.tyhv/admin/media?id=5
+[Thu Jul 04 13:41:11 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1392, referer: http://local.tyhv/admin/media?id=5
+[Thu Jul 04 13:41:11 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1428, referer: http://local.tyhv/admin/media?id=5
+[Thu Jul 04 13:41:11 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\MediaController->deleteAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/media?id=5
+[Thu Jul 04 13:41:11 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\MediaRepository->deleteByIds() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/MediaController.php:250, referer: http://local.tyhv/admin/media?id=5
+[Thu Jul 04 14:28:15 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected '.' in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/MediaController.php on line 42, referer: http://local.tyhv/admin/media/new
+[Thu Jul 04 14:28:15 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/media/new
+[Thu Jul 04 14:28:15 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/media/new
+[Thu Jul 04 14:28:15 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/media/new
+[Thu Jul 04 14:28:15 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Component\\HttpKernel\\Kernel->boot() /home/www/local.tyhv/app/bootstrap.php.cache:616, referer: http://local.tyhv/admin/media/new
+[Thu Jul 04 14:28:15 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\Kernel->initializeContainer() /home/www/local.tyhv/app/bootstrap.php.cache:573, referer: http://local.tyhv/admin/media/new
+[Thu Jul 04 14:28:15 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\CacheWarmer\\CacheWarmerAggregate->warmUp() /home/www/local.tyhv/app/bootstrap.php.cache:873, referer: http://local.tyhv/admin/media/new
+[Thu Jul 04 14:28:15 2013] [error] [client 127.0.0.1] PHP   6. JMS\\DiExtraBundle\\HttpKernel\\ControllerInjectorsWarmer->warmUp() /home/www/local.tyhv/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/CacheWarmer/CacheWarmerAggregate.php:47, referer: http://local.tyhv/admin/media/new
+[Thu Jul 04 14:28:15 2013] [error] [client 127.0.0.1] PHP   7. JMS\\DiExtraBundle\\HttpKernel\\ControllerInjectorsWarmer->findControllerClasses() /home/www/local.tyhv/vendor/jms/di-extra-bundle/JMS/DiExtraBundle/HttpKernel/ControllerInjectorsWarmer.php:29, referer: http://local.tyhv/admin/media/new

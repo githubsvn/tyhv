@@ -40,8 +40,10 @@ class ProductsRepository extends EntityRepository
         if (is_array($ids) && count($ids)) {
             foreach ($ids as $id) {
                 $entity = $this->find($id);
+                $image = $entity->getThumb();
                 $em->remove($entity);
                 if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
+                    \SM\Bundle\AdminBundle\Utilities\File::deleteImages($image);
                     $rst[] = $id;
                 }
             }
@@ -62,16 +64,16 @@ class ProductsRepository extends EntityRepository
 
         return count($rst);
     }
-    
+
     /**
      * get option that to build param in the menu type
-     * 
-     * @return type 
+     *
+     * @return type
      */
     public function getOptions()
     {
         $options = array();
-        
+
         //get list language
         $repLanguage = $this->getEntityManager()->getRepository("SMAdminBundle:Language");
         //Get list language
@@ -92,7 +94,7 @@ class ProductsRepository extends EntityRepository
             $std->id = $obj->getId();
             $options[] = $std;
         }
-        
+
         return $options;
     }
 }

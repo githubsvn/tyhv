@@ -15,7 +15,7 @@
         <div class="control-group">
             <label class="control-label" for="input01">{{ 'Image'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
-                <image src="/web/uploads/{{ entity.name}}" width="100px" height="100px"/>
+                <image src="{{ thumbUploadPath~entity.name}}" width="100px" height="100px"/>
                 <div style="display: none;">
                     {{ form_widget(edit_form.name) }}
                 </div>

@@ -41,8 +41,10 @@ class MediaRepository extends EntityRepository
         if (is_array($ids) && count($ids)) {
             foreach ($ids as $id) {
                 $entity = $this->find($id);
+                $image = $entity->getName();
                 $em->remove($entity);
                 if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
+                    \SM\Bundle\AdminBundle\Utilities\File::deleteImages($image);
                     $rst[] = $id;
                 }
             }

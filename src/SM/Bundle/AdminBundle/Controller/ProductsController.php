@@ -181,6 +181,8 @@ class ProductsController extends Controller
                     $entity->thumb->move($uploadDir, $newName);
                     //set new name
                     $entity->setThumb($newName);
+                    //Create thumbnail for image
+                    Utilities\Helper::createThumb($newName);
                 }
 
                 $entityManager->flush();
@@ -289,6 +291,7 @@ class ProductsController extends Controller
 
         //get upload dir
         $uploadPath = $this->container->getParameter('upload') ;
+        $thumbUploadPath = $this->container->getParameter('thumbUpload') ;
         $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
 
         $thumb = $entity->getThumb();
@@ -322,11 +325,17 @@ class ProductsController extends Controller
                     $entity->thumb->move($uploadDir, $newName);
                     //set new name
                     $entity->setThumb($newName);
+                    //Create thumbnail for image
+                    Utilities\Helper::createThumb($newName);
 
                     //Delete old logo file
                     $oldFileThumb = $webDir . $uploadPath . '/' . $thumb;
+                    $oldThumbFileImage = $webDir . $uploadPath . $thumbUploadPath . $thumb;
                     if (file_exists($oldFileThumb)) {
                         @unlink($oldFileThumb);
+                    }
+                    if (file_exists($oldThumbFileImage)) {
+                        @unlink($oldThumbFileImage);
                     }
                 } else {
                     //Check input delImgs if exist we need to delete logo of the company
