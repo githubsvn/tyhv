@@ -81,16 +81,16 @@ class CompanyRepository extends EntityRepository
     {
         return \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
     }
-    
+
     /**
      * get option that to build param in the menu type
-     * 
-     * @return type 
+     *
+     * @return type
      */
     public function getOptions()
     {
         $options = array();
-        
+
         //get list language
         $repLanguage = $this->getEntityManager()->getRepository("SMAdminBundle:Language");
         //Get list language
@@ -111,7 +111,7 @@ class CompanyRepository extends EntityRepository
             $std->id = $obj->getId();
             $options[] = $std;
         }
-        
+
         return $options;
     }
 }
