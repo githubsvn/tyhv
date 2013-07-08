@@ -411,7 +411,6 @@ class MenuController extends Controller
         $mnuTypeCompanyCat = $container->getParameter('menu_type_company_category');
         $mnuTypeCompanyDetail = $container->getParameter('menu_type_company_detail');
         $mnuTypeProductBranch = $container->getParameter('menu_type_product_branch');
-        $mnuTypeProductGroup = $container->getParameter('menu_type_product_group');
         $mnuTypeProductDetail = $container->getParameter('menu_type_product_detail');
         $mnuTypeNewsCat = $container->getParameter('menu_type_news_category');
         $mnuTypeNewsDetail = $container->getParameter('menu_type_news_detail');
@@ -432,11 +431,6 @@ class MenuController extends Controller
             case $mnuTypeProductBranch:
                 $repo = $em->getRepository('SMAdminBundle:Branch');
                 $url = "/product/view-branch/";
-                $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
-                break;
-            case $mnuTypeProductGroup:
-                $repo = $em->getRepository('SMAdminBundle:ProductGroup');
-                $url = "/product/view-group/";
                 $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypeProductDetail:

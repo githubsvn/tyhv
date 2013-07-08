@@ -398,7 +398,6 @@ class MenuRepository extends EntityRepository
         $mnuTypeCompanyCat = $container->getParameter('menu_type_company_category');
         $mnuTypeCompanyDetail = $container->getParameter('menu_type_company_detail');
         $mnuTypeProductBranch = $container->getParameter('menu_type_product_branch');
-        $mnuTypeProductGroup = $container->getParameter('menu_type_product_group');
         $mnuTypeProductDetail = $container->getParameter('menu_type_product_detail');
         $mnuTypeNewsCat = $container->getParameter('menu_type_news_category');
         $mnuTypeNewsDetail = $container->getParameter('menu_type_news_detail');
@@ -411,7 +410,6 @@ class MenuRepository extends EntityRepository
         $options[$mnuTypeCompanyCat] = 'Loại công ty';
         $options[$mnuTypeCompanyDetail] = 'Thông tin công ty';
         $options[$mnuTypeProductBranch] = 'Ngành sản phẩm';
-        $options[$mnuTypeProductGroup] = 'Nhóm sản phẩm';
         $options[$mnuTypeProductDetail] = 'Sản phẩm';
         $options[$mnuTypeNewsCat] = 'Loại tin';
         $options[$mnuTypeNewsDetail] = 'Tin tức';
@@ -451,7 +449,6 @@ class MenuRepository extends EntityRepository
         $mnuTypeCompanyCat = $container->getParameter('menu_type_company_category');
         $mnuTypeCompanyDetail = $container->getParameter('menu_type_company_detail');
         $mnuTypeProductBranch = $container->getParameter('menu_type_product_branch');
-        $mnuTypeProductGroup = $container->getParameter('menu_type_product_group');
         $mnuTypeProductDetail = $container->getParameter('menu_type_product_detail');
         $mnuTypeNewsCat = $container->getParameter('menu_type_news_category');
         $mnuTypeNewsDetail = $container->getParameter('menu_type_news_detail');
@@ -470,10 +467,6 @@ class MenuRepository extends EntityRepository
                 break;
             case $mnuTypeProductBranch:
                 $repo = $em->getRepository('SMAdminBundle:Branch');
-                $options = $repo->getOptions();
-                break;
-            case $mnuTypeProductGroup:
-                $repo = $em->getRepository('SMAdminBundle:ProductGroup');
                 $options = $repo->getOptions();
                 break;
             case $mnuTypeProductDetail:
