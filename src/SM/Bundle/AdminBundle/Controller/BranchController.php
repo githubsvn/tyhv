@@ -16,11 +16,12 @@ class BranchController extends Controller
 {
 
     /**
-     * Lists all Branch entities.
      *
+     * @param type $page
+     * @param type $lang
+     * @return type
      */
-    public function indexAction($page, $lang)
-    {
+    public function indexAction($page, $lang) {
         //get list language
         $langList = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language")
@@ -40,9 +41,12 @@ class BranchController extends Controller
                 ->getRepository("SMAdminBundle:Language")
                 ->find($lang);
 
+        $criteria = array();
+        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
+
         $total = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Branch")
-                ->getTotal();
+                ->getTotal($criteria);
 
         $perPage = $this->container->getParameter('per_item_page');
         $lastPage = ceil($total / $perPage);
@@ -51,34 +55,35 @@ class BranchController extends Controller
 
         $entities = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Branch")
-                ->getList($perPage, ($page - 1) * $perPage);
-        foreach ($entities as $theBranch) {
-            $theBranch->setLanguage($currentLanguage);
+                ->getList($perPage, ($page - 1) * $perPage, $criteria, array('lft' => 'ASC'));
+
+        foreach ($entities as $theCat) {
+            $theCat->setLanguage($currentLanguage);
         }
+
         return $this->render('SMAdminBundle:Branch:index.html.twig', array(
-                    'entities' => $entities,
-                    'lastPage' => $lastPage,
-                    'previousPage' => $previousPage,
-                    'currentPage' => $page,
-                    'nextPage' => $nextPage,
-                    'total' => $total,
-                    'lang' => intval($lang),
-                    'langList' => $langList,
-                ));
+            'entities' => $entities,
+            'lastPage' => $lastPage,
+            'previousPage' => $previousPage,
+            'currentPage' => $page,
+            'nextPage' => $nextPage,
+            'total' => $total,
+            'lang' => intval($lang),
+            'langList' => $langList,
+        ));
     }
 
     /**
-     * Finds and displays a Branch entity.
+     * Finds and displays a CompanyType entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('SMAdminBundle:Branch')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Branch entity.');
+            throw $this->createNotFoundException('Unable to find CompanyType entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -89,11 +94,10 @@ class BranchController extends Controller
     }
 
     /**
-     * Displays a form to create a new Branch entity.
+     * Displays a form to create a new CompanyType entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Branch();
         //get list language
         $repLanguage = $this->getDoctrine()
@@ -103,11 +107,11 @@ class BranchController extends Controller
 
         if (is_array($langList)) {
             foreach ($langList as $language) {
-                $bLanguage = new \SM\Bundle\AdminBundle\Entity\BranchLanguage();
-                $bLanguage->setLanguage($language);
-                $bLanguage->setBranch($entity);
+                $catLanguage = new BranchLanguage();
+                $catLanguage->setLanguage($language);
+                $catLanguage->setBranch($entity);
 
-                $entity->addBranchLanguage($bLanguage);
+                $entity->addBranchLanguage($catLanguage);
 
                 if ($language->getIsDefault()) {
                     $defaultLanguage = $language;
@@ -125,7 +129,6 @@ class BranchController extends Controller
 
         if ($this->getRequest()->isMethod('POST')) {
             $form->bind($this->getRequest());
-
             if ($form->isValid()) {
 
                 //Set created and updated user
@@ -135,11 +138,11 @@ class BranchController extends Controller
 
                 $entityManager = $this->getDoctrine()->getEntityManager();
                 $entityManager->persist($entity);
-                foreach ($entity->getBranchLanguages() as $bLanguage) {
-                    $name = $bLanguage->getName();
+                foreach ($entity->getBranchLanguages() as $catLanguage) {
+                    $name = $catLanguage->getName();
                     if (empty($name)) {
-                        $entity->removeBranchLanguage($bLanguage);
-                        $entityManager->remove($bLanguage);
+                        $entity->removeBranchLanguage($catLanguage);
+                        $entityManager->remove($catLanguage);
                     }
                 }
 
@@ -150,10 +153,12 @@ class BranchController extends Controller
                 $referrer = $this->getRequest()->getSession()->get('referrer');
 
                 if (!$referrer) {
+
                     return $this->redirect(
-                                    $this->generateUrl('admin_companytype')
+                        $this->generateUrl('admin_branch')
                     );
                 } else {
+
                     return $this->redirect($referrer);
                 }
             } else {
@@ -162,26 +167,26 @@ class BranchController extends Controller
         }
 
         return $this->render('SMAdminBundle:Branch:new.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
-                    'langList' => $langList,
-                    'defaultLanguage' => $defaultLanguage
-                ));
+            'entity' => $entity,
+            'form' => $form->createView(),
+            'langList' => $langList,
+            'defaultLanguage' => $defaultLanguage
+        ));
     }
 
     /**
-     * Displays a form to edit an existing Branch entity.
+     * Displays a form to edit an existing CompanyType entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
+
         $entity = $this->getDoctrine()->getRepository("SMAdminBundle:Branch")
                 ->find($id);
 
         if (!$entity) {
             //go to page index with error
             $this->getRequest()->getSession()->getFlashBag()
-                    ->add('sm_flash_error', 'Could not find branch with id ' . $id);
+                    ->add('sm_flash_error', 'Could not find page with id ' . $id);
 
             return $this->redirect($this->generateUrl('admin_branch'));
         }
@@ -194,10 +199,10 @@ class BranchController extends Controller
         if (is_array($langList)) {
             foreach ($langList as $language) {
                 if (!$entity->hasLanguage($language)) {
-                    $bLanguage = new BranchLanguage();
-                    $bLanguage->setLanguage($language);
-                    $bLanguage->setBranch($entity);
-                    $entity->addBranchLanguage($bLanguage);
+                    $catLanguage = new BranchLanguage();
+                    $catLanguage->setLanguage($language);
+                    $catLanguage->setBranch($entity);
+                    $entity->addBranchLanguage($ctLanguage);
                 }
                 if ($language->getIsDefault()) {
                     $defaultLanguage = $language;
@@ -218,11 +223,11 @@ class BranchController extends Controller
 
             if ($form->isValid()) {
                 $entityManager = $this->getDoctrine()->getEntityManager();
-                foreach ($entity->getBranchLanguages() as $bLanguage) {
-                    $name = $bLanguage->getName();
+                foreach ($entity->getBranchLanguages() as $catLanguage) {
+                    $name = $catLanguage->getName();
                     if (empty($name)) {
-                        $entity->removeBranchLanguage($bLanguage);
-                        $entityManager->remove($bLanguage);
+                        $entity->removeBranchLanguage($catLanguage);
+                        $entityManager->remove($catLanguage);
                     }
                 }
 
@@ -237,10 +242,12 @@ class BranchController extends Controller
                 $referrer = $this->getRequest()->getSession()->get('referrer');
 
                 if (!$referrer) {
+
                     return $this->redirect(
                         $this->generateUrl('admin_branch')
                     );
                 } else {
+
                     return $this->redirect($referrer);
                 }
             } else {
@@ -272,11 +279,56 @@ class BranchController extends Controller
         $referrer = $this->getRequest()->server->get('HTTP_REFERER');
 
         if (!$referrer) {
+
             return $this->redirect(
                 $this->generateUrl('admin_branch')
             );
         } else {
+
             return $this->redirect($referrer);
         }
+    }
+
+    /**
+     * up action
+     *
+     * @param type $id
+     *
+     * @return type
+     */
+    public function upAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository('SMAdminBundle:Branch');
+        $oCat = $repo->findOneById($id);
+        if ($oCat->getParent()) {
+            $repo->moveUp($oCat);
+        }
+
+        return $this->redirect(
+            $this->getRequest()->headers->get('referer')
+        );
+
+    }
+
+    /**
+     * down action
+     *
+     * @param type $id
+     *
+     * @return type
+     */
+    public function downAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository('SMAdminBundle:Branch');
+        $oCat = $repo->findOneById($id);
+        if ($oCat->getParent()) {
+            $repo->moveDown($oCat);
+        }
+
+        return $this->redirect(
+            $this->getRequest()->headers->get('referer')
+        );
     }
 }

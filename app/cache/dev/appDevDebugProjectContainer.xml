@@ -41,7 +41,9 @@
     <parameter key="secret">d00245c7bda39aa016baa57370bfebc9b11deda3</parameter>
     <parameter key="database_path">null</parameter>
     <parameter key="per_item_page">10</parameter>
-    <parameter key="upload">/uploads/</parameter>
+    <parameter key="imgroot">/web/</parameter>
+    <parameter key="upload">/uploads/images/</parameter>
+    <parameter key="thumbupload">/media/cache/thumbs/</parameter>
     <parameter key="menu_type_company_category">1</parameter>
     <parameter key="menu_type_company_detail">2</parameter>
     <parameter key="menu_type_product_branch">3</parameter>
@@ -490,8 +492,8 @@
     <parameter key="jms_di_extra.directories" type="collection"/>
     <parameter key="jms_di_extra.cache_dir">/home/www/local.tyhv/app/cache/dev/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_51d4f3eccdab0.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51d4f3eccdab0_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_51da2ab83ecd7.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51da2ab83ecd7_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -605,16 +607,6 @@
           </parameter>
         </parameter>
         <parameter type="collection">
-          <parameter key="class">SM\Bundle\AdminBundle\Entity\Group</parameter>
-          <parameter key="group">SẢN PHẨM</parameter>
-          <parameter key="label">QL Nhóm Hàng</parameter>
-          <parameter key="acl">true</parameter>
-          <parameter key="action" type="collection">
-            <parameter>admin_productgroup_new</parameter>
-            <parameter>admin_productgroup</parameter>
-          </parameter>
-        </parameter>
-        <parameter type="collection">
           <parameter key="class">SM\Bundle\AdminBundle\Entity\Products</parameter>
           <parameter key="group">SẢN PHẨM</parameter>
           <parameter key="label">QL Sản Phảm</parameter>
@@ -714,7 +706,7 @@
           <parameter key="theme_advanced_statusbar_location"></parameter>
           <parameter key="paste_auto_cleanup_on_paste">true</parameter>
           <parameter key="plugins">images,table,advhr,advlink,paste,xhtmlxtras,spellchecker</parameter>
-          <parameter key="theme_advanced_buttons2">images,cut,copy,paste,pastetext,pasteword,|,bullist,numlist,|,undo,redo,|,link,unlink,anchor,cleanup,code,|,tablecontrols</parameter>
+          <parameter key="theme_advanced_buttons2">images, cut,copy,paste,pastetext,pasteword,|,bullist,numlist,|,undo,redo,|,link,unlink,anchor,cleanup,code,|,tablecontrols</parameter>
           <parameter key="theme_advanced_buttons3"></parameter>
           <parameter key="spellchecker_languages">+English=en,Dutch=nl</parameter>
         </parameter>
@@ -765,23 +757,23 @@
     <parameter key="liip_imagine.form.type.image.class">Liip\ImagineBundle\Form\Type\ImageType</parameter>
     <parameter key="liip_imagine.cache.clearer.class">Liip\ImagineBundle\Imagine\Cache\CacheClearer</parameter>
     <parameter key="liip_imagine.cache_prefix">/media/cache</parameter>
-    <parameter key="liip_imagine.web_root">/home/www/local.tyhv/app/../web</parameter>
-    <parameter key="liip_imagine.data_root">/home/www/local.tyhv/app/../web</parameter>
+    <parameter key="liip_imagine.web_root">/home/www/local.tyhv/app/../web/uploads/images/</parameter>
+    <parameter key="liip_imagine.data_root">/home/www/local.tyhv/app/../web/uploads/images/</parameter>
     <parameter key="liip_imagine.cache_mkdir_mode">511</parameter>
     <parameter key="liip_imagine.formats" type="collection"/>
     <parameter key="liip_imagine.cache.resolver.default">web_path</parameter>
     <parameter key="liip_imagine.filter_sets" type="collection">
-      <parameter key="my_thumb" type="collection">
+      <parameter key="thumbs" type="collection">
+        <parameter key="quality">75</parameter>
         <parameter key="filters" type="collection">
           <parameter key="thumbnail" type="collection">
             <parameter key="size" type="collection">
-              <parameter>120</parameter>
-              <parameter>90</parameter>
+              <parameter>100</parameter>
+              <parameter>100</parameter>
             </parameter>
             <parameter key="mode">outbound</parameter>
           </parameter>
         </parameter>
-        <parameter key="quality">100</parameter>
         <parameter key="format">null</parameter>
         <parameter key="cache">null</parameter>
         <parameter key="data_loader">null</parameter>
@@ -2260,7 +2252,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>51d4f3eca9c08</argument>
+            <argument>51da2ab81acd0</argument>
           </service>
         </argument>
       </argument>
@@ -2613,7 +2605,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>51d4f3eca9c08</argument>
+            <argument>51da2ab81acd0</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -3056,8 +3048,8 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager51d4f3eccdab0_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_51d4f3eccdab0.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager51da2ab83ecd7_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_51da2ab83ecd7.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>
@@ -3364,7 +3356,7 @@
     <service id="liip_imagine.cache.manager" class="Liip\ImagineBundle\Imagine\Cache\CacheManager">
       <argument type="service" id="liip_imagine.filter.configuration"/>
       <argument type="service" id="router"/>
-      <argument>/home/www/local.tyhv/app/../web</argument>
+      <argument>/home/www/local.tyhv/app/../web/uploads/images/</argument>
       <argument>web_path</argument>
       <call method="addResolver">
         <argument>web_path</argument>
@@ -3377,17 +3369,17 @@
     </service>
     <service id="liip_imagine.filter.configuration" class="Liip\ImagineBundle\Imagine\Filter\FilterConfiguration">
       <argument type="collection">
-        <argument key="my_thumb" type="collection">
+        <argument key="thumbs" type="collection">
+          <argument key="quality">75</argument>
           <argument key="filters" type="collection">
             <argument key="thumbnail" type="collection">
               <argument key="size" type="collection">
-                <argument>120</argument>
-                <argument>90</argument>
+                <argument>100</argument>
+                <argument>100</argument>
               </argument>
               <argument key="mode">outbound</argument>
             </argument>
           </argument>
-          <argument key="quality">100</argument>
           <argument key="format">null</argument>
           <argument key="cache">null</argument>
           <argument key="data_loader">null</argument>
@@ -3406,17 +3398,17 @@
       <argument>liip_imagine.controller:filterAction</argument>
       <argument>/media/cache</argument>
       <argument type="collection">
-        <argument key="my_thumb" type="collection">
+        <argument key="thumbs" type="collection">
+          <argument key="quality">75</argument>
           <argument key="filters" type="collection">
             <argument key="thumbnail" type="collection">
               <argument key="size" type="collection">
-                <argument>120</argument>
-                <argument>90</argument>
+                <argument>100</argument>
+                <argument>100</argument>
               </argument>
               <argument key="mode">outbound</argument>
             </argument>
           </argument>
-          <argument key="quality">100</argument>
           <argument key="format">null</argument>
           <argument key="cache">null</argument>
           <argument key="data_loader">null</argument>
@@ -3457,7 +3449,7 @@
       <tag name="liip_imagine.data.loader" loader="filesystem"/>
       <argument type="service" id="liip_imagine"/>
       <argument type="collection"/>
-      <argument>/home/www/local.tyhv/app/../web</argument>
+      <argument>/home/www/local.tyhv/app/../web/uploads/images/</argument>
     </service>
     <service id="liip_imagine.cache.resolver.web_path" class="Liip\ImagineBundle\Imagine\Cache\Resolver\WebPathResolver">
       <tag name="liip_imagine.cache.resolver" resolver="web_path"/>

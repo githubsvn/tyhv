@@ -28,30 +28,13 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "<script type=\"text/javascript\">
-    \$(document).ready(function() {
-        \$('#sortTable').dataTable({
-            \"bPaginate\": false,
-            \"bLengthChange\": false,
-            \"bFilter\": false,
-            \"bSort\": true,
-            \"bInfo\": false,
-            \"bAutoWidth\": true,
-            \"aaSorting\": [ [0,'asc'], [1,'asc'] ],
-            \"aoColumnDefs\": [
-                { 'bSortable': false, 'aTargets': [ 3, 4] }
-            ],
-        });
-    } );
-</script>
-<h2>";
-        // line 19
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Branch List", array(), "SMAdminBundle"), "html", null, true);
+        echo "<h2>";
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Category List", array(), "SMAdminBundle"), "html", null, true);
         echo "</h2>
 
 <div class=\"nav\">
     <a href=\"";
-        // line 22
+        // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_branch_new"), "html", null, true);
         echo "\" class=\"btn btn-primary\">";
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Create a new entry", array(), "SMAdminBundle"), "html", null, true);
@@ -59,34 +42,34 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
     <div class=\"btn-group pull-right\">
         <a href=\"javascript:void(0)\" data-toggle=\"dropdown\" class=\"btn btn-primary dropdown-toggle\">
             ";
-        // line 25
+        // line 9
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "langList"));
         foreach ($context['_seq'] as $context["_key"] => $context["opt"]) {
-            // line 26
+            // line 10
             echo "                ";
             if (($this->getContext($context, "lang") == $this->getAttribute($this->getContext($context, "opt"), "id"))) {
-                // line 27
+                // line 11
                 echo "                ";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "opt"), "name"), "html", null, true);
                 echo " <span class=\"caret\"></span>
                 ";
             }
-            // line 29
+            // line 13
             echo "            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['opt'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 30
+        // line 14
         echo "        </a>
         <ul class=\"dropdown-menu\">
             ";
-        // line 32
+        // line 16
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "langList"));
         foreach ($context['_seq'] as $context["_key"] => $context["opt"]) {
-            // line 33
+            // line 17
             echo "                <li><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_branch", array("page" => 1, "lang" => $this->getAttribute($this->getContext($context, "opt"), "id"))), "html", null, true);
             echo "\">";
@@ -97,7 +80,7 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['opt'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 35
+        // line 19
         echo "        </ul>
     </div>
 </div>
@@ -106,63 +89,96 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
     <thead>
         <tr>
             <th>";
-        // line 42
+        // line 26
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Id", array(), "SMAdminBundle"), "html", null, true);
         echo "</th>
             <th>";
-        // line 43
+        // line 27
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Name", array(), "SMAdminBundle"), "html", null, true);
         echo "</th>
             <th>";
-        // line 44
+        // line 28
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Created Time", array(), "SMAdminBundle"), "html", null, true);
         echo "</th>
+            <th style=\"width: 14px;\">&nbsp;</th>
             <th>";
-        // line 45
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Status", array(), "SMAdminBundle"), "html", null, true);
+        // line 30
+        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Active", array(), "SMAdminBundle"), "html", null, true);
         echo "</th>
             <th>";
-        // line 46
+        // line 31
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Action", array(), "SMAdminBundle"), "html", null, true);
         echo "</th>
         </tr>
     </thead>
     <tbody>
     ";
-        // line 50
+        // line 35
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "entities"));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 51
+            // line 36
             echo "        <tr>
             <td>";
-            // line 52
+            // line 37
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "id"), "html", null, true);
             echo "</td>
             <td>
                 ";
-            // line 54
+            // line 39
             if ((!(null === $this->getAttribute($this->getContext($context, "entity"), "getCurrentLanguage")))) {
-                // line 55
+                // line 40
                 echo "                    ";
-                echo twig_escape_filter($this->env, twig_truncate_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "getCurrentLanguage"), "name"), 50), "html", null, true);
+                echo twig_escape_filter($this->env, twig_truncate_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "getCurrentLanguage"), "getTreeName"), 50), "html", null, true);
                 echo "
                 ";
             } else {
-                // line 57
+                // line 42
                 echo "                    <span class=\"label label-warning\">";
                 echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Not set value in this language", array(), "SMAdminBundle"), "html", null, true);
                 echo "</span>
                 ";
             }
-            // line 59
-            echo "            </td>
+            // line 44
+            echo "
+            </td>
             <td>";
-            // line 60
+            // line 46
             if ($this->getAttribute($this->getContext($context, "entity"), "createdAt")) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "createdAt"), "Y-m-d H:i:s"), "html", null, true);
             }
             echo "</td>
+            <td>
+                ";
+            // line 48
+            if ($this->getAttribute($this->getAttribute($this->getContext($context, "entity", true), "parent", array(), "any", false, true), "children", array(), "any", true, true)) {
+                // line 49
+                echo "                ";
+                if (($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "parent"), "children"), 0, array(), "array"), "id") != $this->getAttribute($this->getContext($context, "entity"), "id"))) {
+                    // line 50
+                    echo "                    <a href=\"";
+                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_branch_up", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
+                    echo "\">
+                        <i class=\"icon-arrow-up\"></i>
+                    </a>
+                ";
+                }
+                // line 54
+                echo "                ";
+                if (($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "parent"), "children"), (twig_length_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "parent"), "children")) - 1), array(), "array"), "id") != $this->getAttribute($this->getContext($context, "entity"), "id"))) {
+                    // line 55
+                    echo "                    <a class=\"pull-right\" href=\"";
+                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_branch_down", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
+                    echo "\">
+                        <i class=\"icon-arrow-down\"></i>
+                    </a>
+                ";
+                }
+                // line 59
+                echo "                ";
+            }
+            // line 60
+            echo "            </td>
             <td>
                 ";
             // line 62
@@ -283,6 +299,6 @@ class __TwigTemplate_fb641213a99b6e57e75d269dc61e3c9b extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  140 => 52,  384 => 138,  377 => 134,  350 => 128,  343 => 126,  224 => 81,  374 => 144,  370 => 143,  336 => 128,  313 => 118,  373 => 146,  357 => 138,  340 => 129,  334 => 128,  328 => 126,  20 => 1,  327 => 141,  317 => 136,  311 => 117,  345 => 134,  331 => 122,  323 => 140,  319 => 120,  308 => 111,  302 => 114,  288 => 109,  256 => 100,  359 => 131,  352 => 136,  333 => 123,  325 => 122,  322 => 124,  314 => 140,  280 => 103,  433 => 166,  425 => 164,  419 => 160,  411 => 158,  407 => 156,  401 => 152,  395 => 154,  389 => 148,  383 => 146,  366 => 132,  349 => 135,  321 => 121,  315 => 113,  309 => 134,  442 => 172,  438 => 171,  434 => 170,  428 => 166,  422 => 165,  420 => 164,  416 => 162,  410 => 158,  404 => 156,  398 => 154,  396 => 153,  392 => 152,  387 => 152,  369 => 144,  363 => 140,  358 => 130,  353 => 135,  347 => 127,  341 => 152,  339 => 125,  330 => 124,  324 => 117,  296 => 134,  293 => 106,  266 => 104,  258 => 94,  344 => 129,  337 => 151,  318 => 119,  307 => 116,  299 => 113,  305 => 110,  291 => 113,  283 => 101,  271 => 118,  262 => 115,  250 => 100,  316 => 122,  312 => 119,  306 => 118,  300 => 135,  277 => 127,  254 => 91,  248 => 101,  242 => 89,  240 => 85,  236 => 89,  208 => 70,  188 => 97,  113 => 57,  56 => 21,  304 => 114,  297 => 108,  259 => 93,  244 => 91,  235 => 91,  228 => 82,  193 => 62,  90 => 33,  285 => 102,  281 => 122,  267 => 96,  251 => 90,  246 => 95,  234 => 114,  192 => 72,  298 => 114,  284 => 106,  272 => 101,  264 => 102,  255 => 101,  247 => 89,  238 => 108,  232 => 83,  218 => 87,  214 => 80,  206 => 107,  158 => 47,  146 => 79,  40 => 16,  286 => 99,  279 => 106,  274 => 94,  260 => 105,  252 => 93,  241 => 86,  237 => 98,  233 => 88,  231 => 82,  226 => 95,  210 => 78,  195 => 77,  187 => 59,  181 => 55,  167 => 50,  137 => 51,  124 => 37,  97 => 27,  69 => 31,  53 => 11,  229 => 87,  221 => 85,  209 => 68,  203 => 65,  197 => 61,  174 => 52,  166 => 49,  142 => 55,  117 => 49,  62 => 27,  227 => 74,  223 => 73,  219 => 93,  213 => 69,  207 => 66,  190 => 66,  182 => 56,  168 => 50,  150 => 44,  110 => 42,  129 => 38,  87 => 38,  49 => 19,  134 => 38,  86 => 32,  77 => 36,  164 => 64,  148 => 75,  128 => 37,  199 => 63,  179 => 67,  169 => 62,  161 => 63,  107 => 32,  23 => 2,  449 => 141,  445 => 140,  441 => 139,  437 => 138,  432 => 137,  429 => 165,  421 => 122,  418 => 121,  413 => 159,  409 => 116,  403 => 115,  400 => 114,  391 => 153,  386 => 110,  381 => 148,  378 => 144,  375 => 147,  372 => 133,  367 => 141,  364 => 104,  360 => 138,  354 => 137,  351 => 136,  348 => 134,  342 => 72,  338 => 127,  335 => 124,  332 => 125,  329 => 121,  326 => 123,  320 => 123,  310 => 117,  303 => 109,  294 => 111,  290 => 106,  278 => 102,  275 => 102,  269 => 101,  265 => 106,  261 => 94,  257 => 98,  253 => 112,  243 => 90,  239 => 95,  217 => 83,  202 => 70,  200 => 82,  175 => 65,  173 => 67,  170 => 62,  156 => 59,  125 => 36,  99 => 31,  301 => 112,  295 => 113,  292 => 109,  289 => 104,  287 => 124,  282 => 107,  276 => 99,  273 => 98,  270 => 99,  268 => 107,  263 => 95,  249 => 98,  245 => 96,  230 => 106,  222 => 82,  220 => 90,  215 => 82,  211 => 67,  204 => 70,  198 => 63,  185 => 57,  183 => 69,  177 => 58,  160 => 49,  112 => 33,  82 => 30,  65 => 19,  38 => 6,  144 => 42,  141 => 43,  135 => 39,  126 => 46,  109 => 56,  103 => 36,  67 => 26,  61 => 15,  47 => 30,  91 => 26,  84 => 25,  94 => 27,  88 => 27,  59 => 29,  28 => 2,  225 => 86,  216 => 90,  212 => 88,  205 => 67,  201 => 74,  196 => 69,  194 => 72,  191 => 71,  189 => 70,  186 => 94,  180 => 54,  172 => 66,  159 => 59,  154 => 45,  147 => 55,  132 => 68,  127 => 51,  121 => 50,  118 => 44,  114 => 43,  104 => 30,  100 => 28,  78 => 37,  75 => 22,  71 => 19,  34 => 11,  105 => 31,  93 => 46,  79 => 24,  76 => 29,  72 => 21,  68 => 21,  58 => 26,  24 => 1,  27 => 7,  21 => 2,  44 => 17,  31 => 3,  26 => 5,  25 => 4,  19 => 1,  70 => 27,  63 => 25,  46 => 9,  22 => 2,  163 => 49,  155 => 46,  152 => 44,  149 => 43,  145 => 54,  139 => 54,  131 => 52,  123 => 36,  120 => 35,  115 => 34,  106 => 31,  101 => 35,  96 => 42,  83 => 24,  80 => 37,  74 => 36,  66 => 20,  55 => 22,  52 => 11,  50 => 10,  43 => 8,  41 => 15,  37 => 5,  35 => 5,  32 => 4,  29 => 4,  184 => 57,  178 => 64,  171 => 63,  165 => 50,  162 => 60,  157 => 46,  153 => 57,  151 => 56,  143 => 41,  138 => 40,  136 => 42,  133 => 50,  130 => 48,  122 => 45,  119 => 34,  116 => 35,  111 => 32,  108 => 34,  102 => 33,  98 => 32,  95 => 28,  92 => 27,  89 => 29,  85 => 37,  81 => 26,  73 => 22,  64 => 31,  60 => 22,  57 => 15,  54 => 11,  51 => 11,  48 => 19,  45 => 8,  42 => 7,  39 => 7,  36 => 12,  33 => 4,  30 => 5,);
+        return array (  384 => 138,  377 => 134,  343 => 126,  329 => 121,  374 => 144,  370 => 143,  348 => 134,  336 => 128,  313 => 118,  307 => 116,  391 => 153,  373 => 146,  351 => 136,  340 => 129,  334 => 128,  328 => 126,  20 => 1,  140 => 42,  327 => 141,  317 => 136,  311 => 117,  337 => 151,  319 => 120,  300 => 135,  277 => 127,  253 => 90,  188 => 97,  359 => 131,  352 => 136,  333 => 123,  322 => 124,  314 => 140,  299 => 113,  242 => 89,  429 => 165,  425 => 164,  419 => 160,  413 => 159,  411 => 158,  407 => 156,  395 => 154,  389 => 148,  383 => 146,  378 => 144,  372 => 133,  360 => 138,  354 => 137,  349 => 135,  338 => 127,  332 => 125,  326 => 123,  321 => 121,  315 => 113,  303 => 109,  257 => 91,  442 => 172,  438 => 171,  434 => 170,  422 => 165,  420 => 164,  416 => 162,  410 => 158,  404 => 156,  398 => 154,  392 => 152,  381 => 148,  367 => 141,  358 => 130,  330 => 124,  324 => 117,  310 => 117,  306 => 118,  248 => 101,  345 => 134,  339 => 125,  331 => 122,  323 => 140,  320 => 123,  288 => 109,  266 => 104,  291 => 113,  283 => 101,  271 => 118,  262 => 115,  239 => 95,  208 => 70,  316 => 122,  312 => 119,  308 => 111,  296 => 134,  265 => 106,  261 => 94,  256 => 100,  250 => 100,  236 => 84,  224 => 81,  176 => 63,  113 => 57,  202 => 70,  56 => 11,  304 => 114,  297 => 108,  259 => 93,  244 => 110,  228 => 82,  193 => 74,  90 => 20,  285 => 102,  281 => 122,  275 => 98,  269 => 101,  267 => 96,  251 => 90,  246 => 95,  234 => 114,  192 => 63,  298 => 103,  294 => 111,  278 => 102,  264 => 102,  255 => 101,  247 => 89,  243 => 86,  238 => 108,  218 => 74,  214 => 74,  206 => 70,  158 => 49,  146 => 79,  40 => 16,  286 => 99,  279 => 95,  274 => 94,  260 => 91,  252 => 89,  241 => 86,  237 => 85,  233 => 83,  231 => 82,  210 => 72,  195 => 67,  187 => 63,  181 => 60,  167 => 54,  137 => 42,  124 => 37,  97 => 27,  69 => 16,  53 => 11,  229 => 76,  221 => 74,  209 => 69,  203 => 66,  197 => 62,  174 => 54,  166 => 51,  142 => 44,  117 => 35,  62 => 16,  227 => 74,  223 => 73,  219 => 72,  213 => 68,  207 => 71,  190 => 59,  182 => 56,  168 => 51,  150 => 45,  110 => 31,  129 => 39,  87 => 38,  49 => 16,  134 => 52,  86 => 39,  77 => 36,  164 => 64,  148 => 45,  128 => 40,  199 => 69,  179 => 56,  169 => 52,  161 => 61,  107 => 33,  23 => 2,  464 => 150,  460 => 149,  456 => 148,  452 => 147,  447 => 146,  444 => 145,  436 => 122,  433 => 166,  428 => 166,  424 => 116,  418 => 115,  415 => 114,  406 => 111,  401 => 152,  396 => 153,  393 => 108,  390 => 107,  387 => 152,  382 => 105,  379 => 104,  375 => 147,  369 => 144,  366 => 132,  363 => 140,  357 => 138,  353 => 135,  350 => 128,  347 => 127,  344 => 129,  341 => 152,  335 => 124,  325 => 122,  318 => 119,  309 => 134,  305 => 110,  302 => 114,  293 => 106,  290 => 106,  284 => 106,  280 => 97,  272 => 95,  258 => 104,  254 => 91,  240 => 85,  235 => 91,  232 => 83,  226 => 78,  217 => 74,  200 => 82,  175 => 69,  173 => 53,  170 => 55,  156 => 49,  125 => 64,  99 => 31,  301 => 112,  295 => 96,  292 => 109,  289 => 104,  287 => 124,  282 => 107,  276 => 99,  273 => 98,  270 => 104,  268 => 93,  263 => 100,  249 => 88,  245 => 87,  230 => 106,  222 => 82,  220 => 90,  215 => 70,  211 => 77,  204 => 73,  198 => 66,  185 => 62,  183 => 57,  177 => 58,  160 => 49,  112 => 39,  82 => 27,  65 => 14,  38 => 6,  144 => 44,  141 => 43,  135 => 41,  126 => 50,  109 => 56,  103 => 36,  67 => 18,  61 => 15,  47 => 30,  91 => 29,  84 => 19,  94 => 38,  88 => 28,  59 => 13,  28 => 2,  225 => 75,  216 => 73,  212 => 88,  205 => 70,  201 => 64,  196 => 61,  194 => 96,  191 => 65,  189 => 62,  186 => 94,  180 => 71,  172 => 66,  159 => 50,  154 => 48,  147 => 46,  132 => 68,  127 => 39,  121 => 36,  118 => 42,  114 => 37,  104 => 29,  100 => 32,  78 => 37,  75 => 30,  71 => 19,  34 => 11,  105 => 35,  93 => 26,  79 => 24,  76 => 35,  72 => 34,  68 => 19,  58 => 26,  24 => 1,  27 => 7,  21 => 2,  44 => 17,  31 => 3,  26 => 5,  25 => 4,  19 => 1,  70 => 18,  63 => 17,  46 => 9,  22 => 2,  163 => 60,  155 => 82,  152 => 58,  149 => 58,  145 => 45,  139 => 43,  131 => 40,  123 => 39,  120 => 37,  115 => 39,  106 => 30,  101 => 28,  96 => 42,  83 => 27,  80 => 37,  74 => 36,  66 => 17,  55 => 12,  52 => 10,  50 => 10,  43 => 8,  41 => 15,  37 => 5,  35 => 5,  32 => 4,  29 => 4,  184 => 57,  178 => 59,  171 => 53,  165 => 50,  162 => 86,  157 => 59,  153 => 46,  151 => 46,  143 => 44,  138 => 42,  136 => 42,  133 => 52,  130 => 40,  122 => 38,  119 => 67,  116 => 35,  111 => 35,  108 => 34,  102 => 43,  98 => 41,  95 => 41,  92 => 30,  89 => 29,  85 => 37,  81 => 26,  73 => 17,  64 => 31,  60 => 22,  57 => 15,  54 => 11,  51 => 11,  48 => 19,  45 => 8,  42 => 7,  39 => 7,  36 => 12,  33 => 4,  30 => 5,);
     }
 }

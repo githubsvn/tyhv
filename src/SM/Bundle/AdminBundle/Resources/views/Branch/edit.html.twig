@@ -1,9 +1,16 @@
 {% extends 'SMAdminBundle::admin.html.twig' %}
 {% block body %}
-<h2>{{ 'Branch Edit'|trans({}, "SMAdminBundle") }}</h2>
+<h1>{{ 'Category Edit'|trans({}, "SMAdminBundle") }}</h1>
 
 <form action="{{ path('admin_branch_edit', {'id' : entity.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
     <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Parent'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.parent) }}
+                {{ form_widget(form.parent) }}
+            </div>
+        </div>
         <div class="control-group">
             <label class="control-label" for="input01">{{ 'Status'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
@@ -43,7 +50,7 @@
                             <fieldset>
                                 {% if currentAL is not null %}
                                 <div class="control-group">
-                                    <label class="control-label" for="input01">{{ 'Status'|trans({}, "SMAdminBundle") }}</label>
+                                    <label class="control-label" for="input01">{{ 'Name'|trans({}, "SMAdminBundle") }}</label>
                                     <div class="controls">
                                         {{ form_errors(currentAL.name) }}
                                         {% if defaultLanguage.name == currentAL.vars.value.language.name %}

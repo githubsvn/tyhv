@@ -38,18 +38,18 @@ class NewsLanguage {
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="intro", type="text")
      */
     private $intro;
-    
+
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -57,7 +57,7 @@ class NewsLanguage {
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -73,14 +73,14 @@ class NewsLanguage {
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -96,14 +96,14 @@ class NewsLanguage {
     public function setIntro($intro)
     {
         $this->intro = $intro;
-    
+
         return $this;
     }
 
     /**
      * Get intro
      *
-     * @return string 
+     * @return string
      */
     public function getIntro()
     {
@@ -119,14 +119,14 @@ class NewsLanguage {
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -142,14 +142,14 @@ class NewsLanguage {
     public function setLanguage(\SM\Bundle\AdminBundle\Entity\Language $language = null)
     {
         $this->language = $language;
-    
+
         return $this;
     }
 
     /**
      * Get language
      *
-     * @return \SM\Bundle\AdminBundle\Entity\Language 
+     * @return \SM\Bundle\AdminBundle\Entity\Language
      */
     public function getLanguage()
     {
@@ -165,7 +165,7 @@ class NewsLanguage {
     public function setNews(\SM\Bundle\AdminBundle\Entity\News $news = null)
     {
         $this->news = $news;
-    
+
         return $this;
     }
 

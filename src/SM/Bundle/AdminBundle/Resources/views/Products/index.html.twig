@@ -53,17 +53,7 @@
                         {% for obj in optBranchs %}
                             {% if obj.getCurrentLanguage is not null %}
                                 <option value="{{obj.id}}" {% if obj.id == branchId %} selected="selected"{% endif %}>
-                                    {{ obj.getCurrentLanguage.name | truncate(50) }}
-                                </option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-            {{ 'Product Group'|trans({}, "SMAdminBundle") }} : <select name="productgroup" id="productgroup">
-                        <option value="">-- {{ 'Select'|trans({}, "SMAdminBundle") }} -- </option>
-                        {% for obj in optProductGroups %}
-                            {% if obj.getCurrentLanguage is not null %}
-                                <option value="{{obj.id}}" {% if obj.id == productgroupId %} selected="selected"{% endif %}>
-                                    {{ obj.getCurrentLanguage.name | truncate(50) }}
+                                    {{ obj.getCurrentLanguage.getTreeName | truncate(50) }}
                                 </option>
                             {% endif %}
                         {% endfor %}

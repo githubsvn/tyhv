@@ -28,9 +28,6 @@ SM\Bundle\AdminBundle\Entity\Products:
         branch:
             - NotNull:
                 message: Please choose this field.
-        productgroup:
-            - NotNull:
-                message: Please choose this field.
         price:
             - Min:
                 limit: -1

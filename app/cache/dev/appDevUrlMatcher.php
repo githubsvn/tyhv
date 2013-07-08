@@ -200,6 +200,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
                 not_admin_user_delete:
 
+                // admin_user_delete_all
+                if ($pathinfo === '/admin/user/deleteall') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_admin_user_delete_all;
+                    }
+
+                    return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\UserController::deleteAllAction',  '_route' => 'admin_user_delete_all',);
+                }
+                not_admin_user_delete_all:
+
             }
 
             if (0 === strpos($pathinfo, '/admin/role')) {
@@ -949,6 +960,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::getParamAction',  'type' => NULL,)), array('_route' => 'admin_menu_get_param'));
                 }
 
+                // admin_menu_delete_all
+                if ($pathinfo === '/admin/menu/deleteall') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_admin_menu_delete_all;
+                    }
+
+                    return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::deleteAllAction',  '_route' => 'admin_menu_delete_all',);
+                }
+                not_admin_menu_delete_all:
+
             }
 
             if (0 === strpos($pathinfo, '/admin/news')) {
@@ -1004,6 +1026,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\NewsController::deleteAction',)), array('_route' => 'admin_news_delete'));
                 }
                 not_admin_news_delete:
+
+                // admin_news_delete_all
+                if ($pathinfo === '/admin/news/deleteall') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_admin_news_delete_all;
+                    }
+
+                    return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\NewsController::deleteAllAction',  '_route' => 'admin_news_delete_all',);
+                }
+                not_admin_news_delete_all:
 
             }
 
@@ -1063,16 +1096,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-            // _imagine_my_thumb
-            if (0 === strpos($pathinfo, '/media/cache/my_thumb') && preg_match('#^/media/cache/my_thumb/(?P<path>.+)$#s', $pathinfo, $matches)) {
+            // _imagine_thumbs
+            if (0 === strpos($pathinfo, '/media/cache/thumbs') && preg_match('#^/media/cache/thumbs/(?P<path>.+)$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not__imagine_my_thumb;
+                    goto not__imagine_thumbs;
                 }
 
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'liip_imagine.controller:filterAction',  'filter' => 'my_thumb',)), array('_route' => '_imagine_my_thumb'));
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'liip_imagine.controller:filterAction',  'filter' => 'thumbs',)), array('_route' => '_imagine_thumbs'));
             }
-            not__imagine_my_thumb:
+            not__imagine_thumbs:
 
         }
 

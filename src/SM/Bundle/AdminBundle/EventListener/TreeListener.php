@@ -23,6 +23,7 @@ class TreeListener
             "SM\Bundle\AdminBundle\Entity\Menu",
             "SM\Bundle\AdminBundle\Entity\Category",
             "SM\Bundle\AdminBundle\Entity\MediaCategory",
+            "SM\Bundle\AdminBundle\Entity\Branch",
         );
     }
 
@@ -37,7 +38,7 @@ class TreeListener
         if ($this->acceptPostTree($entity)) {
             //set the value of left to bigest
             $entity->setLft($this->getBigestLft(get_class($entity)));
-            
+
             //check for root
             $root = $this->_em
                     ->getRepository(get_class($entity))
@@ -200,9 +201,9 @@ class TreeListener
 
     /**
      * get the bigest left value
-     * 
+     *
      * @param string $className
-     * 
+     *
      * @return integer
      */
     private function getBigestLft($className)

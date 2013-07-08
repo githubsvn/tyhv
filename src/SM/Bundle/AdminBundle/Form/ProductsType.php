@@ -19,15 +19,8 @@ class ProductsType extends AbstractType
                     'class' => 'SMAdminBundle:Branch',
                     'query_builder' => function (BranchRepository $pRe) {
                         return $pRe->createQueryBuilder('c')
-                            ->where('c.status = 1');
-                    }
-                ))
-                ->add('productgroup', 'entity', array(
-                    'required' => true,
-                    'class' => 'SMAdminBundle:ProductGroup',
-                    'query_builder' => function (ProductGroupRepository $pRe) {
-                        return $pRe->createQueryBuilder('c')
-                            ->where('c.status = 1');
+                                ->orderBy('c.lft', 'ASC')
+                                ->where('c.status = 1');
                     }
                 ))
                 ->add('price', null, array(

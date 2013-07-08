@@ -11,7 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="SM\Bundle\AdminBundle\Repository\BranchRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Branch {
+class Branch
+{
 
     /**
      * @var integer
@@ -19,15 +20,35 @@ class Branch {
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OrderBy({"lft" = "ASC"})
      */
     private $id;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\ManyToOne(targetEntity="Branch", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
      */
-    private $status;
+    private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Branch", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $children;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lft", type="integer", nullable=true)
+     */
+    private $lft;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rgt", type="integer", nullable=true)
+     */
+    private $rgt;
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
@@ -40,16 +61,23 @@ class Branch {
     private $updated;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    private $status;
+
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $created_at;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updated_at;
 
@@ -68,7 +96,8 @@ class Branch {
     /**
      * @ORM\PrePersist
      */
-    public function setCreatedAtValue() {
+    public function setCreatedAtValue()
+    {
         if (!$this->getCreatedAt()) {
             $this->created_at = new \DateTime();
             $this->updated_at = new \DateTime();
@@ -76,11 +105,21 @@ class Branch {
     }
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->branch_languages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -90,7 +129,8 @@ class Branch {
      * @param boolean $status
      * @return Branch
      */
-    public function setStatus($status) {
+    public function setStatus($status)
+    {
         $this->status = $status;
 
         return $this;
@@ -101,50 +141,9 @@ class Branch {
      *
      * @return boolean
      */
-    public function getStatus() {
+    public function getStatus()
+    {
         return $this->status;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \SM\Bundle\AdminBundle\Entity\User $user
-     * @return Branch
-     */
-    public function setCreated($created) {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return \SM\Bundle\AdminBundle\Entity\User
-     */
-    public function getCreated() {
-        return $this->created;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \SM\Bundle\AdminBundle\Entity\User $user
-     * @return Branch
-     */
-    public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated) {
-        $this->updated = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Get updated
-     *
-     * @return \SM\Bundle\AdminBundle\Entity\User
-     */
-    public function getUpdated() {
-        return $this->updated;
     }
 
     /**
@@ -153,7 +152,8 @@ class Branch {
      * @param \DateTime $createdAt
      * @return Branch
      */
-    public function setCreatedAt($createdAt) {
+    public function setCreatedAt($createdAt)
+    {
         $this->created_at = $createdAt;
 
         return $this;
@@ -164,7 +164,8 @@ class Branch {
      *
      * @return \DateTime
      */
-    public function getCreatedAt() {
+    public function getCreatedAt()
+    {
         return $this->created_at;
     }
 
@@ -174,7 +175,8 @@ class Branch {
      * @param \DateTime $updatedAt
      * @return Branch
      */
-    public function setUpdatedAt($updatedAt) {
+    public function setUpdatedAt($updatedAt)
+    {
         $this->updated_at = $updatedAt;
 
         return $this;
@@ -185,16 +187,78 @@ class Branch {
      *
      * @return \DateTime
      */
-    public function getUpdatedAt() {
+    public function getUpdatedAt()
+    {
         return $this->updated_at;
     }
 
     /**
-     * Constructor
+     * Set parent
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Branch $parent
+     * @return Branch
      */
-    public function __construct() {
-        $this->branch_languages = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->language = null;
+    public function setParent(\SM\Bundle\AdminBundle\Entity\Branch $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\Branch
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\User $created
+     * @return Branch
+     */
+    public function setCreated(\SM\Bundle\AdminBundle\Entity\User $created = null)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\User
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\User $updated
+     * @return Branch
+     */
+    public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated = null)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\User
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 
     /**
@@ -203,7 +267,8 @@ class Branch {
      * @param \SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages
      * @return Branch
      */
-    public function addBranchLanguage(\SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages) {
+    public function addBranchLanguage(\SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages)
+    {
         $this->branch_languages[] = $branchLanguages;
 
         return $this;
@@ -214,7 +279,8 @@ class Branch {
      *
      * @param \SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages
      */
-    public function removeBranchLanguage(\SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages) {
+    public function removeBranchLanguage(\SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages)
+    {
         $this->branch_languages->removeElement($branchLanguages);
     }
 
@@ -223,17 +289,41 @@ class Branch {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBranchLanguages() {
+    public function getBranchLanguages()
+    {
         return $this->branch_languages;
     }
 
-    public function getCurrentLanguage() {
-        $objLanguages = $this->branch_languages->toArray();
-        if (is_array($objLanguages)) {
+    /**
+     * Set Language
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Language $language
+     */
+    public function setLanguage(Language $language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return \SM\Bundle\AdminBundle\Entity\Language
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    public function getCurrentLanguage()
+    {
+        $catLanguages = $this->branch_languages->toArray();
+        if (is_array($catLanguages)) {
             if (null !== $this->language) {
-                foreach ($objLanguages as $oLanguage) {
-                    if ($oLanguage->getLanguage()->getId() == $this->language->getId()) {
-                        return $oLanguage;
+                foreach ($catLanguages as $ctLanguage) {
+                    if ($ctLanguage->getLanguage()->getId() == $this->language->getId()) {
+                        return $ctLanguage;
                     }
                 }
             }
@@ -242,7 +332,8 @@ class Branch {
         return null;
     }
 
-    public function hasLanguage(Language $language) {
+    public function hasLanguage(Language $language)
+    {
         $result = false;
         if (count($this->branch_languages->toArray()) > 0) {
             foreach ($this->branch_languages as $plTemp) {
@@ -256,34 +347,103 @@ class Branch {
         return $result;
     }
 
-    public function __toString() {
-        $objLanguages = $this->branch_languages->toArray();
-        if (is_array($objLanguages)) {
-            if (isset($objLanguages[0])) {
-                return $objLanguages[0]->getName();
+    public function __toString()
+    {
+        $catLanguages = $this->branch_languages->toArray();
+        if (is_array($catLanguages)) {
+            if (isset($catLanguages[0])) {
+                return $catLanguages[0]->getTreeName();
             }
         }
+
         return '';
     }
 
     /**
-     * Set Language
+     * Set lft
      *
-     * @param \SM\Bundle\AdminBundle\Entity\Language $language
+     * @param integer $lft
+     * @return Branch
      */
-    public function setLanguage(Language $language) {
-        $this->language = $language;
+    public function setLft($lft)
+    {
+        $this->lft = $lft;
 
         return $this;
     }
 
     /**
-     * Get language
+     * Get lft
      *
-     * @return \SM\Bundle\AdminBundle\Entity\Language
+     * @return integer
      */
-    public function getLanguage() {
-        return $this->language;
+    public function getLft()
+    {
+        return $this->lft;
     }
 
+    /**
+     * Set rgt
+     *
+     * @param integer $rgt
+     * @return Branch
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+
+        return $this;
+    }
+
+    /**
+     * Get rgt
+     *
+     * @return integer
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * Add children
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Branch $children
+     * @return Branch
+     */
+    public function addChildren(\SM\Bundle\AdminBundle\Entity\Branch $children)
+    {
+        $this->children[] = $children;
+
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \SM\Bundle\AdminBundle\Entity\Branch $children
+     */
+    public function removeChildren(\SM\Bundle\AdminBundle\Entity\Branch $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    public function getLevel()
+    {
+        if (null === $this->parent) {
+            return 1;
+        } else {
+            return $this->parent->getLevel() + 1;
+        }
+    }
 }

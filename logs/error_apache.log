@@ -139,3 +139,12 @@
 [Fri Jul 05 11:20:24 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\MenuController->getParamAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/menu/new
 [Fri Jul 05 11:20:24 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\MenuRepository->getOptionParam() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/MenuController.php:378, referer: http://local.tyhv/admin/menu/new
 [Fri Jul 05 11:20:24 2013] [error] [client 127.0.0.1] PHP   9. SM\\Bundle\\AdminBundle\\Repository\\CompanyRepository->getOptions() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/MenuRepository.php:469, referer: http://local.tyhv/admin/menu/new
+[Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP Fatal error:  Class 'SM\\Bundle\\AdminBundle\\Controller\\Category' not found in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/BranchController.php on line 101, referer: http://local.tyhv/admin/branch
+[Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/branch
+[Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/branch
+[Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/branch
+[Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:619, referer: http://local.tyhv/admin/branch
+[Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1568, referer: http://local.tyhv/admin/branch
+[Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1392, referer: http://local.tyhv/admin/branch
+[Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1428, referer: http://local.tyhv/admin/branch
+[Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\BranchController->newAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/branch

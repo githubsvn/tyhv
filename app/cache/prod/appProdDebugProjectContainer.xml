@@ -467,8 +467,8 @@
     <parameter key="jms_di_extra.directories" type="collection"/>
     <parameter key="jms_di_extra.cache_dir">/home/www/local.tyhv/app/cache/prod/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51d632f84bb1e.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51d632f84bb1e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51da2d9aeb874.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51da2d9aeb874_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -579,16 +579,6 @@
           <parameter key="action" type="collection">
             <parameter>admin_branch_new</parameter>
             <parameter>admin_branch</parameter>
-          </parameter>
-        </parameter>
-        <parameter type="collection">
-          <parameter key="class">SM\Bundle\AdminBundle\Entity\Group</parameter>
-          <parameter key="group">SẢN PHẨM</parameter>
-          <parameter key="label">QL Nhóm Hàng</parameter>
-          <parameter key="acl">true</parameter>
-          <parameter key="action" type="collection">
-            <parameter>admin_productgroup_new</parameter>
-            <parameter>admin_productgroup</parameter>
           </parameter>
         </parameter>
         <parameter type="collection">
@@ -2029,7 +2019,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>51d632f5c8912</argument>
+            <argument>51da2d9a9fa07</argument>
           </service>
         </argument>
       </argument>
@@ -2382,7 +2372,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>51d632f5c8912</argument>
+            <argument>51da2d9a9fa07</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2806,8 +2796,8 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager51d632f84bb1e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51d632f84bb1e.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager51da2d9aeb874_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/home/www/local.tyhv/app/cache/prod/jms_diextra/doctrine/EntityManager_51da2d9aeb874.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>

@@ -25,13 +25,11 @@ class ProductsController extends Controller
             $_SESSION['lang'] = $this->getRequest()->request->get('language', '');
             $_SESSION['name'] = $this->getRequest()->request->get('name', '');
             $_SESSION['branch'] = $this->getRequest()->request->get('branch', null);
-            $_SESSION['productgroup'] = $this->getRequest()->request->get('productgroup', null);
         }
 
         $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : $lang;
         $name = isset($_SESSION['name']) ? $_SESSION['name'] : '';
         $branchId = isset($_SESSION['branch']) ? $_SESSION['branch'] : '';
-        $productgroupId = isset($_SESSION['productgroup']) ? $_SESSION['productgroup'] : '';
 
         //get list language
         $langList = $this->getDoctrine()
@@ -54,7 +52,7 @@ class ProductsController extends Controller
 
         $total = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:ProductLanguage")
-                ->getTotalByLangAndNameAndType($lang, $name, $branchId, $productgroupId);
+                ->getTotalByLangAndNameAndType($lang, $name, $branchId);
 
         $perPage = $this->container->getParameter('per_item_page');
         $lastPage = ceil($total / $perPage);
@@ -63,17 +61,14 @@ class ProductsController extends Controller
 
         $entities = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:ProductLanguage")
-                ->findByLangAndNameAndBranchAndProductGroup($lang, $name, $branchId, $productgroupId, $perPage, ($page - 1) * $perPage);
+                ->findByLangAndNameAndBranchAndProductGroup($lang, $name, $branchId, $perPage, ($page - 1) * $perPage);
 
         //Get branch and product group
+        $criteria = array();
+        $criteria[] = array('op' => '=', 'fieldName' => 'status', 'fieldValue' => '1');
         $repBranch = $this->getDoctrine()->getRepository('SMAdminBundle:Branch');
-        $optBranchs = $repBranch->getList();
+        $optBranchs = $repBranch->getList(null, null, $criteria, array('lft' => 'ASC'));
         foreach ($optBranchs as $oItem) {
-            $oItem->setLanguage($currentLanguage);
-        }
-        $repProductGroup = $this->getDoctrine()->getRepository('SMAdminBundle:ProductGroup');
-        $optProductGroups = $repProductGroup->getList();
-        foreach ($optProductGroups as $oItem) {
             $oItem->setLanguage($currentLanguage);
         }
 
@@ -87,10 +82,8 @@ class ProductsController extends Controller
                     'lang' => intval($lang),
                     'name' => $name,
                     'branchId' => $branchId,
-                    'productgroupId' => $productgroupId,
                     'langList' => $langList,
                     'optBranchs' => $optBranchs,
-                    'optProductGroups' => $optProductGroups,
                 ));
     }
 

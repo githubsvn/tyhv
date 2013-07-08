@@ -483,6 +483,16 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
             not_admin_branch_delete:
 
+            // admin_branch_up
+            if (0 === strpos($pathinfo, '/admin/branch/up') && preg_match('#^/admin/branch/up/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\BranchController::upAction',)), array('_route' => 'admin_branch_up'));
+            }
+
+            // admin_branch_down
+            if (0 === strpos($pathinfo, '/admin/branch/down') && preg_match('#^/admin/branch/down/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\BranchController::downAction',)), array('_route' => 'admin_branch_down'));
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/admin/productgroup')) {

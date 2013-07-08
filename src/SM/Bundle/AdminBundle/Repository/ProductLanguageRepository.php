@@ -88,10 +88,9 @@ class ProductLanguageRepository extends EntityRepository
      * @param type $langId
      * @param type $name
      * @param type $branchId
-     * @param type $productGroupId
      * @return array
      */
-    public function findByLangAndNameAndBranchAndProductGroup($langId, $name = '', $branchId = '', $productGroupId = '', $limit = null, $offset = null)
+    public function findByLangAndNameAndBranchAndProductGroup($langId, $name = '', $branchId = '', $limit = null, $offset = null)
     {
         $rst = array();
         if (!empty($langId)) {
@@ -100,9 +99,8 @@ class ProductLanguageRepository extends EntityRepository
             $qb->select('pl, p')
                     ->join('pl.product', 'p')
                     ->join('p.branch', 'b')
-                    ->join('p.productgroup', 'pg')
                     ->where('pl.language=:langId');
-            
+
             if (!empty($limit)) {
                 $qb->setMaxResults($limit);
             }
@@ -114,11 +112,6 @@ class ProductLanguageRepository extends EntityRepository
             if (!empty($branchId)) {
                 $qb->andWhere('p.branch=:branchId');
                 $qb->setParameter('branchId', $branchId);
-            }
-
-            if (!empty($productGroupId)) {
-                $qb->andWhere('p.productgroup=:productGroupId');
-                $qb->setParameter('productGroupId', $productGroupId);
             }
 
             if (!empty($name)) {
@@ -142,7 +135,7 @@ class ProductLanguageRepository extends EntityRepository
      * @param type $typeId
      * @return int
      */
-    public function getTotalByLangAndNameAndType($langId, $name = '', $branchId = '', $productGroupId = '')
+    public function getTotalByLangAndNameAndType($langId, $name = '', $branchId = '')
     {
         if (!empty($langId)) {
             $qb = $this->createQueryBuilder('pl');
@@ -150,17 +143,11 @@ class ProductLanguageRepository extends EntityRepository
             $qb->select('pl, p')
                     ->join('pl.product', 'p')
                     ->join('p.branch', 'b')
-                    ->join('p.productgroup', 'pg')
                     ->where('pl.language=:langId');
 
             if (!empty($branchId)) {
                 $qb->andWhere('p.branch=:branchId');
                 $qb->setParameter('branchId', $branchId);
-            }
-
-            if (!empty($productGroupId)) {
-                $qb->andWhere('p.productgroup=:productGroupId');
-                $qb->setParameter('productGroupId', $productGroupId);
             }
 
             if (!empty($name)) {

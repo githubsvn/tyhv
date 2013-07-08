@@ -492,4 +492,50 @@ class Menu
     {
         return $this->url;
     }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     * @return Menu
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set param
+     *
+     * @param integer $param
+     * @return Menu
+     */
+    public function setParam($param)
+    {
+        $this->param = $param;
+    
+        return $this;
+    }
+
+    /**
+     * Get param
+     *
+     * @return integer 
+     */
+    public function getParam()
+    {
+        return $this->param;
+    }
 }

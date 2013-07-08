@@ -94,12 +94,8 @@ class __TwigTemplate_099400d7dd804ca9985ef67f6c988d8a extends Twig_Template
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"input01\"></label>
             <div class=\"controls\">
-                <img src=\"";
-        // line 35
-        echo twig_escape_filter($this->env, ($this->env->getExtension('assets')->getAssetUrl($this->getContext($context, "imgPath")) . $this->env->getExtension('liip_imagine')->filter($this->getContext($context, "image"), "my_thumb")), "html", null, true);
-        echo "\" />
                 ";
-        // line 36
+        // line 35
         echo $this->env->getExtension('mtx.twig.show_image_extension')->showImages($this->getContext($context, "arrImgs"), $this->getContext($context, "imgPath"));
         echo "
             </div>
@@ -107,23 +103,23 @@ class __TwigTemplate_099400d7dd804ca9985ef67f6c988d8a extends Twig_Template
 
         <div class=\"control-group\">
             <label class=\"control-label\" for=\"optionsCheckbox\">";
-        // line 41
+        // line 40
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Image", array(), "SMAdminBundle"), "html", null, true);
         echo "</label>
             <div class=\"controls\">
               <label class=\"checkbox\">
                     ";
-        // line 44
+        // line 43
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "media_id"), 'errors');
         echo "
                     ";
-        // line 45
+        // line 44
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "media_id"), 'widget', array("attr" => array("style" => "display: none")));
         echo "
                     ";
-        // line 46
+        // line 45
         $context["selectName"] = $this->getAttribute($this->getAttribute($this->getContext($context, "form"), "media_id"), "get", array(0 => "full_name"), "method");
-        // line 47
+        // line 46
         echo "                    ";
         echo $this->env->getExtension('sm.twig.media_extension')->selectMedia($this->getContext($context, "optMedias"), $this->getContext($context, "optMediaTypes"), $this->getContext($context, "selectName"), $this->getContext($context, "mediaPath"), array("multiple" => true));
         echo "
@@ -135,17 +131,17 @@ class __TwigTemplate_099400d7dd804ca9985ef67f6c988d8a extends Twig_Template
         <div class=\"tabbable\"> <!-- Only required for left/right tabs -->
             <ul class=\"nav nav-tabs\">
                   ";
-        // line 55
+        // line 54
         $context["isActive"] = 1;
-        // line 56
+        // line 55
         echo "                  ";
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "langList"));
         foreach ($context['_seq'] as $context["_key"] => $context["lang"]) {
-            // line 57
+            // line 56
             echo "                      ";
             if (($this->getContext($context, "isActive") == 1)) {
-                // line 58
+                // line 57
                 echo "                          <li class=\"active\"><a href=\"#tab";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\" data-toggle=\"tab\">";
@@ -153,7 +149,7 @@ class __TwigTemplate_099400d7dd804ca9985ef67f6c988d8a extends Twig_Template
                 echo "</a></li>
                       ";
             } else {
-                // line 60
+                // line 59
                 echo "                          <li><a href=\"#tab";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\" data-toggle=\"tab\">";
@@ -161,111 +157,111 @@ class __TwigTemplate_099400d7dd804ca9985ef67f6c988d8a extends Twig_Template
                 echo "</a></li>
                       ";
             }
-            // line 62
+            // line 61
             echo "                      ";
             $context["isActive"] = 2;
-            // line 63
+            // line 62
             echo "                  ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['lang'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 64
+        // line 63
         echo "            </ul>
             <div class=\"tab-content\">
                 ";
-        // line 66
+        // line 65
         $context["isActive"] = 1;
-        // line 67
+        // line 66
         echo "                ";
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "langList"));
         foreach ($context['_seq'] as $context["_key"] => $context["lang"]) {
-            // line 68
+            // line 67
             echo "                    ";
             $context["currentAL"] = null;
-            // line 69
+            // line 68
             echo "                    ";
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "form"), "news_languages"));
             foreach ($context['_seq'] as $context["_key"] => $context["newsLanguage"]) {
-                // line 70
+                // line 69
                 echo "                        ";
                 if (($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "newsLanguage"), "vars"), "value"), "language"), "id") == $this->getAttribute($this->getContext($context, "lang"), "id"))) {
-                    // line 71
+                    // line 70
                     echo "                            ";
                     $context["currentAL"] = $this->getContext($context, "newsLanguage");
-                    // line 72
+                    // line 71
                     echo "                        ";
                 }
-                // line 73
+                // line 72
                 echo "                    ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['newsLanguage'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 74
+            // line 73
             echo "                    ";
             if (($this->getContext($context, "isActive") == 1)) {
-                // line 75
+                // line 74
                 echo "                        <div class=\"tab-pane active\" id=\"tab";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\">
                     ";
             } else {
-                // line 77
+                // line 76
                 echo "                        <div class=\"tab-pane\" id=\"tab";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "lang"), "id"), "html", null, true);
                 echo "\">
                     ";
             }
-            // line 79
+            // line 78
             echo "                            <fieldset>
                                 ";
-            // line 80
+            // line 79
             if ((!(null === $this->getContext($context, "currentAL")))) {
-                // line 81
+                // line 80
                 echo "                                    <div class=\"control-group\">
                                         <label class=\"control-label\" for=\"input01\">";
-                // line 82
+                // line 81
                 echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Name", array(), "SMAdminBundle"), "html", null, true);
                 echo "</label>
                                         <div class=\"controls\">
                                             ";
-                // line 84
+                // line 83
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'errors');
                 echo "
                                             ";
-                // line 85
+                // line 84
                 if (($this->getAttribute($this->getContext($context, "defaultLanguage"), "name") == $this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "currentAL"), "vars"), "value"), "language"), "name"))) {
-                    // line 86
+                    // line 85
                     echo "                                                ";
                     echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'widget', array("attr" => array("required" => "required")));
                     echo "
                                             ";
                 } else {
-                    // line 88
+                    // line 87
                     echo "                                                ";
                     echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "name"), 'widget');
                     echo "
                                             ";
                 }
-                // line 90
+                // line 89
                 echo "                                        </div>
                                     </div>
 
                                     <div class=\"control-group\">
                                     <label class=\"control-label\" for=\"input01\">";
-                // line 94
+                // line 93
                 echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Intro", array(), "SMAdminBundle"), "html", null, true);
                 echo "</label>
                                     <div class=\"controls\">
                                         ";
-                // line 96
+                // line 95
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "intro"), 'errors');
                 echo "
                                         ";
-                // line 97
+                // line 96
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "intro"), 'widget');
                 echo "
                                     </div>
@@ -273,16 +269,16 @@ class __TwigTemplate_099400d7dd804ca9985ef67f6c988d8a extends Twig_Template
 
                                 <div class=\"control-group\">
                                     <label class=\"control-label\" for=\"input01\">";
-                // line 102
+                // line 101
                 echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Description", array(), "SMAdminBundle"), "html", null, true);
                 echo "</label>
                                     <div class=\"controls\">
                                         ";
-                // line 104
+                // line 103
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "description"), 'errors');
                 echo "
                                         ";
-                // line 105
+                // line 104
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "currentAL"), "description"), 'widget');
                 echo "
                                     </div>
@@ -290,33 +286,33 @@ class __TwigTemplate_099400d7dd804ca9985ef67f6c988d8a extends Twig_Template
 
                                 ";
             }
-            // line 110
+            // line 109
             echo "                            </fieldset>
                         </div>
                     ";
-            // line 112
+            // line 111
             $context["isActive"] = 2;
-            // line 113
+            // line 112
             echo "               ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['lang'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 114
+        // line 113
         echo "            </div>
         </div>
 
         <div class=\"form-actions\">
             ";
-        // line 118
+        // line 117
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form"), "_token"), 'row');
         echo "
             <button type=\"submit\" class=\"btn btn-primary\">";
-        // line 119
+        // line 118
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Save", array(), "SMAdminBundle"), "html", null, true);
         echo "</button>
             <a href=\"";
-        // line 120
+        // line 119
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("admin_news", array("page" => 1)), "html", null, true);
         echo "\" class=\"btn\">";
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Back to the list", array(), "SMAdminBundle"), "html", null, true);
@@ -341,6 +337,6 @@ class __TwigTemplate_099400d7dd804ca9985ef67f6c988d8a extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  316 => 119,  312 => 118,  306 => 114,  300 => 113,  277 => 102,  254 => 90,  248 => 88,  242 => 86,  240 => 85,  236 => 84,  208 => 74,  188 => 69,  113 => 38,  56 => 23,  304 => 116,  297 => 112,  259 => 103,  244 => 95,  235 => 91,  228 => 81,  193 => 70,  90 => 37,  285 => 103,  281 => 102,  267 => 105,  251 => 100,  246 => 86,  234 => 80,  192 => 63,  298 => 112,  284 => 104,  272 => 100,  264 => 95,  255 => 102,  247 => 87,  238 => 81,  232 => 80,  218 => 75,  214 => 74,  206 => 71,  158 => 57,  146 => 57,  40 => 8,  286 => 105,  279 => 95,  274 => 94,  260 => 94,  252 => 89,  241 => 86,  237 => 85,  233 => 83,  231 => 82,  226 => 80,  210 => 72,  195 => 64,  187 => 74,  181 => 72,  167 => 67,  137 => 54,  124 => 47,  97 => 39,  69 => 19,  53 => 14,  229 => 78,  221 => 74,  209 => 79,  203 => 79,  197 => 74,  174 => 64,  166 => 59,  142 => 44,  117 => 44,  62 => 16,  227 => 74,  223 => 79,  219 => 72,  213 => 84,  207 => 71,  190 => 59,  182 => 56,  168 => 63,  150 => 45,  110 => 40,  129 => 47,  87 => 28,  49 => 16,  134 => 49,  86 => 25,  77 => 22,  164 => 66,  148 => 60,  128 => 46,  199 => 72,  179 => 71,  169 => 52,  161 => 63,  107 => 33,  23 => 2,  449 => 141,  445 => 140,  441 => 139,  437 => 138,  432 => 137,  429 => 136,  421 => 122,  418 => 121,  413 => 118,  409 => 116,  403 => 115,  400 => 114,  391 => 111,  386 => 110,  381 => 109,  378 => 108,  375 => 107,  372 => 106,  367 => 105,  364 => 104,  360 => 84,  354 => 82,  351 => 81,  348 => 80,  342 => 72,  338 => 71,  335 => 70,  332 => 69,  329 => 68,  326 => 67,  320 => 120,  310 => 61,  303 => 59,  294 => 110,  290 => 108,  278 => 108,  275 => 98,  269 => 97,  265 => 96,  261 => 34,  257 => 33,  253 => 32,  243 => 86,  239 => 24,  217 => 77,  202 => 73,  200 => 66,  175 => 69,  173 => 53,  170 => 55,  156 => 63,  125 => 46,  99 => 35,  301 => 100,  295 => 96,  292 => 111,  289 => 104,  287 => 54,  282 => 104,  276 => 102,  273 => 85,  270 => 106,  268 => 93,  263 => 104,  249 => 99,  245 => 87,  230 => 75,  222 => 73,  220 => 76,  215 => 70,  211 => 75,  204 => 70,  198 => 63,  185 => 68,  183 => 71,  177 => 58,  160 => 65,  112 => 39,  82 => 25,  65 => 18,  38 => 6,  144 => 59,  141 => 56,  135 => 50,  126 => 50,  109 => 43,  103 => 36,  67 => 19,  61 => 15,  47 => 30,  91 => 29,  84 => 25,  94 => 38,  88 => 28,  59 => 5,  28 => 2,  225 => 88,  216 => 90,  212 => 88,  205 => 80,  201 => 69,  196 => 71,  194 => 62,  191 => 73,  189 => 65,  186 => 61,  180 => 67,  172 => 68,  159 => 50,  154 => 62,  147 => 56,  132 => 47,  127 => 47,  121 => 45,  118 => 46,  114 => 31,  104 => 41,  100 => 25,  78 => 24,  75 => 31,  71 => 30,  34 => 5,  105 => 35,  93 => 29,  79 => 32,  76 => 23,  72 => 20,  68 => 19,  58 => 18,  24 => 1,  27 => 7,  21 => 2,  44 => 9,  31 => 3,  26 => 3,  25 => 4,  19 => 1,  70 => 18,  63 => 17,  46 => 10,  22 => 2,  163 => 58,  155 => 58,  152 => 61,  149 => 58,  145 => 45,  139 => 55,  131 => 40,  123 => 43,  120 => 37,  115 => 39,  106 => 29,  101 => 34,  96 => 32,  83 => 33,  80 => 25,  74 => 21,  66 => 17,  55 => 23,  52 => 11,  50 => 10,  43 => 8,  41 => 7,  37 => 5,  35 => 5,  32 => 4,  29 => 4,  184 => 57,  178 => 66,  171 => 68,  165 => 62,  162 => 54,  157 => 60,  153 => 46,  151 => 57,  143 => 48,  138 => 50,  136 => 49,  133 => 51,  130 => 52,  122 => 48,  119 => 41,  116 => 45,  111 => 41,  108 => 36,  102 => 33,  98 => 32,  95 => 30,  92 => 29,  89 => 28,  85 => 27,  81 => 40,  73 => 21,  64 => 17,  60 => 16,  57 => 15,  54 => 11,  51 => 11,  48 => 19,  45 => 8,  42 => 7,  39 => 11,  36 => 12,  33 => 4,  30 => 5,);
+        return array (  316 => 119,  312 => 118,  308 => 117,  296 => 112,  265 => 96,  261 => 95,  256 => 93,  250 => 89,  236 => 84,  224 => 80,  176 => 66,  113 => 43,  202 => 75,  56 => 23,  304 => 116,  297 => 112,  259 => 103,  244 => 87,  228 => 89,  193 => 76,  90 => 37,  285 => 103,  281 => 102,  275 => 98,  269 => 97,  267 => 105,  251 => 100,  246 => 86,  234 => 80,  192 => 70,  298 => 110,  294 => 111,  278 => 103,  264 => 95,  255 => 102,  247 => 87,  243 => 86,  238 => 85,  218 => 75,  214 => 74,  206 => 71,  158 => 57,  146 => 53,  40 => 8,  286 => 110,  279 => 95,  274 => 94,  260 => 94,  252 => 89,  241 => 86,  237 => 85,  233 => 83,  231 => 82,  210 => 72,  195 => 71,  187 => 74,  181 => 67,  167 => 67,  137 => 55,  124 => 47,  97 => 39,  69 => 19,  53 => 14,  229 => 78,  221 => 74,  209 => 79,  203 => 79,  197 => 74,  174 => 65,  166 => 59,  142 => 56,  117 => 44,  62 => 16,  227 => 81,  223 => 87,  219 => 78,  213 => 76,  207 => 74,  190 => 59,  182 => 56,  168 => 67,  150 => 45,  110 => 40,  129 => 47,  87 => 28,  49 => 16,  134 => 49,  86 => 25,  77 => 22,  164 => 62,  148 => 60,  128 => 46,  199 => 69,  179 => 71,  169 => 52,  161 => 61,  107 => 40,  23 => 2,  464 => 150,  460 => 149,  456 => 148,  452 => 147,  447 => 146,  444 => 145,  436 => 122,  433 => 121,  428 => 118,  424 => 116,  418 => 115,  415 => 114,  406 => 111,  401 => 110,  396 => 109,  393 => 108,  390 => 107,  387 => 106,  382 => 105,  379 => 104,  375 => 84,  369 => 82,  366 => 81,  363 => 80,  357 => 72,  353 => 71,  350 => 70,  347 => 69,  344 => 68,  341 => 67,  335 => 66,  325 => 61,  318 => 59,  309 => 57,  305 => 55,  302 => 113,  293 => 52,  290 => 109,  284 => 104,  280 => 35,  272 => 100,  258 => 25,  254 => 24,  240 => 13,  235 => 91,  232 => 83,  226 => 78,  217 => 86,  200 => 66,  175 => 69,  173 => 53,  170 => 63,  156 => 63,  125 => 49,  99 => 35,  301 => 100,  295 => 96,  292 => 111,  289 => 104,  287 => 93,  282 => 104,  276 => 102,  273 => 101,  270 => 106,  268 => 93,  263 => 104,  249 => 99,  245 => 87,  230 => 75,  222 => 79,  220 => 76,  215 => 70,  211 => 70,  204 => 73,  198 => 72,  185 => 62,  183 => 71,  177 => 58,  160 => 65,  112 => 39,  82 => 25,  65 => 18,  38 => 6,  144 => 59,  141 => 43,  135 => 54,  126 => 50,  109 => 43,  103 => 36,  67 => 19,  61 => 15,  47 => 30,  91 => 29,  84 => 25,  94 => 38,  88 => 28,  59 => 5,  28 => 2,  225 => 88,  216 => 90,  212 => 88,  205 => 80,  201 => 69,  196 => 77,  194 => 62,  191 => 73,  189 => 69,  186 => 61,  180 => 59,  172 => 68,  159 => 50,  154 => 62,  147 => 56,  132 => 47,  127 => 48,  121 => 45,  118 => 46,  114 => 31,  104 => 41,  100 => 25,  78 => 24,  75 => 31,  71 => 30,  34 => 5,  105 => 35,  93 => 29,  79 => 32,  76 => 23,  72 => 20,  68 => 19,  58 => 18,  24 => 1,  27 => 7,  21 => 2,  44 => 9,  31 => 3,  26 => 3,  25 => 4,  19 => 1,  70 => 18,  63 => 17,  46 => 10,  22 => 2,  163 => 58,  155 => 58,  152 => 61,  149 => 58,  145 => 57,  139 => 43,  131 => 40,  123 => 46,  120 => 37,  115 => 39,  106 => 29,  101 => 34,  96 => 32,  83 => 33,  80 => 25,  74 => 21,  66 => 17,  55 => 23,  52 => 11,  50 => 10,  43 => 8,  41 => 7,  37 => 5,  35 => 5,  32 => 4,  29 => 4,  184 => 68,  178 => 59,  171 => 68,  165 => 55,  162 => 54,  157 => 53,  153 => 59,  151 => 57,  143 => 48,  138 => 50,  136 => 49,  133 => 51,  130 => 52,  122 => 48,  119 => 41,  116 => 45,  111 => 30,  108 => 36,  102 => 33,  98 => 32,  95 => 30,  92 => 29,  89 => 28,  85 => 27,  81 => 40,  73 => 21,  64 => 17,  60 => 16,  57 => 15,  54 => 11,  51 => 11,  48 => 19,  45 => 8,  42 => 7,  39 => 11,  36 => 12,  33 => 4,  30 => 5,);
     }
 }

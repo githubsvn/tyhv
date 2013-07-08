@@ -69,30 +69,6 @@ class Branch extends \SM\Bundle\AdminBundle\Entity\Branch implements \Doctrine\O
         return parent::getStatus();
     }
 
-    public function setCreated($created)
-    {
-        $this->__load();
-        return parent::setCreated($created);
-    }
-
-    public function getCreated()
-    {
-        $this->__load();
-        return parent::getCreated();
-    }
-
-    public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated)
-    {
-        $this->__load();
-        return parent::setUpdated($updated);
-    }
-
-    public function getUpdated()
-    {
-        $this->__load();
-        return parent::getUpdated();
-    }
-
     public function setCreatedAt($createdAt)
     {
         $this->__load();
@@ -117,6 +93,42 @@ class Branch extends \SM\Bundle\AdminBundle\Entity\Branch implements \Doctrine\O
         return parent::getUpdatedAt();
     }
 
+    public function setParent(\SM\Bundle\AdminBundle\Entity\Branch $parent = NULL)
+    {
+        $this->__load();
+        return parent::setParent($parent);
+    }
+
+    public function getParent()
+    {
+        $this->__load();
+        return parent::getParent();
+    }
+
+    public function setCreated(\SM\Bundle\AdminBundle\Entity\User $created = NULL)
+    {
+        $this->__load();
+        return parent::setCreated($created);
+    }
+
+    public function getCreated()
+    {
+        $this->__load();
+        return parent::getCreated();
+    }
+
+    public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated = NULL)
+    {
+        $this->__load();
+        return parent::setUpdated($updated);
+    }
+
+    public function getUpdated()
+    {
+        $this->__load();
+        return parent::getUpdated();
+    }
+
     public function addBranchLanguage(\SM\Bundle\AdminBundle\Entity\BranchLanguage $branchLanguages)
     {
         $this->__load();
@@ -133,6 +145,18 @@ class Branch extends \SM\Bundle\AdminBundle\Entity\Branch implements \Doctrine\O
     {
         $this->__load();
         return parent::getBranchLanguages();
+    }
+
+    public function setLanguage(\SM\Bundle\AdminBundle\Entity\Language $language)
+    {
+        $this->__load();
+        return parent::setLanguage($language);
+    }
+
+    public function getLanguage()
+    {
+        $this->__load();
+        return parent::getLanguage();
     }
 
     public function getCurrentLanguage()
@@ -153,22 +177,58 @@ class Branch extends \SM\Bundle\AdminBundle\Entity\Branch implements \Doctrine\O
         return parent::__toString();
     }
 
-    public function setLanguage(\SM\Bundle\AdminBundle\Entity\Language $language)
+    public function setLft($lft)
     {
         $this->__load();
-        return parent::setLanguage($language);
+        return parent::setLft($lft);
     }
 
-    public function getLanguage()
+    public function getLft()
     {
         $this->__load();
-        return parent::getLanguage();
+        return parent::getLft();
+    }
+
+    public function setRgt($rgt)
+    {
+        $this->__load();
+        return parent::setRgt($rgt);
+    }
+
+    public function getRgt()
+    {
+        $this->__load();
+        return parent::getRgt();
+    }
+
+    public function addChildren(\SM\Bundle\AdminBundle\Entity\Branch $children)
+    {
+        $this->__load();
+        return parent::addChildren($children);
+    }
+
+    public function removeChildren(\SM\Bundle\AdminBundle\Entity\Branch $children)
+    {
+        $this->__load();
+        return parent::removeChildren($children);
+    }
+
+    public function getChildren()
+    {
+        $this->__load();
+        return parent::getChildren();
+    }
+
+    public function getLevel()
+    {
+        $this->__load();
+        return parent::getLevel();
     }
 
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'status', 'created_at', 'updated_at', 'created', 'updated', 'branch_languages');
+        return array('__isInitialized__', 'id', 'lft', 'rgt', 'status', 'created_at', 'updated_at', 'parent', 'children', 'created', 'updated', 'branch_languages');
     }
 
     public function __clone()

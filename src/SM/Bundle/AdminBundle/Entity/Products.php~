@@ -104,12 +104,6 @@ class Products
     protected $branch;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ProductGroup")
-     */
-    protected $productgroup;
-
-
-    /**
      * @var Language
      */
     private $language;
@@ -423,29 +417,6 @@ class Products
     public function getBranch()
     {
         return $this->branch;
-    }
-
-    /**
-     * Set productgroup
-     *
-     * @param \SM\Bundle\AdminBundle\Entity\ProductGroup $productgroup
-     * @return Products
-     */
-    public function setProductgroup(\SM\Bundle\AdminBundle\Entity\ProductGroup $productgroup = null)
-    {
-        $this->productgroup = $productgroup;
-
-        return $this;
-    }
-
-    /**
-     * Get productgroup
-     *
-     * @return \SM\Bundle\AdminBundle\Entity\ProductGroup
-     */
-    public function getProductgroup()
-    {
-        return $this->productgroup;
     }
 
     /**
