@@ -18,17 +18,18 @@ function checkDelete(){
     var hCheck = false;
     var frmRss = $('#frmList');
     btnDel.click(function(){
-        if (confirm(js_lang_do_you_want_to_delete)){
-            $('.chkItem:checked').each(function(){
-                hCheck = true;
-                return false;
-            });
+        $('.chkItem:checked').each(function(){
+            hCheck = true;
+            return false;
+        });
 
-            if(!hCheck){
-                alert(js_lang_please_choose_at_least_one_item);
-                return false;
+        if(!hCheck){
+            alert(js_lang_please_choose_at_least_one_item);
+            return false;
+        } else {
+            if (confirm(js_lang_do_you_want_to_delete)){
+                frmRss.attr('action', btnDel.attr('rel')).submit();
             }
-            frmRss.attr('action', btnDel.attr('rel')).submit();
         }
     });
 }
