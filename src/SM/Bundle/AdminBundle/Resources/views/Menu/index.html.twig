@@ -36,7 +36,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td style="text-align: center;"><input type="checkbox" value="{{entity.id}}" name="checklist[]" class="chkItem"/> </td>
+                <td style="text-align: center;"><input type="checkbox" value="{{entity.getCurrentLanguage.getId}}" name="checklist[]" class="chkItem"/> </td>
                 <td>{{ entity.id }}</td>
                 <td>
                     {% if entity.getCurrentLanguage is not null %}

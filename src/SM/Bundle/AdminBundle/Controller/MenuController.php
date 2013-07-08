@@ -161,7 +161,10 @@ class MenuController extends Controller
 
                 $entityManager->flush();
 
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Thao tác thành công!');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
 
                 $referrer = $this->getRequest()->getSession()->get('referrer');
 
@@ -175,7 +178,10 @@ class MenuController extends Controller
                     return $this->redirect($referrer);
                 }
             } else {
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Dữ liệu không hợp lệ.');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The data input is invalid'));
             }
         }
 
@@ -266,7 +272,10 @@ class MenuController extends Controller
                 $entityManager->persist($entity);
 
                 $entityManager->flush();
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Thao tác thành công!');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
                 $referrer = $this->getRequest()->getSession()->get('referrer');
 
                 if (!$referrer) {
@@ -279,7 +288,10 @@ class MenuController extends Controller
                     return $this->redirect($referrer);
                 }
             } else {
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Dữ liệu không nhập lệ.');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The data input is invalid'));
             }
         }
 
@@ -305,7 +317,10 @@ class MenuController extends Controller
 
         $rst = $rep->deleteByIds(array($id));
         if ($rst) {
-            $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Thao tác thành công.');
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
         }
         // set referrer redirect
         $referrer = $this->getRequest()->server->get('HTTP_REFERER');
@@ -532,7 +547,7 @@ class MenuController extends Controller
         $id = $request->get('checklist');
         $rep = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:MenuLanguage");
-        
+
         $rst = $rep->deleteByIds($id);
 
         // set referrer redirect

@@ -43,10 +43,6 @@ mtx_admin_branch:
         resource: "@SMAdminBundle/Resources/config/routing/branch.yml"
         prefix:   /admin/branch
 
-mtx_admin_productgroup:
-        resource: "@SMAdminBundle/Resources/config/routing/productgroup.yml"
-        prefix:   /admin/productgroup
-
 mtx_admin_mediacategory:
         resource: "@SMAdminBundle/Resources/config/routing/mediacategory.yml"
         prefix:   /admin/mediacategory

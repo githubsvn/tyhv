@@ -39,3 +39,8 @@ admin_mediacategory_up:
 admin_mediacategory_down:
     pattern:  /down/{id}
     defaults: { _controller: "SMAdminBundle:MediaCategory:down" }
+
+admin_mediacategory_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:MediaCategory:deleteAll" }
+    requirements: { _method: post }

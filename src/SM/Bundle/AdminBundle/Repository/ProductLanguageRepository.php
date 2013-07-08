@@ -65,6 +65,7 @@ class ProductLanguageRepository extends EntityRepository
                     if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
                         $rst[] = $id;
                     }
+                    $em->persist($entity);
                     //delete product too
                     $em->flush();
                     //delete product language

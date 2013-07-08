@@ -95,7 +95,7 @@ class CompanyController extends Controller
         $entity = $em->getRepository('SMAdminBundle:Company')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Company entity.');
+            throw $this->createNotFoundException($this->get('translator')->trans('Unable to find entity'));
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -176,7 +176,10 @@ class CompanyController extends Controller
 
                 $entityManager->flush();
 
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Company insert successfull!');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
 
                 $referrer = $this->getRequest()->getSession()->get('referrer');
 
@@ -188,7 +191,10 @@ class CompanyController extends Controller
                     return $this->redirect($referrer);
                 }
             } else {
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The data input is invalid'));
             }
         }
 
@@ -211,8 +217,10 @@ class CompanyController extends Controller
 
         if (!$entity) {
             //go to page index with error
-            $this->getRequest()->getSession()->getFlashBag()
-                    ->add('sm_flash_error', 'Could not find page with id ' . $id);
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('Could not find page with id' . ' ' . $id));
 
             return $this->redirect($this->generateUrl('admin_company'));
         }
@@ -304,7 +312,11 @@ class CompanyController extends Controller
 
                 $entityManager->flush();
 
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Company insert successfull!');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
+
                 $referrer = $this->getRequest()->getSession()->get('referrer');
                 if (!$referrer) {
                     return $this->redirect(
@@ -314,7 +326,10 @@ class CompanyController extends Controller
                     return $this->redirect($referrer);
                 }
             } else {
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The data input is invalid'));
             }
         }
 
@@ -353,4 +368,43 @@ class CompanyController extends Controller
         }
     }
 
+    /**
+     * Delete all item
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return type
+     */
+    public function deleteAllAction(Request $request)
+    {
+        $id = $request->get('checklist');
+        $rep = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:CompanyLanguage");
+
+        $rst = $rep->deleteByIds($id);
+
+        // set referrer redirect
+        $referrer = $this->getRequest()->server->get('HTTP_REFERER');
+
+        if ($rst) {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
+        } else {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The operation is fail'));
+        }
+
+        if (!$referrer) {
+
+            return $this->redirect(
+                $this->generateUrl('admin_news')
+            );
+        } else {
+
+            return $this->redirect($referrer);
+        }
+    }
 }

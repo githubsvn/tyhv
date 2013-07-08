@@ -25,7 +25,7 @@ class Page {
     /**
      * @var boolean
      *
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     private $status;
 
@@ -64,20 +64,20 @@ class Page {
      * @var Language
      */
     private $language;
-    
+
     /**
      * @var string
      *
       * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     public $image;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="Media", cascade={"persist"})
      * @ORM\JoinTable(name="mtx_page_media")
      */
     private $media_id;
-    
+
     /**
      * @ORM\PrePersist
      */
@@ -158,7 +158,7 @@ class Page {
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -174,14 +174,14 @@ class Page {
     public function setStatus($status)
     {
         $this->status = $status;
-    
+
         return $this;
     }
 
     /**
      * Get status
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getStatus()
     {
@@ -197,14 +197,14 @@ class Page {
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get created_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -220,14 +220,14 @@ class Page {
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-    
+
         return $this;
     }
 
     /**
      * Get updated_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -243,14 +243,14 @@ class Page {
     public function setImage($image)
     {
         $this->image = $image;
-    
+
         return $this;
     }
 
     /**
      * Get image
      *
-     * @return string 
+     * @return string
      */
     public function getImage()
     {
@@ -266,14 +266,14 @@ class Page {
     public function setCreated(\SM\Bundle\AdminBundle\Entity\User $created = null)
     {
         $this->created = $created;
-    
+
         return $this;
     }
 
     /**
      * Get created
      *
-     * @return \SM\Bundle\AdminBundle\Entity\User 
+     * @return \SM\Bundle\AdminBundle\Entity\User
      */
     public function getCreated()
     {
@@ -289,14 +289,14 @@ class Page {
     public function setUpdated(\SM\Bundle\AdminBundle\Entity\User $updated = null)
     {
         $this->updated = $updated;
-    
+
         return $this;
     }
 
     /**
      * Get updated
      *
-     * @return \SM\Bundle\AdminBundle\Entity\User 
+     * @return \SM\Bundle\AdminBundle\Entity\User
      */
     public function getUpdated()
     {
@@ -345,7 +345,7 @@ class Page {
     public function addPageLanguage(\SM\Bundle\AdminBundle\Entity\PageLanguage $pageLanguages)
     {
         $this->page_languages[] = $pageLanguages;
-    
+
         return $this;
     }
 
@@ -362,7 +362,7 @@ class Page {
     /**
      * Get page_languages
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPageLanguages()
     {

@@ -48,7 +48,7 @@ class PageLanguageRepository extends EntityRepository {
     public function deleteByIds($ids = array()) {
         $em = $this->getEntityManager();
         $rep = $em->getRepository('SMAdminBundle:Page');
-
+        
         $rst = array();
         if (is_array($ids) && count($ids)) {
             foreach ($ids as $id) {
@@ -65,6 +65,7 @@ class PageLanguageRepository extends EntityRepository {
                     if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
                         $rst[] = $id;
                     }
+                    $em->persist($entity);
                     //delete product too
                     $em->flush();
                     //delete product language
@@ -100,7 +101,7 @@ class PageLanguageRepository extends EntityRepository {
             $qb->select('pl, p')
                     ->join('pl.page', 'p')
                     ->where('pl.language=:langId');
-            
+
             if (!empty($limit)) {
                 $qb->setMaxResults($limit);
             }
@@ -142,7 +143,7 @@ class PageLanguageRepository extends EntityRepository {
             $qb->select('pl, p')
                     ->join('pl.page', 'p')
                     ->where('pl.language=:langId');
-            
+
             if (!empty($limit)) {
                 $qb->setMaxResults($limit);
             }

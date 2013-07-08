@@ -31,3 +31,8 @@ admin_page_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SMAdminBundle:Page:delete" }
     requirements: { _method: post|get }
+
+admin_page_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:Page:deleteAll" }
+    requirements: { _method: post }

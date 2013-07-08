@@ -31,3 +31,8 @@ admin_companytype_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SMAdminBundle:CompanyType:delete" }
     requirements: { _method: post|get }
+
+admin_companytype_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:CompanyType:deleteAll" }
+    requirements: { _method: post }

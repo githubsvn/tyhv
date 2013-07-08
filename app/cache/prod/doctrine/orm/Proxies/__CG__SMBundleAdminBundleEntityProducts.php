@@ -201,18 +201,6 @@ class Products extends \SM\Bundle\AdminBundle\Entity\Products implements \Doctri
         return parent::getBranch();
     }
 
-    public function setProductgroup(\SM\Bundle\AdminBundle\Entity\ProductGroup $productgroup = NULL)
-    {
-        $this->__load();
-        return parent::setProductgroup($productgroup);
-    }
-
-    public function getProductgroup()
-    {
-        $this->__load();
-        return parent::getProductgroup();
-    }
-
     public function setCreatedAtValue()
     {
         $this->__load();
@@ -264,7 +252,7 @@ class Products extends \SM\Bundle\AdminBundle\Entity\Products implements \Doctri
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'price', 'unit', 'discount', 'thumb', 'amount', 'status', 'created_at', 'updated_at', 'created', 'updated', 'product_languages', 'branch', 'productgroup', 'media_id');
+        return array('__isInitialized__', 'id', 'price', 'unit', 'discount', 'thumb', 'amount', 'status', 'created_at', 'updated_at', 'created', 'updated', 'product_languages', 'branch', 'media_id');
     }
 
     public function __clone()

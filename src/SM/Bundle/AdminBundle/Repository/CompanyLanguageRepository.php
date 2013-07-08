@@ -65,6 +65,7 @@ class CompanyLanguageRepository extends EntityRepository
                     if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
                         $rst[] = $id;
                     }
+                    $em->persist($entity);
                     //delete article too
                     $em->flush();
                     //delete article language

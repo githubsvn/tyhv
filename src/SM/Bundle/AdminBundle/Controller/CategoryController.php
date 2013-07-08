@@ -149,7 +149,10 @@ class CategoryController extends Controller
 
                 $entityManager->flush();
 
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Category insert successfull!');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
 
                 $referrer = $this->getRequest()->getSession()->get('referrer');
 
@@ -163,7 +166,10 @@ class CategoryController extends Controller
                     return $this->redirect($referrer);
                 }
             } else {
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The data input is invalid'));
             }
         }
 
@@ -186,8 +192,10 @@ class CategoryController extends Controller
 
         if (!$entity) {
             //go to page index with error
-            $this->getRequest()->getSession()->getFlashBag()
-                    ->add('sm_flash_error', 'Could not find page with id ' . $id);
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('Unable to find entity'));
 
             return $this->redirect($this->generateUrl('admin_category'));
         }
@@ -239,7 +247,12 @@ class CategoryController extends Controller
                 $entityManager->persist($entity);
 
                 $entityManager->flush();
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Category edit successfull!');
+
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
+
                 $referrer = $this->getRequest()->getSession()->get('referrer');
 
                 if (!$referrer) {
@@ -252,7 +265,10 @@ class CategoryController extends Controller
                     return $this->redirect($referrer);
                 }
             } else {
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The data input is invalid'));
             }
         }
 
@@ -280,11 +296,20 @@ class CategoryController extends Controller
         $referrer = $this->getRequest()->server->get('HTTP_REFERER');
 
         if (!$referrer) {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
 
             return $this->redirect(
                 $this->generateUrl('admin_category')
             );
         } else {
+
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The operation is fail'));
 
             return $this->redirect($referrer);
         }
@@ -331,5 +356,45 @@ class CategoryController extends Controller
         return $this->redirect(
             $this->getRequest()->headers->get('referer')
         );
+    }
+
+    /**
+     * Delete all item
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return type
+     */
+    public function deleteAllAction(Request $request)
+    {
+        $id = $request->get('checklist');
+        $rep = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:CategoryLanguage");
+
+        $rst = $rep->deleteByIds($id);
+
+        // set referrer redirect
+        $referrer = $this->getRequest()->server->get('HTTP_REFERER');
+
+        if ($rst) {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
+        } else {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The operation is fail'));
+        }
+
+        if (!$referrer) {
+
+            return $this->redirect(
+                $this->generateUrl('admin_news')
+            );
+        } else {
+
+            return $this->redirect($referrer);
+        }
     }
 }

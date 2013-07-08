@@ -99,7 +99,7 @@ class NewsController extends Controller
         $entity = $em->getRepository('SMAdminBundle:News')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Products entity.');
+            throw $this->createNotFoundException($this->get('translator')->trans('Unable to find entity'));
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -254,8 +254,10 @@ class NewsController extends Controller
 
         if (!$entity) {
             //go to page index with error
-            $this->getRequest()->getSession()->getFlashBag()
-                    ->add('sm_flash_error', 'Could not find page with id ' . $id);
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('Unable to find entity'));
 
             return $this->redirect($this->generateUrl('admin_news'));
         }
@@ -443,10 +445,19 @@ class NewsController extends Controller
 
         if (!$referrer) {
 
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
+
             return $this->redirect(
                 $this->generateUrl('admin_news')
             );
         } else {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The operation is fail'));
 
             return $this->redirect($referrer);
         }

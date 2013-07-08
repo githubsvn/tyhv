@@ -148,3 +148,23 @@
 [Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1392, referer: http://local.tyhv/admin/branch
 [Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1428, referer: http://local.tyhv/admin/branch
 [Mon Jul 08 09:58:17 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\BranchController->newAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/branch
+[Mon Jul 08 10:35:09 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to a member function getMenu() on a non-object in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/MenuLanguageRepository.php on line 56, referer: http://local.tyhv/admin/menu
+[Mon Jul 08 10:35:09 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/menu
+[Mon Jul 08 10:35:09 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/menu
+[Mon Jul 08 10:35:09 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/menu
+[Mon Jul 08 10:35:09 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:619, referer: http://local.tyhv/admin/menu
+[Mon Jul 08 10:35:09 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1568, referer: http://local.tyhv/admin/menu
+[Mon Jul 08 10:35:09 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1392, referer: http://local.tyhv/admin/menu
+[Mon Jul 08 10:35:09 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1428, referer: http://local.tyhv/admin/menu
+[Mon Jul 08 10:35:09 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\MenuController->deleteAllAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/menu
+[Mon Jul 08 10:35:09 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\MenuLanguageRepository->deleteByIds() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/MenuController.php:536, referer: http://local.tyhv/admin/menu
+[Mon Jul 08 11:51:24 2013] [error] [client 127.0.0.1] PHP Fatal error:  Call to a member function getCategory() on a non-object in /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Repository/CategoryLanguageRepository.php on line 56, referer: http://local.tyhv/admin/category
+[Mon Jul 08 11:51:24 2013] [error] [client 127.0.0.1] PHP Stack trace:, referer: http://local.tyhv/admin/category
+[Mon Jul 08 11:51:24 2013] [error] [client 127.0.0.1] PHP   1. {main}() /home/www/local.tyhv/web/app.php:0, referer: http://local.tyhv/admin/category
+[Mon Jul 08 11:51:24 2013] [error] [client 127.0.0.1] PHP   2. Symfony\\Component\\HttpKernel\\Kernel->handle() /home/www/local.tyhv/web/app.php:24, referer: http://local.tyhv/admin/category
+[Mon Jul 08 11:51:24 2013] [error] [client 127.0.0.1] PHP   3. Symfony\\Bundle\\FrameworkBundle\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:619, referer: http://local.tyhv/admin/category
+[Mon Jul 08 11:51:24 2013] [error] [client 127.0.0.1] PHP   4. Symfony\\Component\\HttpKernel\\HttpKernel->handle() /home/www/local.tyhv/app/bootstrap.php.cache:1568, referer: http://local.tyhv/admin/category
+[Mon Jul 08 11:51:24 2013] [error] [client 127.0.0.1] PHP   5. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() /home/www/local.tyhv/app/bootstrap.php.cache:1392, referer: http://local.tyhv/admin/category
+[Mon Jul 08 11:51:24 2013] [error] [client 127.0.0.1] PHP   6. call_user_func_array() /home/www/local.tyhv/app/bootstrap.php.cache:1428, referer: http://local.tyhv/admin/category
+[Mon Jul 08 11:51:24 2013] [error] [client 127.0.0.1] PHP   7. SM\\Bundle\\AdminBundle\\Controller\\CategoryController->deleteAllAction() /home/www/local.tyhv/app/bootstrap.php.cache:0, referer: http://local.tyhv/admin/category
+[Mon Jul 08 11:51:24 2013] [error] [client 127.0.0.1] PHP   8. SM\\Bundle\\AdminBundle\\Repository\\CategoryLanguageRepository->deleteByIds() /home/www/local.tyhv/src/SM/Bundle/AdminBundle/Controller/CategoryController.php:373, referer: http://local.tyhv/admin/category

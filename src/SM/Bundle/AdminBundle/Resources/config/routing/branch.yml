@@ -38,3 +38,8 @@ admin_branch_up:
 admin_branch_down:
     pattern:  /down/{id}
     defaults: { _controller: "SMAdminBundle:Branch:down" }
+
+admin_branch_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:Branch:deleteAll" }
+    requirements: { _method: post }

@@ -36,6 +36,8 @@ Page: Trang
 The operation is success: Thao tác thành công
 The operation is fail: Thao tác thất bại
 The data input is invalid: Dữ liệu nhập bị sai.
+Could not find page with id: Không tin thấy mẩu tin có id.
+Unable to find entity: Không thể tìm thấy mẩu tin.
 
 #Language for User
 Username: Tên đăng nhập

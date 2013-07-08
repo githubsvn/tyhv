@@ -148,7 +148,10 @@ class BranchController extends Controller
 
                 $entityManager->flush();
 
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Branch insert successfull!');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
 
                 $referrer = $this->getRequest()->getSession()->get('referrer');
 
@@ -162,7 +165,10 @@ class BranchController extends Controller
                     return $this->redirect($referrer);
                 }
             } else {
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The data input is invalid'));
             }
         }
 
@@ -187,6 +193,7 @@ class BranchController extends Controller
             //go to page index with error
             $this->getRequest()->getSession()->getFlashBag()
                     ->add('sm_flash_error', 'Could not find page with id ' . $id);
+
 
             return $this->redirect($this->generateUrl('admin_branch'));
         }
@@ -238,7 +245,11 @@ class BranchController extends Controller
                 $entityManager->persist($entity);
 
                 $entityManager->flush();
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_success', 'Branch edit successfull!');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
+
                 $referrer = $this->getRequest()->getSession()->get('referrer');
 
                 if (!$referrer) {
@@ -251,7 +262,10 @@ class BranchController extends Controller
                     return $this->redirect($referrer);
                 }
             } else {
-                $this->getRequest()->getSession()->getFlashBag()->add('sm_flash_error', 'Form invalid');
+                $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The data input is invalid'));
             }
         }
 
@@ -330,5 +344,45 @@ class BranchController extends Controller
         return $this->redirect(
             $this->getRequest()->headers->get('referer')
         );
+    }
+
+    /**
+     * Delete all item
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return type
+     */
+    public function deleteAllAction(Request $request)
+    {
+        $id = $request->get('checklist');
+        $rep = $this->getDoctrine()
+                ->getRepository("SMAdminBundle:BranchLanguage");
+
+        $rst = $rep->deleteByIds($id);
+
+        // set referrer redirect
+        $referrer = $this->getRequest()->server->get('HTTP_REFERER');
+
+        if ($rst) {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
+        } else {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The operation is fail'));
+        }
+
+        if (!$referrer) {
+
+            return $this->redirect(
+                $this->generateUrl('admin_news')
+            );
+        } else {
+
+            return $this->redirect($referrer);
+        }
     }
 }

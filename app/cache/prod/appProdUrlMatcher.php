@@ -365,6 +365,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
             not_admin_companytype_delete:
 
+            // admin_companytype_delete_all
+            if ($pathinfo === '/admin/companytype/deleteall') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_companytype_delete_all;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CompanyTypeController::deleteAllAction',  '_route' => 'admin_companytype_delete_all',);
+            }
+            not_admin_companytype_delete_all:
+
         }
 
         if (0 === strpos($pathinfo, '/admin/company')) {
@@ -426,6 +437,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CompanyController::deleteAction',)), array('_route' => 'admin_company_delete'));
             }
             not_admin_company_delete:
+
+            // admin_company_delete_all
+            if ($pathinfo === '/admin/company/deleteall') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_company_delete_all;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CompanyController::deleteAllAction',  '_route' => 'admin_company_delete_all',);
+            }
+            not_admin_company_delete_all:
 
         }
 
@@ -493,61 +515,16 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\BranchController::downAction',)), array('_route' => 'admin_branch_down'));
             }
 
-        }
-
-        if (0 === strpos($pathinfo, '/admin/productgroup')) {
-            // admin_productgroup
-            if (preg_match('#^/admin/productgroup(?:/(?P<page>\\d+)(?:/(?P<lang>\\d+))?)?$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::indexAction',  'page' => '1',  'lang' => NULL,)), array('_route' => 'admin_productgroup'));
-            }
-
-            // admin_productgroup_show
-            if (preg_match('#^/admin/productgroup/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::showAction',)), array('_route' => 'admin_productgroup_show'));
-            }
-
-            // admin_productgroup_new
-            if ($pathinfo === '/admin/productgroup/new') {
-                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::newAction',  '_route' => 'admin_productgroup_new',);
-            }
-
-            // admin_productgroup_create
-            if ($pathinfo === '/admin/productgroup/create') {
+            // admin_branch_delete_all
+            if ($pathinfo === '/admin/branch/deleteall') {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
-                    goto not_admin_productgroup_create;
+                    goto not_admin_branch_delete_all;
                 }
 
-                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::createAction',  '_route' => 'admin_productgroup_create',);
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\BranchController::deleteAllAction',  '_route' => 'admin_branch_delete_all',);
             }
-            not_admin_productgroup_create:
-
-            // admin_productgroup_edit
-            if (preg_match('#^/admin/productgroup/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::editAction',)), array('_route' => 'admin_productgroup_edit'));
-            }
-
-            // admin_productgroup_update
-            if (preg_match('#^/admin/productgroup/(?P<id>[^/]+)/update$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_admin_productgroup_update;
-                }
-
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::updateAction',)), array('_route' => 'admin_productgroup_update'));
-            }
-            not_admin_productgroup_update:
-
-            // admin_productgroup_delete
-            if (preg_match('#^/admin/productgroup/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('POST', 'GET', 'HEAD'));
-                    goto not_admin_productgroup_delete;
-                }
-
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductGroupController::deleteAction',)), array('_route' => 'admin_productgroup_delete'));
-            }
-            not_admin_productgroup_delete:
+            not_admin_branch_delete_all:
 
         }
 
@@ -614,6 +591,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             if (0 === strpos($pathinfo, '/admin/mediacategory/down') && preg_match('#^/admin/mediacategory/down/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MediaCategoryController::downAction',)), array('_route' => 'admin_mediacategory_down'));
             }
+
+            // admin_mediacategory_delete_all
+            if ($pathinfo === '/admin/mediacategory/deleteall') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_mediacategory_delete_all;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MediaCategoryController::deleteAllAction',  '_route' => 'admin_mediacategory_delete_all',);
+            }
+            not_admin_mediacategory_delete_all:
 
         }
 
@@ -682,6 +670,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
             not_admin_media_get_media:
 
+            // admin_media_delete_all
+            if ($pathinfo === '/admin/media/deleteall') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_media_delete_all;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MediaController::deleteAllAction',  '_route' => 'admin_media_delete_all',);
+            }
+            not_admin_media_delete_all:
+
         }
 
         if (0 === strpos($pathinfo, '/admin/products')) {
@@ -743,6 +742,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductsController::deleteAction',)), array('_route' => 'admin_products_delete'));
             }
             not_admin_products_delete:
+
+            // admin_products_delete_all
+            if ($pathinfo === '/admin/products/deleteall') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_products_delete_all;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\ProductsController::deleteAllAction',  '_route' => 'admin_products_delete_all',);
+            }
+            not_admin_products_delete_all:
 
         }
 
@@ -809,6 +819,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             if (0 === strpos($pathinfo, '/admin/category/down') && preg_match('#^/admin/category/down/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CategoryController::downAction',)), array('_route' => 'admin_category_down'));
             }
+
+            // admin_category_delete_all
+            if ($pathinfo === '/admin/category/deleteall') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_category_delete_all;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\CategoryController::deleteAllAction',  '_route' => 'admin_category_delete_all',);
+            }
+            not_admin_category_delete_all:
 
         }
 
@@ -1014,6 +1035,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\PageController::deleteAction',)), array('_route' => 'admin_page_delete'));
             }
             not_admin_page_delete:
+
+            // admin_page_delete_all
+            if ($pathinfo === '/admin/page/deleteall') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_admin_page_delete_all;
+                }
+
+                return array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\PageController::deleteAllAction',  '_route' => 'admin_page_delete_all',);
+            }
+            not_admin_page_delete_all:
 
         }
 

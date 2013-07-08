@@ -9,9 +9,9 @@
             "bSort": true,
             "bInfo": false,
             "bAutoWidth": true,
-            "aaSorting": [ [0,'asc'], [1,'asc'] ],
+            "aaSorting": [ [1,'asc'], [2,'asc'] ],
             "aoColumnDefs": [
-                { 'bSortable': false, 'aTargets': [ 3, 4 ] }
+                { 'bSortable': false, 'aTargets': [ 0, 4, 5 ] }
             ],
         });
     } );
@@ -29,6 +29,8 @@
 
 <div class="nav" style="margin-bottom: 10px;">
     <a href="{{ path('admin_company_new') }}" class="btn btn-primary">{{ 'Create a new entry'|trans({}, "SMAdminBundle") }}</a>
+    <a id="btn-del" class="btn btn-primary" rel="{{ path('admin_company_delete_all') }}">{{ 'Delete all'|trans({}, "SMAdminBundle") }}</a>
+
     <div class="btn-group pull-right">
         <a href="javascript:void(0)" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
             {% for opt in langList %}
@@ -64,51 +66,58 @@
     </div>
 </div>
 <div style="clear: both; margin-bottom: 10px;"></div>
-<table class="table table-bordered table-striped" id="sortTable">
-    <thead>
-        <tr>
-            <th colspan="2" style="text-align: left;">{{ 'Total'|trans({}, "SMAdminBundle") }} : {{total}} - {{ 'Page'|trans({}, "SMAdminBundle") }} : ({{currentPage}}/{{lastPage}})</th>
-            <th colspan="3"></th>
-        </tr>
-        <tr>
-            <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
-            <th>{{ 'Name'|trans({}, "SMAdminBundle") }}</th>
-            <th>{{ 'Created Time'|trans({}, "SMAdminBundle") }}</th>
-            <th>{{ 'Status'|trans({}, "SMAdminBundle") }}</th>
-            <th>{{ 'Action'|trans({}, "SMAdminBundle") }}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td>{{ entity.company.id }}</td>
-            <td>
-                {% if entity.name is not null %}
-                    {{ entity.name | truncate(50) }}
-                {% else %}
-                    <span class="label label-warning">{{ 'Not set value in this language' | trans({}, 'SMAdminBundle') }}</span>
-                {% endif %}
-            </td>
-            <td>{% if entity.company.createdAt %}{{ entity.company.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>
-                {% if entity.company.status == 1 %}
-                    <input type="checkbox" checked="checked" class="defaultCheckBox" disabled="true"/>
-                {% else %}
-                    <input type="checkbox" class="defaultCheckBox" disabled="true"/>
-                {% endif%}
-            </td>
-            <td>
-                <a href="{{ path('admin_company_edit', { 'id': entity.company.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
-                {% if entity.language is not null %}
-                    &nbsp; | &nbsp;
-                    <a href="#" rel="{{ path('admin_company_delete', { 'id': entity.id }) }}" class="delete"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>
-                {% endif %}
 
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+<form method="post" name="frmList" id="frmList" action="#">
+    <table class="table table-bordered table-striped" id="sortTable">
+        <thead>
+            <!--
+            <tr>
+                <th colspan="2" style="text-align: left;">{{ 'Total'|trans({}, "SMAdminBundle") }} : {{total}} - {{ 'Page'|trans({}, "SMAdminBundle") }} : ({{currentPage}}/{{lastPage}})</th>
+                <th colspan="3"></th>
+            </tr>
+            -->
+            <tr>
+                <th style="text-align: center;"><input type="checkbox" name="checkAll" id="checkAll"/></th>
+                <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Name'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Created Time'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Status'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Action'|trans({}, "SMAdminBundle") }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td style="text-align: center;"><input type="checkbox" value="{{entity.id}}" name="checklist[]" class="chkItem"/> </td>
+                <td>{{ entity.company.id }}</td>
+                <td>
+                    {% if entity.name is not null %}
+                        {{ entity.name | truncate(50) }}
+                    {% else %}
+                        <span class="label label-warning">{{ 'Not set value in this language' | trans({}, 'SMAdminBundle') }}</span>
+                    {% endif %}
+                </td>
+                <td>{% if entity.company.createdAt %}{{ entity.company.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    {% if entity.company.status == 1 %}
+                        <input type="checkbox" checked="checked" class="defaultCheckBox" disabled="true"/>
+                    {% else %}
+                        <input type="checkbox" class="defaultCheckBox" disabled="true"/>
+                    {% endif%}
+                </td>
+                <td>
+                    <a href="{{ path('admin_company_edit', { 'id': entity.company.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
+                    {% if entity.language is not null %}
+                        &nbsp; | &nbsp;
+                        <a href="#" rel="{{ path('admin_company_delete', { 'id': entity.id }) }}" class="delete"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>
+                    {% endif %}
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</form>
 
 {# Pagination for list #}
 {% if lastPage > 1 %}

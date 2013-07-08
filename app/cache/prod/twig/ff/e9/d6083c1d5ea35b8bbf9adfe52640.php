@@ -128,7 +128,7 @@ class __TwigTemplate_ffe9d6083c1d5ea35b8bbf9adfe52640 extends Twig_Template
             echo "            <tr>
                 <td style=\"text-align: center;\"><input type=\"checkbox\" value=\"";
             // line 39
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "id"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "entity"), "getCurrentLanguage"), "getId"), "html", null, true);
             echo "\" name=\"checklist[]\" class=\"chkItem\"/> </td>
                 <td>";
             // line 40

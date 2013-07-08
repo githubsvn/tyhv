@@ -39,3 +39,8 @@ admin_category_up:
 admin_category_down:
     pattern:  /down/{id}
     defaults: { _controller: "SMAdminBundle:Category:down" }
+
+admin_category_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:Category:deleteAll" }
+    requirements: { _method: post }
