@@ -116,4 +116,21 @@ class BranchLanguage {
         return $this->name;
     }
 
+    /**
+     * Get the name with tree level
+     *
+     * @return string
+     */
+    public function getTreeName()
+    {
+        $level = $this->getBranch()->getLevel();
+        $treeName = str_repeat('    ', $level - 1) . ($level == 1 ? '' : '└') . ' ' . $this->name;
+        return $treeName;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 }

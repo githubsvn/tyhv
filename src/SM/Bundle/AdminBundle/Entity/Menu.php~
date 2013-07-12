@@ -114,6 +114,12 @@ class Menu
      */
     private $param;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="position", type="integer", nullable=true)
+     */
+    private $position;
 
     /**
      * @ORM\PrePersist
@@ -502,14 +508,14 @@ class Menu
     public function setType($type)
     {
         $this->type = $type;
-    
+
         return $this;
     }
 
     /**
      * Get type
      *
-     * @return integer 
+     * @return integer
      */
     public function getType()
     {
@@ -525,14 +531,14 @@ class Menu
     public function setParam($param)
     {
         $this->param = $param;
-    
+
         return $this;
     }
 
     /**
      * Get param
      *
-     * @return integer 
+     * @return integer
      */
     public function getParam()
     {

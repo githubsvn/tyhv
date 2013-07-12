@@ -56,11 +56,45 @@
                 $('#ajaxModal').modal('hide')
             });
         });
+
+        $("#sm_bundle_adminbundle_menutype_position").bind("change", function(){
+            var position = $(this).attr('value');
+
+            var urlGetParent = "{{path('admin_menu_get_menuparent')}}" + '/' + position;
+            $.ajax({url:urlGetParent, success:function(data){
+                //remove all option of the select
+                $('#sm_bundle_adminbundle_menutype_parent').children().remove();
+                //set new option for select
+                var jsonData = JSON.parse(data);
+                $.each(jsonData, function(index, item) {
+                    $("#sm_bundle_adminbundle_menutype_parent").append("<option value=" + item.id + ">" + item.name + "</option>");
+                });
+            }});
+
+            //Call ajax
+            $('#ajaxModal').modal();
+            $('#ajaxModal').ajaxStart(function() {
+                $(this).show();
+            })
+            .ajaxStop(function() {
+                $('#ajaxModal').modal('hide')
+            });
+        });
+
+
     });
 </script>
 
 <form action="{{ path('admin_menu_edit', {'id' : entity.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
     <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Position'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.position) }}
+                {{ form_widget(form.position) }}
+            </div>
+        </div>
+            
         <div class="control-group">
             <label class="control-label" for="input01">{{ 'Parent'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">

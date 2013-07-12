@@ -10,7 +10,7 @@ parameters:
     secret: d00245c7bda39aa016baa57370bfebc9b11deda3
     database_path: null
 
-    per_item_page: 10
+    per_item_page: 50
     imgRoot : "/web/"
     upload : "/uploads/images/"
     thumbUpload : "/media/cache/thumbs/"
@@ -25,5 +25,10 @@ parameters:
     menu_type_page_detail: 8
     menu_type_text: 9
     menu_type_link: 10
+
+    menu_position_top: 1
+    menu_position_left: 2
+    menu_position_right: 3
+    menu_position_bottom: 4
 
     ext_nice_url: html
