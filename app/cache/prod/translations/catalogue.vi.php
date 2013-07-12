@@ -102,6 +102,7 @@ $catalogue = new MessageCatalogue('vi', array (
     'Product Group Edit' => 'Chỉnh Sửa Nhóm Hàng',
     'Product List' => 'Danh Sách Sản Phẩm',
     'Product Group' => 'Nhóm hàng',
+    'Product Creation' => 'Thêm Mới Sản Phẩm',
     'Price' => 'Giá',
     'Unit' => 'Đơn vị tính',
     'Discount' => 'Triết khấu',
