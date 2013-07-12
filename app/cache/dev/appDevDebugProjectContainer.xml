@@ -54,6 +54,10 @@
     <parameter key="menu_type_page_detail">8</parameter>
     <parameter key="menu_type_text">9</parameter>
     <parameter key="menu_type_link">10</parameter>
+    <parameter key="menu_position_top">1</parameter>
+    <parameter key="menu_position_left">2</parameter>
+    <parameter key="menu_position_right">3</parameter>
+    <parameter key="menu_position_bottom">4</parameter>
     <parameter key="ext_nice_url">html</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
     <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
@@ -492,8 +496,8 @@
     <parameter key="jms_di_extra.directories" type="collection"/>
     <parameter key="jms_di_extra.cache_dir">/home/www/local.tyhv/app/cache/dev/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_51da2ab83ecd7.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51da2ab83ecd7_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_51df7141d0fd3.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51df7141d0fd3_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -2252,7 +2256,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>51da2ab81acd0</argument>
+            <argument>51df71415335c</argument>
           </service>
         </argument>
       </argument>
@@ -2605,7 +2609,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>51da2ab81acd0</argument>
+            <argument>51df71415335c</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -3048,8 +3052,8 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager51da2ab83ecd7_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_51da2ab83ecd7.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager51df7141d0fd3_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/home/www/local.tyhv/app/cache/dev/jms_diextra/doctrine/EntityManager_51df7141d0fd3.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>

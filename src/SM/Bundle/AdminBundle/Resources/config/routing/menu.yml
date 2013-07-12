@@ -44,6 +44,10 @@ admin_menu_get_param:
     pattern:  /getParam/{type}
     defaults: { _controller: "SMAdminBundle:Menu:getParam", type : null }
 
+admin_menu_get_menuparent:
+    pattern:  /getMenuParentByPosition/{position}
+    defaults: { _controller: "SMAdminBundle:Menu:getMenuParentByPosition", position : null }
+
 admin_menu_delete_all:
     pattern:  /deleteall
     defaults: { _controller: "SMAdminBundle:Menu:deleteAll" }

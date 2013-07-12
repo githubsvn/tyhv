@@ -902,6 +902,11 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::getParamAction',  'type' => NULL,)), array('_route' => 'admin_menu_get_param'));
             }
 
+            // admin_menu_get_menuparent
+            if (0 === strpos($pathinfo, '/admin/menu/getMenuParentByPosition') && preg_match('#^/admin/menu/getMenuParentByPosition(?:/(?P<position>[^/]+))?$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SM\\Bundle\\AdminBundle\\Controller\\MenuController::getMenuParentByPositionAction',  'position' => NULL,)), array('_route' => 'admin_menu_get_menuparent'));
+            }
+
             // admin_menu_delete_all
             if ($pathinfo === '/admin/menu/deleteall') {
                 if ($this->context->getMethod() != 'POST') {

@@ -24,6 +24,12 @@ class MenuController extends Controller
      * @return type
      */
     public function indexAction($page, $lang) {
+        if ($this->getRequest()->isMethod('POST')) {
+            $_SESSION['position'] = $this->getRequest()->request->get('position', '0');
+        }
+
+        $pos = isset($_SESSION['position']) ? $_SESSION['position'] : '0';
+
         //get list language
         $langList = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language")
@@ -45,7 +51,10 @@ class MenuController extends Controller
 
         $criteria = array();
         $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
-
+        if (!empty($pos)) {
+            $criteria[] = array('op' => '=', 'fieldName' => 'position', 'fieldValue' => $pos);
+        }
+        
         $total = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Menu")
                 ->getTotal($criteria);
@@ -55,13 +64,37 @@ class MenuController extends Controller
         $previousPage = $page > 1 ? $page - 1 : 1;
         $nextPage = $page < $lastPage ? $page + 1 : $lastPage;
 
+        $this->container->getParameter('per_item_page');
+        $mnuPosTop = $this->container->getParameter('menu_position_top');
+        $mnuPosLeft = $this->container->getParameter('menu_position_left');
+        $mnuPosRight = $this->container->getParameter('menu_position_right');
+        $mnuPosBottom = $this->container->getParameter('menu_position_bottom');
+
         $entities = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Menu")
                 ->getList($perPage, ($page - 1) * $perPage, $criteria, array('lft' => 'ASC'));
         foreach ($entities as $theCat) {
             $theCat->setLanguage($currentLanguage);
+            $position = $theCat->getPosition();
+            switch ($position) {
+                case $mnuPosTop:
+                    $theCat->setPosition('Top');
+                    break;
+                case $mnuPosLeft:
+                    $theCat->setPosition('Left');
+                    break;
+                case $mnuPosRight:
+                    $theCat->setPosition('Right');
+                    break;
+                case $mnuPosBottom:
+                    $theCat->setPosition('Bottom');
+                    break;
+            }
         }
 
+        $optPos = $this->getDoctrine()
+                            ->getRepository("SMAdminBundle:Menu")
+                            ->buildMenuPosition();
         return $this->render('SMAdminBundle:Menu:index.html.twig', array(
             'entities' => $entities,
             'lastPage' => $lastPage,
@@ -71,6 +104,8 @@ class MenuController extends Controller
             'total' => $total,
             'lang' => intval($lang),
             'langList' => $langList,
+            'optPosition' => $optPos,
+            'position' => $pos
         ));
     }
 
@@ -568,5 +603,19 @@ class MenuController extends Controller
 
             return $this->redirect($referrer);
         }
+    }
+
+    /**
+     *
+     * @param type $position
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getMenuParentByPositionAction($position)
+    {
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository('SMAdminBundle:Menu');
+        $options = $repo->getOptionParent($position);
+        return new Response(json_encode($options));
     }
 }
