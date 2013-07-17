@@ -114,4 +114,5 @@ class CompanyRepository extends EntityRepository
 
         return $options;
     }
+
 }
