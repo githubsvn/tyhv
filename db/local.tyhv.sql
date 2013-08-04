@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 12, 2013 at 11:57 AM
+-- Generation Time: Jul 17, 2013 at 03:56 PM
 -- Server version: 5.1.54
 -- PHP Version: 5.3.5-1ubuntu7.11
 
@@ -572,7 +572,6 @@ INSERT INTO `mtx_menu` (`id`, `parent_id`, `created_id`, `updated_id`, `lft`, `r
 (16, 15, 1, 1, 14, 21, 1, '2013-07-12 11:21:21', '2013-07-12 11:21:21', '/product/view-branch/dien_thoai_2.html', 3, 2, 2),
 (17, 16, 1, 1, 15, 16, 1, '2013-07-12 11:21:41', '2013-07-12 11:21:41', '/product/view-branch/nokia_18_3.html', 3, 3, 2),
 (18, 16, 1, 1, 19, 20, 1, '2013-07-12 11:22:12', '2013-07-12 11:22:12', '/product/view-branch/samsung_4.html', 3, 4, 2),
-(19, 15, 1, 1, 22, 23, 1, '2013-07-12 11:22:39', '2013-07-12 11:22:39', '/product/view-branch/may_tinh_bang_5.html', 3, 5, 2),
 (22, 16, 1, 1, 17, 18, 1, '2013-07-12 11:56:36', '2013-07-12 11:56:36', '/product/view-branch/appel_23_6.html', 3, 6, 2);
 
 -- --------------------------------------------------------
@@ -606,7 +605,6 @@ INSERT INTO `mtx_menu_language` (`id`, `menu_id`, `language_id`, `name`, `alias`
 (15, 16, 1, 'Điện Thoại', NULL),
 (16, 17, 1, 'Nokia', NULL),
 (17, 18, 1, 'Samsung', NULL),
-(18, 19, 1, 'Máy Tính Bảng', NULL),
 (21, 22, 1, 'Appel', NULL);
 
 -- --------------------------------------------------------
