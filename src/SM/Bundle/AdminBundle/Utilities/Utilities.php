@@ -1,5 +1,5 @@
 <?php
-namespace SM\Bundle\AdminBundle;
+namespace SM\Bundle\AdminBundle\Utilities;
 
 /**
  * Utilities
