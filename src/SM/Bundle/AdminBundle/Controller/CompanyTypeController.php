@@ -284,11 +284,24 @@ class CompanyTypeController extends Controller {
         // set referrer redirect
         $referrer = $this->getRequest()->server->get('HTTP_REFERER');
 
+        if ($rst) {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
+        } else {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The operation is fail'));
+        }
         if (!$referrer) {
+
             return $this->redirect(
-                            $this->generateUrl('admin_companytype')
+                $this->generateUrl('admin_companytype')
             );
         } else {
+
             return $this->redirect($referrer);
         }
     }
@@ -325,7 +338,7 @@ class CompanyTypeController extends Controller {
         if (!$referrer) {
 
             return $this->redirect(
-                $this->generateUrl('admin_news')
+                $this->generateUrl('admin_companytype')
             );
         } else {
 

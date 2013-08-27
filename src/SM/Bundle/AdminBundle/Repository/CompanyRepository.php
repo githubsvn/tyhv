@@ -45,14 +45,11 @@ class CompanyRepository extends EntityRepository
         if (is_array($ids) && count($ids)) {
             foreach ($ids as $id) {
                 $entity = $this->find($id);
-                $fileLogo = $uploadDir . '/' . $entity->getLogo();
+                $image = $entity->getLogo();
                 $em->remove($entity);
                 if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
                     $rst[] = $id;
-                    //delete file logo
-                    if (file_exists($fileLogo)) {
-                        unlink($fileLogo);
-                    }
+                    \SM\Bundle\AdminBundle\Utilities\File::deleteImages($image);
                 }
             }
             $em->flush();

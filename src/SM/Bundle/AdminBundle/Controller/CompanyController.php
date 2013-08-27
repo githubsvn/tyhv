@@ -7,7 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SM\Bundle\AdminBundle\Entity\Company;
 use SM\Bundle\AdminBundle\Entity\CompanyLanguage;
 use SM\Bundle\AdminBundle\Form\CompanyType;
-use SM\Bundle\AdminBundle\Utilities;
+use SM\Bundle\AdminBundle\Utilities\Utilities;
+use SM\Bundle\AdminBundle\Utilities\Helper;
 
 /**
  * Company controller.
@@ -15,7 +16,23 @@ use SM\Bundle\AdminBundle\Utilities;
  */
 class CompanyController extends Controller
 {
-
+    private $uploadDir;
+    private $thumbDir;
+    private $uploadPath;
+    private $thumbPath;
+    
+    /**
+     * 
+     */
+    public function __construct() {
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $dirRoot = Utilities::getRootDir();
+        $this->uploadDir = $dirRoot . $container->getParameter('upload');
+        $this->thumbDir = $dirRoot . $container->getParameter('thumbUpload');
+        $this->uploadPath = $container->getParameter('thumbUpload');
+        $this->thumbPath = $container->getParameter('thumbUpload');
+    }
+    
     public function indexAction($page, $lang)
     {
         if ($this->getRequest()->isMethod('POST')) {
@@ -164,14 +181,11 @@ class CompanyController extends Controller
                 //Upload logo for company
                 if (!empty($entity->logo)) {
                     $newName = Utilities::renameForFile($entity->logo->getClientOriginalName());
-                    //get upload dir
-                    $uploadPath = $this->container->getParameter('upload');
-                    $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
-                    $uploadDir = $webDir . $uploadPath;
                     //upload file
-                    $entity->logo->move($uploadDir, $newName);
+                    $entity->logo->move($this->uploadDir, $newName);
                     //set new name
                     $entity->setLogo($newName);
+                    Helper::createThumb($newName);
                 }
 
                 $entityManager->flush();
@@ -253,9 +267,6 @@ class CompanyController extends Controller
         }
 
         //get upload dir
-        $uploadPath = $this->container->getParameter('upload') . '/logo';
-        $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
-
         $logo = $entity->getLogo();
         $form = $this->createForm(new CompanyType(), $entity);
 
@@ -282,26 +293,39 @@ class CompanyController extends Controller
                 //Upload logo for company
                 if (!empty($entity->logo)) {
                     $newName = Utilities::renameForFile($entity->logo->getClientOriginalName());
-                    $uploadDir = $webDir . $uploadPath;
                     //upload file
-                    $entity->logo->move($uploadDir, $newName);
+                    $entity->logo->move($this->uploadDir, $newName);
                     //set new name
                     $entity->setLogo($newName);
-
+                    Helper::createThumb($newName);
+                    
                     //Delete old logo file
-                    $oldFileLogo = $webDir . $uploadPath . '/' . $logo;
-                    if (file_exists($oldFileLogo)) {
-                        @unlink($oldFileLogo);
+                    $oldFileThumb = $this->uploadDir . '/' . $logo;
+                    $oldThumbFileImage = $this->thumbDir . '/' . $logo;
+                    
+                    if (file_exists($oldFileThumb)) {
+                        @unlink($oldFileThumb);
                     }
+                    if (file_exists($oldThumbFileImage)) {
+                        @unlink($oldThumbFileImage);
+                    }
+                    
                 } else {
                     //Check input delImgs if exist we need to delete logo of the company
                     if (!empty($_POST['delImgs'])) {
                         foreach ($_POST['delImgs'] as $img) {
-                            $fileLogo = $webDir . $uploadPath . '/' . $img;
-                            if (file_exists($fileLogo)) {
-                                @unlink($fileLogo);
-                                $entity->setLogo('');
+                            $fileThumb = $this->uploadDir . '/' . $img;
+                            //delete image
+                            if (file_exists($fileThumb)) {
+                                @unlink($fileThumb);
+                                $entity->setThumb('');
                             }
+                            //delete thumb
+                            $oldThumbFileImage = $this->thumbDir . '/' . $img;
+                            if (file_exists($oldThumbFileImage)) {
+                                @unlink($oldThumbFileImage);
+                            }
+                            
                         }
                     } else {
                         //we dont'want to remove logo. we need to get old logo
@@ -339,7 +363,7 @@ class CompanyController extends Controller
                     'langList' => $langList,
                     'defaultLanguage' => $defaultLanguage,
                     'arrImgs' => array($logo),
-                    'imgPath' => '/web/' . $uploadPath
+                    'imgPath' => $this->thumbPath
                 ));
     }
 
@@ -359,11 +383,21 @@ class CompanyController extends Controller
         // set referrer redirect
         $referrer = $this->getRequest()->server->get('HTTP_REFERER');
 
-        if (!$referrer) {
+        if ($rst) {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
+
             return $this->redirect(
-                            $this->generateUrl('admin_company')
+                $this->generateUrl('admin_company')
             );
         } else {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The operation is fail'));
+            
             return $this->redirect($referrer);
         }
     }
@@ -400,7 +434,7 @@ class CompanyController extends Controller
         if (!$referrer) {
 
             return $this->redirect(
-                $this->generateUrl('admin_news')
+                $this->generateUrl('admin_company')
             );
         } else {
 

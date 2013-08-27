@@ -6,7 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SM\Bundle\AdminBundle\Entity\Products;
 use SM\Bundle\AdminBundle\Form\ProductsType;
-use SM\Bundle\AdminBundle\Utilities;
+use SM\Bundle\AdminBundle\Utilities\Helper;
+use SM\Bundle\AdminBundle\Utilities\Utilities;
 
 /**
  * Products controller.
@@ -14,7 +15,23 @@ use SM\Bundle\AdminBundle\Utilities;
  */
 class ProductsController extends Controller
 {
-
+    private $uploadDir;
+    private $thumbDir;
+    private $uploadPath;
+    private $thumbPath;
+    
+    /**
+     * 
+     */
+    public function __construct() {
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $dirRoot = Utilities::getRootDir();
+        $this->uploadDir = $dirRoot . $container->getParameter('upload');
+        $this->thumbDir = $dirRoot . $container->getParameter('thumbUpload');
+        $this->uploadPath = $container->getParameter('thumbUpload');
+        $this->thumbPath = $container->getParameter('thumbUpload');
+    }
+    
     /**
      * Lists all Products entities.
      *
@@ -141,7 +158,7 @@ class ProductsController extends Controller
         }
 
         $form = $this->createForm(new ProductsType(), $entity);
-
+        
         if ($this->getRequest()->isMethod('POST')) {
             $form->bind($this->getRequest());
 
@@ -167,15 +184,12 @@ class ProductsController extends Controller
                 if (!empty($entity->thumb)) {
                     $newName = Utilities::renameForFile($entity->thumb->getClientOriginalName());
                     //get upload dir
-                    $uploadPath = $this->container->getParameter('upload');
-                    $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
-                    $uploadDir = $webDir . $uploadPath;
                     //upload file
-                    $entity->thumb->move($uploadDir, $newName);
+                    $entity->thumb->move($this->uploadDir, $newName);
                     //set new name
                     $entity->setThumb($newName);
                     //Create thumbnail for image
-                    Utilities\Helper::createThumb($newName);
+                    Helper::createThumb($newName);
                 }
 
                 $entityManager->flush();
@@ -239,7 +253,7 @@ class ProductsController extends Controller
                     'defaultLanguage' => $defaultLanguage,
                     'optMedias' => $optMedias,
                     'selectedMedias' => array(),
-                    'mediaPath' => '/web/' . $this->container->getParameter('upload'),
+                    'mediaPath' => $this->uploadDir,
                     'optMediaTypes' => $listMediaCats
                 ));
     }
@@ -291,10 +305,6 @@ class ProductsController extends Controller
         }
 
         //get upload dir
-        $uploadPath = $this->container->getParameter('upload') ;
-        $thumbUploadPath = $this->container->getParameter('thumbUpload') ;
-        $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
-
         $thumb = $entity->getThumb();
         $form = $this->createForm(new ProductsType(), $entity);
 
@@ -321,17 +331,17 @@ class ProductsController extends Controller
                 //Upload logo for company
                 if (!empty($entity->thumb)) {
                     $newName = Utilities::renameForFile($entity->thumb->getClientOriginalName());
-                    $uploadDir = $webDir . $uploadPath;
                     //upload file
-                    $entity->thumb->move($uploadDir, $newName);
+                    $entity->thumb->move($this->uploadDir, $newName);
                     //set new name
                     $entity->setThumb($newName);
                     //Create thumbnail for image
-                    Utilities\Helper::createThumb($newName);
+                    Helper::createThumb($newName);
 
                     //Delete old logo file
-                    $oldFileThumb = $webDir . $uploadPath . '/' . $thumb;
-                    $oldThumbFileImage = $webDir . $uploadPath . $thumbUploadPath . $thumb;
+                    $oldFileThumb = $this->uploadDir . '/' . $thumb;
+                    $oldThumbFileImage = $this->thumbDir . '/' . $thumb;
+                    
                     if (file_exists($oldFileThumb)) {
                         @unlink($oldFileThumb);
                     }
@@ -342,10 +352,16 @@ class ProductsController extends Controller
                     //Check input delImgs if exist we need to delete logo of the company
                     if (!empty($_POST['delImgs'])) {
                         foreach ($_POST['delImgs'] as $img) {
-                            $fileThumb = $webDir . $uploadPath . '/' . $img;
+                            $fileThumb = $this->uploadDir . '/' . $img;
+                            //delete image
                             if (file_exists($fileThumb)) {
                                 @unlink($fileThumb);
                                 $entity->setThumb('');
+                            }
+                            //delete thumb
+                            $oldThumbFileImage = $this->thumbDir . '/' . $img;
+                            if (file_exists($oldThumbFileImage)) {
+                                @unlink($oldThumbFileImage);
                             }
                         }
                     } else {
@@ -415,9 +431,9 @@ class ProductsController extends Controller
             'langList' => $langList,
             'defaultLanguage' => $defaultLanguage,
             'arrImgs' => array($thumb),
-            'imgPath' => '/web/' . $uploadPath,
+            'imgPath' => $this->thumbPath,
             'optMedias' => $optMedias,
-            'mediaPath' => '/web/' . $this->container->getParameter('upload'),
+            'mediaPath' => $this->thumbPath,
             'optMediaTypes' => $listMediaCats,
         ));
 
@@ -439,7 +455,7 @@ class ProductsController extends Controller
         // set referrer redirect
         $referrer = $this->getRequest()->server->get('HTTP_REFERER');
 
-        if (!$referrer) {
+        if ($rst) {
             $this->getRequest()
                      ->getSession()
                      ->getFlashBag()

@@ -82,5 +82,13 @@ class Utilities
 
         return strtolower($arrCharFilter);
     }
-
+    
+    /**
+     * Get root dir
+     */
+    public static function getRootDir()
+    {
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        return $container->get('kernel')->getRootDir() . '/../';
+    }
 }

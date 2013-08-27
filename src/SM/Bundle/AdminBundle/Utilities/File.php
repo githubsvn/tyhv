@@ -40,10 +40,11 @@ class File
     {
         if (!empty($fileName)) {
             $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
-            $webDir = $container->get('kernel')->getRootDir() . '/../web';
-            $uploadPath = $webDir . $container->getParameter('upload') ;
-            $thumbUploadPath = $uploadPath . $container->getParameter('thumbUpload') ;
-
+            $dirRoot = Utilities::getRootDir();
+            
+            $uploadPath = $dirRoot . $container->getParameter('upload') ;
+            $thumbUploadPath = $dirRoot . $container->getParameter('thumbUpload') ;
+            
             $fileImage = $uploadPath . $fileName;
             if (file_exists($fileImage)) {
                 @unlink($fileImage);

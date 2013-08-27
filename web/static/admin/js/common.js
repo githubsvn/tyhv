@@ -3,10 +3,10 @@ function checkAllCheckbox(){
     var hCheck = true;
     inptCheckbox.click(function(){
         if(hCheck){
-            $('input[type="checkbox"]').attr('checked', true);
+            $('input:checkbox[class="chkItem"]').attr('checked', true);
             hCheck = false;
         }else{
-            $('input[type="checkbox"]').attr('checked', false);
+            $('input:checkbox[class="chkItem"]').attr('checked', false);
             hCheck = true;
         }
     });

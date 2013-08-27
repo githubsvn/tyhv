@@ -292,7 +292,7 @@ class BranchController extends Controller
         // set referrer redirect
         $referrer = $this->getRequest()->server->get('HTTP_REFERER');
 
-        if (!$referrer) {
+        if ($rst) {
 
             return $this->redirect(
                 $this->generateUrl('admin_branch')

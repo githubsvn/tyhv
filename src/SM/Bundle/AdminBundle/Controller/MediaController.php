@@ -8,7 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SM\Bundle\AdminBundle\Entity\Media;
 use SM\Bundle\AdminBundle\Form\MediaType;
-use SM\Bundle\AdminBundle\Utilities;
+use SM\Bundle\AdminBundle\Utilities\Utilities;
+use SM\Bundle\AdminBundle\Utilities\Helper;
 
 /**
  * Media controller.
@@ -17,6 +18,23 @@ use SM\Bundle\AdminBundle\Utilities;
 class MediaController extends Controller
 {
 
+    private $uploadDir;
+    private $thumbDir;
+    private $uploadPath;
+    private $thumbPath;
+    
+    /**
+     * 
+     */
+    public function __construct() {
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $dirRoot = Utilities::getRootDir();
+        $this->uploadDir = $dirRoot . $container->getParameter('upload');
+        $this->thumbDir = $dirRoot . $container->getParameter('thumbUpload');
+        $this->uploadPath = $container->getParameter('thumbUpload');
+        $this->thumbPath = $container->getParameter('thumbUpload');
+    }
+    
     /**
      * list action
      *
@@ -39,9 +57,7 @@ class MediaController extends Controller
         $entities = $rep->getList($perPage, ($page - 1) * $perPage);
 
         //get upload dir
-        $thumbUploadPath = $this->container->getParameter('imgRoot')
-                . $this->container->getParameter('upload')
-                . $this->container->getParameter('thumbUpload') ;
+        $thumbUploadPath = $this->thumbPath;
 
         return $this->render('SMAdminBundle:Media:index.html.twig', array(
             'entities' => $entities,
@@ -116,16 +132,12 @@ class MediaController extends Controller
             if (is_object($entity)) {
                 if (!empty($entity->file)) {
                     $newName = Utilities::renameForFile($entity->file->getClientOriginalName());
-                    //get upload dir
-                    $uploadPath = $this->container->getParameter('upload');
-                    $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
-                    $uploadDir = $webDir . $uploadPath;
                     //upload file
-                    $entity->file->move($uploadDir, $newName);
+                    $entity->file->move($this->uploadDir, $newName);
                     //set new name
                     $entity->setName($newName);
                     //Create thumbnail for image
-                    Utilities\Helper::createThumb($newName);
+                    Helper::createThumb($newName);
                 }
                 //saving data
                 $em->persist($entity);
@@ -166,7 +178,7 @@ class MediaController extends Controller
         $editForm = $this->createForm(new MediaType(array('requiredFile' => 1)), $entity);
 
         $deleteForm = $this->createDeleteForm($id);
-        $thumbUploadPath = '/web/uploads/' .$this->container->getParameter('thumbUpload') ;
+        $thumbUploadPath = $this->thumbPath;
 
         return $this->render(
             'SMAdminBundle:Media:edit.html.twig', array(
@@ -210,15 +222,12 @@ class MediaController extends Controller
                 if (!empty($entity->file)) {
                     $newName = Utilities::renameForFile($entity->file->getClientOriginalName());
                     //get upload path
-                    $uploadPath = $this->container->getParameter('upload');
-                    $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
-                    $uploadDir = $webDir . $uploadPath;
                     //upload file
-                    $entity->file->move($uploadDir, $newName);
+                    $entity->file->move($this->thumbDir, $newName);
                     //set new name
                     $entity->setName($newName);
                     //Create thumbnail for image
-                    Utilities\Helper::createThumb($newName);
+                    Helper::createThumb($newName);
                 }
                 //saving data
                 $em->persist($entity);
@@ -254,9 +263,24 @@ class MediaController extends Controller
                 ->getRepository("SMAdminBundle:Media")
                 ->deleteByIds(array($id));
 
-        return $this->redirect(
-            $this->generateUrl('admin_media')
-        );
+        if ($rst) {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
+
+            return $this->redirect(
+                $this->generateUrl('admin_media')
+            );
+        } else {
+            $this->getRequest()
+                     ->getSession()
+                     ->getFlashBag()
+                     ->add('sm_flash_error', $this->get('translator')->trans('The operation is fail'));
+
+            return $this->redirect($referrer);
+        }
+        
     }
 
     /**

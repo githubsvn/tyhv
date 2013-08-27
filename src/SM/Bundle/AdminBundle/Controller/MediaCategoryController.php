@@ -295,7 +295,7 @@ class MediaCategoryController extends Controller
         // set referrer redirect
         $referrer = $this->getRequest()->server->get('HTTP_REFERER');
 
-        if (!$referrer) {
+        if ($rst) {
             $this->getRequest()
                      ->getSession()
                      ->getFlashBag()

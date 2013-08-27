@@ -7,7 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use SM\Bundle\AdminBundle\Entity\News;
 use SM\Bundle\AdminBundle\Form\NewsType;
-use SM\Bundle\AdminBundle\Utilities;
+use SM\Bundle\AdminBundle\Utilities\Helper;
+use SM\Bundle\AdminBundle\Utilities\Utilities;
 
 /**
  * News controller.
@@ -15,6 +16,23 @@ use SM\Bundle\AdminBundle\Utilities;
  */
 class NewsController extends Controller
 {
+    private $uploadDir;
+    private $thumbDir;
+    private $uploadPath;
+    private $thumbPath;
+    
+    /**
+     * 
+     */
+    public function __construct() {
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $dirRoot = Utilities::getRootDir();
+        $this->uploadDir = $dirRoot . $container->getParameter('upload');
+        $this->thumbDir = $dirRoot . $container->getParameter('thumbUpload');
+        $this->uploadPath = $container->getParameter('thumbUpload');
+        $this->thumbPath = $container->getParameter('thumbUpload');
+    }
+    
     /**
      * Lists all Products entities.
      *
@@ -167,16 +185,12 @@ class NewsController extends Controller
                 //Upload logo for company
                 if (!empty($entity->image)) {
                     $newName = Utilities::renameForFile($entity->image->getClientOriginalName());
-                    //get upload dir
-                    $uploadPath = $this->container->getParameter('upload');
-                    $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
-                    $uploadDir = $webDir . $uploadPath;
                     //upload file
-                    $entity->image->move($uploadDir, $newName);
+                    $entity->image->move($this->uploadDir, $newName);
                     //set new name
                     $entity->setImage($newName);
                     //Create thumbnail for image
-                    Utilities\Helper::createThumb($newName);
+                    Helper::createThumb($newName);
                 }
 
                 $entityManager->flush();
@@ -238,7 +252,7 @@ class NewsController extends Controller
             'defaultLanguage' => $defaultLanguage,
             'optMedias' => $optMedias,
             'selectedMedias' => array(),
-            'mediaPath' => '/web/' . $this->container->getParameter('upload'),
+            'mediaPath' => $this->thumbPath,
             'optMediaTypes' => $listMediaCats
         ));
     }
@@ -290,9 +304,6 @@ class NewsController extends Controller
         }
 
         //get upload dir
-        $uploadPath = $this->container->getParameter('upload') ;
-        $thumbUploadPath = $this->container->getParameter('thumbUpload') ;
-        $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
 
         $image = $entity->getImage();
         $form = $this->createForm(new NewsType(), $entity);
@@ -320,18 +331,17 @@ class NewsController extends Controller
                 //Upload logo for company
                 if (!empty($entity->image)) {
                     $newName = Utilities::renameForFile($entity->image->getClientOriginalName());
-                    $uploadDir = $webDir . $uploadPath;
                     //upload file
-                    $entity->image->move($uploadDir, $newName);
+                    $entity->image->move($this->uploadDir, $newName);
                     //set new name
                     $entity->setImage($newName);
 
                     //Create thumbnail for image
-                    Utilities\Helper::createThumb($newName);
+                    Helper::createThumb($newName);
 
                     //Delete old logo file
-                    $oldFileImage = $webDir . $uploadPath . '/' . $image;
-                    $oldThumbFileImage = $webDir . $uploadPath . $thumbUploadPath . $image;
+                    $oldFileImage = $this->uploadDir . '/' . $image;
+                    $oldThumbFileImage = $this->thumbDir . $image;
                     if (file_exists($oldFileImage)) {
                         @unlink($oldFileImage);
                     }
@@ -342,8 +352,8 @@ class NewsController extends Controller
                     //Check input delImgs if exist we need to delete logo of the company
                     if (!empty($_POST['delImgs'])) {
                         foreach ($_POST['delImgs'] as $img) {
-                            $fileImage = $webDir . $uploadPath . '/' . $img;
-                            $oldThumbFileImage = $webDir . $uploadPath . $thumbUploadPath . $img;
+                            $fileImage = $this->uploadDir . $img;
+                            $oldThumbFileImage = $this->thumbDir . $img;
                             if (file_exists($fileImage)) {
                                 @unlink($fileImage);
                                 $entity->setImage('');
@@ -410,18 +420,15 @@ class NewsController extends Controller
         }
 
 
-        //Create thumbnail for image
-        Utilities\Helper::createThumb($image);
-
         return $this->render('SMAdminBundle:News:edit.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'langList' => $langList,
             'defaultLanguage' => $defaultLanguage,
             'arrImgs' => array($image),
-            'imgPath' => '/web/'.$uploadPath.'media/cache/thumbs/',
+            'imgPath' => $this->thumbPath,
             'optMedias' => $optMedias,
-            'mediaPath' => '/web/' . $this->container->getParameter('upload'),
+            'mediaPath' => $this->uploadPath,
             'optMediaTypes' => $listMediaCats,
         ));
 
@@ -443,7 +450,7 @@ class NewsController extends Controller
         // set referrer redirect
         $referrer = $this->getRequest()->server->get('HTTP_REFERER');
 
-        if (!$referrer) {
+        if ($rst) {
 
             $this->getRequest()
                      ->getSession()

@@ -4,10 +4,11 @@ namespace SM\Bundle\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use SM\Bundle\AdminBundle\Entity\Page;
 use SM\Bundle\AdminBundle\Form\PageType;
-use SM\Bundle\AdminBundle\Utilities;
+use SM\Bundle\AdminBundle\Utilities\Helper;
+use SM\Bundle\AdminBundle\Utilities\Utilities;
+
 
 /**
  * Page controller.
@@ -15,6 +16,23 @@ use SM\Bundle\AdminBundle\Utilities;
  */
 class PageController extends Controller
 {
+    private $uploadDir;
+    private $thumbDir;
+    private $uploadPath;
+    private $thumbPath;
+    
+    /**
+     * 
+     */
+    public function __construct() {
+        $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+        $dirRoot = Utilities::getRootDir();
+        $this->uploadDir = $dirRoot . $container->getParameter('upload');
+        $this->thumbDir = $dirRoot . $container->getParameter('thumbUpload');
+        $this->uploadPath = $container->getParameter('thumbUpload');
+        $this->thumbPath = $container->getParameter('thumbUpload');
+    }
+    
     /**
      * Lists all Products entities.
      *
@@ -153,16 +171,12 @@ class PageController extends Controller
                 //Upload logo for company
                 if (!empty($entity->image)) {
                     $newName = Utilities::renameForFile($entity->image->getClientOriginalName());
-                    //get upload dir
-                    $uploadPath = $this->container->getParameter('upload');
-                    $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
-                    $uploadDir = $webDir . $uploadPath;
                     //upload file
-                    $entity->image->move($uploadDir, $newName);
+                    $entity->image->move($this->uploadDir, $newName);
                     //set new name
                     $entity->setImage($newName);
                     //Create thumbnail for image
-                    Utilities\Helper::createThumb($newName);
+                    Helper::createThumb($newName);
                 }
 
                 $entityManager->flush();
@@ -224,7 +238,7 @@ class PageController extends Controller
             'defaultLanguage' => $defaultLanguage,
             'optMedias' => $optMedias,
             'selectedMedias' => array(),
-            'mediaPath' => '/web/' . $this->container->getParameter('upload'),
+            'mediaPath' => $this->thumbPath,
             'optMediaTypes' => $listMediaCats
         ));
     }
@@ -275,11 +289,6 @@ class PageController extends Controller
             $session->set('referrer', $this->getRequest()->server->get('HTTP_REFERER'));
         }
 
-        //get upload dir
-        $uploadPath = $this->container->getParameter('upload') ;
-        $thumbUploadPath = $this->container->getParameter('thumbUpload') ;
-        $webDir = $this->container->get('kernel')->getRootDir() . '/../web';
-
         $image = $entity->getImage();
         $form = $this->createForm(new PageType(), $entity);
 
@@ -306,17 +315,16 @@ class PageController extends Controller
                 //Upload logo for company
                 if (!empty($entity->image)) {
                     $newName = Utilities::renameForFile($entity->image->getClientOriginalName());
-                    $uploadDir = $webDir . $uploadPath;
                     //upload file
-                    $entity->image->move($uploadDir, $newName);
+                    $entity->image->move($this->uploadDir, $newName);
                     //set new name
                     $entity->setImage($newName);
                     //Create thumbnail for image
-                    Utilities\Helper::createThumb($newName);
+                    Helper::createThumb($newName);
 
                     //Delete old logo file
-                    $oldFileImage = $webDir . $uploadPath . '/' . $image;
-                    $oldThumbFileImage = $webDir . $uploadPath . $thumbUploadPath . $image;
+                    $oldFileImage = $this->uploadDir . '/' . $image;
+                    $oldThumbFileImage = $this->thumbDir . $image;
                     if (file_exists($oldFileImage)) {
                         @unlink($oldFileImage);
                     }
@@ -327,10 +335,14 @@ class PageController extends Controller
                     //Check input delImgs if exist we need to delete logo of the company
                     if (!empty($_POST['delImgs'])) {
                         foreach ($_POST['delImgs'] as $img) {
-                            $fileImage = $webDir . $uploadPath . '/' . $img;
+                            $fileImage = $this->uploadDir . $img;
+                            $oldThumbFileImage = $this->thumbDir . $img;
                             if (file_exists($fileImage)) {
                                 @unlink($fileImage);
                                 $entity->setImage('');
+                            }
+                            if (file_exists($oldThumbFileImage)) {
+                                @unlink($oldThumbFileImage);
                             }
                         }
                     } else {
@@ -396,9 +408,9 @@ class PageController extends Controller
             'langList' => $langList,
             'defaultLanguage' => $defaultLanguage,
             'arrImgs' => array($image),
-            'imgPath' => '/web/' . $uploadPath,
+            'imgPath' => $this->thumbPath,
             'optMedias' => $optMedias,
-            'mediaPath' => '/web/' . $this->container->getParameter('upload'),
+            'mediaPath' => $this->uploadPath,
             'optMediaTypes' => $listMediaCats,
         ));
 
@@ -420,7 +432,7 @@ class PageController extends Controller
         // set referrer redirect
         $referrer = $this->getRequest()->server->get('HTTP_REFERER');
 
-        if (!$referrer) {
+        if ($rst) {
             $this->getRequest()
                      ->getSession()
                      ->getFlashBag()
