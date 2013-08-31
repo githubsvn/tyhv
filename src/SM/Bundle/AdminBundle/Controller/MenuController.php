@@ -509,6 +509,7 @@ class MenuController extends Controller
     {
         $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
         $ext = $container->getParameter('ext_nice_url');
+        $comma = $container->getParameter('comma_nice_url');
 
         //get list language
         $repLanguage = $this->getDoctrine()
@@ -526,8 +527,8 @@ class MenuController extends Controller
 
         $entity->setLanguage($defaultLanguage);
         $name = $entity->getCurrentLanguage()->getName();
-        $name = \SM\Bundle\AdminBundle\Utilities\Helper::cleanString($name, '_');
-        $alias =  $url. $name . "_$id.$ext";
+        $name = \SM\Bundle\AdminBundle\Utilities\Helper::cleanString($name, $comma);
+        $alias =  $url. $name . "$comma$id.$ext";
 
         //check menu is exist in table menu
         $repMenu = $this->getDoctrine()->getRepository("SMAdminBundle:Menu");
@@ -535,15 +536,14 @@ class MenuController extends Controller
         if ($isExist) {
             $lastestMenu = $repMenu->getLastestItem();
             $lastestId = $lastestMenu->getId() + 1;
-            $alias =  $url. $name . "_$lastestId"."_$id.".$ext;
+            $alias =  $url. $name . "$comma$lastestId"."$comma$id.".$ext;
         }
 
         $isExist = $repMenu->findBy(array('url' => $alias));
         if ($isExist) {
             $lastestId = $lastestId + 1;
-            $alias =  $url. $name . "_$lastestId"."_$id.".$ext;
+            $alias =  $url. $name . "$comma$lastestI"."$comma$id.".$ext;
         }
-
 
         return $alias;
     }

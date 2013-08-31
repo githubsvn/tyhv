@@ -32,3 +32,6 @@ parameters:
     menu_position_bottom: 4
 
     ext_nice_url: html
+    comma_nice_url: "-"
+    
+
